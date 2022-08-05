@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/main/webapp/Sql=EUC-KR
 encoding//src/main/webapp/sql=EUC-KR
 encoding//src/main/webapp/sql/cart.sql=EUC-KR
 encoding//src/main/webapp/sql/item.sql=euc-kr
