@@ -1,4 +1,4 @@
-package item.iteminfo.db;
+package admin.adminpage.db;
 
 public class example {
 
