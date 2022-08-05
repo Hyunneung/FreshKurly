@@ -1,2 +1,10 @@
 eclipse.preferences.version=1
+encoding//src/main/webapp/sql2=EUC-KR
+encoding//src/main/webapp/sql2/cart.sql=EUC-KR
+encoding//src/main/webapp/sql2/item.sql=euc-kr
+encoding//src/main/webapp/sql2/member.sql=EUC-KR
+encoding//src/main/webapp/sql2/notice.sql=EUC-KR
+encoding//src/main/webapp/sql2/order.sql=EUC-KR
+encoding//src/main/webapp/sql2/qna.sql=EUC-KR
+encoding//src/main/webapp/sql2/wish.sql=EUC-KR
 encoding/<project>=UTF-8
