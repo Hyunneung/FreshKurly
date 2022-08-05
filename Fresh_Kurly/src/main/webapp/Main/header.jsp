@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<!-- 로고, 옆 버튼 부분 -->
 		<div id="header-top" class="grocery-top">
 			<div class="container">
 				<div class="row">
@@ -16,23 +16,14 @@
 										</a>
 									</div>
 								</div>
+								
+							<%-- 세션에 id값이 없을경우 보여줄 버튼 --%>
+							<c:if test="${empty id}">
 								<div class="col-md-9 tb-lef-div text-right">
 									<ul>
+									
 										<li>
-											<a href="login.html"><span> 찜한상품</span></a>
-										</li>
-										
-										<li>
-											<a href="checkout.html">
-												<span> 
-													<i class="fa fa-shopping-cart"></i>
-													 장바구니
-												</span>
-											</a>
-										</li>
-											
-										<li>
-											<a href="login.html">
+											<a href="로그인.html">
 												<span>
 												<i class="fa fa-user"></i>
 												 로그인
@@ -40,15 +31,92 @@
 											</a>
 										</li>
 										
+										<li>
+											<a href="회원가입.html">
+												<span>
+												<i class="fa fa-pencil"></i>
+												 회원가입
+												</span>
+											</a>
+										</li>
 										
 									</ul>
 								</div>
+							</c:if>
+							
+							<%-- 세션에 id 값이 있을경우 보여줄 버튼 --%>
+							<c:if test="${!empty id}">
+								<div class="col-md-9 tb-lef-div text-right">
+									<ul>
+										<li>
+											<a href="찜한상품.html">
+												<span>
+												<i class="fa fa-heart"></i>
+												찜한상품
+												</span>
+											</a>
+										</li>
+										
+										<li>
+											<a href="장바구니.html">
+												<span> 
+													<i class="fa fa-shopping-cart"></i>
+													 장바구니
+												</span>
+											</a>
+										</li>
+
+									</ul>
+								</div>
+								
+								<%-- 그와중에 세션에 id 값이 admin일 경우 보여줄 버튼 --%>
+								<c:if test="${id =='admin'}">
+								
+								<div class="col-md-9 tb-lef-div text-right">
+									<ul>
+										<li>
+											<a href="회원리스트.html">
+												<span>
+												<i class="fa fa-forward"></i>
+												회원리스트
+												</span>
+											</a>
+										</li>
+										
+										<li>
+											<a href="상품리스트.html">
+												<span> 
+													<i class="fa fa-product-hunt"></i>
+													 상품리스트
+												</span>
+											</a>
+										</li>
+										
+										<li>
+											<a href="문의답변.html">
+												<span> 
+													<i class="fa fa-keyboard-o"></i>
+													 문의 답변하기
+												</span>
+											</a>
+										</li>
+
+									</ul>
+								</div>
+								
+								</c:if>
+							
+							</c:if>
+								
+								
+
 							</div>
 						</div>
 					</nav>
 				</div>
 			</div>
 		</div>
+		<!-- 로고, 옆 버튼부분 끝 -->
 		<!-- Start Navbar Area -->
 		<div class="navbar-area">
 			<div class="tb-responsive-nav">
