@@ -1,3 +1,5 @@
+drop table qna;
+
 --문의하기 테이블
 create table qna(
 	qna_number 	number(10) primary key,	
