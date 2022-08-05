@@ -1,3 +1,6 @@
+
+drop table notice;
+
 --공지사항 테이블
 create table notice(
 	notice_number   number(20) primary key, 

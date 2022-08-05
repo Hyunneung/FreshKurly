@@ -1,3 +1,5 @@
+drop table cart;
+
 --장바구니 테이블
 create table cart(
 	cart_id		number(10) primary key, 
