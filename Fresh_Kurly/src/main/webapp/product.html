@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Grocery Store | Template</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap-datetimepicker.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/responsive.css">
+	<link rel="stylesheet" href="assets/vendor/owl.carousel/assets/owl.carousel.css"> 
+	<link rel="stylesheet" href="assets/vendor/wow/animate.css"> 
+	<link rel="stylesheet" type="text/css" href="assets/vendor/gallery/gallery.css" />
+	<link rel="stylesheet" type="text/css" href="assets/vendor/gallery/lightbox.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="assets/vendor/barebone/css/bare-bone-slider.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/barebone/css/bare-bone-slider.min.css">
+    <script src="assets/vendor/gallery/lightbox-plus-jquery.min.js"></script>
+	<script src="assets/vendor/jquery/jquery.min.js"></script>
+	<script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+	<script src="assets/vendor/wow/wow.min.js"></script>
+	<script src="assets/vendor/slider/js/jquery.xuSlider.js"></script>
+
+	</head>
+<body>
+<header class="header-area">
+	<!--<div class="col-md-12 top-offer">
+		<div class="row">
+		<div class="col-md-6 offer-bar"><p>Last sale up to 30% OFF. Use code <b>“OFFER250”</b>.</p></div>
+		<div class="col-md-6 offer-bar-two"><p>Green Leaves Up To 20% Off</p></div>
+	</div>
+</div>-->
+	<div id="header-top" class="grocery-top">
+	     <div class="container">
+	     	 <div class="row">
+	      		 <nav class="navbar navbar-expand-md navbar-light  main-menu" style="box-shadow:none">
+  						<div class="container">
+  					 		<div class="row">
+					    		 <div class="col-md-3 tb-rght">
+						    		<div class="logo">
+										<a href="index.html">
+										<img src="assets/image/logo/logo.png" alt="logo" class="logodark">
+									</a>
+						  		 </div>
+						  	</div>
+						    <div class="col-md-9 tb-lef-div text-right">
+                    <ul>
+                        <li><a href="checkout.html"><span> Compare</span></a></li>
+                            <li><a href="login.html"><span> Wishlist</span></a></li>
+                            <li><a href="login.html"><span> <i class="fa fa-user"></i> Login</span></a></li>
+                            <li><a href="checkout.html"><span> <i class="fa fa-shopping-cart"></i> Checkout</span></a></li>
+                        </ul>
+                      </div>
+			           	 </div>
+			        </div>
+				</div>
+			</div>	
+		</nav>
+	</div>
+</div>
+</div>
+<!-- Start Navbar Area -->
+	<div class="navbar-area">
+		<div class="tb-responsive-nav">
+			<div class="container">
+				<div class="row">
+					<div class="tb-responsive-menu">
+						<div class="logo">
+							<a href="index.html">
+								<img src="assets/image/logo/logo.png" alt="logo" class="logodark">
+							</a>
+						</div>
+					<!--mobile Menu  -->
+
+					<div id="mySidenav" class="sidenav">
+						<div class="menu_slid_bg">
+							<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+							
+								<div class="col-sm-12" style="padding:0px;">
+									<h3>Menu</h3>
+									
+									<ul class="accordion" id="accordion-category">
+										<li class="panel mobile_menu_li">
+											<a href="index.html"> Home</a>
+										</li>
+										<li class="panel mobile_menu_li">
+											<a href="category.html">Category</a>
+										</li>
+										<li class="panel mobile_menu_li">
+											<a href="product.html"> Product</a>
+										</li>
+                                        <li class="panel mobile_menu_li">
+                                            <a href="blog.html"> Blog</a>
+                                        </li>
+										 <li class="panel mobile_menu_li">
+											<a href="contact.html">contact</a>
+										</li>
+									</ul>
+							<div class="clear"></div>
+							</div>
+							 
+						</div>
+					</div>
+
+					<span class="menu_open" onclick="openNav()">&#9776; Menu</span>
+					<!-- mobile Menu  end-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="tb-nav">
+			<div class="container">
+				
+						<nav class="navbar navbar-expand-md ">
+							<div class="row">
+							  <div class="col-sm-9 tb-menu-with">
+								<ul id="nav-menu" class="navbar-nav">
+									<li class="nav-item "><a href="index.html" class="nav-link">Home</a></li>
+									
+									<li class="nav-item dropdown-colr "><a href="#about" class="nav-link">Categoy</a>
+										<ul class="dropdown-menu">
+											<li class="nav-item"><a href="category.html" class="nav-link">Mangoes</a></li>
+											<li class="nav-item"><a href="category.html" class="nav-link">Red Potatoes</a></li>
+											<li class="nav-item"><a href="category.html" class="nav-link">Pea</a></li>
+											<li class="nav-item"><a href="category.html" class="nav-link">Luffa</a></li>
+											<li class="nav-item"><a href="category.html" class="nav-link">artichoke</a></li>
+											<li class="nav-item"><a href="category.html" class="nav-link">cauliflower</a></li>
+											<li class="nav-item"><a href="category.html" class="nav-link">brussels sprouts</a></li>
+                                       </ul>
+									</li>
+									<li class="nav-item dropdown-colr active"><a href="#service" class="nav-link">Product</a>
+										 <ul class="dropdown-menu">
+                      <li class="nav-item"><a href="product.html" class="nav-link">Red Apples</a></li>
+                      <li class="nav-item"><a href="product.html" class="nav-link">Radishes</a></li>
+                      <li class="nav-item"><a href="product.html" class="nav-link">Red Pears</a></li>
+                      <li class="nav-item"><a href="product.html" class="nav-link">Pomegranates</a></li>
+                      <li class="nav-item"><a href="product.html" class="nav-link">Tomatoes</a></li>
+                      <li class="nav-item"><a href="product.html" class="nav-link">Rhubarb</a></li>
+                      <li class="nav-item"><a href="product.html" class="nav-link">artichoke</a></li>
+                      <li class="nav-item"><a href="product.html" class="nav-link">Pea</a></li>
+                      <li class="nav-item"><a href="product.html" class="nav-link">cauliflower</a></li>
+                    </ul>
+									</li>
+									<li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+										<li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                                	 </ul>
+                                   </div>
+   								</div>
+                               <div class="col-sm-3">
+								<div class="collapse navbar-collapse">
+      							<form class="form-inline my-2 my-lg-0 mx-auto">
+       						 			<input class="form-control" type="search" placeholder="Search for products..." aria-label="Search">
+        								<button class="tb-btn btn-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+      								</form>
+                      		 	</div>
+							</div>
+						</nav>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Navbar Area --> 
+
+</header>
+
+
+<!-- Header End -->
+<div id="banner-category" style="background:#9f7e1c8c;">
+<div class="container">
+	<div class="col-md-12 text-center text-heading ">
+		<h1>Product:</h1>
+	</div>
+</div>
+       </div> 
+<!-- START SECTION Fruit product -->
+<section id="product-page">
+		
+	<div class="container">
+        <div class="card">
+            <div class="container-fliud">
+                <div class="wrapper row">
+                    <div class="preview col-md-6">
+                        
+                        <div class="preview-pic tab-content">
+                          <div class="tab-pane active" id="pic-1"><img src="assets/image/fruits/1.jpg" /></div>
+                          <div class="tab-pane" id="pic-2"><img src="assets/image/vegetable/4.jpg" /></div>
+                          <div class="tab-pane" id="pic-3"><img src="assets/image/vegetable/5.jpg" /></div>
+                          <div class="tab-pane" id="pic-4"><img src="assets/image/fruits/4.jpg" /></div>
+                          <div class="tab-pane" id="pic-5"><img src="assets/image/fruits/5.jpg" /></div>
+                        </div>
+                        <ul class="preview-thumbnail nav nav-tabs">
+                          <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="assets/image/fruits/1.jpg" /></a></li>
+                          <li><a data-target="#pic-2" data-toggle="tab"><img src="assets/image/vegetable/4.jpg" /></a></li>
+                          <li><a data-target="#pic-3" data-toggle="tab"><img src="assets/image/vegetable/5.jpg" /></a></li>
+                          <li><a data-target="#pic-4" data-toggle="tab"><img src="assets/image/fruits/4.jpg" /></a></li>
+                          <li><a data-target="#pic-5" data-toggle="tab"><img src="assets/image/fruits/5.jpg" /></a></li>
+                        </ul>
+                        
+                    </div>
+                    <div class="details col-md-6">
+                        <h3 class="product-title">Fresh & Pure Products</h3>
+                        <div class="rating">
+                            <div class="stars">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+                            <span class="review-no">41 reviews</span>
+                        </div>
+                            <p class="product-description">Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</p>
+                            <h4 class="price">current price: <span>$180</span></h4>
+                            <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
+                            <h5 class="sizes">Promo code:
+                                <span class="size" data-toggle="tooltip" title="small">GRCERY200</span>
+                              </h5>
+                        <div class="action">
+                            <a href="checkout.html" class="btn">add to cart</a>
+                            <a href="checkout.html" class="btn"><span class="fa fa-heart"></span></a>
+                            <hr class="col-md-12">
+                        </div>
+                    </div>
+                        <div class="col-sm-12 reviews_padding">
+            <div class="reviews_wrapper">
+                 <div class="">
+                     <ul class="nav nav-tabs">
+                        <li class="active"><a class="btn-des" href="#tab-description" data-toggle="tab" aria-expanded="true">Description</a></li>
+                                <li class=""><a class="btn-des" href="#tab-review" data-toggle="tab" aria-expanded="false">Reviews (0)</a></li>
+                            </ul>
+                     </div>
+                 <hr>
+              <div class="col-sm-12">
+              <div class="tab-content">
+                <div class="tab-pane text-left active" id="tab-description"><p>
+                        <strong>Revolutionary multi-touch interface.</strong><br>
+                        iPod touch features the same multi-touch screen technology as iPhone. Pinch to zoom in on a photo. Scroll through your songs and videos with a flick. Flip through your library by album artwork with Cover Flow.</p>
+                    <p>
+                        <strong>Gorgeous 3.5-inch widescreen display.</strong><br>
+                        Watch your movies, TV shows, and photos come alive with bright, vivid color on the 320-by-480-pixel display.</p>
+                    <p>
+                        <strong>Music downloads straight from iTunes.</strong><br>
+                        Shop the iTunes Wi-Fi Music Store from anywhere with Wi-Fi.1 Browse or search to find the music youre looking for, preview it, and buy it with just a tap.</p>
+                    <p>
+                        <strong>Surf the web with Wi-Fi.</strong><br>
+                        Browse the web using Safari and watch YouTube videos on the first iPod with Wi-Fi built in<br>
+                        &nbsp;</p>
+                    </div>
+               <div class="tab-pane" id="tab-review">
+                  <form class="form-horizontal" id="form-review">
+                    <div id="review"></div>
+                    <h2>Write a review</h2>
+                                        <div class="form-group required">
+                      <div class="col-sm-12">
+                        <label class="control-label" for="input-name" style="float: left;">Your Name</label>
+                        <input type="text" name="name" value="" id="input-name" class="form-control">
+                      </div>
+                    </div>
+                    <div class="form-group required">
+                      <div class="col-sm-12">
+                        <label class="control-label" for="input-review" style="float: left;">Your Review</label>
+                        <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
+                        <div class="help-block"><span class="text-danger">Note:</span> HTML is not translated!</div>
+                      </div>
+                    </div>
+                    <div class="form-group required">
+                      <div class="col-sm-12 text-left">
+                        <label class="control-label" style="float: left;">Rating</label>
+                        &nbsp;&nbsp;&nbsp; Bad&nbsp;
+                        <input type="radio" name="rating" value="1">
+                        &nbsp;
+                        <input type="radio" name="rating" value="2">
+                        &nbsp;
+                        <input type="radio" name="rating" value="3">
+                        &nbsp;
+                        <input type="radio" name="rating" value="4">
+                        &nbsp;
+                        <input type="radio" name="rating" value="5">
+                        &nbsp;Good</div>
+                    </div>
+                    
+                    <div class="buttons clearfix">
+                      <div class="pull-right">
+                        <a href="index.html" class="btn btn-primary">Continue</a>
+                      </div>
+                    </div>
+                                      </form>
+                </div>
+                </div></div>
+            </div>
+        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!---- end section------>
+ 
+ 
+
+
+
+
+<!-- Footer Section -->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 colr-font">
+                <div class="row">
+                    <div class="col-md-3 text-left">
+                        <h3>Categories</h3>
+                          <ul>
+                              <li>
+                                <a href="#">Fruits</a>
+                              </li>
+                              <li>
+                                <a href="#">Vagetables</a>
+                              </li>
+                              <li>
+                                <a href="#">Fresh Fruits</a>
+                            </li>
+                              <li>
+                                <a href="#">Fresh Vagetables</a>
+                            </li>
+                            </ul>
+                       </div>
+                       <div class="col-md-3 text-left">
+                        <h3>Products</h3>
+                          <ul>
+                              <li>
+                                <a href="#">Fruits</a>
+                              </li>
+                              <li>
+                                <a href="#">Vagetables</a>
+                              </li>
+                              <li>
+                                <a href="#">Fresh Fruits</a>
+                            </li>
+                              <li>
+                                <a href="#">Fresh Vagetables</a>
+                            </li>
+                            </ul>
+                       </div>
+                       <div class="col-md-3 text-left">
+                        <h3>Menu</h3>
+                          <ul>
+                              <li>
+                                <a href="index.html">Home</a>
+                              </li>
+                              <li>
+                                <a href="category.html">Category</a>
+                              </li>
+                              <li>
+                                <a href="product.html">Product</a>
+                            </li>
+                              <li>
+                                <a href="blog.html">Blog</a>
+                            </li>
+                            <li>
+                                <a href="contact.html">Contact</a>
+                            </li>
+                            </ul>
+                       </div>
+                    <div class="col-md-3 text-left">
+                        <h3>About Us</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam magna ligula, aliquam nec auctor at, ultrices sollicitudin neque.</p>
+                        <div class="social-links">
+                            <ul>
+                              <li>
+                                <a href="#"><i class="fa fa-facebook"></i> </a>
+                              </li>
+                              <li>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                              </li>
+                              <li>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                              <li>
+                                <a href="#"><i class="fa fa-google-plus "></i></a>
+                            </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="col-md-12 hr-color">
+           <div class="footer_copyright">
+                <p class="wow fadeInDown animated">© Copyright 2020 by Grocery Store. All right Reserved - Design By <a href="http://templatebazaar.in/" target="_blank">Template Bazaar</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Footer Section End -->
+<!-- back-to-top scrtion -->
+<div class="top_button">
+  <a class="back-to-top" style="cursor:pointer;" id="top-scrolltop"><i class="fa fa-angle-up"></i></a>
+</div>
+<!-- back-to-top scrtion End-->
+<!-- script files -->
+<!-- home silder -->
+<!----fetur strat---->
+<script>
+$(document).ready(function(){
+$('#feature-product').owlCarousel({
+items: 4,
+itemsDesktop:[1199,4],
+itemsDesktopSmall:[992,3],
+itemsTablet:[768,2],
+itemsMobile:[450,1],
+autoPlay: 6000,
+pagination: false,
+navigation: true,
+navigationText: ['<i class="fa fa-angle-left fa-5x"></i>', '<i class="fa fa-angle-right fa-5x"></i>']
+});
+});
+
+</script>
+<!------end features------>
+<!----fruit strat---->
+<script>
+$(document).ready(function(){
+$('#fruit-pro').owlCarousel({
+items: 4,
+itemsDesktop:[1199,4],
+itemsDesktopSmall:[992,3],
+itemsTablet:[768,2],
+itemsMobile:[450,1],
+autoPlay: 6000,
+pagination: false,
+navigation: true,
+navigationText: ['<i class="fa fa-angle-left fa-5x"></i>', '<i class="fa fa-angle-right fa-5x"></i>']
+});
+});
+
+</script>
+<!-------end----->
+<script>
+$(document).ready(function(){
+$('#vegetable-pro').owlCarousel({
+items: 4,
+itemsDesktop:[1199,4],
+itemsDesktopSmall:[992,3],
+itemsTablet:[768,2],
+itemsMobile:[450,1],
+autoPlay: 6000,
+pagination: false,
+navigation: true,
+navigationText: ['<i class="fa fa-angle-left fa-5x"></i>', '<i class="fa fa-angle-right fa-5x"></i>']
+});
+});
+
+</script>
+<!-------end----->
+<script>
+$(document).ready(function(){
+$('#vegetable-prod').owlCarousel({
+items: 4,
+itemsDesktop:[1199,4],
+itemsDesktopSmall:[992,3],
+itemsTablet:[768,2],
+itemsMobile:[450,1],
+autoPlay: 6000,
+pagination: false,
+navigation: true,
+navigationText: ['<i class="fa fa-angle-left fa-5x"></i>', '<i class="fa fa-angle-right fa-5x"></i>']
+});
+});
+
+</script>
+<!-------end----->
+
+
+	<script src="assets/vendor/bootstrap/js/moment.min.js"></script>
+	<script src="assets/vendor/bootstrap/js/bootstrap-datetimepicker.js"></script>
+	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/js/custom.js"></script>
+	
+<!-- script files -->
+</body>
+</html>

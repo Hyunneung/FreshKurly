@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>최시준 입니다.</h1>
+
 </body>
 </html>
