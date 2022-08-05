@@ -1,3 +1,5 @@
+drop table wish;
+
 --찜한상품 테이블
 create table wish(
 	wish_id 	number(10) primary key,

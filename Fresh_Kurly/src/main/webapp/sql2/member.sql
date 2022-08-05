@@ -1,3 +1,8 @@
+select * from member;
+
+
+drop table member;
+
 create table member (
     member_id       varchar2(20) primary key, 
     member_pass     varchar2(20),
