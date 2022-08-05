@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class example
  */
-@WebServlet("/example")
-public class example extends HttpServlet {
+@WebServlet("/example2")
+public class example2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public example() {
+    public example2() {
         super();
         // TODO Auto-generated constructor stub
     }
