@@ -33,7 +33,7 @@
 	<form name="loginform" action="loginProcess.net" method="post" class="border border-light p-5">
   		<p class="h4 mb-4 text-center">로그인</p>
   		<hr>
-		<div class="form-group">
+		<div class="form-group"> 
 	    	<input type="text" class="form-control" name="id" id="id" placeholder="아이디를 입력해주세요" required>
 	  	</div>
 		
