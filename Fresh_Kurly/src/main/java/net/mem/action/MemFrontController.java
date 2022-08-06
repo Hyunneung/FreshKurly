@@ -39,13 +39,13 @@ public class MemFrontController extends HttpServlet {
 		case "/loginProcess.net" :
 			action = new MemLoginProcessAction();
 			break;	
-		/*case "/join.net" :
+		case "/join.net" :
 			action = new MemJoinAction();
-			break;*/
+			break;
 		case "/idcheck.net" :
 			action = new MemIdCheckAction();
 			break;
-	/*	case "/phonecheck.net" :
+		/*case "/phonecheck.net" :
 			action = new MemPhoneCheckAction();
 			break;
 		case "/joinSocialProcess.net" :

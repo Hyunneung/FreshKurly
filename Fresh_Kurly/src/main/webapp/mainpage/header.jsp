@@ -32,7 +32,7 @@
 										</li>
 										
 										<li>
-											<a href="memberUpdate.net">
+											<a href="join.net">
 												<span>
 												<i class="fa fa-pencil"></i>
 												 회원가입
