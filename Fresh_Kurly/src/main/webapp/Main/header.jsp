@@ -23,7 +23,7 @@
 									<ul>
 									
 										<li>
-											<a href="로그인.html">
+											<a href="login.net">
 												<span>
 												<i class="fa fa-user"></i>
 												 로그인
@@ -32,7 +32,7 @@
 										</li>
 										
 										<li>
-											<a href="회원가입.html">
+											<a href="memberUpdate.net">
 												<span>
 												<i class="fa fa-pencil"></i>
 												 회원가입
