@@ -57,6 +57,12 @@ public class MemFrontController extends HttpServlet {
 		case "/logout.net" :
 			action = new MemLogoutAction();
 			break;
+		case "/idFind.net":
+			action = new MemIdFindAction();
+			break;
+		case "/passwordFind.net":
+			action = new MemPasswordFindAction();
+			break;
 		}
 		
 		// 포워딩 - forward는 포워딩 주소(path), 포워딩 방식(redirect) 가진다

@@ -41,7 +41,7 @@ public class MemLoginProcessAction implements Action {
 			}
 
 			forward.setRedirect(true);
-			forward.setPath("mainPage.main"); // 임시 메인페이지로 이동 // MainPage.main
+			forward.setPath("http://localhost:8088/Fresh_Kurly/"); //초기화면으로 이동
 			return forward;
 		} else { // 로그인 실패
 			String message = "비밀번호가 일치하지 않습니다.";
