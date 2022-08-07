@@ -1,24 +1,25 @@
 drop table item;
 
---»óÇ°Á¤º¸Å×ÀÌºí
+
+
 create table item (
-	item_id			number(20) primary key,
-	item_name		varchar2(20) not null,
-	item_price		number(10) not null,
-	item_reg_date 	date default sysdate,
-	item_image 		varchar2(200) not null,
-	item_deliver	varchar2(100), --»ûº°¹è¼Û ¿©ºÎ
-	item_seller		varchar2(20) default 'ÇÁ·¹½¬ÄÃ¸®', --ÆÇ¸ÅÀÚ
-	item_package	varchar2(50), --Æ÷ÀåÅ¸ÀÔ
-	item_expiredate varchar2(50), --À¯Åë±âÇÑ
-	item_unit 		varchar2(20), --´ÜÀ§
-	item_weight 	varchar2(10), --Áß·®, ¿ë·®
-	item_category 	varchar2(20) not null,
-	item_intro 		varchar2(200) not null, --»óÇ° ¼³¸í º»¹®
-	item_stock 		number(10) not null
+   item_id         number(20) primary key,
+   item_name      varchar2(100) not null,
+   item_price      number(10) not null,
+   item_reg_date    date default sysdate,
+   item_image       varchar2(200) not null,
+   item_deliver   varchar2(200), --ìƒ›ë³„ë°°ì†¡ ì—¬ë¶€
+   item_seller      varchar2(20) default 'í”„ë ˆì‰¬ì»¬ë¦¬', --íŒë§¤ì
+   item_package   varchar2(100), --í¬ì¥íƒ€ì…
+   item_expiredate varchar2(200), --ìœ í†µê¸°í•œ
+   item_unit       varchar2(100), --ë‹¨ìœ„
+   item_weight    varchar2(50), --ì¤‘ëŸ‰, ìš©ëŸ‰
+   item_category    varchar2(20) not null,
+   item_intro       varchar2(200) not null, --ìƒí’ˆ ì„¤ëª… ë³¸ë¬¸
+   item_stock       number(10) not null
 )
 
 
-
+drop table item ;
 select * from item;
 select * from tab;

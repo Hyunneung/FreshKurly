@@ -11,3 +11,5 @@ create table qna(
 	qna_answer 	varchar2(200) not null,
 	qna_reg_date date default sysdate
 )
+
+select * from qna;

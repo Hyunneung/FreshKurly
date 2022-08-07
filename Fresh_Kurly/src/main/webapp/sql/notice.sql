@@ -1,7 +1,7 @@
 
 drop table notice;
 
---°øÁö»çÇ× Å×ÀÌºí
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½
 create table notice(
 	notice_number   number(20) primary key, 
 	notice_subject  varchar2(20),
@@ -9,3 +9,5 @@ create table notice(
 	notice_content  varchar2(200),
 	notice_reg_date date default sysdate
 )
+
+select * from notice;
