@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="http://code.jquery.com/jquery-latest.js"></script> <!-- 제이쿼리 -->
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script> <!-- 주소검색 -->
-	<script src="js/join.js"></script> 
+	<script src="assets/js/member/join.js"></script> 
 </head>
 <style>
 	/* #jumin1, #jumin2 {width:210px;} */
