@@ -41,9 +41,15 @@
                             <button id="ask_email" class="butt">인증코드 요청</button>
                         </form>
                         
-                        <script>
+                         <script>
+                       //인증코드 요청 버튼을 누르면 데이터베이스에서 해당 이메일과 아이디를 가진 사람을 찾고
+                       //있으면 해당 이메일 주소로 메일을 보내고 버튼의 텍스트와 숨겨져있던 인증코드입력창을 보여주게 합니다
+                       //인증코드가 일치하면 비밀번호를 재생성하는 화면으로 넘어갑니다
+                       //없으면 없다고 alert 창을 띄웁니다
                         $('#ask_email').click(function () {
+                        	
                         	$(this).text('인증코드 입력');
+                    		$('#confirm-code').css("display","block");
                         })
                         </script>
                         

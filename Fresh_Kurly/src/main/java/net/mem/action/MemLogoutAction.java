@@ -15,7 +15,7 @@ public class MemLogoutAction implements Action {
 		
 		request.getSession().invalidate(); // 로그아웃 - 세션에 저장했던 모든 회원 정보 제거
 		
-		forward.setPath("login.net");
+		forward.setPath("/index.jsp");
 		forward.setRedirect(false);
 		
 		return forward;

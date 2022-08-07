@@ -5,42 +5,6 @@
 <head>
 <title>Fresh Kurly</title>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="assets/vendor/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="assets/vendor/bootstrap/css/bootstrap-datetimepicker.css">
-<link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="assets/css/responsive.css">
-<link rel="stylesheet"
-	href="assets/vendor/owl.carousel/assets/owl.carousel.css">
-<link rel="stylesheet" href="assets/vendor/wow/animate.css">
-<link rel="stylesheet" type="text/css"
-	href="assets/vendor/gallery/gallery.css" />
-<link rel="stylesheet" type="text/css"
-	href="assets/vendor/gallery/lightbox.min.css" />
-<link
-	href="https://fonts.googleapis.com/css?family=Poppins:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,900&display=swap"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
-	rel="stylesheet">
-<link
-	href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-	rel="stylesheet">
-
-<link rel="stylesheet" type="text/css"
-	href="assets/vendor/barebone/css/bare-bone-slider.css">
-<link rel="stylesheet" type="text/css"
-	href="assets/vendor/barebone/css/bare-bone-slider.min.css">
-<script src="assets/vendor/gallery/lightbox-plus-jquery.min.js"></script>
-<script src="assets/vendor/jquery/jquery.min.js"></script>
-<script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-<script src="assets/vendor/wow/wow.min.js"></script>
-<script src="assets/vendor/slider/js/jquery.xuSlider.js"></script>
 
 </head>
 <body>
@@ -54,22 +18,27 @@
 	<div id="banner-slider" class="xuSlider">
 		<div class="container">
 			<ul class="sliders">
-				<li><img src="assets\image\silder\1.jpg" alt="banner1"></li>
-				<li><img src="assets\image\silder\silder.jpg" alt="banner2"></li>
-				<li><img src="assets\image\silder\4.jpg" alt="banner3"></li>
-				<li><img src="assets\image\silder\5.jpg" alt="banner4"></li>
-				<li><img src="assets\image\silder\7.jpg" alt="banner5"></li>
+				<!-- 이미지를 누르면 행사 페이지로 가는 기능도 생각중 -->
+				<li><img src="assets/image/slider/1.avif" alt="banner1"></li>
+				<li><img src="assets/image/slider/2.avif" alt="banner2"></li>
+				<li><img src="assets/image/slider/3.avif" alt="banner3"></li>
+				<li><img src="assets/image/slider/4.avif" alt="banner4"></li>
+				<li><img src="assets/image/slider/5.avif" alt="banner5"></li>
+				<li><img src="assets/image/slider/6.avif" alt="banner6"></li>
 			</ul>
 			<div class="direction-nav">
 				<a href="javascript:;" class="prev icon-circle-arrow-left icon-4x"><i>Previous</i></a>
 				<a href="javascript:;" class="next icon-circle-arrow-right icon-4x"><i>Next</i></a>
 			</div>
 			<div class="control-nav">
+				<!-- 이유를 모르겠는데 ul에 넣으면 마지막 배너에서 첫배너로 안돌아옴;;;; -->
 				<li data-id="1"><a href="javascript:;">1</a></li>
 				<li data-id="2"><a href="javascript:;">2</a></li>
 				<li data-id="3"><a href="javascript:;">3</a></li>
 				<li data-id="4"><a href="javascript:;">4</a></li>
 				<li data-id="5"><a href="javascript:;">5</a></li>
+				<li data-id="6"><a href="javascript:;">6</a></li>
+				
 			</div>
 		</div>
 	</div>
@@ -93,6 +62,8 @@
 </script>
 
 	<!--------------- silder End ------------>
+	
+	
 	<!-----------start fresh fruit area----------->
 	<section id="fresh-fruit" class="tb-fruit">
 		<div class="container">
@@ -114,8 +85,7 @@
 						<img src="assets\image\fresh-top\2.jpg" alt="Avatar" class="image">
 						<div class="overlay">
 							<div class="text">
-								<h2>Fresh &
-								 Pure Fruits</h2>
+								<h2>Fresh & Pure Fruits</h2>
 								<p>30% Off</p>
 								<a href="#" class="btn">Order Now</a>
 							</div>
@@ -625,49 +595,6 @@
 	</section>
 	<!---- end section------>
 
-	<!-- blogs_start  -->
-	<section id="blog" class="blogs ">
-		<div class="container">
-			<div class="col-md-12 wow slideInLeft">
-				<h1>Latast Blog</h1>
-				<hr class="col-md-12">
-			</div>
-		</div>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4 hov wow slideInLeft">
-					<div class="blog-first ">
-						<div class="blog-img ">
-							<img src="assets\image\blog\1.jpg" alt="">
-						</div>
-						<div class="info">
-							<h3>New Stylist Pakege</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Nam magna ligula, aliquam nec auctor at, ultrices sollicitudin
-								neque. Class aptent taciti sociosqu ad litora torquent per
-								conubia nostra, per inceptos himenaeos. Etiam aliquet sapien et
-								tellus euismod faucibus. Vestibulum vitae.</p>
-							<a class="btn" href="#">Read More</a>
-						</div>
-					</div>
-				</div>
-				<div class=" col-md-8 mrg-set ">
-					<div class="tb-effect-two">
-						<img src="assets\image\blog\2.jpg" alt="Avatar" class="image">
-						<div class="overlay">
-							<div class="text">
-								<a href="add-to-cart.html" class="btn btn-set">Order Now</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-	</section>
-
-	<!-- blogs_End -->
 
 
 
@@ -679,38 +606,45 @@
 				<div class="col-md-12 colr-font">
 					<div class="row">
 						<div class="col-md-3 text-left">
-							<h3>Categories</h3>
+							<h3>상품 카테고리</h3>
 							<ul>
-								<li><a href="#">Fruits</a></li>
-								<li><a href="#">Vagetables</a></li>
-								<li><a href="#">Fresh Fruits</a></li>
-								<li><a href="#">Fresh Vagetables</a></li>
+								<li><a href="#">과일</a></li>
+								<li><a href="#">야채</a></li>
+								<li><a href="#">정육/계란</a></li>
+								<li><a href="#">밀키트</a></li>
+								<li><a href="#">냉장/냉동/간편식</a></li>
+								<li><a href="#">통조림</a></li>
+								<li><a href="#">수산/건어물</a></li>
+								<li><a href="#">쌀/잡곡</a></li>
+								<li><a href="#">우유/유제품</a></li>
+								<li><a href="#">간식/떡/빙과</a></li>
+								<li><a href="#">장/양념/소스</a></li>
 							</ul>
 						</div>
+						
 						<div class="col-md-3 text-left">
-							<h3>Products</h3>
+							<h3>게시판</h3>
 							<ul>
-								<li><a href="#">Fruits</a></li>
-								<li><a href="#">Vagetables</a></li>
-								<li><a href="#">Fresh Fruits</a></li>
-								<li><a href="#">Fresh Vagetables</a></li>
+								<li><a href="#">공지사항</a></li>
+								<li><a href="#">상품문의</a></li>
 							</ul>
 						</div>
+						
 						<div class="col-md-3 text-left">
 							<h3>Menu</h3>
 							<ul>
-								<li><a href="index.html">Home</a></li>
-								<li><a href="category.html">Category</a></li>
-								<li><a href="product.html">Product</a></li>
-								<li><a href="blog.html">Blog</a></li>
-								<li><a href="contact.html">Contact</a></li>
+								<li><a href="index.jsp">홈</a></li>
+								<li><a href="">공지사항</a></li>
+								<li><a href="">상품문의</a></li>
+								<li><a href="">전체 상품</a></li>
 							</ul>
 						</div>
 						<div class="col-md-3 text-left">
-							<h3>About Us</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Nam magna ligula, aliquam nec auctor at, ultrices sollicitudin
-								neque.</p>
+							<h3>중앙HTA - 자바기반 풀스택 웹개발자 과정 L2반 4조 </h3>
+							<p>서울특별시 종로구 율곡로10길 105 디아망 4F(봉익동 10-1 디아망 4F) TEL : 070-8240-3211~3 FAX : 02-777-5407<br><br>
+							사업자등록번호 : 104-81-59383 통신판매업신고번호 : 중구 065325 중앙HTA㈜<br><br>
+							COPYRIGHT(C) HTA CO., LTD. ALL RIGHTS RESERVED.
+							</p>
 							<div class="social-links">
 								<ul>
 									<li><a href="#"><i class="fa fa-facebook"></i> </a></li>
@@ -722,14 +656,7 @@
 						</div>
 					</div>
 				</div>
-				<hr class="col-md-12 hr-color">
-				<div class="footer_copyright">
-					<p class="wow fadeInDown animated">
-						Â© Copyright 2020 by Grocery Store. All right Reserved - Design By
-						<a href="http://templatebazaar.in/" target="_blank">Template
-							Bazaar</a>
-					</p>
-				</div>
+
 			</div>
 		</div>
 	</footer>

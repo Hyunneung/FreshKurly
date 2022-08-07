@@ -52,11 +52,12 @@
 					<nav class="navbar navbar-expand-md navbar-light  main-menu"
 						style="box-shadow: none">
 						<div class="container">
-							<div class="row">
+							<div class="row" style="padding-left:500px;">
 								<div class="col-md-3 tb-rght">
 									<div class="logo">
 										<a href="http://localhost:8088/Fresh_Kurly/">
-											<img src="${pageContext.request.contextPath}/assets/image/logo/logo.png" alt="logo" class="logodark">
+											<img src="${pageContext.request.contextPath}/assets/image/logo/logo.png"
+											alt="logo" class="logodark" style="width:200px; height:100px">
 										</a>
 									</div>
 								</div>
@@ -138,6 +139,8 @@
 											</a>
 										</li>
 								</c:if>		
+								<%-- 세션 아이디 admin end --%>
+								
 										
 										<li>
 											<a href="나의정보.html">

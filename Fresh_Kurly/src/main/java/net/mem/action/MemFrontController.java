@@ -60,8 +60,14 @@ public class MemFrontController extends HttpServlet {
 		case "/idFind.net":
 			action = new MemIdFindAction();
 			break;
+		case "/idFindProcess.net":
+			action = new MemIdFindProccess();
+			break;
 		case "/passwordFind.net":
 			action = new MemPasswordFindAction();
+			break;
+		case "/passwordFindProcess.net":
+			action = new MemPasswordFindProccess();
 			break;
 		}
 		

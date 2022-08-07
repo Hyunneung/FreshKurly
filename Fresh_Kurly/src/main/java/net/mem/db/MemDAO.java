@@ -12,38 +12,38 @@ import javax.sql.DataSource;
 public class MemDAO {
 	private DataSource ds;
 
-	// »ý¼ºÀÚ¿¡¼­ JNDI ¸®¼Ò½º¸¦ ÂüÁ¶ÇÏ¿© Connection °´Ã¼ ¾ò´Â´Ù
+	// ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ JNDI ï¿½ï¿½ï¿½Ò½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ Connection ï¿½ï¿½Ã¼ ï¿½ï¿½Â´ï¿½
 	public MemDAO() {
 		try {
 			Context init = new InitialContext();
 			ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
-			System.out.println("DB ¿¬°á ¼º°ø");
+			System.out.println("DB ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		} catch (Exception ex) {
-			System.out.println("DB ¿¬°á ½ÇÆÐ : " + ex);
+			System.out.println("DB ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : " + ex);
 		}
 	}
 	
 	
-	// ·Î±×ÀÎ - id, pass ¸Â´ÂÁö È®ÀÎ
+	// ï¿½Î±ï¿½ï¿½ï¿½ - id, pass ï¿½Â´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 	public int isId(String id, String pass) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		int result = -1; // DB¿¡ ÇØ´ç id°¡ ¾ø½À´Ï´Ù.
+		int result = -1; // DBï¿½ï¿½ ï¿½Ø´ï¿½ idï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.
 
 		try {
 			con = ds.getConnection();
 
 			String sql = "select member_id, member_pass from member where member_id = ?";
-			pstmt = con.prepareStatement(sql); // PreparedStatement °´Ã¼ ¾ò±â
+			pstmt = con.prepareStatement(sql); // PreparedStatement ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				// »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ ºñ¹Ð¹øÈ£¿Í DB ºñ¹Ð¹øÈ£ ºñ±³
-				if (rs.getString(2).equals(pass)) { // id, pass ÀÏÄ¡ÇÏ´Â °æ¿ì
+				// ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ DB ï¿½ï¿½Ð¹ï¿½È£ ï¿½ï¿½
+				if (rs.getString(2).equals(pass)) { // id, pass ï¿½ï¿½Ä¡ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½
 					result = 1;
-				} else { // // id, pass ÀÏÄ¡ÇÏÁö ¾Ê´Â °æ¿ì
+				} else { // // id, pass ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½
 					result = 0;
 				}
 			}
@@ -71,30 +71,30 @@ public class MemDAO {
 					System.out.println(e.getMessage());
 				}
 			}
-		} // finally ³¡
-		return result; // id, pass ÀÏÄ¡ÇÏ´Â °æ¿ì 1, ¾Æ´Ñ °æ¿ì 0 (DB¿¡ ÇØ´ç id°¡ ¾ø´Â °æ¿ì -1)
+		} // finally ï¿½ï¿½
+		return result; // id, pass ï¿½ï¿½Ä¡ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ 1, ï¿½Æ´ï¿½ ï¿½ï¿½ï¿½ 0 (DBï¿½ï¿½ ï¿½Ø´ï¿½ idï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ -1)
 	} // isId(id,pass) end
 	
 	
 	
-	// È¸¿ø°¡ÀÔ - ID Áßº¹ °Ë»çDB¿¡ id ÀÖ´ÂÁö ¾ø´ÂÁö È®ÀÎ
+	// È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ID ï¿½ßºï¿½ ï¿½Ë»ï¿½DBï¿½ï¿½ id ï¿½Ö´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 	public int overlapId(String id){
-		// DB ÀÛ¾÷¿¡ ÇÊ¿äÇÑ ÀÎÅÍÆäÀÌ½ºµéÀÇ ·¹ÆÛ·±½º º¯¼ö ¼±¾ð
+		// DB ï¿½Û¾ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		int result = 0; // DB¿¡ ÇØ´ç id°¡ ¾ø½À´Ï´Ù.
+		int result = 0; // DBï¿½ï¿½ ï¿½Ø´ï¿½ idï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.
 		
 		try {
 			con = ds.getConnection();
 			
 			String sql = "select member_id from member where member_id = ?";
-			pstmt = con.prepareStatement(sql);  // PreparedStatement °´Ã¼ ¾ò±â
+			pstmt = con.prepareStatement(sql);  // PreparedStatement ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery(); 
 			
 			if (rs.next()) {
-				result = 1; // DB¿¡ ÇØ´ç id°¡ ÀÖ½À´Ï´Ù.
+				result = 1; // DBï¿½ï¿½ ï¿½Ø´ï¿½ idï¿½ï¿½ ï¿½Ö½ï¿½ï¿½Ï´ï¿½.
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -120,29 +120,29 @@ public class MemDAO {
 					System.out.println(e.getMessage());
 				}
 			}
-		} // finally ³¡
-		return result; // DB¿¡ ID ÀÖÀ¸¸é 1, ¾øÀ¸¸é 0
+		} // finally ï¿½ï¿½
+		return result; // DBï¿½ï¿½ ID ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 0
 	} // overlapId(id) end
 
 	
-	// È¸¿ø°¡ÀÔ - ÈÞ´ëÆù¹øÈ£ Áßº¹ °Ë»ç - DB¿¡ Áßº¹µÈ ÈÞ´ëÆù¹øÈ£ ÀÖ´ÂÁö ¾ø´ÂÁö È®ÀÎ
+	// È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½Þ´ï¿½ï¿½ï¿½ï¿½ï¿½È£ ï¿½ßºï¿½ ï¿½Ë»ï¿½ - DBï¿½ï¿½ ï¿½ßºï¿½ï¿½ï¿½ ï¿½Þ´ï¿½ï¿½ï¿½ï¿½ï¿½È£ ï¿½Ö´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 	public int overlapPhone(String phone){
-		// DB ÀÛ¾÷¿¡ ÇÊ¿äÇÑ ÀÎÅÍÆäÀÌ½ºµéÀÇ ·¹ÆÛ·±½º º¯¼ö ¼±¾ð
+		// DB ï¿½Û¾ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		int result = 0; // DB¿¡ ÇØ´ç ÈÞ´ëÆù¹øÈ£°¡ ¾ø½À´Ï´Ù.
+		int result = 0; // DBï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½Þ´ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.
 		
 		try {
 			con = ds.getConnection();
 			
 			String sql = "select member_phone from member where member_phone = ?";
-			pstmt = con.prepareStatement(sql);  // PreparedStatement °´Ã¼ ¾ò±â
+			pstmt = con.prepareStatement(sql);  // PreparedStatement ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½
 			pstmt.setString(1, phone);
 			rs = pstmt.executeQuery(); 
 			
 			if (rs.next()) {
-				result = 1; // DB¿¡ ÇØ´ç ÈÞ´ëÆù¹øÈ£°¡ ÀÖ½À´Ï´Ù.
+				result = 1; // DBï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½Þ´ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ö½ï¿½ï¿½Ï´ï¿½.
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -168,12 +168,12 @@ public class MemDAO {
 					System.out.println(e.getMessage());
 				}
 			}
-		} // finally ³¡
-		return result; // DB¿¡  ÈÞ´ëÆù¹øÈ£ ÀÖÀ¸¸é 1, ¾øÀ¸¸é 0
+		} // finally ï¿½ï¿½
+		return result; // DBï¿½ï¿½  ï¿½Þ´ï¿½ï¿½ï¿½ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 0
 	} // overlapPhone(phone) end
 	
 	
-	// È¸¿ø°¡ÀÔ - DB¿¡ ¸â¹ö Ãß°¡
+	// È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - DBï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 	public int insert(Mem m){
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -188,7 +188,7 @@ public class MemDAO {
 					   + " member_post, member_address, member_gender, member_jumin) "
 					   + "values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
-			pstmt = con.prepareStatement(sql);  // PreparedStatement °´Ã¼ ¾ò±â
+			pstmt = con.prepareStatement(sql);  // PreparedStatement ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½
 			pstmt.setString(1, m.getMember_id());
 			pstmt.setString(2, m.getMember_pass());
 			pstmt.setString(3, m.getMember_name());
@@ -199,12 +199,12 @@ public class MemDAO {
 			pstmt.setString(8, m.getMember_gender());
 			pstmt.setString(9, m.getMember_jumin());
 			
-			result = pstmt.executeUpdate(); // È¸¿ø°¡ÀÔ(»ðÀÔ) ¼º°øÇÏ¸é 1, ½ÇÆÐÇÏ¸é 0
+			result = pstmt.executeUpdate(); // È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½) ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ 1, ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ 0
 			
-		  // Primary key Á¦¾àÁ¶°Ç À§¹ÝÇßÀ» °æ¿ì ¹ß»ýÇÏ´Â ¿¡·¯	
+		  // Primary key ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½	
 		} catch(java.sql.SQLIntegrityConstraintViolationException e) {
 			result = -1;
-			System.out.println("¸â¹ö ¾ÆÀÌµð Áßº¹ ¿¡·¯ÀÔ´Ï´Ù.");
+			System.out.println("ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ßºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.");
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -229,10 +229,10 @@ public class MemDAO {
 					System.out.println(e.getMessage());
 				}
 			}
-		} // finally ³¡
-		return result; // »ðÀÔ ¼º°øÇÏ¸é 1, ½ÇÆÐÇÏ¸é 0
+		} // finally ï¿½ï¿½
+		return result; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ 1, ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ 0
 	} // insert() end
-	public int insert(String id, String name, String email){ // ¼Ò¼È È¸¿ø°¡ÀÔ
+	public int insert(String id, String name, String email){ // ï¿½Ò¼ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -245,16 +245,16 @@ public class MemDAO {
 					   + "(member_id, member_name, member_email) "
 					   + "values(?, ?, ?) ";
 			
-			pstmt = con.prepareStatement(sql);  // PreparedStatement °´Ã¼ ¾ò±â
+			pstmt = con.prepareStatement(sql);  // PreparedStatement ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½
 			pstmt.setString(1, id);
 			pstmt.setString(2, name);
 			pstmt.setString(3, email);
-			result = pstmt.executeUpdate(); // »ðÀÔ ¼º°øÇÏ¸é 1, ½ÇÆÐÇÏ¸é 0
+			result = pstmt.executeUpdate(); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ 1, ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ 0
 			
-		  // Primary key Á¦¾àÁ¶°Ç À§¹ÝÇßÀ» °æ¿ì ¹ß»ýÇÏ´Â ¿¡·¯	
+		  // Primary key ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½	
 		} catch(java.sql.SQLIntegrityConstraintViolationException e) {
 			result = -1;
-			System.out.println("¸â¹ö ¾ÆÀÌµð Áßº¹µÇ¾î ¸ÞÀÎÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù. - ¼Ò¼È·Î±×ÀÎ »ç¿ëÀÚ");
+			System.out.println("ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ßºï¿½ï¿½Ç¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Õ´Ï´ï¿½. - ï¿½Ò¼È·Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½");
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -279,7 +279,54 @@ public class MemDAO {
 					System.out.println(e.getMessage());
 				}
 			}
-		} // finally ³¡
-		return result; // »ðÀÔ ¼º°øÇÏ¸é 1, ½ÇÆÐÇÏ¸é 0
+		} // finally ï¿½ï¿½
+		return result; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ 1, ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ 0
 	} // insert(id, name, email) end
+
+
+	//isEmail start
+	public int isEmail(String email) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result =0;
+
+		try {
+			con = ds.getConnection();
+
+			String sql = "select member_id from member where member_email = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				result = 1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
+			}
+		} // finally end
+		return result;
+	} //isEmail() end 
 }
