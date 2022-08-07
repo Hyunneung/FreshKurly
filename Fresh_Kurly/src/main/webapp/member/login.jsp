@@ -5,13 +5,12 @@
 <title>로그인 페이지</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link href="css/login.css" rel="stylesheet" type="text/css">
+<!-- <link href="css/login.css" rel="stylesheet" type="text/css"> -->
 <script src = "http://code.jquery.com/jquery-latest.js"></script>
 <!-- 네이버 소셜 로그인 스크립트 -->
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <!-- 카카오 소셜로그인 스크립트 -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-
 
 <script>
 	$(function() {
@@ -28,6 +27,23 @@
 		}
 	})
 </script>
+<style>
+	div {text-align: center}
+
+.form-control {width:500px; margin:auto;}
+
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;}
+a:active {text-decoration:none;}
+a {color:black;}
+
+img {width:50px; height:50px}
+
+/* button {background:#8BC34A; font-weight:bold; color: white;
+		padding-top:10px; padding-bottom:10px; margin:3px;
+		border:0; border-radius: 12px; width:500px } */
+		
+</style>
 </head>
 <body>
 <jsp:include page="../mainpage/header.jsp"/>
@@ -36,11 +52,11 @@
   		<p class="h4 mb-4 text-center">로그인</p>
   		<hr>
 		<div class="form-group"> 
-	    	<input type="text" class="form-control" name="id" id="id" placeholder="아이디를 입력해주세요" required>
+	    	<input type="text" class="form-control" name="id" id="id" placeholder="아이디를 입력해주세요" required style="width:700px">
 	  	</div>
 		
 		<div class="form-group">
-	    	<input type="password" class="form-control" name="pass" id="pass" placeholder="비밀번호를 입력해주세요" required>
+	    	<input type="password" class="form-control" name="pass" id="pass" placeholder="비밀번호를 입력해주세요" required style="width:700px">
 	  	</div>
 	  	
 	  	<div class="form-group custom-control custom-checkbox" id="rememberID">
@@ -73,7 +89,7 @@
 	    		<img src="image/naver_icon.png"></a>
 	    	</span>
 	    	<script type="text/javascript">
-			  	var naver_id_login = new naver_id_login("yHYUIvS1fkCDmqPirp2p", "http://localhost:8088/FreashKurly_test/login.net");
+			  	var naver_id_login = new naver_id_login("yHYUIvS1fkCDmqPirp2p", "http://localhost:8088/Fresh_Kurly/login.net");
 			  	var state = naver_id_login.getUniqState();
 			  	naver_id_login.setState(state);
 			  	naver_id_login.init_naver_id_login();
@@ -103,7 +119,7 @@
 			<!-- 카카오 -->
 			<span id="kakao_id_login">
 				<a id="kakao_login_btn" href="javascript:void(0)" onclick="onSignIn()">
-				<img src="image/kakao_icon.png"></a>
+				<img src="assets/image/kakao_icon.png"></a>
 			</span>
 			<span id="result"></span>
 			<script type="text/javascript">

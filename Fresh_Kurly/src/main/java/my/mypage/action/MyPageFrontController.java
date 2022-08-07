@@ -1,4 +1,4 @@
-package net.mem.action;
+package my.mypage.action;
 
 import java.io.IOException;
 
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("*.net") // 모든 .net 브라우저 관리
-public class MemFrontController extends HttpServlet {
+@WebServlet("*.my") // 모든 .my브라우저 관리
+public class MyPageFrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	// doGet(), doPost() 처리
@@ -24,57 +24,50 @@ public class MemFrontController extends HttpServlet {
 		String command = RequestURI.substring(contextPath.length());
 		System.out.println("command = " + command); // RequestURI에서 컨텍스트 경로 길이 값의 인텍스 위치의 문자부터 마지막 위치 문자까지 출력
 		
-		// 초기화
 		Action action = null;
 		ActionForward forward = null;
 		
-		// 각각 .net 페이지 관리
+		// 각각 .my 페이지 관리
 		switch(command) {
-		case "/joinProcess.net" :
-			action = new MemJoinProcessAction();
+		/* 삭제삭제삭제
+		   case "/myPage.my" :
+			action = new OrderInfoAction(); 
+			break;*/
+			
+		// 주문내역	
+		case "/myOrder.my" : // 마이페이지의 기본페이지는 주문내역 페이지
+			action = new OrderInfoAction();
 			break;
-		case "/login.net" :
-			action = new MemLoginAction();
+		// 장바구니	
+		case "/myCart.my" :
+			action = new CartAction();
 			break;
-		case "/loginProcess.net" :
-			action = new MemLoginProcessAction();
+		// 찜한상품
+		case "/myWish.my" :
+			action = new WishAction();
+			break;
+		// 상품문의
+		case "/myQna.my" :
+			action = new QnaAction();
+			break;
+		// 개인정보 수정
+		case "/myProfile.my" :
+			action = new ProfileAction();
+			break;
+		// 개인정보 수정 - 비번 확인
+		case "/myProfileCheck.my" :
+			action = new ProfileCheckAction();
+			break;
+		// 개인정보 수정 - 수정 완료	
+		case "/myProfileUpdate.my" :
+			action = new ProfileUpdateAction();
 			break;	
-		case "/join.net" :
-			action = new MemJoinAction();
-			break;
-		case "/idcheck.net" :
-			action = new MemIdCheckAction();
-			break;
-		case "/phonecheck.net" :
-			action = new MemPhoneCheckAction();
-			break;
-		case "/joinSocialProcess.net" :
-			action = new MemJoinSocialProcessAction();
-			break;
-		case "/emailcheck.net" :
-			action = new MemEmailCheckAction();
-			break;
-		case "/logout.net" :
-			action = new MemLogoutAction();
-			break;
-		case "/idFind.net":
-			action = new MemIdFindAction();
-			break;
-		case "/idFindProcess.net":
-			action = new MemIdFindProccess();
-			break;
-		case "/passwordFind.net":
-			action = new MemPasswordFindAction();
-			break;
-		case "/passwordFindProcess.net":
-			action = new MemPasswordFindProccess();
-			break;
 		}
 		
 		// 포워딩 - forward는 포워딩 주소(path), 포워딩 방식(redirect) 가진다
 		forward = action.execute(request, response); 
 		if(forward != null) {
-			if(forward.isRedirect()) { // redirect
+			if(forward.isRedirect()) { // redirect 
 				response.sendRedirect(forward.getPath()); // forward.getPath() - 주소
 			} else { // dispatcher 
 				RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath()); // forward.getPath() - 주소

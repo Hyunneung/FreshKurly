@@ -1,6 +1,6 @@
 drop table wish;
 
---ÂòÇÑ»óÇ° Å×ÀÌºí
+--ì°œí•œìƒí’ˆ í…Œì´ë¸”
 create table wish(
 	wish_id 	number(10) primary key,
 	item_id		number(20) 	 references item(item_id), 

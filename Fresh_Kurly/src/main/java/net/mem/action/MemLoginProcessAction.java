@@ -52,7 +52,7 @@ public class MemLoginProcessAction implements Action {
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("alert('" + message + "');");
-			out.println("location.href='login.net';"); // 로그인 페이지로 이동
+			out.println("history.back()");
 			out.println("</script>");
 			out.close();
 			return null;

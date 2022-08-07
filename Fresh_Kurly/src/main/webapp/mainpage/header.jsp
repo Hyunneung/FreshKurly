@@ -76,7 +76,7 @@
 										</li>
 										
 										<li>
-											<a href="memberUpdate.net">
+											<a href="join.net">
 												<span>
 												<i class="fa fa-pencil"></i>
 												 회원가입
@@ -94,10 +94,10 @@
 									어서오세요, ${id }님 환영합니다!
 									<ul>
 										<li>
-											<a href="찜한상품.html">
+											<a href="myOrder.my"> <!-- 백현능: 찜한상품, 장바구니, 정보수정하기 태그 없애고 '마이페이지'만 나오게..? --> <!-- 마이페이지의 기본페이지는 주문내역 페이지 -->
 												<span>
 												<i class="fa fa-heart"></i>
-												찜한상품
+													찜한상품 <!-- '마이페이지'로 변경할지 정하기 -->
 												</span>
 											</a>
 										</li>

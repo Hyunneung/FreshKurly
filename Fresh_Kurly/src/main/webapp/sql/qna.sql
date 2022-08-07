@@ -1,6 +1,6 @@
 drop table qna;
 
---¹®ÀÇÇÏ±â Å×ÀÌºí
+--ë¬¸ì˜í•˜ê¸° í…Œì´ë¸”
 create table qna(
 	qna_number 	number(10) primary key,	
 	member_id 	varchar2(20) references member(member_id),
