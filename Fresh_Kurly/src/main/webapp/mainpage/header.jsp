@@ -69,7 +69,7 @@
 										<li>
 											<a href="login.net">
 												<span>
-												<i class="fa fa-user"></i>
+												<i class="fa fa-sign-in"></i>
 												 로그인
 												</span>
 											</a>
@@ -96,62 +96,25 @@
 										<li>
 											<a href="myOrder.my"> <!-- 백현능: 찜한상품, 장바구니, 정보수정하기 태그 없애고 '마이페이지'만 나오게..? --> <!-- 마이페이지의 기본페이지는 주문내역 페이지 -->
 												<span>
-												<i class="fa fa-heart"></i>
-													찜한상품 <!-- '마이페이지'로 변경할지 정하기 -->
+												<i class="fa fa-user"></i>
+													마이페이지 <!-- '마이페이지'로 변경할지 정하기 -->
 												</span>
 											</a>
 										</li>
 										
-										<li>
-											<a href="장바구니.html">
-												<span> 
-													<i class="fa fa-shopping-cart"></i>
-													 장바구니
-												</span>
-											</a>
-										</li>
 								<%-- 그 와중 세션에 id 값이 admin일 경우 보여줄 버튼 --%>		
 								<c:if test="${id=='admin'}">
 									<li>
 											<a href="회원리스트.html">
 												<span>
-												<i class="fa fa-forward"></i>
-												회원리스트
-												</span>
-											</a>
-										</li>
-										
-										<li>
-											<a href="상품리스트.html">
-												<span> 
-													<i class="fa fa-product-hunt"></i>
-													 상품리스트
-												</span>
-											</a>
-										</li>
-										
-										<li>
-											<a href="문의답변.html">
-												<span> 
-													<i class="fa fa-keyboard-o"></i>
-													 문의 답변하기
+												<i class="fa fa-wrench"></i>
+												관리자 페이지
 												</span>
 											</a>
 										</li>
 								</c:if>		
 								<%-- 세션 아이디 admin end --%>
 								
-										
-										<li>
-											<a href="나의정보.html">
-												<span> 
-													<i class="fa fa-info-circle"></i>
-													 나의 정보 수정하기
-												</span>
-											</a>
-										</li>
-										
-										
 										<li>
 											<a href="logout.net">
 												<span> 
@@ -185,37 +148,6 @@
 									alt="logo" class="logodark">
 								</a>
 							</div>
-							<!--mobile Menu  -->
-
-							<div id="mySidenav" class="sidenav">
-								<div class="menu_slid_bg">
-									<a href="javascript:void(0)" class="closebtn"
-										onclick="closeNav()">×</a>
-
-									<div class="col-sm-12" style="padding: 0px;">
-										<h3>Menu</h3>
-
-										<ul class="accordion" id="accordion-category">
-											<li class="panel mobile_menu_li"><a href="index.jsp">
-													Home</a></li>
-											<li class="panel mobile_menu_li"><a href="category.html">Category</a>
-											
-											</li>
-											<li class="panel mobile_menu_li"><a href="product.html">
-													Product</a></li>
-											<li class="panel mobile_menu_li"><a href="blog.html">
-													Blog</a></li>
-											<li class="panel mobile_menu_li"><a href="contact.html">contact</a>
-											</li>
-										</ul>
-										<div class="clear"></div>
-									</div>
-
-								</div>
-							</div>
-
-							<span class="menu_open" onclick="openNav()">&#9776; Menu</span>
-							<!-- mobile Menu  end-->
 						</div>
 					</div>
 				</div>
@@ -268,7 +200,7 @@
 							<div class="collapse navbar-collapse">
 								<form class="form-inline my-2 my-lg-0 mx-auto">
 									<input class="form-control" type="search"
-										placeholder="Search for products..." aria-label="Search">
+										placeholder="검색어를 입력해주세요" aria-label="Search">
 									<button class="tb-btn btn-success my-2 my-sm-0" type="submit">
 										<i class="fa fa-search"></i>
 									</button>

@@ -50,7 +50,7 @@
     width: 727px;
 }
 .form-inline .form-control {
-    width: 156px;
+    width: 400px;
     border-radius: 0px;
 }
 
@@ -669,6 +669,5 @@ font-size: 24px;
 }
 .back-to-top {
     right: 10px;
-}
 }
 }

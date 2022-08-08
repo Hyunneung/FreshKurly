@@ -418,51 +418,33 @@ public class MemDAO {
       return result; // 
    } // profileUpdate() 메소드 끝
   
-  
-  //isEmail() start
-	public int isEmail(String email) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		int result =0;
 
+
+   //findId () start
+	public String findId(String getter) {
+		Connection con = null;
+	    PreparedStatement pstmt = null;
+		ResultSet rs = null;
+	    String findId = null;
+		
 		try {
 			con = ds.getConnection();
-
-			String sql = "select member_id from member where member_email = ?";
+			
+			String sql = "SELECT member_id FROM member WHERE member_email =?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, email);
-			rs = pstmt.executeQuery();
+			pstmt.setString(1, getter);
 
-			if (rs.next()) {
-				result = 1;
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				findId = rs.getString("member_id");
+				System.out.println("아이디 : "+findId);
 			}
+				
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException ex) {
-					ex.printStackTrace();
-				}
-			}
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException e) {
-					System.out.println(e.getMessage());
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					System.out.println(e.getMessage());
-				}
-			}
-		} // finally end
-		return result;
-	} //isEmail() end
+		}
+		return findId;
+	} // findId() end
   
 }
