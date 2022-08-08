@@ -419,8 +419,53 @@ public class MemDAO {
    } // profileUpdate() 메소드 끝
   
 
+	// 회원가입 - 이메일 중복 검사 - DB에 중복된 이메일 있는지 없는지 확인
+	public int overlapEmail(String email){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0; // DB에 해당 email이 없습니다.
+		
+		try {
+			con = ds.getConnection();
+			
+			String sql = "select member_email from member where member_email = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery(); 
+			
+			if (rs.next()) {
+				result = 1; // DB에 해당 이메일이 있습니다.
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch(SQLException ex) {
+					ex.printStackTrace();
+				}
+			}
+			if(pstmt != null) {
+				try {
+					pstmt.close();
+				} catch(SQLException e) {
+					System.out.println(e.getMessage());
+				}
+			}
+			if(con != null) {
+				try {
+					con.close();
+				} catch(Exception e) {
+					System.out.println(e.getMessage());
+				}
+			}
+		} // finally end
+		return result; // DB에 email 있으면 1, 없으면 0
+	} // overlapEmail(email) end
 
-   //findId () start
+  //findId () start
 	public String findId(String getter) {
 		Connection con = null;
 	    PreparedStatement pstmt = null;

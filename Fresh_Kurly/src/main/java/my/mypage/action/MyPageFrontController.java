@@ -42,6 +42,15 @@ public class MyPageFrontController extends HttpServlet {
 		case "/myCart.my" :
 			action = new CartAction();
 			break;
+		case "/myCartItemMinus.my" : // 장바구니 - 아이템 수량 1 감소
+			action = new CartItemMinusAction();
+			break;	
+		case "/myCartItemPlus.my" : // 장바구니 - 아이템 수량 1 증가
+			action = new CartItemPlusAction();
+			break;
+		case "/myCartItemDelete.my" : // 장바구니 - 아이템 수량 1 증가
+			action = new CartItemDeleteAction();
+			break;	
 		// 찜한상품
 		case "/myWish.my" :
 			action = new WishAction();
@@ -64,7 +73,7 @@ public class MyPageFrontController extends HttpServlet {
 			break;	
 		}
 		
-		// 포워딩 - forward는 포워딩 주소(path), 포워딩 방식(redirect) 가진다
+		// 포워딩 - forward는 포워딩 주소(path), redirect/forward 방식 가진다
 		forward = action.execute(request, response); 
 		if(forward != null) {
 			if(forward.isRedirect()) { // redirect 

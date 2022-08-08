@@ -9,6 +9,8 @@ public class Cart {
 	private String item_image; // 상품 사진 
 	private String item_name; // 상품명
 	private int item_price; // 상품 단가
+	// member 테이블 조인해서 받아올 데이터
+	private String member_address; // 회원 주소
 	
 	
 	
@@ -55,7 +57,12 @@ public class Cart {
 	public void setItem_price(int item_price) {
 		this.item_price = item_price;
 	}
-	
+	public String getMember_address() {
+		return member_address;
+	}
+	public void setMember_address(String member_address) {
+		this.member_address = member_address;
+	}
 	
 	
 	

@@ -9,93 +9,106 @@
 </head>
 
 <style>
-img{width:30px; height:30px; opacity:0.5; cursor: pointer;}
+	img{width:30px; height:30px; opacity:0.5; cursor: pointer;}
 </style>
 <script>
 	$(document).ready(function() {
-			// 비밀번호, 비밀번호 확인 - 눈모양 클릭하면 텍스트 보여준다
-			$("#img1").on('click', function() {
-				$('#pass').toggleClass('active');
-				if ($('#pass').hasClass('active')) {
-					$('#pass').attr('type', 'text');
-					$('#img1').attr('src', 'assets/image/pass_unshown.png')
-				} else {
-					$('#pass').attr('type', 'password');
-					$('#img1').attr('src', 'assets/image/pass_show.png')
-				}
-			})
-			$("#img2").on('click', function() {
-				$('#pass2').toggleClass('active');
-				if ($('#pass2').hasClass('active')) {
-					$('#pass2').attr('type', 'text');
-					$('#img2').attr('src', 'assets/image/pass_unshown.png')
-				} else {
-					$('#pass2').attr('type', 'password');
-					$('#img2').attr('src', 'assets/image/pass_show.png')
-				}
-			})
-			
-			
-			// 비밀번호 형식 검사
-			var passcheck_value = ''; // pass 검사에 사용된 비밀번호를 저장할 변수
-			var checkpass = false;
-			function passcheck() {
-				if (!($.trim($("#pass2").val()) == $.trim($("#pass").val()))) {
-					$("#pass2_message").css('color', 'red').html("동일한 비밀번호를 입력하세요.");
-				} else {
-					$("#pass2_message").empty();
-				}
+		// 비밀번호, 비밀번호 확인 - 눈모양 클릭하면 텍스트 보여준다
+		$("#img1").on('click', function() {
+			$('#pass').toggleClass('active');
+			if ($('#pass').hasClass('active')) {
+				$('#pass').attr('type', 'text');
+				$('#img1').attr('src', 'assets/image/member/pass_unshown.png')
+			} else {
+				$('#pass').attr('type', 'password');
+				$('#img1').attr('src', 'assets/image/member/pass_show.png')
 			}
-			$("#pass").on('keyup', function() {
-				$("#pass_message").empty();
-				// pass 형식 확인
-				passcheck_value = $.trim($("#pass").val());
-				if (passcheck_value.length < 6) {
-					$("#pass_message").css('color', 'red').html("공백 없이 6자 이상 입력하세요.");
-					checkpass = false;
-					return;
-				}
-				passcheck();
-			}) // pass 형식 확인 keyup end
-			// pass2 검사 (비밀번호 확인)
-			$("#pass2").on('keyup', function() {
+		})
+		$("#img2").on('click', function() {
+			$('#pass2').toggleClass('active');
+			if ($('#pass2').hasClass('active')) {
+				$('#pass2').attr('type', 'text');
+				$('#img2').attr('src', 'assets/image/member/pass_unshown.png')
+			} else {
+				$('#pass2').attr('type', 'password');
+				$('#img2').attr('src', 'assets/image/member/pass_show.png')
+			}
+		})
+		
+		
+		// 비밀번호 형식 검사
+		var passcheck_value = ''; // pass 검사에 사용된 비밀번호를 저장할 변수
+		var checkpass = false;
+		function passcheck() {
+			if (!($.trim($("#pass2").val()) == $.trim($("#pass").val()))) {
+				$("#pass2_message").css('color', 'red').html("동일한 비밀번호를 입력하세요.");
+			} else {
 				$("#pass2_message").empty();
-				// pass2 == pass 확인
-				passcheck();
-			}) // pass2 검사 end
-
+			}
+		}
+		$("#pass").on('keyup', function() {
+			$("#pass_message").empty();
+			// pass 형식 확인
+			passcheck_value = $.trim($("#pass").val());
+			if ( 0 < passcheck_value.length && passcheck_value.length < 6) {
+				$("#pass_message").css('color', 'red').html("공백 없이 6자 이상 입력하세요.");
+				checkpass = false;
+				return;
+			} else if(  passcheck_value.length == 0 ) {
+				$("#pass_message").empty();
+			}
+			passcheck();
+		}) // pass 형식 확인 keyup end
+		// pass2 검사 (비밀번호 확인)
+		$("#pass2").on('keyup', function() {
+			$("#pass2_message").empty();
+			// pass2 == pass 확인
+			passcheck();
+		}) // pass2 검사 end
 			
-			//이메일 인증
-			$("#emailchkbtn").click(function() {
-				$("#certification_ok").attr('type', 'text')
-				$("#certification_btn").attr('type', 'button')
-	
-				input_email = $.trim($('#email').val());
-				if (input_email == "") {
-					alert("이메일을 입력해주세요");
-					$('#email').focus();
-					return false;
-				} else {
-					$.ajax({
-						url : "emailcheck.net",
-						data : {
-							"email" : input_email
-						},
-						success : function(rdata) {
-							$("#save_email_num").val(rdata);
-						} // success end
-					}) // ajax end
-				} // if-else end
-			});
-			$('#certification_btn').click(function() {
-				if ($('#certification_ok').val() == $("#save_email_num").val()) {
-					email_ok = $('#certification_ok').val();
-					alert('인증 성공');
-				} else {
-					email_ok = "";
-					alert('인증 실패');
-				}
+		//이메일 인증
+		$("#emailchkbtn").click(function() {
+			input_email = $.trim($('#email').val());
+			
+			if (input_email == "") {
+				alert("이메일을 입력해주세요");
+				$('#email').focus();
+				return false;
+			} else if( input_email == "${member.member_email}" ) {
+				alert("기존과 동일한 이메일입니다.")
+			} else {
+				$.ajax({ // 이메일 중복 검사 ajax
+					url: "emailcheck2.net", 
+					data: { "email": input_email },
+					success: function(rdata) {
+						if (rdata != 0) { // DB에 해당 email이 있는 경우 (rdata == 1)
+							alert("이미 등록된 이메일입니다.");
+						} else { // DB에 해당 email이 없는 경우
+							$("#certification_ok").attr('type', 'text')
+							$("#certification_btn").attr('type', 'button')
+								$.ajax({ // 이메일 메일 전송 후 인증번호 받는 ajax
+								url: "emailcheck.net",
+								data: { "email": input_email },
+								success: function(rdata) {
+									$("#save_email_num").val(rdata);
+								} // success end
+							}) // 이메일 메일 전송 후 인증번호 받는 ajax end
+						} 
+					} // success end
+				}) // 이메일 중복 검사 ajax end
+			}
+		});
+		$('#certification_btn').click(function() {
+			if ($('#certification_ok').val() == $("#save_email_num").val()) {
+				email_ok = $('#certification_ok').val();
+				alert('인증 성공');
+			} else {
+				email_ok = "";
+				alert('인증 실패');
+			}
 		}) // 인증번호 확인 버튼
+	
+		
 		
 		// 휴대폰 번호 바뀌었으면 중복확인 했는지 확인
 		var phonecheck_value = ''; // 휴대폰번호 중복 검사에 사용된 휴대폰번를 저장할 변수
@@ -252,7 +265,7 @@ img{width:30px; height:30px; opacity:0.5; cursor: pointer;}
 								<div class="md-form tb-mr-bt">
 									<label for="pass" style="font-size: 10pt">새 비밀번호</label>
 									<input type="password" name="pass" id="pass" class="form-control">
-									<span><img src="assets/image/pass_show.png" id="img1"></span><br>
+									<span><img src="assets/image/member/pass_show.png" id="img1"></span><br>
 									<span id="pass_message"></span>
 								</div>
 
@@ -260,7 +273,7 @@ img{width:30px; height:30px; opacity:0.5; cursor: pointer;}
 								<div class="md-form tb-mr-bt">
 									<label for="pass2" style="font-size: 10pt">새 비밀번호 확인</label>
 									<input type="password" name="pass2" id="pass2" class="form-control">
-									<span><img src="assets/image/pass_show.png" id="img2"></span><br>
+									<span><img src="assets/image/member/pass_show.png" id="img2"></span><br>
 									<span id="pass2_message"></span>
 								</div>
 								
@@ -307,24 +320,13 @@ img{width:30px; height:30px; opacity:0.5; cursor: pointer;}
 						</div>
 						<!--/.Card-->
 					</div>
-					<!--Grid column-->
-
-					<!--Grid column-->
 					<div class="col-md-4 mb-4"></div>
-					<!--Grid column-->
-
 				</div>
-				<!--Grid row-->
-
 			</div>
 		</main>
-		<!--Main layout-->
-
-
 	</section>
-
-
-	<!-- back-to-top scrtion -->
+	
+	
 <div class="top_button">
   <a class="back-to-top" style="cursor:pointer;" id="top-scrolltop"><i class="fa fa-angle-up"></i></a>
 </div>

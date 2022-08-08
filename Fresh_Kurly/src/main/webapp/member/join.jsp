@@ -39,7 +39,7 @@
 								<div class="md-form tb-mr-bt">
 									<label for="pass" style="font-size: 10pt">비밀번호<font color='red'>*</font></label>
 							        <input type="password" class="form-control" name="pass" id="pass" placeholder="비밀번호를 입력해주세요" required>
-							        <span><img src="assets/image/pass_show.png" id="img1"></span><br>
+							        <span><img src="assets/image/member/pass_show.png" id="img1"></span><br>
 							        <span id="pass_message"></span>
 								</div>
 
@@ -47,7 +47,7 @@
 								<div class="md-form tb-mr-bt">
 									<label for="pass2" style="font-size: 10pt">비밀번호확인<font color='red'>*</font></label>
 							        <input type="password" class="form-control" name="pass2" id="pass2" placeholder="비밀번호를 한 번 더 입력해주세요" required>
-							        <span><img src="assets/image/pass_show.png" id="img2"></span><br>
+							        <span><img src="assets/image/member/pass_show.png" id="img2"></span><br>
 							        <span id="pass2_message"></span>
 								</div>
 

@@ -54,6 +54,9 @@ public class MemFrontController extends HttpServlet {
 		case "/emailcheck.net" :
 			action = new MemEmailCheckAction();
 			break;
+		case "/emailcheck2.net" : // 이메일 중복검사
+			action = new MemEmailCheckAction2();
+			break;	
 		case "/logout.net" :
 			action = new MemLogoutAction();
 			break;

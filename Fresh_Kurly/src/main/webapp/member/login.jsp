@@ -119,7 +119,7 @@ img {width:50px; height:50px}
 			<!-- 카카오 -->
 			<span id="kakao_id_login">
 				<a id="kakao_login_btn" href="javascript:void(0)" onclick="onSignIn()">
-				<img src="assets/image/kakao_icon.png"></a>
+				<img src="assets/image/member/kakao_icon.png"></a>
 			</span>
 			<span id="result"></span>
 			<script type="text/javascript">

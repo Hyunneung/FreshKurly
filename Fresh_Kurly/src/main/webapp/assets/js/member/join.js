@@ -4,20 +4,20 @@ $(document).ready(function() {
 		$('#pass').toggleClass('active');
 		if ($('#pass').hasClass('active')) {
 			$('#pass').attr('type', 'text');
-			$('#img1').attr('src', 'assets/image/pass_unshown.png')
+			$('#img1').attr('src', 'assets/image/member/pass_unshown.png')
 		} else {
 			$('#pass').attr('type', 'password');
-			$('#img1').attr('src', 'assets/image/pass_show.png')
+			$('#img1').attr('src', 'assets/image/member/pass_show.png')
 		}
 	})
 	$("#img2").on('click', function() {
 		$('#pass2').toggleClass('active');
 		if ($('#pass2').hasClass('active')) {
 			$('#pass2').attr('type', 'text');
-			$('#img2').attr('src', 'assets/image/pass_unshown.png')
+			$('#img2').attr('src', 'assets/image/member/pass_unshown.png')
 		} else {
 			$('#pass2').attr('type', 'password');
-			$('#img2').attr('src', 'assets/image/pass_show.png')
+			$('#img2').attr('src', 'assets/image/member/pass_show.png')
 		}
 	})
 
@@ -177,7 +177,7 @@ $(document).ready(function() {
 	}) // phonechkbtn click end 
 	
 	
-	// 이메일 인증 - 클릭했을 때 이메일 중복 검사도 추가하기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+	// 이메일 인증
 	$("#emailchkbtn").click(function() {
 		input_email = $.trim($('#email').val());
 		if (input_email == "") {
@@ -185,16 +185,26 @@ $(document).ready(function() {
 			$('#email').focus();
 			return false;
 		} else {
-			$("#certification_ok").attr('type', 'text')
-			$("#certification_btn").attr('type', 'button')
-
-			$.ajax({
-				url: "emailcheck.net",
+			$.ajax({ // 이메일 중복 검사 ajax
+				url: "emailcheck2.net", 
 				data: { "email": input_email },
 				success: function(rdata) {
-					$("#save_email_num").val(rdata);
+					if (rdata != 0) { // DB에 해당 email이 있는 경우 (rdata == 1)
+						alert("이미 등록된 이메일입니다.");
+					} else { // DB에 해당 email이 없는 경우
+						$("#certification_ok").attr('type', 'text')
+						$("#certification_btn").attr('type', 'button')
+
+						$.ajax({ // 이메일 메일 전송 후 인증번호 받는 ajax
+							url: "emailcheck.net",
+							data: { "email": input_email },
+							success: function(rdata) {
+								$("#save_email_num").val(rdata);
+							} // success end
+						}) // 이메일 메일 전송 후 인증번호 받는 ajax end
+					} 
 				} // success end
-			}) // ajax end
+			}) // 이메일 중복 검사 ajax end
 		} // if-else end
 	});
 	$('#certification_btn').click(function(){ // 이메일 인증번호 확인 버튼 클릭

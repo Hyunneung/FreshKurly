@@ -36,8 +36,6 @@ public class CartDAO {
 			con = ds.getConnection();
 			String sql = "select count(*) from cart "
 					   + "where member_id = ?";
-			
-			System.out.println(sql);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id); // String은 작은따옴표 자동으로 생긴다
 			rs = pstmt.executeQuery();
@@ -83,7 +81,7 @@ public class CartDAO {
 			
 			String sql = "select * "
 					   + "from cart join item "
-					   + "on cart.item_id	= item.item_id "
+					   + "on cart.item_id = item.item_id "
 					   + "where member_id = ?";
 			
 			pstmt = con.prepareStatement(sql);
@@ -136,6 +134,234 @@ public class CartDAO {
 		} // finally 끝
 		return list;
 	} // getCartList() end
+
+	
+	// 장바구니 특정 상품 수량 변경
+	// 1. 감소
+	public int cartItemMinus(String member_id, int item_id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			con = ds.getConnection();
+			String sql = "update cart "
+					   + "set cart_amount = (select cart.cart_amount "
+					   + "					from cart join item "
+   					   + "					on cart.item_id	= item.item_id "
+					   + "					where member_id = ? and cart.item_id = ?) - 1 "
+					   + "where cart_id = (select cart_id "
+					   + "					from cart join item "
+					   + "					on cart.item_id	= item.item_id "
+					   + "					where member_id = ? and cart.item_id = ?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, member_id);
+			pstmt.setInt(2, item_id);
+			pstmt.setString(3, member_id);
+			pstmt.setInt(4, item_id);
+			result = pstmt.executeUpdate(); // 수량 감소 성공하면 1, 실패하면 0
+		} catch(Exception se) {
+			se.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) 
+				pstmt.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+				System.out.println(e.getMessage());
+			}
+			try {
+				if(con != null) 
+					con.close(); // DB 연결은 마지막에 끊는다
+			} catch(Exception e) {
+				e.printStackTrace();
+				System.out.println(e.getMessage());
+			}
+		} // try-catch-finally 끝
+		return result; // // 수량 감소 성공하면 1, 실패하면 0
+	} // cartItemMinus(member_id, item_id) end
+	// 2. 수량 추가
+	public int cartItemPlus(String member_id, int item_id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			con = ds.getConnection();
+			
+			String sql = "update cart "
+					   + "set cart_amount = (select cart.cart_amount "
+					   + "					from cart join item "
+   					   + "					on cart.item_id	= item.item_id "
+					   + "					where member_id = ? and cart.item_id = ?) + 1 "
+					   + "where cart_id = (select cart_id "
+					   + "					from cart join item "
+					   + "					on cart.item_id	= item.item_id "
+					   + "					where member_id = ? and cart.item_id = ?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, member_id);
+			pstmt.setInt(2, item_id);
+			pstmt.setString(3, member_id);
+			pstmt.setInt(4, item_id);
+			result = pstmt.executeUpdate(); // 수량 추가 성공하면 1, 실패하면 0
+		} catch(Exception se) {
+			se.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) 
+				pstmt.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+				System.out.println(e.getMessage());
+			}
+			try {
+				if(con != null) 
+					con.close(); // DB 연결은 마지막에 끊는다
+			} catch(Exception e) {
+				e.printStackTrace();
+				System.out.println(e.getMessage());
+			}
+		} // try-catch-finally 끝
+		return result; // 수량 추가 성공하면 1, 실패하면 0
+	} // cartItemPlus(member_id, item_id) end
+
+	
+	// 장바구니에서 해당 상품 삭제
+	public int cartItemDelete(String member_id, int item_id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+
+		try {
+			con = ds.getConnection();
+			
+			String sql = "delete from cart "
+					   + "where member_id = ? "
+					   + "and item_id = ? ";	
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, member_id);
+			pstmt.setInt(2, item_id);
+			result = pstmt.executeUpdate(); // 상품 삭제 성공하면 1, 실패하면 0
+		} catch(Exception se) {
+			se.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) 
+				pstmt.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+				System.out.println(e.getMessage());
+			}
+			try {
+				if(con != null) 
+					con.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+				System.out.println(e.getMessage());
+			}
+		} // try-catch-finally 끝
+		return result; // 상품 삭제 성공하면 1, 실패하면 0
+	} // cartItemDelete(member_id, item_id) end
+
+	
+	
+	
+	// 회원 우편번호, 주소 조회
+	public String getMemberPostAddress(String id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String post_address = null;
+		try {
+			con = ds.getConnection();
+			String sql = "select distinct member_post, member_address "
+					   + "from cart join member "
+					   + "on cart.member_id = member.member_id "
+					   + "where cart.member_id = ? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) { // distinct로 중복행 제거되어 행 1개만 조회됨
+				post_address = rs.getString("member_post") + rs.getString("member_address");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
+			}
+		} // finally 끝
+		return post_address;
+	} // getMemberPostAddress(String id) end
+
+	
+	// 장바구니에 담긴 모든 상품 총액
+	public int getTotalAll(String id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int totalALL = 0;
+		try {
+			con = ds.getConnection();
+			String sql = "select sum(item_price*cart_amount) as totalAll "
+					+ "from cart join item "
+					+ "on cart.item_id	= item.item_id "
+					+ "where member_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				totalALL = rs.getInt("totalAll");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
+			}
+		} // finally 끝
+		return totalALL;
+	} // getTotalAll(String id) end
+		
+		
+		
+		
 	
 	
 }

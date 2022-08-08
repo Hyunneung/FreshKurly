@@ -83,7 +83,7 @@ public class MemJoinSocialProcessAction implements Action {
 			session.setAttribute("id", id);
 			ActionForward forward = new ActionForward();
 			forward.setRedirect(true);
-			forward.setPath("mainPage.main"); // 임시 메인페이지로 이동 - MainPage.main
+			forward.setPath("http://localhost:8088/Fresh_Kurly/"); //초기화면으로 이동
 			return forward;
 		}
 		out.println("</script>");
