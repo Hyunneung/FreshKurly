@@ -29,14 +29,11 @@ public class MyPageFrontController extends HttpServlet {
 		
 		// 각각 .my 페이지 관리
 		switch(command) {
-		/* 삭제삭제삭제
-		   case "/myPage.my" :
-			action = new OrderInfoAction(); 
-			break;*/
 			
 		// 주문내역	
 		case "/myOrder.my" : // 마이페이지의 기본페이지는 주문내역 페이지
 			action = new OrderInfoAction();
+			
 			break;
 		// 장바구니	
 		case "/myCart.my" :
@@ -48,13 +45,25 @@ public class MyPageFrontController extends HttpServlet {
 		case "/myCartItemPlus.my" : // 장바구니 - 아이템 수량 1 증가
 			action = new CartItemPlusAction();
 			break;
-		case "/myCartItemDelete.my" : // 장바구니 - 아이템 수량 1 증가
+		case "/myCartItemDelete.my" : // 장바구니 - 아이템 완전 삭제
 			action = new CartItemDeleteAction();
-			break;	
+			break;
+			
 		// 찜한상품
 		case "/myWish.my" :
 			action = new WishAction();
 			break;
+		case "/myItemToCart.my" : // 장바구니에 상품 담기 - 아이템페이지, 찜한상품 페이지 공통 기능
+			action = new WishItemToCartAction();
+			break;
+		case "/myWishItemDelete.my" : // 찜한상품 삭제 - 마이페이지 기능
+			action = new WishItemDeleteAction();
+			break;	
+		case "/myWishItemAdd.my" : // 찜한상품 추가 - 아이템페이지 기능
+			action = new WishItemAddAction();
+			break;	
+			
+			
 		// 상품문의
 		case "/myQna.my" :
 			action = new QnaAction();

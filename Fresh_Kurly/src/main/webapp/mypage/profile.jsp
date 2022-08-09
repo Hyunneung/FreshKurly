@@ -15,21 +15,21 @@
     height: 2px;
     background: #ccc;}
     
-    #okbtn {background:#8BC34A; font-weight:bold; color: white;
+    #okbtn {background:#8BC34A; font-weight:bold; font-size:14; color: white;
 		padding-top:10px; padding-bottom:10px; margin:3px;
-		border:0; border-radius: 12px; width:300px}
-  }	
+		border:0; border-radius: 12px; width:300px; text-align:center}
+ 	 }	
 </style>
 <body>
 
 <section id="login"> 
-    <div class="container">
+    <div class="container-fluid">
             <div class="myCard">
                 <div class="row">
                     <div class="col-md-10">
                         <div class="myLeftCtn">
                             
-                        <form class="myForm text-center needs-validation" action="myProfileCheck.my" method="post" novalidate>
+                        <form class="myForm text-center" action="myProfileCheck.my" method="post" novalidate>
                             <header>개인정보 수정</header>
                             <h6>비밀번호 재확인</h6>
                             <span>*회원님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한 번 확인해주세요.</span>

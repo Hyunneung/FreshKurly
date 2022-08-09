@@ -33,18 +33,18 @@ hr {
 </head>
 <body>
 	<section id="login">
-		<div class="container">
+		<div class="container-fluid">
 			<div class="myCard">
 				<div class="row">
 					<div class="col-md-10">
 						<div class="myLeftCtn">
-							<form>
+							<form class="myForm text-center needs-validation">
 								<header>상품문의</header>
 								<h6>상품문의 내역을 확인하는 공간입니다.</h6>
 								<hr>
 
 								<!-- 상품문의가 있는 경우 -->
-								<c:if test="${listcount>0}">
+								<c:if test="${listcount > 0}">
 									<table class="table table-bordered">
 										<thead>
 											<tr>
@@ -55,21 +55,20 @@ hr {
 										</thead>
 										<tbody>
 											<c:forEach var="q" items="${qnalist}">
-												<c:forEach var="qn" items="${q.qna_number}">
 													<tr>
-														<td><a href="주소주소주소주소?num=${qn.qna_number}">${qn.qna_subject}</td>
+														<td><a href="주소주소?num=${q.qna_number}">${q.qna_subject}</a></td>
 														<!-- 글제목 -->
-														<td>${qn.qna_reg_date}</td>
+														<td>${q.qna_reg_date}</td>
 														<!-- 작성일 -->
-														<td>${qn.qna_check}</td>
+														<td>${q.qna_check}</td>
 														<!-- 답변상태 -->
 													</tr>
-												</c:forEach>
 											</c:forEach>
-								
 										</tbody>
 									</table>
 								</c:if>
+								
+								
 								<!-- 상품문의가 없는 경우 -->
 								<c:if test="${listcount == 0}">
 									<font size=5>작성한 상품 문의가 없습니다.</font>
@@ -77,11 +76,9 @@ hr {
 							</form>
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>
 	</section>
-
 </body>
 </html>

@@ -94,7 +94,7 @@ public class QnaDAO {
 				String qna_private = rs.getString("qna_private");
 				String qna_check = rs.getString("qna_check");
 				String qna_answer = rs.getString("qna_answer");
-				String qna_reg_date = rs.getString("qna_reg_date;");
+				String qna_reg_date = rs.getString("qna_reg_date");
 
 				Qna qna = new Qna();
 				qna.setQna_number(qna_number);

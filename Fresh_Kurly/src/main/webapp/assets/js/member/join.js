@@ -26,7 +26,6 @@ $(document).ready(function() {
 	$('#postcodebtn').click(function() {
 		$("#postcode").attr('type', 'text');
 		$("#address").attr('type', 'text');
-		$("#postcheck_num").val("y"); // 주소 입력 됐는지 검사하기 위해 $("#postcheck_num").val()을 변화시킨다
 		Postcode(); // 우편번호 검색 함수 호출
 	});
 	function Postcode() { // 우편번호 검색
@@ -178,6 +177,7 @@ $(document).ready(function() {
 	
 	
 	// 이메일 인증
+	var emailcheck_value = ''; // 이메일 중복 검사에 사용된 이메일을 저장할 변수
 	$("#emailchkbtn").click(function() {
 		input_email = $.trim($('#email').val());
 		if (input_email == "") {
@@ -185,6 +185,7 @@ $(document).ready(function() {
 			$('#email').focus();
 			return false;
 		} else {
+			emailcheck_value = input_email;
 			$.ajax({ // 이메일 중복 검사 ajax
 				url: "emailcheck2.net", 
 				data: { "email": input_email },
@@ -211,7 +212,7 @@ $(document).ready(function() {
 		if( $('#certification_ok').val() ==  $("#save_email_num").val()) {
 			email_ok = $('#certification_ok').val();
 			$("#emailchkok").val("y");
-			alert('인증 성공');
+			alert('이메일 인증에 성공하셨습니다');
 	} else {
 			email_ok = "";
 			$("#emailchkok").val("n");
@@ -267,12 +268,10 @@ $(document).ready(function() {
 		}
 	});
 	
-	
-	
 
 
-	// sumitbtn - 가입하기 버튼
-	$('form').submit(function() {
+	// submitbtn - 가입하기 버튼
+	$('#submitbtn').click(function(){
 		// ID 중복검사 확인
 		var submit_id_value = $.trim($('#id').val())
 		if (submit_id_value != idcheck_value) { // submit 당시 id 값과 id 중복검사에 사용된 아이디를 비교합니다.
@@ -289,7 +288,13 @@ $(document).ready(function() {
 		if (submit_phone_value != phonecheck_value) {
 			alert("휴대폰번호 중복검사를 해주세요");
 			return false;
-		}		
+		}
+		// 이메일 중복검사 확인
+		var submit_email_value = $.trim($('#email').val())
+		if (submit_email_value != emailcheck_value) {
+			alert("이메일을 인증하세요");
+			return false;
+		}
 		if (email_ok != $("#save_email_num").val()) {
 			alert('이메일을 인증하세요');
 			return false;
@@ -298,16 +303,15 @@ $(document).ready(function() {
 			alert('이메일을 인증하세요');
 			return false;
 		}
-		if( $("#postcheck_num").val() == 'n' ) {
-			alert("주소를 입력하세요");
+		if( $.trim($("#postcode").val()) == ''  ) {
+			alert("주소를 검색하세요");
 			return false;
 		}
 		// 약관 선택 검사 (체크박스)
-		if ($('input:checkbox:checked').length != 3) {
+		if ($("#allchk").is(":checked") == false) {
 			alert("필수약관에 동의해주세요");
 			return false;
 		}
-
 	})
 
 }); // ready() end

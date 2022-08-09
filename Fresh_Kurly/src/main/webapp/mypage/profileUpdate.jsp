@@ -60,16 +60,22 @@
 			passcheck();
 		}) // pass 형식 확인 keyup end
 		// pass2 검사 (비밀번호 확인)
-		$("#pass2").on('keyup', function() {
+		$("#pass2").keyup(function() {
 			$("#pass2_message").empty();
 			// pass2 == pass 확인
 			passcheck();
 		}) // pass2 검사 end
 			
 		//이메일 인증
+		var emailcheck_value = ''; // 이메일 중복 검사에 사용된 이메일을 저장할 변수
+		var email_check_ok = "n";
+		$('#email').keyup(function() {
+			if( $.trim($('#email').val()) == "${member.member_email}" ) {
+				email_check_ok = "y";
+			}
+		})
 		$("#emailchkbtn").click(function() {
 			input_email = $.trim($('#email').val());
-			
 			if (input_email == "") {
 				alert("이메일을 입력해주세요");
 				$('#email').focus();
@@ -77,6 +83,7 @@
 			} else if( input_email == "${member.member_email}" ) {
 				alert("기존과 동일한 이메일입니다.")
 			} else {
+				emailcheck_value = input_email;
 				$.ajax({ // 이메일 중복 검사 ajax
 					url: "emailcheck2.net", 
 					data: { "email": input_email },
@@ -101,10 +108,11 @@
 		$('#certification_btn').click(function() {
 			if ($('#certification_ok').val() == $("#save_email_num").val()) {
 				email_ok = $('#certification_ok').val();
-				alert('인증 성공');
+				email_check_ok = "y";
+				alert('이메일 인증에 성공하셨습니다');
 			} else {
 				email_ok = "";
-				alert('인증 실패');
+				alert('인증번호가 일치하지 않습니다. 다시 입력해주세요.');
 			}
 		}) // 인증번호 확인 버튼
 	
@@ -113,6 +121,7 @@
 		// 휴대폰 번호 바뀌었으면 중복확인 했는지 확인
 		var phonecheck_value = ''; // 휴대폰번호 중복 검사에 사용된 휴대폰번를 저장할 변수
 		var checkphone = false;
+		var phone_check_ok = "n";
 		// 휴대폰번호 중복 확인
 		$('#phone').on('keyup', function() {
 			if( $.trim($('#phone').val()) != "${member.member_phone}" ) {
@@ -204,19 +213,19 @@
 		// ----------------------------------------회원정보 수정 버튼----------------------------------------
 		// 1.비번 바꿨으면 비번확인이랑 일치하는지 2. 이메일 바꿨으면 중복확인 했는지 안 했는지 3.휴대폰 번호 바꿨으면 중복확인 했는지 안 했는지 검사!!
 		// sumitbtn - 회원정보 수정 버튼
-		$('form').submit(function() {
+		$("#submitbtn").click(function(){
 			// 1. 비밀번호, 비밀번호 확인 동일한지 확인
 			if( $("#pass").val() != $("#pass2").val() ){
 				alert("비밀번호를 확인 해주세요");
 				return false;
 			}
 			// 2. 이메일 바꿨으면 중복확인 했는지 검사
-			if( $("#email").val() != "${member.member_email}" && $("#emailchkok").val() == "n" ) {
+			if( $("#email").val() != "${member.member_email}" && email_check_ok == "n" ) {
 				alert('변경된 이메일을 인증하세요');
 				return false;
 			}
 			// 3.휴대폰 번호 바꿨으면 중복확인 했는지 검사
-			if( $.trim($('#phone').val()) != "${member.member_phone}" && phone_check_ok != "y") {
+			if( $.trim($('#phone').val()) != "${member.member_phone}" && phone_check_ok == "n") {
 				alert('변경된 휴대폰번호의 중복여부를 확인하세요');
 				return false;
 			}
@@ -239,8 +248,6 @@
 <!-- 비밀번호 제외한 모든 값은 기존 정보로 입력되어 있다 -->
 <body>
 	<section id="check-out">
-
-		<!--Main layout-->
 		<main class="tb-mt-pd">
 			<div class="container wow fadeIn">
 				<!--Grid row-->
@@ -314,7 +321,7 @@
 								</div>
 
 								<hr class="mb-4">
-								<button class="btn btn-primary btn-lg btn-block" type="submit">회원정보수정</button>
+								<button class="btn btn-primary btn-lg btn-block" type="submit" id="submitbtn">회원정보수정</button>
 
 							</form>
 						</div>

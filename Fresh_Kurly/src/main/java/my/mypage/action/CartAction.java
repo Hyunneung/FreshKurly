@@ -23,7 +23,7 @@ public class CartAction implements Action {
 		
 		// 장바구니 페이지에 보여줄 아이템 정보
 		CartDAO dao = new CartDAO();
-		int listcount = 0; // 카트에 담긴 제품 수 
+		int listcount = 0; // 카트에 담긴 제품 리스트
 		List<Cart> list = null; // 카트에 담긴 리스트
 		listcount =dao.getCartListCount(id);
 		list = dao.getCartList(id);
