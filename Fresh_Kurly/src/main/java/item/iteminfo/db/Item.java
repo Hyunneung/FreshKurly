@@ -1,22 +1,22 @@
 package item.iteminfo.db;
 
 public class Item {
-	private int item_id;
-	private String item_name;
-	private int item_price;
-	private String item_reg_date;
-	private String item_image;
-	private String item_deliver;
-	private String item_seller;
-	private String item_package;
-	private String item_expiredate;
-	private String item_unit;
-	private String item_weight;
-	private String item_category;
-	private String item_intro;
-	private int item_stock;
+	private int 	item_id;
+	private String 	item_name;
+	private int 	item_price;
+	private String	item_reg_date;
+	private String	item_image;
+	private String	item_deliver;
+	private String	item_seller;
+	private String	item_package;
+	private String	item_expiredate;
+	private String	item_unit;
+	private String	item_weight;
+	private String	item_category;
+	private String	item_intro;
+	private int		item_stock;
 	
-	// getter, setter
+	
 	public int getItem_id() {
 		return item_id;
 	}
@@ -39,7 +39,7 @@ public class Item {
 		return item_reg_date;
 	}
 	public void setItem_reg_date(String item_reg_date) {
-		this.item_reg_date = item_reg_date;
+		this.item_reg_date = item_reg_date.substring(0,10); // 년월일시분초 => 년-월-일
 	}
 	public String getItem_image() {
 		return item_image;
@@ -101,6 +101,7 @@ public class Item {
 	public void setItem_stock(int item_stock) {
 		this.item_stock = item_stock;
 	}
+	
 	
 	
 }
