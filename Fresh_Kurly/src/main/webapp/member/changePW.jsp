@@ -5,11 +5,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ID 찾기</title>
+<title>비밀번호 변경하기</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="../assets/js/member/changePW.js"></script> 
 <style>
 body {text-align:center}
-span {color : #8BC34A; font-weight: bolder; font-size: 25px}
-input {
+.sbmbtn {
 display: inline-block;
     margin-bottom: 0;
     font-weight: 600;
@@ -37,9 +38,17 @@ display: inline-block;
 </style>
 </head>
 <body>
-아이디 : <span>${findId }</span><br>
-잊어버리지 마세요!<br><br>
-<input type="button" value="창닫기" onClick="self.close()">
+
+<span>${id_changePW }</span>님의 아이디 변경<hr>
+<form method="post" action="changePassProccess.net" id="changePW">
+<label for="new_password">새로운 비밀번호</label>
+<input type="password" id="new_password" name="new_password">
+<br>
+<label for="confirm_password">비밀번호 확인</label>
+<input type="password" id="confirm_password" name="confirm_password">
+<br><br>
+<input id="sbmbtn" class="sbmbtn" type="submit" value="변경하기">
+</form>
 
 </body>
 </html>

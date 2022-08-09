@@ -43,7 +43,48 @@
 <script src="${pageContext.request.contextPath}/assets/vendor/slider/js/jquery.xuSlider.js"></script>
 
 <!-- 필요한 CSS/스크립트 넣어놓은 부분 끝 -->
-
+<style>
+    .accordion {
+        background-color: #ffffff;
+        cursor: pointer;
+        padding: 16px;
+        width: 100%;
+        outline: none;
+        border: none;
+        text-align: left;
+        font-size: 11px;
+        transition: 0.4s;
+    }
+ 
+    .actived, .accordion:hover {
+        background-color: #f5f5f5;
+        font-weight: bold;
+    }
+ 
+    .accordion:after {
+        font-weight: bold;
+        float: right;
+        margin-left: 5px;
+    }
+ 
+ 
+    .panel {
+        padding: 0 16px;
+        background-color: #ffffff;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        border-bottom: 1px solid #eeeeee;
+    }
+    .panel a {
+    	color : black;
+    	text-decoration : none;
+    }
+    
+    .panel a:hover{
+    	color : #8BC34A;
+    }
+</style>
 
 <!-- 로고, 옆 버튼 부분 -->
 		<div id="header-top" class="grocery-top">
@@ -67,21 +108,23 @@
 								<div class="col-md-9 tb-lef-div text-right">
 									<ul>										
 										<li>
-											<a href="login.net">
-												<span>
+											<button class="accordion" onClick="location.href='login.net'"
+											style="color:black">
 												<i class="fa fa-sign-in"></i>
-												 로그인
-												</span>
-											</a>
+													로그인 
+											</button>
+											<div class="panel">
+											</div>
 										</li>
 										
 										<li>
-											<a href="join.net">
-												<span>
+											<button class="accordion" onClick="location.href='join.net'"
+											style="color:black">
 												<i class="fa fa-pencil"></i>
-												 회원가입
-												</span>
-											</a>
+													로그인 
+											</button>
+											<div class="panel">
+											</div>
 										</li>
 										
 									</ul>
@@ -94,34 +137,43 @@
 									어서오세요, ${id }님 환영합니다!
 									<ul>
 										<li>
-											<a href="myOrder.my"> <!-- 백현능: 찜한상품, 장바구니, 정보수정하기 태그 없애고 '마이페이지'만 나오게..? --> <!-- 마이페이지의 기본페이지는 주문내역 페이지 -->
-												<span>
+											<button class="accordion">
 												<i class="fa fa-user"></i>
-													마이페이지 <!-- '마이페이지'로 변경할지 정하기 -->
-												</span>
-											</a>
+													마이페이지 
+											</button>
+											<div class="panel">
+												<p><a href="myOrder.my">나의 주문내역</a></p>
+												<p><a href="myCart.my">장바구니</a></p>
+												<p><a href="myWish.my">찜한상품</a></p>
+												<p><a href="myQna.my">상품문의</a></p>
+												<p><a href="myProfile.my">개인정보수정</a></p>
+												<p><a href="myWithdraw.my">회원탈퇴</a></p>
+											</div>
 										</li>
 										
 								<%-- 그 와중 세션에 id 값이 admin일 경우 보여줄 버튼 --%>		
 								<c:if test="${id=='admin'}">
 									<li>
-											<a href="회원리스트.html">
-												<span>
-												<i class="fa fa-wrench"></i>
-												관리자 페이지
-												</span>
-											</a>
-										</li>
+										<button class="accordion">
+											<i class="fa fa-wrench"></i>
+											관리자페이지
+										</button>
+											<div class="panel">
+												<p><a href=""></a></p>
+												<p><a href=""></a></p>
+												<p><a href=""></a></p>
+											</div>
+									</li>
 								</c:if>		
 								<%-- 세션 아이디 admin end --%>
 								
 										<li>
-											<a href="logout.net">
-												<span> 
-													<i class="fa fa-sign-out"></i>
-													 로그아웃
-												</span>
-											</a>
+											<button class="accordion" onClick="location.href='logout.net'">
+												<i class="fa fa-sign-out"></i>
+													로그아웃 
+											</button>
+											<div class="panel">
+											</div>
 										</li>
 
 									</ul>
@@ -200,7 +252,7 @@
 							<div class="collapse navbar-collapse">
 								<form class="form-inline my-2 my-lg-0 mx-auto">
 									<input class="form-control" type="search"
-										placeholder="검색어를 입력해주세요" aria-label="Search">
+										placeholder="검색어를 입력해주세요" aria-label="Search" name="seach">
 									<button class="tb-btn btn-success my-2 my-sm-0" type="submit">
 										<i class="fa fa-search"></i>
 									</button>
@@ -214,4 +266,19 @@
 		</div>
 		<!-- End Navbar Area -->
 
-
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+ 
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+</script>

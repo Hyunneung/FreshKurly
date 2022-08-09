@@ -33,7 +33,6 @@ public class MyPageFrontController extends HttpServlet {
 		// 주문내역	
 		case "/myOrder.my" : // 마이페이지의 기본페이지는 주문내역 페이지
 			action = new OrderInfoAction();
-			
 			break;
 		// 장바구니	
 		case "/myCart.my" :
@@ -80,6 +79,7 @@ public class MyPageFrontController extends HttpServlet {
 		case "/myProfileUpdate.my" :
 			action = new ProfileUpdateAction();
 			break;	
+			
 		}
 		
 		// 포워딩 - forward는 포워딩 주소(path), redirect/forward 방식 가진다

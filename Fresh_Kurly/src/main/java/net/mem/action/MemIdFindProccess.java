@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.JsonObject;
+
 import net.mem.db.MemDAO;
 
 public class MemIdFindProccess implements Action {
@@ -23,8 +25,8 @@ public class MemIdFindProccess implements Action {
 			throws ServletException, IOException {
 
 		request.setCharacterEncoding("utf-8"); // post 방식 한글 처리
+		response.setContentType("text/html; charset=UTF-8");
 		
-		HttpSession session = request.getSession();
 		// 인증번호 6자리 난수
 		String random_code = "";
 		int num = 0;
@@ -33,10 +35,6 @@ public class MemIdFindProccess implements Action {
 			random_code = String.valueOf(num); // 6자리 난수 발생
 		}
 		
-		session.setAttribute("random_code", random_code);
-		//response.getWriter().print(certification);
-		request.setAttribute("certification", random_code);
-		// 인증번호 request에 저장
 		System.out.println("인증번호 : "+random_code);
 		
 		// 메일 전송 정보
@@ -46,17 +44,24 @@ public class MemIdFindProccess implements Action {
 		String content = "안녕하세요. 프레쉬컬리입니다.<br>" + "아래 인증번호를 입력하시고 이메일 인증을 완료해주세요.<br><br>"
 				+ "이메일 인증번호 : " + random_code;
 
-		// SMTP 서버 주소를 지정합니다.
+		// SMTP 서버 주소를 지정
 		String server = "smtp.naver.com"; // 네이버 메일 환경설정에 있는 SMTP 서버명
 		int port = 587;
 		
-		MemDAO mdao = new MemDAO();
-		String findId = mdao.findId(input_email); //이메일로 아이디를 찾는 메서드 입니다
 		
+		//이메일로 아이디를 찾기
+		MemDAO mdao = new MemDAO();
+		String findId = mdao.findId(input_email);
+		//세션에 찾은 아이디값 저장
+		HttpSession session = request.getSession();
 		session.setAttribute("findId", findId);
 		
-		
-		if (findId != null) { //아이디가 있을때
+		//JsonObject에 인증코드를 저장해서 리턴
+		JsonObject jobj = new JsonObject();
+		jobj.addProperty("verify_code", random_code);
+	
+		//아이디가 있을때 메일을 보낸다
+		if (findId != null) {
 			try {
 				// 서버 정보를 Properties 객체에 저장합니다.
 				Properties properties = new Properties();
@@ -118,12 +123,18 @@ public class MemIdFindProccess implements Action {
 
 				// 연결을 종료합니다.
 				transport.close();
-
+				
 				System.out.println("메일이 정상적으로 전송되었습니다.");
-
+				
+				
+				//자바스크립트 실행부분
+				jobj.addProperty("message","인증코드가 메일로 전송되었습니다.");
+				System.out.println("JsonObject 생성 확인! - " + jobj.toString());
+				response.getWriter().append(jobj.toString());
 				// 이동할 페이지 주소
 				// RequestDispatcher dispatcher = request.getRequestDispatcher("mailTest.jsp");
 				// dispatcher.forward(request, response); // 이동합니다.
+				
 			} catch (Exception e) {
 				System.out.println("SMTP 서버가 잘못 설정되었거나, 서비스에 문제가 있습니다.");
 				e.printStackTrace();
@@ -131,7 +142,11 @@ public class MemIdFindProccess implements Action {
 			return null;
 		} else { //아이디가 없을때
 			System.out.println("DB에서 입력된 이메일로 가입된 아이디를 찾지 못했습니다.");
+			jobj.addProperty("message","입력하신 이메일로 가입된 아이디를 찾지 못했습니다.");
+			System.out.println("JsonObject 생성 확인! - " + jobj.toString());
+			response.getWriter().append(jobj.toString());
 			return null;
 		}
+		
 	}
 }

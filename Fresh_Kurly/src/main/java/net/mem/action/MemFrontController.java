@@ -72,6 +72,9 @@ public class MemFrontController extends HttpServlet {
 		case "/passwordFindProcess.net":
 			action = new MemPasswordFindProccess();
 			break;
+		case "/member/changePassProccess.net":
+			action = new MemChangePassProccess();
+			break;
 		}
 		
 		// 포워딩 - forward는 포워딩 주소(path), 포워딩 방식(redirect) 가진다

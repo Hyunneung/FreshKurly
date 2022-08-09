@@ -31,14 +31,15 @@
                             
                             <!-- 이메일 -->
 								<div class="md-form tb-mr-bt">
-									<label for="find_email" style="font-size: 10pt">이메일<font color='red'>*</font></label>
+									<label for="find_email" style="font-size: 10pt">
+									<i class="fa  fa-envelope"></i>이메일
+									</label>
 									<input type="text" name="find_email" id="find_email" class="form-control" placeholder="예: freshkurly@kurly.com" required>
+									
 									<input type="button" value="이메일 인증" id="request_for_confirm_id">
 									<input type="hidden" name="confirm_email_ok" id="confirm_email_ok"
-									class="form-control" placeholder="인증번호 입력/아무것도 입력을 안해야 인증이성공하는 문제가 발생중"
+									class="form-control" placeholder="인증번호 입력"
 									maxlength="6" required>
-									<%-- rdata가 null인 문제인것 같음
-									리턴데이터를 어떻게 해야 제대로 받아오지? --%>
 									<input type="hidden" id="confirm_email_btn" value="인증번호 확인 버튼">
 									<input type="hidden" name="save_email_confirm_code" id="save_email_confirm_code"> <!-- ajax로 넘어온 인증번호 저장 hidden으로 바꾸기 -->
 								</div>
