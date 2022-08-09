@@ -78,6 +78,7 @@ button {background:#8BC34A; font-weight:bold; color: white; font-size: 20px;
 			<!-- 소셜로그인 -->
 			<div class="form-group">
 		    	<p>SNS 계정을 이용해 로그인 하세요</p>
+		    	<input type="hidden" name="social" id="social"> <!-- 가입한 SNS가 무엇인지 저장된다 --> 
 		    	<input type="hidden" name="socialId" id="socialId">
 		    	<input type="hidden" name="socialName" id="socialName">
 		    	<input type="hidden" name="socialEmail" id="socialEmail">
@@ -99,6 +100,7 @@ button {background:#8BC34A; font-weight:bold; color: white; font-size: 20px;
 					    var email = naver_id_login.getProfileData('email');
 					    var name = naver_id_login.getProfileData('name');
 					   
+					    $("#social").val("naver");
 					    $("#socialId").val( email.split('@',1) );
 					    $("#socialName").val(name);
 					    $("#socialEmail").val(email);
@@ -134,6 +136,7 @@ button {background:#8BC34A; font-weight:bold; color: white; font-size: 20px;
 												email = account.email;
 											}
 											// input:hidden에 저장
+											$("#social").val("kakao");
 											$("#socialId").val(id);
 											$("#socialName").val(nickname);
 											$("#socialEmail").val(email);

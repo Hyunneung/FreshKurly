@@ -180,8 +180,8 @@ $(document).ready(function() {
 	var emailcheck_value = ''; // 이메일 중복 검사에 사용된 이메일을 저장할 변수
 	$("#emailchkbtn").click(function() {
 		input_email = $.trim($('#email').val());
-		if (input_email == "") {
-			alert("이메일을 입력해주세요");
+		if (input_email == "" || input_email.indexOf("@") == -1) {
+			alert("이메일을 형식에 맞게 입력해주세요");
 			$('#email').focus();
 			return false;
 		} else {

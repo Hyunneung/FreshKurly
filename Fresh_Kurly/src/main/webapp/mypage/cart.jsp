@@ -55,7 +55,7 @@
 					type : "POST",
 					url: "myCartItemMinus.my",
 					data: { "item_id": item_id.val()},
-					success : function(data) {
+					success : function(data) { 
 						if(data == 1) { // 수량 감소 성공
 							// 화면에 보여지는 수량 감소
 							var minusAmount = Number( cart_amount.val() )-1;
