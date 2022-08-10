@@ -162,7 +162,7 @@
 												<p><a href="NoticeList.bo">공지사항</a></p>
 												<p><a href="">문의 응답하기</a></p>
 												<p><a href="">회원 리스트</a></p>
-												<p><a href="">상품 리스트</a></p>
+												<p><a href="itemList.item">상품 리스트</a></p>
 											</div>
 									</li>
 								</c:if>		
