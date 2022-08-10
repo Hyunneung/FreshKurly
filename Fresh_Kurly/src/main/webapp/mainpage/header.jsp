@@ -43,7 +43,48 @@
 <script src="${pageContext.request.contextPath}/assets/vendor/slider/js/jquery.xuSlider.js"></script>
 
 <!-- 필요한 CSS/스크립트 넣어놓은 부분 끝 -->
-
+<style>
+    .accordion {
+        background-color: #ffffff;
+        cursor: pointer;
+        padding: 16px;
+        width: 100%;
+        outline: none;
+        border: none;
+        text-align: left;
+        font-size: 11px;
+        transition: 0.4s;
+    }
+ 
+    .actived, .accordion:hover {
+        background-color: #f5f5f5;
+        font-weight: bold;
+    }
+ 
+    .accordion:after {
+        font-weight: bold;
+        float: right;
+        margin-left: 5px;
+    }
+ 
+ 
+    .panel {
+        padding: 0 16px;
+        background-color: #ffffff;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        border-bottom: 1px solid #eeeeee;
+    }
+    .panel a {
+    	color : black;
+    	text-decoration : none;
+    }
+    
+    .panel a:hover{
+    	color : #8BC34A;
+    }
+</style>
 
 <!-- 로고, 옆 버튼 부분 -->
 		<div id="header-top" class="grocery-top">
@@ -67,21 +108,23 @@
 								<div class="col-md-9 tb-lef-div text-right">
 									<ul>										
 										<li>
-											<a href="login.net">
-												<span>
-												<i class="fa fa-user"></i>
-												 로그인
-												</span>
-											</a>
+											<button class="accordion" onClick="location.href='login.net'"
+											style="color:black">
+												<i class="fa fa-sign-in"></i>
+													로그인 
+											</button>
+											<div class="panel">
+											</div>
 										</li>
 										
 										<li>
-											<a href="join.net">
-												<span>
+											<button class="accordion" onClick="location.href='join.net'"
+											style="color:black">
 												<i class="fa fa-pencil"></i>
-												 회원가입
-												</span>
-											</a>
+													회원가입 
+											</button>
+											<div class="panel">
+											</div>
 										</li>
 										
 									</ul>
@@ -94,71 +137,44 @@
 									어서오세요, ${id }님 환영합니다!
 									<ul>
 										<li>
-											<a href="myOrder.my"> <!-- 백현능: 찜한상품, 장바구니, 정보수정하기 태그 없애고 '마이페이지'만 나오게..? --> <!-- 마이페이지의 기본페이지는 주문내역 페이지 -->
-												<span>
-												<i class="fa fa-heart"></i>
-													찜한상품 <!-- '마이페이지'로 변경할지 정하기 -->
-												</span>
-											</a>
+											<button class="accordion">
+												<i class="fa fa-user"></i>
+													마이페이지 
+											</button>
+											<div class="panel">
+												<p><a href="myOrder.my">나의 주문내역</a></p>
+												<p><a href="myCart.my">장바구니</a></p>
+												<p><a href="myWish.my">찜한상품</a></p>
+												<p><a href="myQna.my">상품문의</a></p>
+												<p><a href="myProfile.my">개인정보수정</a></p>
+												<p><a href="Withdraw.net">회원탈퇴</a></p>
+											</div>
 										</li>
 										
-										<li>
-											<a href="장바구니.html">
-												<span> 
-													<i class="fa fa-shopping-cart"></i>
-													 장바구니
-												</span>
-											</a>
-										</li>
 								<%-- 그 와중 세션에 id 값이 admin일 경우 보여줄 버튼 --%>		
 								<c:if test="${id=='admin'}">
 									<li>
-											<a href="회원리스트.html">
-												<span>
-												<i class="fa fa-forward"></i>
-												회원리스트
-												</span>
-											</a>
-										</li>
-										
-										<li>
-											<a href="상품리스트.html">
-												<span> 
-													<i class="fa fa-product-hunt"></i>
-													 상품리스트
-												</span>
-											</a>
-										</li>
-										
-										<li>
-											<a href="문의답변.html">
-												<span> 
-													<i class="fa fa-keyboard-o"></i>
-													 문의 답변하기
-												</span>
-											</a>
-										</li>
+										<button class="accordion">
+											<i class="fa fa-wrench"></i>
+											관리자페이지
+										</button>
+											<div class="panel">
+												<p><a href="NoticeList.bo">공지사항</a></p>
+												<p><a href="">문의 응답하기</a></p>
+												<p><a href="">회원 리스트</a></p>
+												<p><a href="">상품 리스트</a></p>
+											</div>
+									</li>
 								</c:if>		
 								<%-- 세션 아이디 admin end --%>
 								
-										
 										<li>
-											<a href="나의정보.html">
-												<span> 
-													<i class="fa fa-info-circle"></i>
-													 나의 정보 수정하기
-												</span>
-											</a>
-										</li>
-										
-										
-										<li>
-											<a href="logout.net">
-												<span> 
-													<i class="fa fa-sign-out"></i>
-													 로그아웃
-												</span>
-											</a>
+											<button class="accordion" onClick="location.href='logout.net'">
+												<i class="fa fa-sign-out"></i>
+												로그아웃 
+											</button>
+											<div class="panel">
+											</div>
 										</li>
 
 									</ul>
@@ -185,37 +201,6 @@
 									alt="logo" class="logodark">
 								</a>
 							</div>
-							<!--mobile Menu  -->
-
-							<div id="mySidenav" class="sidenav">
-								<div class="menu_slid_bg">
-									<a href="javascript:void(0)" class="closebtn"
-										onclick="closeNav()">×</a>
-
-									<div class="col-sm-12" style="padding: 0px;">
-										<h3>Menu</h3>
-
-										<ul class="accordion" id="accordion-category">
-											<li class="panel mobile_menu_li"><a href="index.jsp">
-													Home</a></li>
-											<li class="panel mobile_menu_li"><a href="category.html">Category</a>
-											
-											</li>
-											<li class="panel mobile_menu_li"><a href="product.html">
-													Product</a></li>
-											<li class="panel mobile_menu_li"><a href="blog.html">
-													Blog</a></li>
-											<li class="panel mobile_menu_li"><a href="contact.html">contact</a>
-											</li>
-										</ul>
-										<div class="clear"></div>
-									</div>
-
-								</div>
-							</div>
-
-							<span class="menu_open" onclick="openNav()">&#9776; Menu</span>
-							<!-- mobile Menu  end-->
 						</div>
 					</div>
 				</div>
@@ -227,40 +212,55 @@
 						<div class="row">
 							<div class="col-sm-9 tb-menu-with">
 								<ul id="nav-menu" class="navbar-nav">
-									<li class="nav-item active"><a href="index.jsp"
+									<li class="nav-item"><a href="index.jsp"
 										class="nav-link">Home</a></li>
 
 									<li class="nav-item dropdown-colr"><a href="#about"
 										class="nav-link">전체 카테고리</a>
 										<ul class="dropdown-menu">
-											<li class="nav-item"><a href="category.html"
-												class="nav-link">과일</a></li>
-											<li class="nav-item"><a href="category.html"
-												class="nav-link">야채</a></li>
-											<li class="nav-item"><a href="category.html"
-												class="nav-link">정육/계란</a></li>
-											<li class="nav-item"><a href="category.html"
-												class="nav-link">밀키트</a></li>
-											<li class="nav-item"><a href="category.html"
-												class="nav-link">냉장/냉동/간편식</a></li>
-											<li class="nav-item"><a href="category.html"
-												class="nav-link">통조림</a></li>
-											<li class="nav-item"><a href="category.html"
-												class="nav-link">수산/건어물</a></li>
-											<li class="nav-item"><a href="category.html"
-												class="nav-link">쌀/잡곡</a></li>
-											<li class="nav-item"><a href="category.html"
-												class="nav-link">우유/유제품</a></li>
-											<li class="nav-item"><a href="category.html"
-												class="nav-link">간식/떡/빙과</a></li>
-											<li class="nav-item"><a href="category.html"
-												class="nav-link">장/양념/소스</a></li>
-										</ul></li>
+											<li class="nav-item">
+												<a href="category.html"class="nav-link">과일</a>
+											</li>
+											<li class="nav-item">
+												<a href="category.html"class="nav-link">야채</a>
+											</li>
+											<li class="nav-item">
+												<a href="category.html" class="nav-link">정육/계란</a>
+											</li>
+											<li class="nav-item">
+												<a href="category.html" class="nav-link">밀키트</a>
+											</li>
+											<li class="nav-item">
+												<a href="category.html" class="nav-link">냉장/냉동/간편식</a>
+											</li>
+											<li class="nav-item">
+												<a href="category.html" class="nav-link">통조림</a>
+											</li>
+											<li class="nav-item">
+												<a href="category.html" class="nav-link">수산/건어물</a>
+											</li>
+											<li class="nav-item">
+												<a href="category.html" class="nav-link">쌀/잡곡</a>
+											</li>
+											<li class="nav-item">
+												<a href="category.html" class="nav-link">우유/유제품</a>
+											</li>
+											<li class="nav-item">
+												<a href="category.html" class="nav-link">간식/떡/빙과</a>
+											</li>
+											<li class="nav-item">
+												<a href="category.html" class="nav-link">장/양념/소스</a>
+											</li>
+										</ul>
+									</li>
 									
-									<li class="nav-item"><a href="blog.html" class="nav-link">공지사항</a></li>
+									<li class="nav-item">
+										<a href="NoticeList.bo" class="nav-link">공지사항</a>
+									</li>
 									
-									<li class="nav-item"><a href="contact.html"
-										class="nav-link">상품 문의</a></li>
+									<li class="nav-item">
+										<a href="contact.html" class="nav-link">상품 문의</a>
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -268,7 +268,7 @@
 							<div class="collapse navbar-collapse">
 								<form class="form-inline my-2 my-lg-0 mx-auto">
 									<input class="form-control" type="search"
-										placeholder="Search for products..." aria-label="Search">
+										placeholder="검색어를 입력해주세요" aria-label="Search" name="seach">
 									<button class="tb-btn btn-success my-2 my-sm-0" type="submit">
 										<i class="fa fa-search"></i>
 									</button>
@@ -282,4 +282,19 @@
 		</div>
 		<!-- End Navbar Area -->
 
-
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+ 
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+</script>

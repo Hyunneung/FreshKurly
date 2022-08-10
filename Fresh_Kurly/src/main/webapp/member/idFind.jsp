@@ -3,7 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title here</title>
+<title>ID 찾기</title>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="assets/js/member/idfind.js"></script> 
 </head>
 <body>
 
@@ -27,36 +29,20 @@
                     <div class="col-md-6">
                         <div class="myLeftCtn">
                             
-                        <form id="idFind" class="myForm text-center needs-validation" action="idFindProcess.net">
-							
-                            <div class="form-group">
-                                <i class="fa  fa-envelope"></i>
-                                <input class="myInput" placeholder="이메일을 입력하세요"
-                                type="text" id="email" name="email" required>
-                            </div>
-                            
-                            <div id="confirm-code" class="form-group" style="display:none">
-                                <i class="fa  fa-code"></i>
-                                <input class="myInput" placeholder="인증코드를 입력하세요"
-                                type="text" name="email" >
-                            </div>
-							
-                            <button id="ask_email" class="butt">인증코드 요청</button>
-                        </form>
-                        
-                        <script>
-                       //인증코드 요청 버튼을 누르면 데이터베이스에서 해당 이메일을 가진 사람을 찾고
-                       //있으면 해당 이메일 주소로 메일을 보내고 버튼의 텍스트와 숨겨져있던 인증코드입력창을 보여주게 합니다
-                       //인증코드가 일치하면 그 아이디를 alert창으로 보여줍니다
-                       //없으면 없다고 alert 창을 띄웁니다
-                        $('#ask_email').click(function () {
-                        	
-                        	$(this).text('인증코드 입력');
-                    		$('#confirm-code').css("display","block");
-                        })
-                        </script>
-                        
-                        
+                            <!-- 이메일 -->
+								<div class="md-form tb-mr-bt">
+									<label for="find_email" style="font-size: 10pt">
+									<i class="fa  fa-envelope"></i>이메일
+									</label>
+									<input type="text" name="find_email" id="find_email" class="form-control" placeholder="예: freshkurly@kurly.com" required>
+									
+									<input type="button" value="이메일 인증" id="request_for_confirm_id">
+									<input type="hidden" name="confirm_email_ok" id="confirm_email_ok"
+									class="form-control" placeholder="인증번호 입력"
+									maxlength="6" required>
+									<input type="hidden" id="confirm_email_btn" value="인증번호 확인 버튼">
+									<input type="hidden" name="save_email_confirm_code" id="save_email_confirm_code"> <!-- ajax로 넘어온 인증번호 저장 hidden으로 바꾸기 -->
+								</div>
                         </div>
                     </div>
                     

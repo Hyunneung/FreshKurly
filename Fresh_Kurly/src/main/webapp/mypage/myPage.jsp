@@ -28,9 +28,9 @@
 	
 	
 	<!-- 왼쪽 네비게이션 -->
-	<div class='container' style="margin-top:10px;">
+	<div class='container-fluid' style="margin-top:10px;">
 		<div class="row">
-			<div class="col-sm-4">
+			<div class="col-sm-2">
 				<aside>
 					<h1>마이컬리</h1>
 					<ul class="nav nav-pills flex-column">
