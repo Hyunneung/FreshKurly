@@ -34,6 +34,13 @@ public class CartAction implements Action {
 		int totalAll = dao.getTotalAll(id);
 		request.setAttribute("totalAll", totalAll); // 카트에 담긴 각 제품 수
 		
+		// 배송비 - 30000원 이상 무료배송
+		int delivery = 3000;
+		if (totalAll >= 30000) {
+			delivery = 0;
+		}
+		request.setAttribute("delivery", delivery); // 배송비
+		
 		// 장바구니 페이지에 보여줄 회원 정보
 		if(listcount > 0) {
 			String post_address = dao.getMemberPostAddress(id);
@@ -44,10 +51,5 @@ public class CartAction implements Action {
 		forward.setPath("mypage/myPage.jsp");
 		forward.setRedirect(false); // dispatcher - 주소 변경x
 		return forward;
-		
-		
-		
-		
-		// 로그인 하지 않은 상태로 마이페이지 누르면 로그인 페이지로 이동하는거 추가하기
 	}
 }
