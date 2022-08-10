@@ -523,8 +523,8 @@ public class MemDAO {
 
 	public int changePW(String id, String new_password) {
 		Connection con = null;
-	      PreparedStatement pstmt = null;
-	      int result = 0; 
+	    PreparedStatement pstmt = null;
+	    int result = 0; 
 	      
 	      try {
 	         con = ds.getConnection();
@@ -557,6 +557,44 @@ public class MemDAO {
 	         }
 	      } // finally end
 	      return result; // 삽입 성공하면 1, 실패하면 0
+	}
+
+
+	public int deleteUser(String id) {
+		Connection con = null;
+	    PreparedStatement pstmt = null;
+	    int result = 0; 
+	      
+	      try {
+	         con = ds.getConnection();
+	         
+	         String sql = "delete from member where member_id = ?";
+	         
+	         pstmt = con.prepareStatement(sql);
+	         pstmt.setString(1, id);
+	         result = pstmt.executeUpdate(); // 수정 성공하면 1, 실패하면 0
+	         
+	         if (result ==1)
+	        	 System.out.println("DB - 비밀번호 수정 성공");
+	      } catch(Exception e) {
+	         e.printStackTrace();
+	      } finally {
+	         if(pstmt != null) {
+	            try {
+	               pstmt.close();
+	            } catch(SQLException e) {
+	               System.out.println(e.getMessage());
+	            }
+	         }
+	         if(con != null) {
+	            try {
+	               con.close();
+	            } catch(Exception e) {
+	               System.out.println(e.getMessage());
+	            }
+	         }
+	      } // finally end
+	      return result; // 삭제 성공시 1 실패시 0
 	}
   
 }

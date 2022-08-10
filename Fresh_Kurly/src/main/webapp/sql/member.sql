@@ -18,8 +18,8 @@ create table member (
 
 
 
+insert into member (member_id, member_pass, member_name, member_email) values ('admin','1234','admin','@');
 
-update member set member_pass = '132466' where member_id = 'Sijoon'
 select * from member order by member_id;
 
 delete from member where member_pass is null;

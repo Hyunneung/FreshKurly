@@ -1760,10 +1760,10 @@ html body .dropdown-menu>li>a:focus, html body .dropdown-menu>li>a:hover {
 .product .product-grid:hover .title a, .product-grid:hover .rating, .product-grid:hover .price{
     opacity: 100;
 }
-.product .product-grid .price span{
-    color: #fe45a1;
-    font-weight: 500;
-    text-decoration: line-through;
+.product .product-grid .price div{
+    color: #8BC34A;
+    font-size: 25px;
+    font-weight: bolder;
     margin: 0 5px 0 0;
     display: inline-block;
 }

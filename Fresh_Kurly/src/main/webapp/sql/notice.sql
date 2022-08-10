@@ -20,9 +20,8 @@ private int		notice_num;	     //글번호
 	private String  notice_date;	
 	
 
-insert into NOTICE (notice_num, notice_name, notice_pass, notice_subject, NOTICE_CONTENT, notice_view 
-                    ) 
-values(1, 'admin', '1234', '공지사항', '테스트 입니다.'  ,0);
+insert into NOTICE (notice_num, notice_name, notice_pass, notice_subject, NOTICE_CONTENT, notice_view) 
+			values	(5, 'admin', 1234, '공지사항', '테스트 입니다.'  ,0);
 
 select * from notice;
 

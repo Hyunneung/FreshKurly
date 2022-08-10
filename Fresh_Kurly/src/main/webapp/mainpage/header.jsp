@@ -121,7 +121,7 @@
 											<button class="accordion" onClick="location.href='join.net'"
 											style="color:black">
 												<i class="fa fa-pencil"></i>
-													로그인 
+													회원가입 
 											</button>
 											<div class="panel">
 											</div>
@@ -147,7 +147,7 @@
 												<p><a href="myWish.my">찜한상품</a></p>
 												<p><a href="myQna.my">상품문의</a></p>
 												<p><a href="myProfile.my">개인정보수정</a></p>
-												<p><a href="myWithdraw.my">회원탈퇴</a></p>
+												<p><a href="Withdraw.net">회원탈퇴</a></p>
 											</div>
 										</li>
 										
@@ -159,9 +159,10 @@
 											관리자페이지
 										</button>
 											<div class="panel">
-												<p><a href=""></a></p>
-												<p><a href=""></a></p>
-												<p><a href=""></a></p>
+												<p><a href="NoticeList.bo">공지사항</a></p>
+												<p><a href="">문의 응답하기</a></p>
+												<p><a href="">회원 리스트</a></p>
+												<p><a href="">상품 리스트</a></p>
 											</div>
 									</li>
 								</c:if>		
@@ -170,7 +171,7 @@
 										<li>
 											<button class="accordion" onClick="location.href='logout.net'">
 												<i class="fa fa-sign-out"></i>
-													로그아웃 
+												로그아웃 
 											</button>
 											<div class="panel">
 											</div>
@@ -211,40 +212,55 @@
 						<div class="row">
 							<div class="col-sm-9 tb-menu-with">
 								<ul id="nav-menu" class="navbar-nav">
-									<li class="nav-item active"><a href="index.jsp"
+									<li class="nav-item"><a href="index.jsp"
 										class="nav-link">Home</a></li>
 
 									<li class="nav-item dropdown-colr"><a href="#about"
 										class="nav-link">전체 카테고리</a>
 										<ul class="dropdown-menu">
-											<li class="nav-item"><a href="category.html"
-												class="nav-link">과일</a></li>
-											<li class="nav-item"><a href="category.html"
-												class="nav-link">야채</a></li>
-											<li class="nav-item"><a href="category.html"
-												class="nav-link">정육/계란</a></li>
-											<li class="nav-item"><a href="category.html"
-												class="nav-link">밀키트</a></li>
-											<li class="nav-item"><a href="category.html"
-												class="nav-link">냉장/냉동/간편식</a></li>
-											<li class="nav-item"><a href="category.html"
-												class="nav-link">통조림</a></li>
-											<li class="nav-item"><a href="category.html"
-												class="nav-link">수산/건어물</a></li>
-											<li class="nav-item"><a href="category.html"
-												class="nav-link">쌀/잡곡</a></li>
-											<li class="nav-item"><a href="category.html"
-												class="nav-link">우유/유제품</a></li>
-											<li class="nav-item"><a href="category.html"
-												class="nav-link">간식/떡/빙과</a></li>
-											<li class="nav-item"><a href="category.html"
-												class="nav-link">장/양념/소스</a></li>
-										</ul></li>
+											<li class="nav-item">
+												<a href="category.html"class="nav-link">과일</a>
+											</li>
+											<li class="nav-item">
+												<a href="category.html"class="nav-link">야채</a>
+											</li>
+											<li class="nav-item">
+												<a href="category.html" class="nav-link">정육/계란</a>
+											</li>
+											<li class="nav-item">
+												<a href="category.html" class="nav-link">밀키트</a>
+											</li>
+											<li class="nav-item">
+												<a href="category.html" class="nav-link">냉장/냉동/간편식</a>
+											</li>
+											<li class="nav-item">
+												<a href="category.html" class="nav-link">통조림</a>
+											</li>
+											<li class="nav-item">
+												<a href="category.html" class="nav-link">수산/건어물</a>
+											</li>
+											<li class="nav-item">
+												<a href="category.html" class="nav-link">쌀/잡곡</a>
+											</li>
+											<li class="nav-item">
+												<a href="category.html" class="nav-link">우유/유제품</a>
+											</li>
+											<li class="nav-item">
+												<a href="category.html" class="nav-link">간식/떡/빙과</a>
+											</li>
+											<li class="nav-item">
+												<a href="category.html" class="nav-link">장/양념/소스</a>
+											</li>
+										</ul>
+									</li>
 									
-									<li class="nav-item"><a href="blog.html" class="nav-link">공지사항</a></li>
+									<li class="nav-item">
+										<a href="NoticeList.bo" class="nav-link">공지사항</a>
+									</li>
 									
-									<li class="nav-item"><a href="contact.html"
-										class="nav-link">상품 문의</a></li>
+									<li class="nav-item">
+										<a href="contact.html" class="nav-link">상품 문의</a>
+									</li>
 								</ul>
 							</div>
 						</div>
