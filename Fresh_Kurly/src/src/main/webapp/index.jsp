@@ -45,7 +45,7 @@
 </head>
 <body>
 	<header class="header-area">
-		<%@ include file="mainpage/header.jsp" %>
+		<jsp:include page="mainpage/header.jsp" />
 	</header>
 	<!-- Header End -->
 	
