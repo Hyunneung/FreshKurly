@@ -52,10 +52,9 @@ public class ProfileUpdateAction implements Action {
 		out.println("<script>");
 		out.println("alert('회원정보가 수정되었습니다.');");
 		out.println("history.go(-2)");
-		//out.println("location.href='myPage.my';");
 		out.println("</script>");
 		out.close();
-		return null; //.. ????? 아닌거같은데 ㅜㅜ 
+		return null;
 	}
 
 }

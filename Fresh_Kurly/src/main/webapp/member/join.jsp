@@ -9,7 +9,6 @@
 	<script src="assets/js/member/join.js"></script>
 </head>
 <style>
-	/* #jumin1, #jumin2 {width:210px;} */
 	img{width:30px; height:30px; opacity:0.5; cursor: pointer;}
 </style>
 <body>
