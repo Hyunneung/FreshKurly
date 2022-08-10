@@ -3,8 +3,6 @@
 <html>
 <head>
 <title>로그인 페이지</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src = "http://code.jquery.com/jquery-latest.js"></script>
 <!-- 네이버 소셜 로그인 스크립트 -->
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
@@ -38,8 +36,8 @@ a {color:black;}
 
 img {width:50px; height:50px}
 
-button {background:#8BC34A; font-weight:bold; color: white; font-size: 20px;
-		padding-top:10px; padding-bottom:10px; margin:10px;
+button {background:#8BC34A; font-weight:bold; color: white; font-size: 30px;
+		padding-top:10px; padding-bottom:10px; margin:30px;
 		border:0; border-radius: 12px; width:500px }
 		
 </style>

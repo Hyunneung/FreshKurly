@@ -3,8 +3,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>마이페이지 - 찜한상품</title>
 <style>
 	button{border:0; border-radius: 5px; color:white; font-weight:bold}
@@ -12,23 +10,15 @@
 	#deletebtn {background:grey;}
 	#addbtn {background:#8BC34A;}
 	
-	body {margin: 0 auto; }
-	* {text-align: left}
-	h6 {color:gray; font-weight:bold;}
-	hr {
-	    border: 0;
-	    height: 2px;
-	    background: #ccc;}
-	    
 	input { border:none; width:25px; text-align:center}
 	input:focus {outline: none;}    
 	#item_price{width:60px}
 	
 	table {width:900px}
-	tbody > tr:nth-child(1) > td:nth-child(0){width:200px}
-    tbody > tr:nth-child(1) > td:nth-child(2){width:300px}
-    tbody > tr:nth-child(1) > td:nth-child(3){width:200px}
-    tbody > tr:nth-child(1) > td:nth-child(3){width:200px}
+    tbody > tr:nth-child(1) > td:nth-child(2){width:20%}
+    tbody > tr:nth-child(1) > td:nth-child(3){width:30%}
+    tbody > tr:nth-child(1) > td:nth-child(4){width:30%}
+    tbody > tr:nth-child(1) > td:nth-child(5){width:20%}
     
 	input[type=button] {width:80px; height:35px; color: white; border-radius: 12px; margin:5px}
 </style>
@@ -94,50 +84,47 @@
 </script>
 </head>
 <body>
-<section id="login"> 
-    <div class="container-fluid">
-            <div class="myCard">
-                <div class="row">
-                    <div class="col-md-10">
-                        <div class="myLeftCtn">	
-							<form class="myForm text-center" method="" action="" enctype="multipart/form-data">
-								<header>찜한상품</header>
-								<hr>
-								
-								<!-- 찜한상품이 있는 경우 -->
-								<c:if test="${listcount > 0}">
-									<table>
-										<tbody>
-											<c:forEach var="w" items="${wishlist}">
-												<tr>
-													<td>
-														<input type="hidden" name="item_id" id="item_id" value="${w.item_id}">
-													</td>
-													<td>${w.item_image}</td> <!-- <input type="image" src="${w.item_image}"> -->
-													<td>${w.item_name}</td>
-													<td><input type="text" name="item_price" id="item_price" value="<fmt:formatNumber value="${w.item_price}" pattern="#,###"/>" readonly></td>
-													<!-- 찜한상품 장바구니 담기/삭제 버튼 -->
-													<td>
-														<input type="button" name="addbtn" id="addbtn" value="담기"><br>
-														<input type="button" name="deletebtn" id="deletebtn" value="삭제">
-													</td>
-												</tr>
-											</c:forEach>
-										</tbody>
-									</table>
-								</c:if>
-					
-					
-								<!-- 찜한상품이 없는 경우 -->
-								<c:if test="${listcount == 0}">
-									<font size=5>찜한 상품이 없습니다.</font>
-								</c:if>
-							</form>
-						</div>
-                    </div>
-                </div>
-            </div>
-	    </div>
-	</section>
+   	<div class="col-md-8">
+       	<div class="myLeftCtn">	
+			<form class="myForm text-center">
+				<header>찜한상품</header>
+				<hr>
+							
+				<!-- 찜한상품이 있는 경우 -->
+				<c:if test="${listcount > 0}">
+					<table class="table" frame=void>
+						<tbody>
+							<c:forEach var="w" items="${wishlist}">
+								<tr>
+									<td>
+										<input type="hidden" name="item_id" id="item_id" value="${w.item_id}">
+									</td>
+									<td> <!-- 상품이미지 -->
+										${w.item_image} <!-- <input type="image" src="${w.item_image}"> -->
+									</td>
+									<td> <!-- 상품명 -->
+										${w.item_name}
+									</td>
+									<td> <!-- 상품가격 -->
+										<input type="text" name="item_price" id="item_price" value="<fmt:formatNumber value="${w.item_price}" pattern="#,###"/>" readonly>
+									</td>
+									<td> <!-- 찜한상품 장바구니 담기/삭제 버튼 -->
+										<input type="button" name="addbtn" id="addbtn" value="담기"><br>
+										<input type="button" name="deletebtn" id="deletebtn" value="삭제">
+									</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</c:if>
+	
+	
+				<!-- 찜한상품이 없는 경우 -->
+				<c:if test="${listcount == 0}">
+					<font size=5>찜한 상품이 없습니다.</font>
+				</c:if>
+			</form>
+		</div>
+   	</div>
 </body>
 </html>
