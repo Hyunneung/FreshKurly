@@ -3,103 +3,121 @@
 <html lang="en">
 <head>
 <title> 개인정보 수정 - 비밀번호 확인 </title>
-<meta charset="utf-8">
-<script src="http://code.jquery.com/jquery-latest.js"></script> <!-- 제이쿼리 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script> <!-- 주소검색 -->
 </head>
-
 <style>
-img{width:30px; height:30px; opacity:0.5; cursor: pointer;}
+	img{width:30px; height:30px; opacity:0.5; cursor: pointer;}
 </style>
 <script>
 	$(document).ready(function() {
-			// 비밀번호, 비밀번호 확인 - 눈모양 클릭하면 텍스트 보여준다
-			$("#img1").on('click', function() {
-				$('#pass').toggleClass('active');
-				if ($('#pass').hasClass('active')) {
-					$('#pass').attr('type', 'text');
-					$('#img1').attr('src', 'assets/image/pass_unshown.png')
-				} else {
-					$('#pass').attr('type', 'password');
-					$('#img1').attr('src', 'assets/image/pass_show.png')
-				}
-			})
-			$("#img2").on('click', function() {
-				$('#pass2').toggleClass('active');
-				if ($('#pass2').hasClass('active')) {
-					$('#pass2').attr('type', 'text');
-					$('#img2').attr('src', 'assets/image/pass_unshown.png')
-				} else {
-					$('#pass2').attr('type', 'password');
-					$('#img2').attr('src', 'assets/image/pass_show.png')
-				}
-			})
-			
-			
-			// 비밀번호 형식 검사
-			var passcheck_value = ''; // pass 검사에 사용된 비밀번호를 저장할 변수
-			var checkpass = false;
-			function passcheck() {
-				if (!($.trim($("#pass2").val()) == $.trim($("#pass").val()))) {
-					$("#pass2_message").css('color', 'red').html("동일한 비밀번호를 입력하세요.");
-				} else {
-					$("#pass2_message").empty();
-				}
+		// 비밀번호, 비밀번호 확인 - 눈모양 클릭하면 텍스트 보여준다
+		$("#img1").on('click', function() {
+			$('#pass').toggleClass('active');
+			if ($('#pass').hasClass('active')) {
+				$('#pass').attr('type', 'text');
+				$('#img1').attr('src', 'assets/image/member/pass_unshown.png')
+			} else {
+				$('#pass').attr('type', 'password');
+				$('#img1').attr('src', 'assets/image/member/pass_show.png')
 			}
-			$("#pass").on('keyup', function() {
-				$("#pass_message").empty();
-				// pass 형식 확인
-				passcheck_value = $.trim($("#pass").val());
-				if (passcheck_value.length < 6) {
-					$("#pass_message").css('color', 'red').html("공백 없이 6자 이상 입력하세요.");
-					checkpass = false;
-					return;
-				}
-				passcheck();
-			}) // pass 형식 확인 keyup end
-			// pass2 검사 (비밀번호 확인)
-			$("#pass2").on('keyup', function() {
+		})
+		$("#img2").on('click', function() {
+			$('#pass2').toggleClass('active');
+			if ($('#pass2').hasClass('active')) {
+				$('#pass2').attr('type', 'text');
+				$('#img2').attr('src', 'assets/image/member/pass_unshown.png')
+			} else {
+				$('#pass2').attr('type', 'password');
+				$('#img2').attr('src', 'assets/image/member/pass_show.png')
+			}
+		})
+		
+		
+		// 비밀번호 형식 검사
+		var passcheck_value = ''; // pass 검사에 사용된 비밀번호를 저장할 변수
+		var checkpass = false;
+		function passcheck() {
+			if (!($.trim($("#pass2").val()) == $.trim($("#pass").val()))) {
+				$("#pass2_message").css('color', 'red').html("동일한 비밀번호를 입력하세요.");
+			} else {
 				$("#pass2_message").empty();
-				// pass2 == pass 확인
-				passcheck();
-			}) // pass2 검사 end
-
+			}
+		}
+		$("#pass").on('keyup', function() {
+			$("#pass_message").empty();
+			// pass 형식 확인
+			passcheck_value = $.trim($("#pass").val());
+			if ( 0 < passcheck_value.length && passcheck_value.length < 6) {
+				$("#pass_message").css('color', 'red').html("공백 없이 6자 이상 입력하세요.");
+				checkpass = false;
+				return;
+			} else if(  passcheck_value.length == 0 ) {
+				$("#pass_message").empty();
+			}
+			passcheck();
+		}) // pass 형식 확인 keyup end
+		// pass2 검사 (비밀번호 확인)
+		$("#pass2").keyup(function() {
+			$("#pass2_message").empty();
+			// pass2 == pass 확인
+			passcheck();
+		}) // pass2 검사 end
 			
-			//이메일 인증
-			$("#emailchkbtn").click(function() {
-				$("#certification_ok").attr('type', 'text')
-				$("#certification_btn").attr('type', 'button')
-	
-				input_email = $.trim($('#email').val());
-				if (input_email == "") {
-					alert("이메일을 입력해주세요");
-					$('#email').focus();
-					return false;
-				} else {
-					$.ajax({
-						url : "emailcheck.net",
-						data : {
-							"email" : input_email
-						},
-						success : function(rdata) {
-							$("#save_email_num").val(rdata);
-						} // success end
-					}) // ajax end
-				} // if-else end
-			});
-			$('#certification_btn').click(function() {
-				if ($('#certification_ok').val() == $("#save_email_num").val()) {
-					email_ok = $('#certification_ok').val();
-					alert('인증 성공');
-				} else {
-					email_ok = "";
-					alert('인증 실패');
-				}
+		//이메일 인증
+		var emailcheck_value = ''; // 이메일 중복 검사에 사용된 이메일을 저장할 변수
+		var email_check_ok = "n";
+		$('#email').keyup(function() {
+			if( $.trim($('#email').val()) == "${member.member_email}" ) {
+				email_check_ok = "y";
+			}
+		})
+		$("#emailchkbtn").click(function() {
+			input_email = $.trim($('#email').val());
+			if (input_email == "") {
+				alert("이메일을 입력해주세요");
+				$('#email').focus();
+				return false;
+			} else if( input_email == "${member.member_email}" ) {
+				alert("기존과 동일한 이메일입니다.")
+			} else {
+				emailcheck_value = input_email;
+				$.ajax({ // 이메일 중복 검사 ajax
+					url: "emailcheck2.net", 
+					data: { "email": input_email },
+					success: function(rdata) {
+						if (rdata != 0) { // DB에 해당 email이 있는 경우 (rdata == 1)
+							alert("이미 등록된 이메일입니다.");
+						} else { // DB에 해당 email이 없는 경우
+							$("#certification_ok").attr('type', 'text')
+							$("#certification_btn").attr('type', 'button')
+								$.ajax({ // 이메일 메일 전송 후 인증번호 받는 ajax
+								url: "emailcheck.net",
+								data: { "email": input_email },
+								success: function(rdata) {
+									$("#save_email_num").val(rdata);
+								} // success end
+							}) // 이메일 메일 전송 후 인증번호 받는 ajax end
+						} 
+					} // success end
+				}) // 이메일 중복 검사 ajax end
+			}
+		});
+		$('#certification_btn').click(function() {
+			if ($('#certification_ok').val() == $("#save_email_num").val()) {
+				email_ok = $('#certification_ok').val();
+				email_check_ok = "y";
+				alert('이메일 인증에 성공하셨습니다');
+			} else {
+				email_ok = "";
+				alert('인증번호가 일치하지 않습니다. 다시 입력해주세요.');
+			}
 		}) // 인증번호 확인 버튼
+		
 		
 		// 휴대폰 번호 바뀌었으면 중복확인 했는지 확인
 		var phonecheck_value = ''; // 휴대폰번호 중복 검사에 사용된 휴대폰번를 저장할 변수
 		var checkphone = false;
+		var phone_check_ok = "n";
 		// 휴대폰번호 중복 확인
 		$('#phone').on('keyup', function() {
 			if( $.trim($('#phone').val()) != "${member.member_phone}" ) {
@@ -139,13 +157,10 @@ img{width:30px; height:30px; opacity:0.5; cursor: pointer;}
 							}
 						}
 					}) // $.ajax end
-			} // if-else end
+				} // if-else end
 			}
 		}) // phonechkbtn click end 
-		
-		
-		
-		
+
 		
 		// 우편번호 버튼
 		$('#postcodebtn').click(function() {
@@ -189,21 +204,21 @@ img{width:30px; height:30px; opacity:0.5; cursor: pointer;}
 		
 		
 		// ----------------------------------------회원정보 수정 버튼----------------------------------------
-		// 1.비번 바꿨으면 비번확인이랑 일치하는지 2. 이메일 바꿨으면 중복확인 했는지 안 했는지 3.휴대폰 번호 바꿨으면 중복확인 했는지 안 했는지 검사!!
+		// 1.비번 바꿨으면 비번확인이랑 일치하는지 2. 이메일 바꿨으면 중복확인 했는지 안 했는지 3.휴대폰 번호 바꿨으면 중복확인 했는지 안 했는지 검사
 		// sumitbtn - 회원정보 수정 버튼
-		$('form').submit(function() {
+		$("#submitbtn").click(function(){
 			// 1. 비밀번호, 비밀번호 확인 동일한지 확인
 			if( $("#pass").val() != $("#pass2").val() ){
 				alert("비밀번호를 확인 해주세요");
 				return false;
 			}
 			// 2. 이메일 바꿨으면 중복확인 했는지 검사
-			if( $("#email").val() != "${member.member_email}" && $("#emailchkok").val() == "n" ) {
+			if( $("#email").val() != "${member.member_email}" && email_check_ok == "n" ) {
 				alert('변경된 이메일을 인증하세요');
 				return false;
 			}
 			// 3.휴대폰 번호 바꿨으면 중복확인 했는지 검사
-			if( $.trim($('#phone').val()) != "${member.member_phone}" && phone_check_ok != "y") {
+			if( $.trim($('#phone').val()) != "${member.member_phone}" && phone_check_ok == "n") {
 				alert('변경된 휴대폰번호의 중복여부를 확인하세요');
 				return false;
 			}
@@ -218,28 +233,17 @@ img{width:30px; height:30px; opacity:0.5; cursor: pointer;}
 		}) // 회원정보 수정 버튼 end
 	
 	
-	
-	
 }); // ready() end
 </script>
 
 <!-- 비밀번호 제외한 모든 값은 기존 정보로 입력되어 있다 -->
 <body>
 	<section id="check-out">
-
-		<!--Main layout-->
 		<main class="tb-mt-pd">
 			<div class="container wow fadeIn">
-				<!--Grid row-->
 				<div class="row">
-
-					<!--Grid column-->
 					<div class="col-md-8 tb-left">
-
-						<!--Card-->
 						<div class="card">
-
-							<!--Card content-->
 							<form action="myProfileUpdate.my" method="post" class="card-body" >
 
 								<!-- 아이디 -->
@@ -252,7 +256,7 @@ img{width:30px; height:30px; opacity:0.5; cursor: pointer;}
 								<div class="md-form tb-mr-bt">
 									<label for="pass" style="font-size: 10pt">새 비밀번호</label>
 									<input type="password" name="pass" id="pass" class="form-control">
-									<span><img src="assets/image/pass_show.png" id="img1"></span><br>
+									<span><img src="assets/image/member/pass_show.png" id="img1"></span><br>
 									<span id="pass_message"></span>
 								</div>
 
@@ -260,7 +264,7 @@ img{width:30px; height:30px; opacity:0.5; cursor: pointer;}
 								<div class="md-form tb-mr-bt">
 									<label for="pass2" style="font-size: 10pt">새 비밀번호 확인</label>
 									<input type="password" name="pass2" id="pass2" class="form-control">
-									<span><img src="assets/image/pass_show.png" id="img2"></span><br>
+									<span><img src="assets/image/member/pass_show.png" id="img2"></span><br>
 									<span id="pass2_message"></span>
 								</div>
 								
@@ -301,36 +305,14 @@ img{width:30px; height:30px; opacity:0.5; cursor: pointer;}
 								</div>
 
 								<hr class="mb-4">
-								<button class="btn btn-primary btn-lg btn-block" type="submit">회원정보수정</button>
+								<button class="btn btn-primary btn-lg btn-block" type="submit" id="submitbtn">회원정보수정</button>
 
 							</form>
 						</div>
-						<!--/.Card-->
 					</div>
-					<!--Grid column-->
-
-					<!--Grid column-->
-					<div class="col-md-4 mb-4"></div>
-					<!--Grid column-->
-
 				</div>
-				<!--Grid row-->
-
 			</div>
 		</main>
-		<!--Main layout-->
-
-
 	</section>
-
-
-	<!-- back-to-top scrtion -->
-<div class="top_button">
-  <a class="back-to-top" style="cursor:pointer;" id="top-scrolltop"><i class="fa fa-angle-up"></i></a>
-</div>
-	<script src="assets/vendor/bootstrap/js/moment.min.js"></script>
-	<script src="assets/vendor/bootstrap/js/bootstrap-datetimepicker.js"></script>
-	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="assets/js/custom.js"></script>
 </body>
 </html>

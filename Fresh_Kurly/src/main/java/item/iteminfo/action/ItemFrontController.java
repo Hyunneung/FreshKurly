@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.member.action.MemberInfoAction;
-
 
 @WebServlet("*.item")
 public class ItemFrontController extends HttpServlet {
@@ -46,12 +44,10 @@ public class ItemFrontController extends HttpServlet {
 		case "/itemList.item": // 물품 리스트 보기 , 검색
 			action = new ItemSearchAction();
 			break;
-		case "/itemInsert.item": // 물품 등록 클릭 시
-			action = new ItemInsertAction();
+		/* 
+		case "/join.item": // 물품 등록
+			action = new ItemJoinAction();
 			break;
-		case "/insertProcess.item": // 값 데이터 베이스로
-			action = new ItemInsertProcessAction();
-			/*
 		case "/ItemUpdate.item": // 물품 수정
 			action = new ItemUpdateAction();
 			break;	
@@ -59,9 +55,6 @@ public class ItemFrontController extends HttpServlet {
 			action = new ItemDeleteAction();
 			break; 
 		*/
-		case "/itemInfo.net":
-			action = new ItemInfoAction();
-			break;
 		} // switch end
 		forward = action.execute(request, response);
 		

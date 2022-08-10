@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="http://code.jquery.com/jquery-latest.js"></script> <!-- 제이쿼리 -->
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script> <!-- 주소검색 -->
-	<script src="js/join.js"></script> 
+	<script src="assets/js/member/join.js"></script>
 </head>
 <style>
 	/* #jumin1, #jumin2 {width:210px;} */
@@ -39,7 +39,7 @@
 								<div class="md-form tb-mr-bt">
 									<label for="pass" style="font-size: 10pt">비밀번호<font color='red'>*</font></label>
 							        <input type="password" class="form-control" name="pass" id="pass" placeholder="비밀번호를 입력해주세요" required>
-							        <span><img src="assets/image/pass_show.png" id="img1"></span><br>
+							        <span><img src="assets/image/member/pass_show.png" id="img1"></span><br>
 							        <span id="pass_message"></span>
 								</div>
 
@@ -47,7 +47,7 @@
 								<div class="md-form tb-mr-bt">
 									<label for="pass2" style="font-size: 10pt">비밀번호확인<font color='red'>*</font></label>
 							        <input type="password" class="form-control" name="pass2" id="pass2" placeholder="비밀번호를 한 번 더 입력해주세요" required>
-							        <span><img src="assets/image/pass_show.png" id="img2"></span><br>
+							        <span><img src="assets/image/member/pass_show.png" id="img2"></span><br>
 							        <span id="pass2_message"></span>
 								</div>
 
@@ -81,7 +81,7 @@
 									<input type="button" value="이메일 인증" id="emailchkbtn">
 									<input type="hidden" name="certification_ok" id="certification_ok" class="form-control" placeholder="인증번호 입력" maxlength="6" required>
 									<input type="hidden" id="certification_btn" value="인증번호 확인 버튼">
-									<input type="hidden" name="save_email_num" id="save_email_num"> <!-- ajax로 넘어온 인증번호 저장 hidden으로 바꾸기 -->
+									<input type="hidden" name="save_email_num" id="save_email_num">
 									<input type="hidden" id="emailchkok" value='n'> <!-- 인증 성공실패 여부 -->
 								</div>
 
@@ -89,10 +89,9 @@
 								<div class="md-form tb-mr-bt">
 									<label for="address" style="font-size: 10pt">우편번호<font color='red'>*</font></label>
 						        	<input type="button" value="우편검색" id="postcodebtn" style="color:white; font-weight:bold"><br>
-						        	<input type="hidden" class="form-control" name="postcode" id="postcode" maxLength="5" disabled required><br>                  
-						        	<input type="hidden" class="form-control" name="address" id="address" required>
+						        	<input type="text" class="form-control" name="postcode" id="postcode" maxLength="5" readonly required><br>                  
+						        	<input type="text" class="form-control" name="address" id="address" required>
 						        	<input type="hidden" size="5" name="post" id="post"><br> <!-- 서블릿으로 넘겨줄 우편번호 input (∵ #postcode 넘기면 null 반환됨) -->               
-									<input type="hidden" id="postcheck_num" value="n">
 								</div>
 								
 								<!-- 성별 -->
@@ -115,7 +114,7 @@
 								<!-- 가입하기 -->	
 								<hr class="mb-4">
 								<div class="clearfix">
-									<button type="submit" class="submitbtn">가입하기</button>
+									<button type="submit" class="submitbtn" id="submitbtn">가입하기</button>
 								</div>	
 							</form>
 						</div>
@@ -124,9 +123,6 @@
 			</div>
 		</main>
 	</section>
-
-
-<!-- back-to-top scrtion -->
 <div class="top_button">
   <a class="back-to-top" style="cursor:pointer;" id="top-scrolltop"><i class="fa fa-angle-up"></i></a>
 </div>

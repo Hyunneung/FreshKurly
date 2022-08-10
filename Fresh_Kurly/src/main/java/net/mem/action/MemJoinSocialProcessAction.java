@@ -17,26 +17,16 @@ public class MemJoinSocialProcessAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		// String social = request.getParameter("social"); // 어떤 소셜로 로그인했는지 
-		
 		// 소셜 로그인 시 DB에 저장할 데이터 한글 깨짐 방지
 		request.setCharacterEncoding("UTF-8"); 
 		
 		HttpSession session = request.getSession();
 		
 		// 소셜로 받아온 id, name, email 저장
+		String social = request.getParameter("social");
 		String id = request.getParameter("socialId");
 		String name = request.getParameter("socialName");
 		String email = request.getParameter("socialEmail");
-		
-		// 소셜로그인은 비밀번호 주지 않으므로 난수 발생
-//		String pass = "";
-//		int pw = 0;
-//		while(pw < 99999) {
-//			pw = (int)(Math.random() * 1000000);
-//			pass = String.valueOf(pw); // 6자리 난수 발생
-//		}
-		
 		
 		Mem m = new Mem();
 		m.setMember_id(id);
@@ -62,14 +52,13 @@ public class MemJoinSocialProcessAction implements Action {
 		// 회원가입 성공
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
+		
 		if(result == 1) { // 삽입 성공
 			// 회원가입 성공 시 해당 아이디로 자동 로그인 됨
-			session.setAttribute("id", id); 
-			
-			//request.setAttribute("id", id);
+			session.setAttribute("id", id);
+			session.setAttribute("social", social); // 어떤 소셜로 로그인했는지 저장
 			request.setAttribute("name", name);
 			request.setAttribute("email", email);
-			//request.setAttribute("pass", pass);
 			System.out.println("db저장성공");
 			out.println("alert('회원 가입을 축하합니다.')");
 			
@@ -81,9 +70,10 @@ public class MemJoinSocialProcessAction implements Action {
 		} else if (result == -1) { // catch(java.sql.SQLIntegrityConstraintViolationException e)에 에러 잡히면 result=-1 된다
 			// ***** 이미 소셜 로그인 있으면 바로 로그인 되게 하기
 			session.setAttribute("id", id);
+			session.setAttribute("social", social); // 어떤 소셜로 로그인했는지 저장
 			ActionForward forward = new ActionForward();
 			forward.setRedirect(true);
-			forward.setPath("mainPage.main"); // 임시 메인페이지로 이동 - MainPage.main
+			forward.setPath("http://localhost:8088/Fresh_Kurly/"); //초기화면으로 이동
 			return forward;
 		}
 		out.println("</script>");

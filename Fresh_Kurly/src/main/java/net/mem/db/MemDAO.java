@@ -418,51 +418,183 @@ public class MemDAO {
       return result; // 
    } // profileUpdate() 메소드 끝
   
-  
-  //isEmail() start
-	public int isEmail(String email) {
+
+	// 회원가입 - 이메일 중복 검사 - DB에 중복된 이메일 있는지 없는지 확인
+	public int overlapEmail(String email){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		int result =0;
-
+		int result = 0; // DB에 해당 email이 없습니다.
+		
 		try {
 			con = ds.getConnection();
-
-			String sql = "select member_id from member where member_email = ?";
+			
+			String sql = "select member_email from member where member_email = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, email);
-			rs = pstmt.executeQuery();
-
+			rs = pstmt.executeQuery(); 
+			
 			if (rs.next()) {
-				result = 1;
+				result = 1; // DB에 해당 이메일이 있습니다.
 			}
-		} catch (Exception e) {
+		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
 			if (rs != null) {
 				try {
 					rs.close();
-				} catch (SQLException ex) {
+				} catch(SQLException ex) {
 					ex.printStackTrace();
 				}
 			}
-			if (pstmt != null) {
+			if(pstmt != null) {
 				try {
 					pstmt.close();
-				} catch (SQLException e) {
+				} catch(SQLException e) {
 					System.out.println(e.getMessage());
 				}
 			}
-			if (con != null) {
+			if(con != null) {
 				try {
 					con.close();
-				} catch (Exception e) {
+				} catch(Exception e) {
 					System.out.println(e.getMessage());
 				}
 			}
 		} // finally end
-		return result;
-	} //isEmail() end
+		return result; // DB에 email 있으면 1, 없으면 0
+	} // overlapEmail(email) end
+
+  
+	//findId () start -- 이메일로 아이디를 찾는 메서드
+	public String findId(String getter) {
+		Connection con = null;
+	    PreparedStatement pstmt = null;
+		ResultSet rs = null;
+	    String findId = null;
+		
+		try {
+			con = ds.getConnection();
+			
+			String sql = "SELECT member_id FROM member WHERE member_email =?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, getter);
+
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				findId = rs.getString("member_id");
+				System.out.println("아이디 : "+findId);
+			}
+				
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return findId;
+	} // findId() end
+
+	
+	//isMember() start --이메일과 아이디로 가입된 사람이 있는지 확인하는 메서드
+	public boolean isMember(String input_email, String input_id) {
+		Connection con = null;
+	    PreparedStatement pstmt = null;
+		ResultSet rs = null;
+	    boolean isMember = false;
+		
+		try {
+			con = ds.getConnection();
+			
+			String sql = "SELECT * FROM member WHERE member_email = '" + input_email + "' and member_id = '" + input_id + "'";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			System.out.println(sql);
+
+			if(rs.next()) {
+				isMember=true;
+			} else {
+				isMember=false;
+			}	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return isMember;
+	}//is Member()end
+
+
+	public int changePW(String id, String new_password) {
+		Connection con = null;
+	    PreparedStatement pstmt = null;
+	    int result = 0; 
+	      
+	      try {
+	         con = ds.getConnection();
+	         
+	         String sql = "update member set member_pass = ? where member_id = ?";
+	         
+	         pstmt = con.prepareStatement(sql);
+	         pstmt.setString(1, new_password);
+	         pstmt.setString(2, id);
+	         result = pstmt.executeUpdate(); // 수정 성공하면 1, 실패하면 0
+	         
+	         if (result ==1)
+	        	 System.out.println("DB - 비밀번호 수정 성공");
+	      } catch(Exception e) {
+	         e.printStackTrace();
+	      } finally {
+	         if(pstmt != null) {
+	            try {
+	               pstmt.close();
+	            } catch(SQLException e) {
+	               System.out.println(e.getMessage());
+	            }
+	         }
+	         if(con != null) {
+	            try {
+	               con.close();
+	            } catch(Exception e) {
+	               System.out.println(e.getMessage());
+	            }
+	         }
+	      } // finally end
+	      return result; // 삽입 성공하면 1, 실패하면 0
+	}
+
+
+	public int deleteUser(String id) {
+		Connection con = null;
+	    PreparedStatement pstmt = null;
+	    int result = 0; 
+	      
+	      try {
+	         con = ds.getConnection();
+	         
+	         String sql = "delete from member where member_id = ?";
+	         
+	         pstmt = con.prepareStatement(sql);
+	         pstmt.setString(1, id);
+	         result = pstmt.executeUpdate(); // 수정 성공하면 1, 실패하면 0
+	         
+	         if (result ==1)
+	        	 System.out.println("DB - 비밀번호 수정 성공");
+	      } catch(Exception e) {
+	         e.printStackTrace();
+	      } finally {
+	         if(pstmt != null) {
+	            try {
+	               pstmt.close();
+	            } catch(SQLException e) {
+	               System.out.println(e.getMessage());
+	            }
+	         }
+	         if(con != null) {
+	            try {
+	               con.close();
+	            } catch(Exception e) {
+	               System.out.println(e.getMessage());
+	            }
+	         }
+	      } // finally end
+	      return result; // 삭제 성공시 1 실패시 0
+	}
   
 }

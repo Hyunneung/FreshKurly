@@ -71,19 +71,32 @@ public class QnaDAO {
 		return listcount; 
 	} // getQnaListCount(String id) end
 	// qna에 담긴 문의내역 리스트
-	public List<Qna> getQnaList(String id) {
+	public List<Qna> getQnaList(String id, int page, int limit) {
 		List<Qna> list = new ArrayList<Qna>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-			try {
+		String sql = "select * "
+				   + "from ( select rownum rnum, j.* "
+				   + "		from ( select * "
+				   + "				from qna left outer join member "
+				   + "				on qna.member_id = member.member_id "
+				   + "				where member.member_id = ? "
+				   + "				order by qna_reg_date desc) j "
+				   + "		where rownum <= ? ) "
+				   + "where rnum >= ? and rnum <= ?";
+		// 한 페이지 당 10개씩 목록인 경우 1페이지, 2페이지, 4페이지 ...
+		int startrow = (page - 1) * limit + 1; // 읽기 시작할 row 번호(1 11 21 31 ...
+		int endrow = startrow + limit - 1;     // 읽을 마지막 row 번호(10 20 30 40 ...
+				
+		try {
 			con = ds.getConnection();
 			
-			String sql = "select * "
-					   + "from qna join member "
-					   + "on qna.member_id = member.member_id ";
-			
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setInt(2, endrow);
+			pstmt.setInt(3, startrow);
+			pstmt.setInt(4, endrow);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -94,7 +107,7 @@ public class QnaDAO {
 				String qna_private = rs.getString("qna_private");
 				String qna_check = rs.getString("qna_check");
 				String qna_answer = rs.getString("qna_answer");
-				String qna_reg_date = rs.getString("qna_reg_date;");
+				String qna_reg_date = rs.getString("qna_reg_date");
 
 				Qna qna = new Qna();
 				qna.setQna_number(qna_number);
@@ -109,6 +122,7 @@ public class QnaDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("getQnaList() 에러: " + e);
 		} finally {
 			if (rs != null) {
 				try {
