@@ -8,18 +8,19 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src = "http://code.jquery.com/jquery-latest.js"></script>
 <style>
-	button {background:#8BC34A; font-weight:bold; color: white;
-	padding-top:10px; padding-bottom:10px;
-	border:0; border-radius: 12px; width:400px}
-	
-	.clearfix {
-		position: absolute;
-		left:38%;
-	}
-	
-	span{margin:10px}
-	
-	form {margin:50px}
+button {background:#8BC34A; font-weight:bold; color: white;
+padding-top:10px; padding-bottom:10px;
+border:0; border-radius: 12px; width:400px}
+
+.clearfix {
+	position: absolute;
+	left:38%;
+}
+
+
+span{margin:10px}
+
+
 </style>
 </head>
 <body>
@@ -27,7 +28,7 @@
 	<jsp:include page="../mainpage/header.jsp"/>
 </header>
 	<div class="container">
-		<form action="myOrder.my" method="post">
+		<form action="myPage.my" method="post">
 			<h1>회원가입이 완료되었습니다</h1>
 			<span></span>
 			<table class="table table-border">

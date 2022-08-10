@@ -1,35 +1,28 @@
-drop table item on cascade;
+drop table item;
 
---ìƒí’ˆì •ë³´í…Œì´ë¸”
+--»óÇ°Á¤º¸Å×ÀÌºí
 create table item (
 	item_id			number(20) primary key,
 	item_name		varchar2(100) not null,
 	item_price		number(10) not null,
 	item_reg_date 	date default sysdate,
 	item_image 		varchar2(200) not null,
-	item_deliver	varchar2(200), --ìƒ›ë³„ë°°ì†¡ ì—¬ë¶€
-	item_seller		varchar2(20) default 'í”„ë ˆì‰¬ì»¬ë¦¬', --íŒë§¤ì
-	item_package	varchar2(100), --í¬ì¥íƒ€ì…
-	item_expiredate varchar2(200), --ìœ í†µê¸°í•œ
-	item_unit 		varchar2(100), --ë‹¨ìœ„
-	item_weight 	varchar2(50), --ì¤‘ëŸ‰, ìš©ëŸ‰
+	item_deliver	varchar2(200), --»ûº°¹è¼Û ¿©ºÎ
+	item_seller		varchar2(20) default 'ÇÁ·¹½¬ÄÃ¸®', --ÆÇ¸ÅÀÚ
+	item_package	varchar2(100), --Æ÷ÀåÅ¸ÀÔ
+	item_expiredate varchar2(200), --À¯Åë±âÇÑ
+	item_unit 		varchar2(100), --´ÜÀ§
+	item_weight 	varchar2(50), --Áß·®, ¿ë·®
 	item_category 	varchar2(20) not null,
-	item_intro 		varchar2(200) not null, --ìƒí’ˆ ì„¤ëª… ë³¸ë¬¸
+	item_intro 		varchar2(200) not null, --»óÇ° ¼³¸í º»¹®
 	item_stock 		number(10) not null
 )
 
 insert into item
 values
-(item_seq.nextval , 'ì¹œí™˜ê²½ ìì±„ì†Œ ê¹»ì 30g', 1590, sysdate,
- 'image/ê¹»ì', 'ìƒ›ë³„ë°°ì†¡ 23ì‹œ ì „ ì£¼ë¬¸ì‹œ ë‚´ì¼ ì•„ì¹¨ 7ì‹œ ì „ ë„ì°©',
-'í”„ë ˆì‰¬ì»¬ë¦¬', 'ëƒ‰ì¥(ì¢…ì´í¬ì¥)', 'ë†ì‚°ë¬¼ë¡œ ë³„ë„ì˜ ìœ í†µê¸°í•œì€ ì—†ìœ¼ë‚˜ ê°€ê¸‰ì  ë¹ ë¥´ê²Œ ë“œì‹œê¸° ë°”ëë‹ˆë‹¤.',
-'1ë´‰', '30g', 'ì±„ì†Œ', 'ìƒí¼í•˜ê³  ìŒ‰ìŒ€í•œ í–¥ê¸° (1ë´‰/30g)', 10000);
+(1, 'Ä£È¯°æ ÀÙÃ¤¼Ò ²¢ÀÙ 30g', 1590, sysdate, 'image/²¢ÀÙ', '»ûº°¹è¼Û 23½Ã Àü ÁÖ¹®½Ã ³»ÀÏ ¾ÆÄ§ 7½Ã Àü µµÂø',
+'ÇÁ·¹½¬ÄÃ¸®', '³ÃÀå(Á¾ÀÌÆ÷Àå)', '³ó»ê¹°·Î º°µµÀÇ À¯Åë±âÇÑÀº ¾øÀ¸³ª °¡±ŞÀû ºü¸£°Ô µå½Ã±â ¹Ù¶ø´Ï´Ù.', '1ºÀ', '30g', 'Ã¤¼Ò', '»óÅ­ÇÏ°í ½Ô½ÒÇÑ Çâ±â (1ºÀ/30g)', 10000);
 
-create sequence practice.item_seq
-increment by 1
-start with 10001
-minvalue 10001
-maxvalue 999999
 
 select * from item;
 select * from tab;

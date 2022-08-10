@@ -193,9 +193,8 @@ Header Area CSS
 }
 
 .form-inline .form-control {
-    width: 400px;
+    width: 200px;
     border-radius: 0px;
-    margin-left: -300px;
   }
 .navbar-expand-md {
    
@@ -1230,7 +1229,7 @@ html body .dropdown-menu>li>a:focus, html body .dropdown-menu>li>a:hover {
   }
 #banner-slider .viewport {
  height: 550px;
- background-color: white;
+ background-color: #f6f8f6;
   }
 
 #banner-slider .sliders {
@@ -1445,7 +1444,7 @@ html body .dropdown-menu>li>a:focus, html body .dropdown-menu>li>a:hover {
     transition: all 0.5s;
 }
 #feature-product .product-grid:hover .product-image .pic-1{
- opacity: 100; 
+ opacity: 0; 
 }
 #feature-product .product-image .pic-2{
     width: 100%;
@@ -1600,36 +1599,43 @@ html body .dropdown-menu>li>a:focus, html body .dropdown-menu>li>a:hover {
 
 /* End Feature product section page  */
 
-/**********class="product" section*************/
-.product{
+
+/*  Fruit Products section page  */
+#fruit-product{
   padding-top: 30px;
   padding-bottom: 30px;
-  background-color: #fff;
+  background-color: #f6f8f6;
 }
-.product i{
+#fruit-product i{
   color: #fff;
   padding: 0;
 }
-.product .item{
+#fruit-product .item{
   color: #fff;
   padding:10px;
 }
-.product .product-grid{ 
+#fruit-product .product-grid{ 
   font-family: 'Poppins', sans-serif;
   text-align: center;
  }
-.product .product-grid .product-image{
+#fruit-product .product-grid .product-image{
     position: relative;
     overflow: hidden;
 }
-.product .product-grid .product-image a.image{
+#fruit-product .product-grid .product-image a.image{
  display: block; 
 }
-.product .product-grid .product-image img{
+#fruit-product .product-grid .product-image img{
     width: 100%;
     height: auto;
 }
-.product .product-image .pic-2{
+#fruit-product .product-image .pic-1{ transition: all 0.5s; }
+.product-grid:hover .product-image .pic-1{
+    opacity: 0;
+    transform: scale(1.1);
+    transform-origin: left bottom;
+}
+#fruit-product .product-image .pic-2{
     width: 100%;
     height: 100%;
     transform: scale(1.1);
@@ -1640,11 +1646,11 @@ html body .dropdown-menu>li>a:focus, html body .dropdown-menu>li>a:hover {
     left: 0;
     transition: all 0.5s;
 }
-.product .product-grid:hover .product-image .pic-2{
+#fruit-product .product-grid:hover .product-image .pic-2{
     opacity: 1;
     transform: scale(1);
 }
-.product .product-grid .product-hot-label, .product-grid .product-discount-label{
+#fruit-product .product-grid .product-hot-label, .product-grid .product-discount-label{
     color: #fff;
     background: #35ce4a;
     font-size: 14px;
@@ -1656,10 +1662,10 @@ html body .dropdown-menu>li>a:focus, html body .dropdown-menu>li>a:hover {
     left: 15px;
     transition: all .3s ease;
 }
-.product .product-grid .product-discount-label{ 
+#fruit-product .product-grid .product-discount-label{ 
   background: #fe45a1; 
 }
-.product .product-grid .product-links{
+#fruit-product .product-grid .product-links{
     width: 135px;
     padding: 0;
     margin: 0;
@@ -1668,18 +1674,18 @@ html body .dropdown-menu>li>a:focus, html body .dropdown-menu>li>a:hover {
     transform: translateX(-50%);
     position: absolute;
     bottom: 0;
-    left: 80%;
+    left: 50%;
     transition: all 0.5s;
 }
-.product .product-grid:hover .product-links{
+#fruit-product .product-grid:hover .product-links{
     opacity: 1;
     bottom: 30px;
 }
-.product .product-grid .product-links li{
+#fruit-product .product-grid .product-links li{
     display: inline-block;
     margin: 0 3px;
 }
-.product .product-grid .product-links li a{
+#fruit-product .product-grid .product-links li a{
     color: #232323;
     background:#8BC34A;
     font-size: 16px;
@@ -1691,16 +1697,16 @@ html body .dropdown-menu>li>a:focus, html body .dropdown-menu>li>a:hover {
     display: block;
     transition: all 0.3s ease 0s;
 }
-.product .product-grid .product-links li a:hover{
+#fruit-product .product-grid .product-links li a:hover{
     color: #fff;
     background: #ffc107;
 }
-.product .product-grid .product-content{
+#fruit-product .product-grid .product-content{
     text-align: center;
     padding: 15px 15px 0;
     position: relative;
 }
-.product .product-grid .add-to-cart{
+#fruit-product .product-grid .add-to-cart{
     color: #fff;
     background: #8BC34A;
     font-weight: 600;
@@ -1716,61 +1722,235 @@ html body .dropdown-menu>li>a:focus, html body .dropdown-menu>li>a:hover {
     z-index: 1;
     transition: all 0.3s ease 0s;
 }
-.product .product-grid .add-to-cart:hover{
+#fruit-product .product-grid .add-to-cart:hover{
  background: #ffc107; 
 }
-.product .product-grid:hover .add-to-cart{
+#fruit-product .product-grid:hover .add-to-cart{
     opacity: 1;
     transform: translateX(-50%) translateY(-50%);
     top: 50%;
 }
-.product .product-grid .add-to-cart i{ 
+#fruit-product .product-grid .add-to-cart i{ 
   margin: 0 5px 0 0; 
 }
-.product .product-grid .title{
+#fruit-product .product-grid .title{
     font-size: 16px;
     font-weight: 500;
     letter-spacing: 0.5px;
     text-transform: capitalize;
     margin: 0 0 7px;
 }
-.product .product-grid .title a{
+#fruit-product .product-grid .title a{
     color: #444;
     transition: all 0.3s ease;
 }
-.product .product-grid .rating{
+#fruit-product .product-grid .rating{
     padding: 0;
     margin: 0 0 8px;
     list-style: none;
 }
-.product .product-grid .rating li{
+#fruit-product .product-grid .rating li{
     color: #fecc2f;
     font-size: 13px;
 }
-.product .product-grid .rating li.far{
+#fruit-product .product-grid .rating li.far{
  color: #999999; 
 }
-.product .product-grid .price{
+#fruit-product .product-grid .price{
     color: #8BC34A;
     font-size: 15px;
     font-weight: 60;
     margin: 0 0 5px;
     transition: all 0.3s;
 }
-.product .product-grid:hover .title a, .product-grid:hover .rating, .product-grid:hover .price{
-    opacity: 100;
+#fruit-product .product-grid:hover .title a, .product-grid:hover .rating, .product-grid:hover .price{
+    opacity: 0;
 }
-.product .product-grid .price div{
-    color: #8BC34A;
-    font-size: 25px;
-    font-weight: bolder;
+#fruit-product .product-grid .price span{
+    color: #fe45a1;
+    font-weight: 500;
+    text-decoration: line-through;
     margin: 0 5px 0 0;
     display: inline-block;
 }
 
-/* product section end */
+ 
+/* Fruit-product End section page  */
+/**********vegetable section*************/
+#vegetable-product{
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: #fff;
+}
+#vegetable-product i{
+  color: #fff;
+  padding: 0;
+}
+#vegetable-product .item{
+  color: #fff;
+  padding:10px;
+}
+#vegetable-product .product-grid{ 
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+ }
+#vegetable-product .product-grid .product-image{
+    position: relative;
+    overflow: hidden;
+}
+#vegetable-product .product-grid .product-image a.image{
+ display: block; 
+}
+#vegetable-product .product-grid .product-image img{
+    width: 100%;
+    height: auto;
+}
+#vegetable-product .product-image .pic-1{ transition: all 0.5s; }
+.product-grid:hover .product-image .pic-1{
+    opacity: 0;
+    transform: scale(1.1);
+    transform-origin: left bottom;
+}
+#vegetable-product .product-image .pic-2{
+    width: 100%;
+    height: 100%;
+    transform: scale(1.1);
+    transform-origin: top right;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.5s;
+}
+#vegetable-product .product-grid:hover .product-image .pic-2{
+    opacity: 1;
+    transform: scale(1);
+}
+#vegetable-product .product-grid .product-hot-label, .product-grid .product-discount-label{
+    color: #fff;
+    background: #35ce4a;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    transition: all .3s ease;
+}
+#vegetable-product .product-grid .product-discount-label{ 
+  background: #fe45a1; 
+}
+#vegetable-product .product-grid .product-links{
+    width: 135px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    opacity: 0;
+    transform: translateX(-50%);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transition: all 0.5s;
+}
+#vegetable-product .product-grid:hover .product-links{
+    opacity: 1;
+    bottom: 30px;
+}
+#vegetable-product .product-grid .product-links li{
+    display: inline-block;
+    margin: 0 3px;
+}
+#vegetable-product .product-grid .product-links li a{
+    color: #232323;
+    background:#8BC34A;
+    font-size: 16px;
+    text-align: center;
+    line-height: 36px;
+    width: 36px;
+    height: 36px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    display: block;
+    transition: all 0.3s ease 0s;
+}
+#vegetable-product .product-grid .product-links li a:hover{
+    color: #fff;
+    background: #ffc107;
+}
+#vegetable-product .product-grid .product-content{
+    text-align: center;
+    padding: 15px 15px 0;
+    position: relative;
+}
+#vegetable-product .product-grid .add-to-cart{
+    color: #fff;
+    background: #8BC34A;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    width: 60%;
+    padding: 8px 3px;
+    opacity: 0;
+    transform: translateX(-50%) translateY(0);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 1;
+    transition: all 0.3s ease 0s;
+}
+#vegetable-product .product-grid .add-to-cart:hover{
+ background: #ffc107; 
+}
+#vegetable-product .product-grid:hover .add-to-cart{
+    opacity: 1;
+    transform: translateX(-50%) translateY(-50%);
+    top: 50%;
+}
+#vegetable-product .product-grid .add-to-cart i{ 
+  margin: 0 5px 0 0; 
+}
+#vegetable-product .product-grid .title{
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: capitalize;
+    margin: 0 0 7px;
+}
+#vegetable-product .product-grid .title a{
+    color: #444;
+    transition: all 0.3s ease;
+}
+#vegetable-product .product-grid .rating{
+    padding: 0;
+    margin: 0 0 8px;
+    list-style: none;
+}
+#vegetable-product .product-grid .rating li{
+    color: #fecc2f;
+    font-size: 13px;
+}
+#vegetable-product .product-grid .rating li.far{
+ color: #999999; 
+}
+#vegetable-product .product-grid .price{
+    color: #8BC34A;
+    font-size: 15px;
+    font-weight: 60;
+    margin: 0 0 5px;
+    transition: all 0.3s;
+}
+#vegetable-product .product-grid:hover .title a, .product-grid:hover .rating, .product-grid:hover .price{
+    opacity: 0;
+}
+#vegetable-product .product-grid .price span{
+    color: #fe45a1;
+    font-weight: 500;
+    text-decoration: line-through;
+    margin: 0 5px 0 0;
+    display: inline-block;
+}
 
-
+/* vegetable section end */
 /* blog section */
 
 #blog{

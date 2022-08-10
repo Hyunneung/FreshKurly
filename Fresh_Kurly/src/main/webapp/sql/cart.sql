@@ -7,6 +7,3 @@ create table cart(
 	member_id	varchar2(20) references member(member_id),	
 	cart_amount number(10) default 0
 )
-
-select * from cart;
-drop table cart;

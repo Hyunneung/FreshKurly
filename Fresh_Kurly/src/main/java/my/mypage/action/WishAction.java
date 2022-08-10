@@ -21,17 +21,25 @@ public class WishAction implements Action {
 		String id = (String)session.getAttribute("id");
 		request.setAttribute("myPage", "wish");
 		
-		// 찜한상품 페이지에 보여줄 아이템 정보
+		
 		WishDAO dao = new WishDAO();
-		int listcount = 0; // 찜한상품에 담긴 제품 수 
-		List<Wish> list = null; // 찜한상품에 담긴 제품 리스트
+		int listcount = 0; // 주문내역에 담긴 제품 수 
+		List<Wish> list = null;
+		
 		listcount = dao.getWishListCount(id);
 		list = dao.getWishList(id);
 		request.setAttribute("listcount", listcount); // 위시리스트 수
 		request.setAttribute("wishlist", list); // 위시리스트를 wishlist라는 속성명으로 저장
 		
+		
+		
+		
+		
+		
 		forward.setPath("mypage/myPage.jsp");
 		forward.setRedirect(false); // 주소 변경 없이 보낸다
 		return forward;
+		
 	}
+
 }

@@ -3,9 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>비밀번호 찾기</title>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="assets/js/member/passwordfind.js"></script> 
+<title>Insert title here</title>
 </head>
 <body>
 
@@ -29,30 +27,33 @@
                     <div class="col-md-6">
                         <div class="myLeftCtn">
                             
-								<div class="md-form tb-mr-bt">
-								
-									<label for="find_by_email" style="font-size: 10pt">
-										<i class="fa  fa-envelope"></i>이메일
-									</label>
-									<input type="text" name="find_by_email" id="find_by_email" class="form-control"
-									placeholder="freshkurly@kurly.com" required>
-									
-									
-									<label for="find_by_id" style="font-size: 10pt">
-										<i class="fa  fa-user"></i>아이디
-									</label>
-									<input type="text" name="find_by_id" id="find_by_id" class="form-control"
-									placeholder="USER1234" required>
-									
-									
-									<input type="button" value="이메일 인증" id="request_for_code">
-									<input type="hidden" name="confirm_email_ok" id="confirm_email_ok"
-									class="form-control" placeholder="인증번호 입력"
-									maxlength="6" required>
-									<input type="hidden" id="confirm_email_btn" value="인증번호 확인 버튼">
-									 <!-- ajax로 넘어온 인증번호 저장 hidden으로 바꾸기 -->
-									<input type="hidden" name="save_email_confirm_code" id="save_email_confirm_code">
-								</div>
+                        <form id="idFind" class="myForm text-center needs-validation" >
+                            <div class="form-group">
+                                <i class="fa fa-user"></i>
+                                <input class="myInput" type="text" placeholder="Username" id="username" required>
+                            </div>
+							
+                            <div class="form-group">
+                                <i class="fa  fa-envelope"></i>
+                                <input class="myInput" placeholder="Email" type="text" id="email" required>
+                            </div>
+							
+                            <button id="ask_email" class="butt">인증코드 요청</button>
+                        </form>
+                        
+                         <script>
+                       //인증코드 요청 버튼을 누르면 데이터베이스에서 해당 이메일과 아이디를 가진 사람을 찾고
+                       //있으면 해당 이메일 주소로 메일을 보내고 버튼의 텍스트와 숨겨져있던 인증코드입력창을 보여주게 합니다
+                       //인증코드가 일치하면 비밀번호를 재생성하는 화면으로 넘어갑니다
+                       //없으면 없다고 alert 창을 띄웁니다
+                        $('#ask_email').click(function () {
+                        	
+                        	$(this).text('인증코드 입력');
+                    		$('#confirm-code').css("display","block");
+                        })
+                        </script>
+                        
+                        
                         </div>
                     </div>
                     

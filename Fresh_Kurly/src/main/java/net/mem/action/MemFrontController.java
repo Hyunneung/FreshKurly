@@ -54,9 +54,6 @@ public class MemFrontController extends HttpServlet {
 		case "/emailcheck.net" :
 			action = new MemEmailCheckAction();
 			break;
-		case "/emailcheck2.net" : // 이메일 중복검사
-			action = new MemEmailCheckAction2();
-			break;	
 		case "/logout.net" :
 			action = new MemLogoutAction();
 			break;
@@ -71,18 +68,6 @@ public class MemFrontController extends HttpServlet {
 			break;
 		case "/passwordFindProcess.net":
 			action = new MemPasswordFindProccess();
-			break;
-		case "/member/changePassProccess.net":
-			action = new MemChangePassProccess();
-			break;
-		case "/Withdraw.net":
-			action = new gotoWithdrawpage();
-			break;
-		case "/WithdrawProccess_checkPW.net":
-			action = new WithdrawProccess_checkPW();
-			break;
-		case "/WithdrawProccess_delete.net":
-			action = new WithdrawProccess_delete();
 			break;
 		}
 		
