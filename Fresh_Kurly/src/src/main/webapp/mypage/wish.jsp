@@ -5,7 +5,7 @@
 <head>
 <title>마이페이지 - 찜한상품</title>
 <style>
-	button{border:0; border-radius: 5px; color:white; font-weight:bold}
+	button{border:0; border-radius: 5px; color:; font-weight:bold}
 	
 	#deletebtn {background:grey;}
 	#addbtn {background:#8BC34A;}
