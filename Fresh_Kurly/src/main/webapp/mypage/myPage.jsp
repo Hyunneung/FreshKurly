@@ -3,9 +3,12 @@
 <html>
 <head>
 <title> 마이페이지 </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="http://code.jquery.com/jquery-latest.js"></script> <!-- 제이쿼리 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <style>
 .nav-item > .nav-item::active {
    background-color: rgb(103,149,9) !important;
@@ -13,26 +16,24 @@
 
 .nav-link > .nav-link::active {
    background-color: rgb(103,149,9) !important;
-}
-
-#myPageName {font-size:15pt}
-
-.col-sm-8 {}
+} 
 </style>
 </head>
+
 <body>
 	<header>  
 		<jsp:include page="../mainpage/header.jsp"/>
+		<%-- <jsp:include page="header.jsp" /><br> <!-- 마이페이지 헤더 --> --%>
 	</header>
 	
 	
 	<!-- 왼쪽 네비게이션 -->
-	<div class='container-fluid' style="margin-top:50px;">
+	<div class='container' style="margin-top:10px;">
 		<div class="row">
-			<div class="col-md-2">
+			<div class="col-sm-4">
 				<aside>
 					<h1>마이컬리</h1>
-					<ul class="nav nav-pills flex-column" id="myPageName">
+					<ul class="nav nav-pills flex-column">
 						<li class="nav-item"><a class="nav-link active bg-success" href="myOrder.my">주문내역</a></li>
 	                  	<li class="nav-item"><a class="nav-link " href="myCart.my">장바구니</a></li>
 	                  	<li class="nav-item"><a class="nav-link" href="myWish.my">찜한상품</a></li>
@@ -41,38 +42,23 @@
                		</ul>
 				</aside>
 			</div>
-			
-			
-			
-			<div class="col-sm-8">
-				<section id="login">
-					<style>
-						body {margin: 0 auto;}
-						* {text-align: left}
-						h4 {color:gray; font-weight:bold;}
-						hr { border: 0;
-						     height: 2px;
-						     background: #ccc;}
-						td {font-size:13pt}     
-					</style>
+			<div class="col-sm-8" style="margin-bottom:5rem">
+				<section>
 					<jsp:include page="${myPage}.jsp"/>
 				</section>
 			</div>
-			
 		</div>
 	</div>
-
+	
 	<script>
 		var myPage = "${myPage}";
 		var pageList = ["order", "cart", "wish", "qna", "profile"];
 		
 		for(var index = 0; index < pageList.length; index++) {
 			if(myPage == pageList[index]){
-				$('.nav-pills> .nav-item > .nav-link').eq(index).addClass('active'); 
-				$('.nav-pills> .nav-item > .nav-link').eq(index).addClass('bg-success'); 
+				$('.nav-pills> .nav-item').eq(index).addClass('active');
 			} else {
-				$('.nav-pills> .nav-item > .nav-link').eq(index).removeClass('active');
-				$('.nav-pills> .nav-item > .nav-link').eq(index).removeClass('bg-success');
+				$('.nav-pills> .nav-item').eq(index).removeClass('active');
 			}
 		}
 	</script>

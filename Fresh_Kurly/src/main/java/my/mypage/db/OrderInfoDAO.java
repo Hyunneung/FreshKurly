@@ -37,6 +37,8 @@ public class OrderInfoDAO {
 			con = ds.getConnection();
 			String sql = "select count(*) from orderInfo "
 						+ "where member_id = ?";
+			
+			System.out.println(sql);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id); // String은 작은따옴표 자동으로 생긴다
 			rs = pstmt.executeQuery();

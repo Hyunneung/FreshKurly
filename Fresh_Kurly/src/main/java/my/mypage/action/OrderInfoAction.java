@@ -21,11 +21,15 @@ public class OrderInfoAction implements Action {
 		String id = (String)session.getAttribute("id");
 		request.setAttribute("myPage", "order");
 		
+		
 		OrderInfoDAO dao = new OrderInfoDAO();
-		int listcount = dao.getOrderListCount(id);
-		List<OrderInfo> list = dao.getOrderList(id);
+		int listcount = 0; // 주문내역에 담긴 제품 수 
+		List<OrderInfo> list = null;
+		
+		listcount = dao.getOrderListCount(id);
+		list = dao.getOrderList(id);
 		request.setAttribute("listcount", listcount); // 주문내역 수
-		request.setAttribute("orderlist", list); // 주문내역list를 orderlist라는 속성명으로 저장
+		request.setAttribute("oiderlist", list); // 주문내역list를 oiderlist라는 속성명으로 저장
 		
 		forward.setRedirect(false); // 주소 변경 없이 보낸다
 		forward.setPath("mypage/myPage.jsp");

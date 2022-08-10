@@ -55,7 +55,7 @@ public class ProfileUpdateAction implements Action {
 		//out.println("location.href='myPage.my';");
 		out.println("</script>");
 		out.close();
-		return null;
+		return null; //.. ????? 아닌거같은데 ㅜㅜ 
 	}
 
 }

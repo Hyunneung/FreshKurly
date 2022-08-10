@@ -6,6 +6,3 @@ create table wish(
 	item_id		number(20) 	 references item(item_id), 
 	member_id	varchar2(20) references member(member_id)
 )
-
-drop table wish;
-select * from wish;

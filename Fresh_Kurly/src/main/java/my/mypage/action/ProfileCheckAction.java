@@ -50,7 +50,7 @@ public class ProfileCheckAction implements Action {
 			session.invalidate();
 			forward.setRedirect(true);
 			forward.setPath("login.jsp");
-			return null;
+			return null; // 맞나..?
 		}
 	}
 
