@@ -1,15 +1,15 @@
 drop table qna;
 
---문의하기 테이블
-create table qna(
-	qna_number 	number(10) primary key,	
-	member_id 	varchar2(20) references member(member_id),
-	qna_subject varchar2(20) not null,
-	qna_content varchar2(200) not null,
-	qna_private varchar2(5) not null,
-	qna_check 	varchar2(5) not null,
-	qna_answer 	varchar2(200) not null,
-	qna_reg_date date default sysdate
-)
+--문의하기 테이블 (220810 수정)
+create table qna( 
+   qna_number    number(10) primary key, -- 글번호  
+   qna_name      varchar2(20), -- 회원 아이디
+   qna_pass      varchar2(20), -- 글 비밀번호
+   qna_subject   varchar2(20) not null, -- 글 제목
+   qna_content   varchar2(200) not null, -- 글 내용
+   qna_view      number(10),    -- 조회수
+   qna_reg_date  date default sysdate
+);
 
 select * from qna;
+

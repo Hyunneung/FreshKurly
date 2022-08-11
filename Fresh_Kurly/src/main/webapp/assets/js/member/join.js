@@ -165,6 +165,7 @@ $(document).ready(function() {
 					if (rdata == 0) { // DB에 해당 phone이 없는 경우
 						alert("사용 가능한 휴대폰번호입니다.");
 						$("#phone_message").html("사용 가능한 휴대폰번호입니다.").css('color', 'blue');
+						checkphone = true;
 					} else { // DB에 해당 phone이 있는 경우 (rdata == 1)
 						alert("이미 등록된 휴대폰번호입니다.");
 						$("#phone_message").html("이미 등록된 휴대폰번호입니다.").css('color', 'red');
@@ -178,11 +179,14 @@ $(document).ready(function() {
 	
 	// 이메일 인증
 	var emailcheck_value = ''; // 이메일 중복 검사에 사용된 이메일을 저장할 변수
+	var checkemail = false;
 	$("#emailchkbtn").click(function() {
 		input_email = $.trim($('#email').val());
 		if (input_email == "" || input_email.indexOf("@") == -1) {
 			alert("이메일을 형식에 맞게 입력해주세요");
+			$("#emailchkok").val("n");
 			$('#email').focus();
+			checkemail = false;
 			return false;
 		} else {
 			emailcheck_value = input_email;
@@ -192,6 +196,8 @@ $(document).ready(function() {
 				success: function(rdata) {
 					if (rdata != 0) { // DB에 해당 email이 있는 경우 (rdata == 1)
 						alert("이미 등록된 이메일입니다.");
+						$("#emailchkok").val("n");
+						checkemail = false;
 					} else { // DB에 해당 email이 없는 경우
 						$("#certification_ok").attr('type', 'text')
 						$("#certification_btn").attr('type', 'button')
@@ -213,10 +219,12 @@ $(document).ready(function() {
 			email_ok = $('#certification_ok').val();
 			$("#emailchkok").val("y");
 			alert('이메일 인증에 성공하셨습니다');
+			checkemail = true;
 	} else {
 			email_ok = "";
 			$("#emailchkok").val("n");
 			alert('인증번호가 일치하지 않습니다. 다시 입력해주세요.');
+			checkemail = false;
 		}
 	}) // 이메일 인증번호 확인 버튼 end
 	
@@ -283,9 +291,17 @@ $(document).ready(function() {
 			alert("비밀번호를 확인 해주세요");
 			return false;
 		}
+		if ( $.trim($("#pass").val()).length < 6) {
+				alert("비밀번호 형식을 확인해주세요");
+				return false;
+			}
 		// 휴대폰번호 중복검사 확인
 		var submit_phone_value = $.trim($('#phone').val())
 		if (submit_phone_value != phonecheck_value) {
+			alert("휴대폰번호 중복검사를 해주세요");
+			return false;
+		}
+		if(checkphone == false){
 			alert("휴대폰번호 중복검사를 해주세요");
 			return false;
 		}
@@ -303,12 +319,16 @@ $(document).ready(function() {
 			alert('이메일을 인증하세요');
 			return false;
 		}
+		if(checkemail == false){
+			alert("이메일 중복검사를 해주세요");
+			return false;
+		}
 		if( $.trim($("#postcode").val()) == ''  ) {
 			alert("주소를 검색하세요");
 			return false;
 		}
-		// 약관 선택 검사 (체크박스)
-		if ($("#allchk").is(":checked") == false) {
+		// 약관 선택 검사
+		if ( $("#allchk").is(":checked") ) {
 			alert("필수약관에 동의해주세요");
 			return false;
 		}

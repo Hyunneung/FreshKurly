@@ -3,35 +3,19 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html lang="en">
 <head>
-<meta charset="utf-8">
 <title>마이페이지 - 장바구니</title>
 <style>
-	body {margin: 0 auto; }
-	* {text-align: left}
-	h6 {color:gray; font-weight:bold;}
-	hr {
-   	border: 0;
-    height: 2px;
-    background: #ccc;}
-    
-    tbody > tr:nth-child(1) > td:nth-child(1){width:10px}
-    tbody > tr:nth-child(1) > td:nth-child(2){width:100px}
-    tbody > tr:nth-child(1) > td:nth-child(3){width:300px}
-    tbody > tr:nth-child(1) > td:nth-child(4){width:100px}
-    tbody > tr:nth-child(1) > td:nth-child(5){width:100px}
-    tbody > tr:nth-child(1) > td:nth-child(6){width:20px}
+    tbody > tr:nth-child(1) > td:nth-child(2){width:10%}
+    tbody > tr:nth-child(1) > td:nth-child(3){width:50%}
+    tbody > tr:nth-child(1) > td:nth-child(4){width:20%}
+    tbody > tr:nth-child(1) > td:nth-child(5){width:10%}
+    tbody > tr:nth-child(1) > td:nth-child(6){width:10%}
     
     input { border:none; width:25px; text-align:center}
     #total {width:60px}
     input:focus {outline: none;}
     
-    #cartItemMinus, #cartItemPlus, #cartItemDelete {cursor:pointer; width:10px; height:10px" }
-    
-    
-    /* #okbtn {background:#8BC34A; font-weight:bold; color: white;
-		padding-top:10px; padding-bottom:10px; margin:3px;
-		border:0; border-radius: 12px; width:300px}
-  		} */	
+    #cartItemMinus, #cartItemPlus, #cartItemDelete {cursor:pointer; width:10px; height:10px" }	
 </style>
 <script>
 	$(function(){
@@ -42,8 +26,8 @@
 		$("body").on('click', '#cartItemMinus' , function(){
 			var tr = $(this).parent().parent();
 			var td1 = tr.find('td:nth-child(1)');
-			var td4 = tr.find('td:nth-child(5)');
-			var td5 = tr.find('td:nth-child(6)');
+			var td4 = tr.find('td:nth-child(4)');
+			var td5 = tr.find('td:nth-child(5)');
 			var item_id = td1.find( 'input:nth-child(1)' ); // 아이템 아이디 .val()
 			var item_price = td1.find( 'input:nth-child(2)' ); // 아이템 가격 .val()
 			var cart_amount = td4.find( 'input:nth-child(2)' ); // 상품 수량 .val()
@@ -76,13 +60,12 @@
 		$("body").on('click', '#cartItemPlus', function(){
 			var tr = $(this).parent().parent();
 			var td1 = tr.find('td:nth-child(1)');
-			var td4 = tr.find('td:nth-child(5)');
-			var td5 = tr.find('td:nth-child(6)');
+			var td4 = tr.find('td:nth-child(4)');
+			var td5 = tr.find('td:nth-child(5)');
 			var item_id = td1.find( 'input:nth-child(1)' ); // 아이템 아이디 .val()
 			var item_price = td1.find( 'input:nth-child(2)' ); // 아이템 가격 .val()
 			var cart_amount = td4.find( 'input:nth-child(2)' ); // 상품 수량 .val()
 			var total = td5.find( 'input:nth-child(1)' ) ; // 아이템 총가격 - .val()
-			
 			$.ajax({
 				type : "POST",
 				url: "myCartItemPlus.my",
@@ -129,59 +112,62 @@
 </script>
 </head>
 <body>
-	<section id="login">
-		<div class="container-fluid">
-			<div class="myCard">
-				<div class="row">
-					<div class="col-md-10">
-						<div class="myLeftCtn">
-							<form class="myForm text-center" method="" action="" enctype="multipart/form-data"> <!-- 결제기능 하면 결제 폼으로 넘어가게 하기~ -->
-								<header>장바구니</header>
-								<hr>
-								
-								<!-- 장바구니에 상품이 있는 경우 -->
-								<c:if test="${listcount > 0}">
-									<table>
-										<tbody>
-											<c:forEach var="c" items="${cartlist}">
-												<tr>
-													<td>
-														<input type="hidden" name="item_id" id="item_id" value="${c.item_id}">
-														<input type="hidden" name="item_price" id="item_price" value="${c.item_price}">
-													</td>
-													<td>${c.item_image}</td> <!-- <input type="image" src="${c.item_image }"> -->
-													<td>${c.item_name}</td>
-													<!-- 상품수량 추가 제거 버튼 -->
-													<td> <input type="image" src="assets/image/mypage_cart/minus.png" id="cartItemMinus">
-														 <input type="text" name="cart_amount" id="cart_amount" value="${c.cart_amount}" readonly> <!-- 뷰 기능에 추가 : 수량이 1개이면 - 버튼 누르는거 비활성화 disabled -->
-														 <input type="image" src="assets/image/mypage_cart/plus.png" id="cartItemPlus">
-													<td><input type="text" name="total" id="total" value="<fmt:formatNumber value="${c.item_price * c.cart_amount}" pattern="#,###"/>" readonly></td>  <!-- 개별 상품 총가격 -->
-													<!-- 상품 완전 삭제 버튼 -->
-													<td><input type="image" src="assets/image/mypage_cart/cartdelete.png" id="cartItemDelete"></td>
-												</tr>
-											</c:forEach>
-										</tbody>
-									</table>
-									
-									<!-- 배송지 / 결제하기 -->
-									<div style="float: right; width:800px">
-										<aside>
-											<jsp:include page="cart_right.jsp" />
-										</aside>
-									</div>
-								</c:if>
-
-							
-								<!-- 장바구니에 상품이 없는 경우 -->
-								<c:if test="${listcount == 0}">
-									<font size=5>장바구니에 담긴 상품이 없습니다.</font>
-								</c:if>
-							</form>
+	<div class="row">
+		<div class="col-md-8">
+			<div class="myLeftCtn">
+				<form class="myForm text-center" method="" action="" enctype="multipart/form-data"> <!-- 결제기능 하면 결제 폼으로 넘어가게 하기~ -->
+					<header>장바구니</header>
+					<h4>구매 금액 30,000원 이상 시 무료배송되며 30,000원 미만 구매 시 선불 배송비 3,000원이 추가됩니다.</h4>
+					<hr>
+					
+					<!-- 장바구니에 상품이 있는 경우 -->
+					<c:if test="${listcount > 0}">
+						<table class="table" frame=void>
+							<tbody>
+								<c:forEach var="c" items="${cartlist}">
+									<tr>
+										<td>
+											<input type="hidden" name="item_id" id="item_id" value="${c.item_id}">
+											<input type="hidden" name="item_price" id="item_price" value="${c.item_price}">
+										</td>
+										<td> <!-- 상품이미지 -->
+											${c.item_image} <!-- <input type="image" src="${c.item_image }"> -->
+										</td> 
+										<td> <!-- 상품명 -->
+											${c.item_name}
+										</td>
+										<td> <!-- 상품수량 추가 제거 버튼 -->
+											<input type="image" src="assets/image/mypage_cart/minus.png" id="cartItemMinus">
+											<input type="text" name="cart_amount" id="cart_amount" value="${c.cart_amount}" readonly> <!-- 뷰 기능에 추가 : 수량이 1개이면 - 버튼 누르는거 비활성화 disabled -->
+											<input type="image" src="assets/image/mypage_cart/plus.png" id="cartItemPlus">
+										</td>	
+										<td> <!-- 개별 상품 총가격 -->
+											<input type="text" name="total" id="total" value="<fmt:formatNumber value="${c.item_price * c.cart_amount}" pattern="#,###"/>" readonly>
+										</td> 
+										<td> <!-- 상품 완전 삭제 버튼 -->
+											<input type="image" src="assets/image/mypage_cart/cartdelete.png" id="cartItemDelete">
+										</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+						
+						<!-- 배송지 / 결제하기 -->
+						<div style="float: right; width:800px">
+							<aside>
+								<jsp:include page="cart_right.jsp" />
+							</aside>
 						</div>
-					</div>
-				</div>
+					</c:if>
+				
+				
+					<!-- 장바구니에 상품이 없는 경우 -->
+					<c:if test="${listcount == 0}">
+						<font size=5>장바구니에 담긴 상품이 없습니다.</font>
+					</c:if>
+				</form>
 			</div>
 		</div>
-	</section>
+	</div>	
 </body>
 </html>

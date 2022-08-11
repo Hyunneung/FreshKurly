@@ -3,11 +3,8 @@
 <html lang="en">
 <head>
 <title> 개인정보 수정 - 비밀번호 확인 </title>
-<meta charset="utf-8">
-<script src="http://code.jquery.com/jquery-latest.js"></script> <!-- 제이쿼리 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script> <!-- 주소검색 -->
 </head>
-
 <style>
 	img{width:30px; height:30px; opacity:0.5; cursor: pointer;}
 </style>
@@ -115,7 +112,6 @@
 				alert('인증번호가 일치하지 않습니다. 다시 입력해주세요.');
 			}
 		}) // 인증번호 확인 버튼
-	
 		
 		
 		// 휴대폰 번호 바뀌었으면 중복확인 했는지 확인
@@ -161,13 +157,10 @@
 							}
 						}
 					}) // $.ajax end
-			} // if-else end
+				} // if-else end
 			}
 		}) // phonechkbtn click end 
-		
-		
-		
-		
+
 		
 		// 우편번호 버튼
 		$('#postcodebtn').click(function() {
@@ -211,12 +204,16 @@
 		
 		
 		// ----------------------------------------회원정보 수정 버튼----------------------------------------
-		// 1.비번 바꿨으면 비번확인이랑 일치하는지 2. 이메일 바꿨으면 중복확인 했는지 안 했는지 3.휴대폰 번호 바꿨으면 중복확인 했는지 안 했는지 검사!!
+		// 1.비번 바꿨으면 비번확인이랑 일치하는지 2. 이메일 바꿨으면 중복확인 했는지 안 했는지 3.휴대폰 번호 바꿨으면 중복확인 했는지 안 했는지 검사
 		// sumitbtn - 회원정보 수정 버튼
 		$("#submitbtn").click(function(){
 			// 1. 비밀번호, 비밀번호 확인 동일한지 확인
 			if( $("#pass").val() != $("#pass2").val() ){
 				alert("비밀번호를 확인 해주세요");
+				return false;
+			}
+			if ( $.trim($("#pass").val()).length < 6) {
+				alert("비밀번호 형식을 확인해주세요");
 				return false;
 			}
 			// 2. 이메일 바꿨으면 중복확인 했는지 검사
@@ -240,8 +237,6 @@
 		}) // 회원정보 수정 버튼 end
 	
 	
-	
-	
 }); // ready() end
 </script>
 
@@ -250,16 +245,9 @@
 	<section id="check-out">
 		<main class="tb-mt-pd">
 			<div class="container wow fadeIn">
-				<!--Grid row-->
 				<div class="row">
-
-					<!--Grid column-->
 					<div class="col-md-8 tb-left">
-
-						<!--Card-->
 						<div class="card">
-
-							<!--Card content-->
 							<form action="myProfileUpdate.my" method="post" class="card-body" >
 
 								<!-- 아이디 -->
@@ -325,21 +313,10 @@
 
 							</form>
 						</div>
-						<!--/.Card-->
 					</div>
-					<div class="col-md-4 mb-4"></div>
 				</div>
 			</div>
 		</main>
 	</section>
-	
-	
-<div class="top_button">
-  <a class="back-to-top" style="cursor:pointer;" id="top-scrolltop"><i class="fa fa-angle-up"></i></a>
-</div>
-	<script src="assets/vendor/bootstrap/js/moment.min.js"></script>
-	<script src="assets/vendor/bootstrap/js/bootstrap-datetimepicker.js"></script>
-	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="assets/js/custom.js"></script>
 </body>
 </html>

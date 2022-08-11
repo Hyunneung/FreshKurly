@@ -9,8 +9,9 @@
 	<script src="assets/js/member/join.js"></script>
 </head>
 <style>
-	/* #jumin1, #jumin2 {width:210px;} */
 	img{width:30px; height:30px; opacity:0.5; cursor: pointer;}
+	input[type=button]{background:#8BC34A; color:white; border:none;
+					   width:80px; height:30px; margin-top:5px}
 </style>
 <body>
 <header>
@@ -114,7 +115,7 @@
 								<!-- 가입하기 -->	
 								<hr class="mb-4">
 								<div class="clearfix">
-									<button type="submit" class="submitbtn" id="submitbtn">가입하기</button>
+									<button type="submit" class="submitbtn btn btn-primary btn-lg btn-block" id="submitbtn">가입하기</button>
 								</div>	
 							</form>
 						</div>
