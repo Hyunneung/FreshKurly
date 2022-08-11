@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="mainpage/header.jsp"/>
+<jsp:include page="../mainpage/header.jsp"/>
 <title>item-page</title>
 <style>
 #buybtn {
