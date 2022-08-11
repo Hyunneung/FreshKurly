@@ -6,7 +6,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.boardpage.db.QnaBean;
 import board.boardpage.db.QnaDAO;
 
 public class QnaModifyView implements Action {
@@ -31,7 +30,7 @@ public class QnaModifyView implements Action {
          forward.setPath("error/error.jsp");
          return forward;
       }
-      System.out.println("(수정)상세보기 성공");
+      System.out.println("(수정)상세보기 성공-2");
       
       //수정 폼 페이지로 이동할 때 원문 글 내용을 보여주기 때문에 qnadata 객체를
       //request 객체에 저장합니다.

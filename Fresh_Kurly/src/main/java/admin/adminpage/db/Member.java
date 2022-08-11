@@ -1,56 +1,76 @@
-//*** 데이터 빈(DataBean) 클래스 작성 ***
 package admin.adminpage.db;
 
 public class Member {
-	private String id	   ;
-	private String password;
-	private String name    ;
-	private int	   age     ;
-	private String gender  ;
-	private String email   ;	
-	private String memberfile;
+	private String member_id;
+	private String member_pass;
+	private String member_name;
+	private String member_email;
+	private String member_phone;
+	private String member_post;
+	private String member_address;
+	private String member_gender;
+	private String member_jumin;
+	private String member_reg_date;
 	
-	public String getId() {
-		return id;
+	// getter, setter
+	public String getMember_id() {
+		return member_id;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
 	}
-	public String getPassword() {
-		return password;
+	public String getMember_pass() {
+		return member_pass;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setMember_pass(String member_pass) {
+		this.member_pass = member_pass;
 	}
-	public String getName() {
-		return name;
+	public String getMember_name() {
+		return member_name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setMember_name(String member_name) {
+		this.member_name = member_name;
 	}
-	public int getAge() {
-		return age;
+	public String getMember_email() {
+		return member_email;
 	}
-	public void setAge(int age) {
-		this.age = age;
+	public void setMember_email(String member_email) {
+		this.member_email = member_email;
 	}
-	public String getGender() {
-		return gender;
+	public String getMember_phone() {
+		return member_phone;
 	}
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setMember_phone(String member_phone) {
+		this.member_phone = member_phone;
 	}
-	public String getEmail() {
-		return email;
+	public String getMember_post() {
+		return member_post;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setMember_post(String member_post) {
+		this.member_post = member_post;
 	}
-	public String getMemberfile() {
-		return memberfile;
+	public String getMember_address() {
+		return member_address;
 	}
-	public void setMemberfile(String memberfile) {
-		this.memberfile = memberfile;
+	public void setMember_address(String member_address) {
+		this.member_address = member_address;
 	}
-	
+	public String getMember_gender() {
+		return member_gender;
+	}
+	public void setMember_gender(String member_gender) {
+		this.member_gender = member_gender;
+	}
+	public String getMember_jumin() {
+		return member_jumin;
+	}
+	public void setMember_jumin(String member_jumin) {
+		this.member_jumin = member_jumin;
+	}
+	public String getMember_reg_date() {
+		return member_reg_date;
+	}
+	public void setMember_reg_date(String member_reg_date) {
+		this.member_reg_date = member_reg_date;
+	}
 }

@@ -1,15 +1,15 @@
 package admin.adminpage.db;
 
 public class QnaBean {
-	private int		qna_num;	  //글번호
 	private String	qna_name;	  //글 작성자
 	private String	qna_pass;	  //글 비밀번호
 	private String	qna_subject;//글 제목
 	private String	qna_content;//글 내용
 	private int		qna_view;//글의 조회수
-	private String  qna_date;
+	private String  qna_reg_date;
 	private int cnt;
 	
+	private int		qna_num;	  //글번호
 	public int getQna_num() {
 		return qna_num;
 	}
@@ -46,11 +46,11 @@ public class QnaBean {
 	public void setQna_view(int qna_view) {
 		this.qna_view = qna_view;
 	}
-	public String getQna_date() {
-		return qna_date;
+	public String getQna_reg_date() {
+		return qna_reg_date;
 	}
-	public void setQna_date(String qna_date) {
-		this.qna_date = qna_date;
+	public void setQna_reg_date(String qna_reg_date) {
+		this.qna_reg_date = qna_reg_date;
 	}
 	public int getCnt() {
 		return cnt;
@@ -58,9 +58,6 @@ public class QnaBean {
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
 	}
-	
-	
-	
 	
 	
 }

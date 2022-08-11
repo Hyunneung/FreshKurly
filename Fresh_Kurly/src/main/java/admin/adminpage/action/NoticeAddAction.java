@@ -6,11 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import admin.adminpage.db.NoticeBean;
 import admin.adminpage.db.NoticeDAO;
@@ -38,7 +34,7 @@ public class NoticeAddAction implements Action {
 		 //글 등록에 실패할 경우 false를 반환합니다.
 		 if(result==false){
 			 System.out.println("공지사항 게시글 등록 실패");
-			 forward.setPath("admin/noticeList.jsp");
+			 forward.setPath("errror/error.jsp");
 			 request.setAttribute("message", "공지사항 게시글 등록 실패입니다.");
 			 forward.setRedirect(false);
 			 return forward;

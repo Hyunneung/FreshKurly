@@ -49,19 +49,21 @@ select.form-control {
 	color: gray;
 }
 
-body>div>table>thead>tr:nth-child(2)>th:nth-child(1) {
-	width: 8%
+
+body > div.container > table > tbody > tr > td:nth-child(1){
+	width: 5%
 }
 
-body>div>table>thead>tr:nth-child(2)>th:nth-child(2) {
-	width: 50%
+body > div.container > table > tbody > tr > td:nth-child(2)
+{
+	width: 40%
 }
 
-body>div>table>thead>tr:nth-child(2)>th:nth-child(3) {
-	width: 14%
+body > div.container > table > tbody > tr > td:nth-child(3) {
+	width: 10%
 }
 
-body>div>table>thead>tr:nth-child(2)>th:nth-child(4) {
+body > div.container > table > tbody > tr > td:nth-child(4) {
 	width: 17%
 }
 
@@ -114,15 +116,16 @@ td:nth-child(1) {
 	margin-bottom: 3em
 }
 </style>
-<script src="assets/js/admin/noticelist.js"></script>
-<title>공지사항 게시판</title>
+
+<script src="assets/js/board/qnalist.js"></script>
+<title>문의하기 게시판</title>
 </head>
 <jsp:include page="../mainpage/header.jsp" />
 <body>
 <br>
 
 	<div class="container">
-		<form name="search" action="NoticeList.ad" method="post">
+		<form name="search" action="QnaList.bo" method="post">
 			<div class="input-group">
 			
 				<select id="viewcount" name="search_field">
@@ -136,10 +139,10 @@ td:nth-child(1) {
 			<%-- 게시글이 있는 경우 --%>
 			<c:if test="${listcount > 0 }">
 				<table class="table table">
-					<caption style="font-weight: bold">공지사항 게시판</caption>
+					<caption style="font-weight: bold">문의하기 게시판</caption>
 					<thead>
 						<tr>
-							<th colspan="3">공지사항 게시판 - list</th>
+							<th colspan="3">글 목록</th>
 							<th colspan="2"><font size=3>글 개수 : ${listcount}</font></th>
 						</tr>
 						<tr>
@@ -151,9 +154,11 @@ td:nth-child(1) {
 						</tr>
 					</thead>
 					<tbody>
+					
 						<c:set var="num" value="${listcount-(page-1)*limit}" />
 						<!-- 글번호 1부터 -->
-						<c:forEach var="b" items="${noticelist}">
+						
+						<c:forEach var="b" items="${qnalist}">
 							<tr>
 								<td>
 									<%-- 번호 --%> <c:out value="${num}" /> <%-- num 출력 --%> <c:set
@@ -162,20 +167,19 @@ td:nth-child(1) {
 								<td>
 									<%-- 제목 --%>
 									<div>
-						
 
-										<a href="NoticeDetailAction.ad?num=${b.notice_number}"> <c:if
-												test="${b.notice_subject.length()>=20}">
-												<c:out value="${b.notice_subject.substring(0,20)}..." />
-											</c:if> <c:if test="${b.notice_subject.length()<20}">
-												<c:out value="${b.notice_subject}" />
+										<a href="QnaDetailAction.bo?num=${b.qna_number}"> <c:if
+												test="${b.qna_subject.length()>=20}">
+												<c:out value="${b.qna_subject.substring(0,20)}..." />
+											</c:if> <c:if test="${b.qna_subject.length()<20}">
+												<c:out value="${b.qna_subject}" />
 											</c:if>
 										</a>[${b.cnt}]
 									</div>
 								</td>
-								<td><div>${b.notice_name}</div></td>
-								<td><div>${b.notice_reg_date}</div></td>
-								<td><div>${b.notice_view}</div></td>
+								<td><div>${b.qna_name}</div></td>
+								<td><div>${b.qna_reg_date}</div></td>
+								<td><div>${b.qna_view}</div></td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -189,7 +193,7 @@ td:nth-child(1) {
 						</c:if>
 						<c:if test="${page > 1 }">
 							<li class="page-item "><a
-								href="NoticeList.ad?page=${page-1}" class="page-link">이전&nbsp;</a>
+								href="QnaList.bo?page=${page-1}" class="page-link">이전&nbsp;</a>
 							</li>
 						</c:if>
 
@@ -199,7 +203,7 @@ td:nth-child(1) {
 								</li>
 							</c:if>
 							<c:if test="${a != page }">
-								<c:url var="go" value="NoticeList.ad">
+								<c:url var="go" value="QnaList.bo">
 								<c:param name="serarch_field" value="${search_field}" />
 								<c:param name="serarch_word"  value="${search_word}" />
 								<c:param name="page" 		  value="${a}" />
@@ -215,7 +219,7 @@ td:nth-child(1) {
 							</li>
 						</c:if>
 						<c:if test="${page < maxpage }">
-							<li class="page-item"><a href="NoticeList.ad?page=${page+1}"
+							<li class="page-item"><a href="QnaList.bo?page=${page+1}"
 								class="page-link">&nbsp;다음</a></li>
 						</c:if>
 					</ul>

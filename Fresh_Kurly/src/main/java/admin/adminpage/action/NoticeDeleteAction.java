@@ -52,7 +52,7 @@ public class NoticeDeleteAction implements Action {
 	     PrintWriter out = response.getWriter();
 	     out.println("<script>");
 	     out.println("alert('삭제 되었습니다.');");
-	     out.println("location.href='NoticeList.net';");
+	     out.println("location.href='NoticeList.ad';");
 	     out.println("</script>");
 	     out.close();
 	     return null;

@@ -40,7 +40,7 @@ function ajax(sdata) {
 	$.ajax({
 		type : "POST",
 		data : sdata,
-		url : "QnaList.ad",
+		url : "QnaList.bo",
 		dataType : "json",
 		cache : false,
 		success : function(data) {
@@ -71,12 +71,12 @@ function ajax(sdata) {
 						}
 						
 						output += "<td><div>" + blank + img
-						output += '<a href="QnaDetailAction.ad?num=' + item.qna_num + '">'
+						output += '<a href="QnaDetailAction.bo?num=' + item.qna_num + '">'
 						output += subject.replace(/</g, '&lt;').replace(/>/g, '&gt;')
 								  + '</a>[' + item.cnt + ']</div></td>'
 						output +=  '<td><div>' + item.qna_name+'</div></td>'
 						output +=  '<td><div>' + item.qna_date+'</div></td>'
-						output +=  '<td><div>' + item.qna_readcount
+						output +=  '<td><div>' + item.qna_view
 								+ '</div></td></tr>'
 					})
 			output += "</tbody>"
@@ -93,7 +93,7 @@ function ajax(sdata) {
 
 $(function() {
 	$("button").click(function(){
-		location.href="QnaWrite.ad";
+		location.href="QnaWrite.bo";
 	})
 	
 	$("#viewcount").change(function() {

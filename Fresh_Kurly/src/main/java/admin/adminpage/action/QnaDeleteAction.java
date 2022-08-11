@@ -20,7 +20,7 @@ public class QnaDeleteAction implements Action {
 		QnaDAO qnadao=new QnaDAO();
 		//글 삭제 명령을 요청한 사용자가 글을 작성한 사용자인지 판단하기 위해
 		//입력한 비밀번호와 저장된 비밀번호를 비교하여 일치하면 삭제합니다.
-		usercheck=qnadao.isQnaWriter(num, request.getParameter("qna_pass"));
+		usercheck=qnadao.isqnaWriter(num, request.getParameter("qna_pass"));
 		
 		//비밀번호 일지하지 않는 경우
 	     if(usercheck == false) {

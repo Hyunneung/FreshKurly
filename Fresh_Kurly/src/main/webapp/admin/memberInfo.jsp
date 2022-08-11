@@ -15,36 +15,52 @@
 </head>
 <body>
 <div class="container">
-   <table class="table table-bordered">
-      <tr>
-         <td>아이디</td>
-         <td>${memberinfo.id}</td><%-- Member클래스의 getId()메서드 호출 --%>
-      </tr>
-      <tr>
-         <td>비밀번호</td>
-         <td>${memberinfo.password}</td>
-      </tr>
-      <tr>
-         <td>이름</td>
-         <td>${memberinfo.name}</td>
-      </tr>
-      <tr>
-         <td>나이</td>
-         <td>${memberinfo.age}</td>
-      </tr>
-      <tr>
-         <td>성별</td>
-         <td>${memberinfo.gender}</td>
-      </tr>
-      <tr>
-         <td>이메일 주소</td>
-         <td>${memberinfo.email}</td>
-      </tr>
-      <tr>
-         <td colspan=2>
-         <a href="MemberList.ad">리스트로 돌아가기</a></td>         
-      </tr>
-   </table>
+	<table class="table table-bordered">
+		<tr>
+			<td>아이디</td>
+			<td>${memberinfo.member_id}</td><%-- Member클래스의 getId()메서드 호출 --%>
+		</tr>
+		<tr>
+			<td>비밀번호</td>
+			<td>${memberinfo.member_pass}</td>
+		</tr>
+		<tr>
+			<td>이름</td>
+			<td>${memberinfo.member_name}</td>
+		</tr>
+		<tr>
+			<td>이메일</td>
+			<td>${memberinfo.member_email}</td>
+		</tr>
+		<tr>
+			<td>휴대폰번호</td>
+			<td>${memberinfo.member_phone}</td>
+		</tr>
+		<tr>
+			<td>우편번호</td>
+			<td>${memberinfo.member_post}</td>
+		</tr>
+		<tr>
+			<td>주소</td>
+			<td>${memberinfo.member_address}</td>
+		</tr>
+		<tr>
+			<td>성별</td>
+			<td>${memberinfo.member_gender}</td>
+		</tr>
+		<tr>
+			<td>주민번호</td>
+			<td>${memberinfo.member_jumin}</td>
+		</tr>
+		<tr>
+			<td>가입날짜</td>
+			<td>${memberinfo.meber_reg_data}</td>
+		</tr>
+		<tr>
+			<td colspan=2>
+			<a href="MemberList.ad">리스트로 돌아가기</a></td>			
+		</tr>
+	</table>
 </div>
 </body>
 </html>
