@@ -144,6 +144,4 @@ public class QnaDAO {
 		return list;
 	} // getQnaList() end
 	
-	
-	
 }

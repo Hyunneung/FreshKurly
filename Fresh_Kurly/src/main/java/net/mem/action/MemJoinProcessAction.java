@@ -80,7 +80,6 @@ public class MemJoinProcessAction implements Action {
 		} else if (result == -1) { // catch(java.sql.SQLIntegrityConstraintViolationException e)에 에러 잡히면 result=-1 된다
 			out.println("alert('아이디가 중복되었습니다. 다시 입력하세요.');");
 			// 새로고침되어 이전에 입력한 데이터가 나타나지 않습니다.
-			// out.println("location.href='join.net'");
 			out.println("history.back()"); // 비밀번호를 제외한 다른 데이터는 유지되어 있습니다.
 		}
 		out.println("</script>");

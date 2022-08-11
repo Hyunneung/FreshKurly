@@ -11,9 +11,5 @@ create table qna(
    qna_reg_date  date default sysdate
 );
 
-<<<<<<< HEAD
 select * from qna;
 
-=======
-select * from qna;
->>>>>>> branch 'main' of https://github.com/ahslxj1993/Fresh_Kurly.git

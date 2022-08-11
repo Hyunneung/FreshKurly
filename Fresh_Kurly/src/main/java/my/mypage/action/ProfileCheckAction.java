@@ -35,7 +35,7 @@ public class ProfileCheckAction implements Action {
 			
 				forward.setRedirect(false);
 				forward.setPath("mypage/myPage.jsp");
-				return forward; // 맞나..?
+				return forward;
 			} else { // 비밀번호 틀림
 				response.setContentType("text/html;charset=utf-8");
 				PrintWriter out = response.getWriter();
@@ -50,7 +50,7 @@ public class ProfileCheckAction implements Action {
 			session.invalidate();
 			forward.setRedirect(true);
 			forward.setPath("login.jsp");
-			return null; // 맞나..?
+			return null;
 		}
 	}
 
