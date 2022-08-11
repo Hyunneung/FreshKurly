@@ -71,8 +71,8 @@ public class QnaDAO {
 		return listcount; 
 	} // getQnaListCount(String id) end
 	// qna에 담긴 문의내역 리스트
-	public List<Qna> getQnaList(String id, int page, int limit) {
-		List<Qna> list = new ArrayList<Qna>();
+	public List<QnaBean> getQnaList(String id, int page, int limit) {
+		List<QnaBean> list = new ArrayList<QnaBean>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -106,7 +106,7 @@ public class QnaDAO {
 				String qna_content = rs.getString("qna_content");
 				String qna_reg_date = rs.getString("qna_reg_date");
 
-				Qna qna = new Qna();
+				QnaBean qna = new QnaBean();
 				qna.setQna_number(qna_number);
 				qna.setQna_name(qna_name);
 				qna.setQna_pass(qna_pass);

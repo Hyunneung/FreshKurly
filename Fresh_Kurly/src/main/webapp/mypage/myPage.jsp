@@ -3,7 +3,6 @@
 <html>
 <head>
 <title> 마이페이지 </title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script> <!-- 제이쿼리 -->
 <style>
@@ -29,7 +28,7 @@
 	<!-- 왼쪽 네비게이션 -->
 	<div class='container-fluid' style="margin-top:50px;">
 		<div class="row">
-			<div class="col-md-2">
+			<div class="col-md-2 col-xs-4">
 				<aside>
 					<h1>마이컬리</h1>
 					<ul class="nav nav-pills flex-column" id="myPageName">
@@ -44,23 +43,13 @@
 			
 			
 			
-			<div class="col-sm-8">
-				<section id="login">
-					<style>
-						body {margin: 0 auto;}
-						* {text-align: left}
-						h4 {color:gray; font-weight:bold;}
-						hr { border: 0;
-						     height: 2px;
-						     background: #ccc;}
-						td {font-size:13pt}     
-					</style>
+			<div class="col-sm-8 col-xs-4">
 					<jsp:include page="${myPage}.jsp"/>
-				</section>
 			</div>
 			
 		</div>
 	</div>
+
 
 	<script>
 		var myPage = "${myPage}";

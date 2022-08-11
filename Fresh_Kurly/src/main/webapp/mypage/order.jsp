@@ -13,7 +13,7 @@
 <body>
 	<div class="col-md-8">
 		<div class="myLeftCtn">
-			<form class="myForm text-center">
+			<form class="text-center">
 				<header>주문내역</header>
 				<hr>
 				<!-- 주문내역이 있는 경우 -->

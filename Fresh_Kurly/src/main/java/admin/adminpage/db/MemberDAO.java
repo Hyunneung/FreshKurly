@@ -1,4 +1,3 @@
-	
 package admin.adminpage.db;
 
 import java.sql.Connection;
@@ -23,144 +22,9 @@ public class MemberDAO {
 		} catch (Exception ex) {
 			System.out.println("DB 연결 실패 : " + ex);
 		}
-	}//MemberDAO()메서드
-	
-	public int isId(String id) {
-		Connection con=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs = null;
-		int result=-1;//DB에 해당 id가 없습니다.
-		try {
-			con = ds.getConnection();
-			
-			String sql = "select id from member where id = ? ";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-	            result = 0; //DB에 해당 id가 있습니다.
-	         }
-	      }catch(Exception e) {
-	         e.printStackTrace();
-	      }finally {
-	         if (rs != null)
-	            try {
-	               rs.close();
-	            } catch (SQLException ex) {
-	               ex.printStackTrace();
-	            }
-	         if (pstmt != null)
-	            try {
-	               pstmt.close();
-	            } catch (SQLException ex) {
-	               ex.printStackTrace();
-	            }
-	         if (con != null)
-	            try {
-	               con.close();
-	            } catch (SQLException ex) {
-	               ex.printStackTrace();
-	            }
-	      }//finally   
-	      return result;
-	   }// IsId end
+	}
 
-	public int insert(Member m) {
-		  Connection con = null;
-	      PreparedStatement pstmt = null;
-	      int result=0;
-	      try {
-	         
-	         Context init = new InitialContext();
-	         DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
-	         con = ds.getConnection();
-	         
-	         	String select_sql = "insert into member " 
-	         			+ "         (id, password, name, age, gender, email) " 
-	         			+ "         values(?,?,?,?,?,?)";
-	         
-	         	// PrepardSatement 객체 얻기
-	         	pstmt = con.prepareStatement(select_sql.toString());
-	         	pstmt.setString(1, m.getId());
-	         	pstmt.setString(2, m.getPassword());
-	         	pstmt.setString(3, m.getName());
-	         	pstmt.setInt(4, m.getAge());
-	         	pstmt.setString(5, m.getGender());
-	         	pstmt.setString(6, m.getEmail());
-	         	result = pstmt.executeUpdate();
-	         	
-	       //primary key  제약조건 유ㅣ반햿을 경우 발생하는 에러
-	      	} catch (java.sql.SQLIntegrityConstraintViolationException e) {
-		         result = -1;
-		         System.out.println("멤버 아이디 중복 에러입니다.");
-	      	} catch (Exception e) {
-	         e.printStackTrace();
-			} finally {
-			         if (pstmt != null)
-			            try {
-			               pstmt.close();
-			            } catch (SQLException ex) {
-			               ex.printStackTrace();
-			            }
-			         if (con != null)
-			            try {
-			               con.close();
-			            } catch (SQLException ex) {
-			               ex.printStackTrace();
-			            }
-			      }//finally   
-			      return result;
-			   }//insert()메서드
-
-	
-	public int isId(String id, String pass) {
-		  Connection con = null;
-	      PreparedStatement pstmt = null;
-	      ResultSet rs= null;
-	      int result=-1;//아이디가 존재하지 않습니다.
-	      try {
-	    	  con = ds.getConnection();
-	    	  
-	    	  String sql = "select id, password from member where id = ?";
-	    	  pstmt = con.prepareStatement(sql);
-	    	  pstmt.setString(1, id);
-	    	  rs = pstmt.executeQuery();
-				
-	    	  if(rs.next()) {
-					if(rs.getString(2).equals(pass)){
-			            result = 1; //아이디와 비밀번호 일치하는 경우
-			         }else {
-			        	result = 0; //비밀번호 일치하는 않는 경우
-			         }
-	    	  }	
-		      }catch(Exception e) {
-		         e.printStackTrace();
-		      }finally {
-		         if (rs != null)
-		            try {
-		               rs.close();
-		            } catch (SQLException ex) {
-		               ex.printStackTrace();
-		            }
-		         if (pstmt != null)
-		            try {
-		               pstmt.close();
-		            } catch (SQLException ex) {
-		               ex.printStackTrace();
-		            }
-		         if (con != null)
-		            try {
-		               con.close();
-		            } catch (SQLException ex) {
-		               ex.printStackTrace();
-		            }
-		      }//finally   
-		      return result;
-	}//isId()메서드 end
-
-	//
-	public Member member_info(String id) {
+	public Member member_info(String member_id) {
 		Member m = null;
 		Connection con = null;
 	    PreparedStatement pstmt = null;
@@ -168,19 +32,21 @@ public class MemberDAO {
 	    try {
 	    	con = ds.getConnection();
 	    	
-	    	String sql = "select * from member where id = ? ";
+	    	String sql = "select * from member where member_id = ? ";
 	    	pstmt = con.prepareStatement(sql);
-	    	pstmt.setString(1, id);
+	    	pstmt.setString(1, member_id);
 	    	rs = pstmt.executeQuery();
 	    	if(rs.next()){
 	    		m = new Member();
-	    		m.setId(rs.getString(1));
-	    		m.setPassword(rs.getString(2));
-	            m.setName(rs.getString(3));
-	            m.setAge(rs.getInt(4));
-	            m.setGender(rs.getString(5));
-	            m.setEmail(rs.getString(6));
-	            m.setMemberfile(rs.getString(7));//추가
+	    		m.setMember_id(rs.getString(1));
+	    		m.setMember_pass(rs.getString(2));
+	            m.setMember_name(rs.getString(3));
+	            m.setMember_email(rs.getString(4));
+	            m.setMember_phone(rs.getString(5));
+	            m.setMember_post(rs.getString(6));
+	            m.setMember_address(rs.getString(7));
+	            m.setMember_gender(rs.getString(8));
+	            m.setMember_jumin(rs.getString(9));
 	    	}
 	    } catch(Exception e) {
 	         e.printStackTrace();
@@ -208,47 +74,7 @@ public class MemberDAO {
 	    
 	}//Member member_info()메서드 end
 
-	//회원정보 수정
-	public int update(Member m) {
-	      Connection con = null;
-	      PreparedStatement pstmt = null;
-	      int result=0;
-	      
-	      try {     
-	         con = ds.getConnection();
-	                     
-	         String sql = "update member set name = ?, age = ?, gender = ?, email = ?, memberfile =? " 
-	               + "   where id = ?";
-	         
-	         pstmt = con.prepareStatement(sql);
-	         pstmt.setString(1, m.getName());
-	         pstmt.setInt(2, m.getAge());
-	         pstmt.setString(3, m.getGender());
-	         pstmt.setString(4, m.getEmail());
-	         pstmt.setString(5, m.getMemberfile());
-	         pstmt.setString(6, m.getId());
-	         result = pstmt.executeUpdate();
-	            
-	      } catch (Exception se) {
-	         se.printStackTrace();
-	         System.out.println("update() 에러: " + se);   
-	      } finally {
-	         try {
-	            if(pstmt != null)
-	               pstmt.close();
-	         }catch(SQLException e) {
-	            System.out.println(e.getMessage());
-	         }
-	         try {
-	            if(con != null)
-	               con.close();
-	         }catch(Exception e) {
-	            System.out.println(e.getMessage());
-	         }
-	      }
-	   return result;
-	         
-	   }//update()메서드 end
+	
 
 	public int getListCount() {
 		Connection con=null;
@@ -258,7 +84,7 @@ public class MemberDAO {
 		try {
 			
 			con = ds.getConnection();
-			pstmt = con.prepareStatement("select count(*) from member where id != 'admin'");
+			pstmt = con.prepareStatement("select count(*) from member where member_id != 'admin'");
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
@@ -301,7 +127,7 @@ public class MemberDAO {
 			
 			con = ds.getConnection();
 			String sql = "select count(*) from member "
-					   + "where id !='admin' "
+					   + "where member_member_id !='admin' "
 					   + "and " + field + " like ?"; // and name like '%홍길동%'
 			System.out.println(sql);
 			pstmt = con.prepareStatement(sql);
@@ -350,8 +176,8 @@ public class MemberDAO {
 			String sql = "select * "
 					+ "   from (select	b.*, rownum rnum"
 					+ " 		from(select * from member "
-					+ " 			 where id != 'admin'"
-					+ "				 order by id) b"
+					+ " 			 where member_member_id != 'admin'"
+					+ "				 order by member_member_id) b"
 					+ 			")"
 					+ "   where rnum>=? and rnum<=?";
 			pstmt = con.prepareStatement(sql);
@@ -360,18 +186,19 @@ public class MemberDAO {
 						  // 읽기 시작할 row 번호(1 11 21 31 ...
 			int endrow = startrow + limit - 1;
 						 // 읽을 마지막 row 번호(10 20 30 40 ...
-			pstmt.setInt(1, startrow);
-			pstmt.setInt(2, endrow);
+			pstmt.setInt(1, endrow);
+			pstmt.setInt(2, startrow);
+			pstmt.setInt(1, endrow);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				Member m = new Member();
-				m.setId(rs.getString("id"));
-				m.setPassword(rs.getString(2));
-				m.setName(rs.getString(3));
-				m.setAge(rs.getInt(4));
-				m.setGender(rs.getString(5));
-				m.setEmail(rs.getString(6));
+				m.setMember_id(rs.getString("member_id"));
+				m.setMember_pass(rs.getString(2));
+				m.setMember_name(rs.getString(3));
+				m.setMember_email(rs.getString(4));
+				m.setMember_phone(rs.getString(5));
+				m.setMember_reg_date(rs.getString(5));
 				list.add(m);
 			}
 		} catch (Exception ex) {
@@ -412,9 +239,9 @@ public class MemberDAO {
 					"select * "
 					+ "   from (select	b.*, rownum rnum"
 					+ " 		from(select * from member "
-					+ " 			 where id != 'admin'"
+					+ " 			 where member_id != 'admin'"
 					+ " 			 and " + field + " like ?"			
-					+ "				 order by id) b"
+					+ "				 order by memember_id) b"
 					+ 			")"
 					+ "   where rnum between ? and ?" ;
 			System.out.println(sql);
@@ -431,26 +258,10 @@ public class MemberDAO {
 			pstmt.setInt(3, endrow);
 			rs = pstmt.executeQuery();
 			
-			/*
-			create table member(
-  					  id		 varchar2(12),
-					  password	 varchar2(10),
-					  name		 varchar2(15),
-					  age		 number(2),
-					  gender	 varchar2(3),
-					  email		 varchar2(30),
-					  PRIMARY KEY(id)
-);			
-			 */
-			
 			while(rs.next()) {
 				Member m = new Member();
-				m.setId(rs.getString("id"));
-				//m.setPassword(rs.getString(2));
-				m.setName(rs.getString(3));
-				//m.setAge(rs.getInt(4));
-				//m.setGender(rs.getString(5));
-				//m.setEmail(rs.getString(6));
+				m.setMember_id(rs.getString("member_id"));
+				m.setMember_name(rs.getString(3));
 				list.add(m);
 			}
 		} catch (Exception e) {
@@ -479,15 +290,15 @@ public class MemberDAO {
 	}
 	
 	//회원 정보 삭제
-	public int delete(String id) {
+	public int delete(String member_id) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		int result=0;
 		try {
 			con = ds.getConnection();
-			String sql ="delete from member where id = ? ";
+			String sql ="delete from member where member_id = ? ";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
+			pstmt.setString(1, member_id);
 			result=pstmt.executeUpdate();
 		} catch (Exception ex) {
 			ex.printStackTrace();

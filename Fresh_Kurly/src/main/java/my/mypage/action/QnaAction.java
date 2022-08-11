@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import my.mypage.db.Qna;
+import my.mypage.db.QnaBean;
 import my.mypage.db.QnaDAO;
 
 public class QnaAction implements Action {
@@ -33,7 +33,7 @@ public class QnaAction implements Action {
 		
 		QnaDAO dao = new QnaDAO();
 		int listcount = dao.getQnaListCount(id); // qna에 담긴 문의내역 수
-		List<Qna> list = null; 
+		List<QnaBean> list = null; 
 		list = dao.getQnaList(id, page, limit); // qna에 담긴 문의내역 리스트
 		
 		int maxpage = (listcount + limit - 1) / limit; // 총 페이지 수

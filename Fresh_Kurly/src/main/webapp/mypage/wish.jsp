@@ -84,9 +84,7 @@
 </script>
 </head>
 <body>
-   	<div class="col-md-8">
-       	<div class="myLeftCtn">	
-			<form class="myForm text-center">
+			<form class="text-center">
 				<header>찜한상품</header>
 				<hr>
 							
@@ -124,7 +122,5 @@
 					<font size=5>찜한 상품이 없습니다.</font>
 				</c:if>
 			</form>
-		</div>
-   	</div>
 </body>
 </html>

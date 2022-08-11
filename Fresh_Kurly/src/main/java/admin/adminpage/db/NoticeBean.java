@@ -1,11 +1,20 @@
 package admin.adminpage.db;
 
 public class NoticeBean {
-	public int getNotice_num() {
-		return notice_num;
+	
+	private int		notice_number;	     //글번호
+	private String	notice_name;     //글 작성자
+	private String	notice_pass;     //글 비밀번호
+	private String	notice_subject;  //글 제목
+	private String	notice_content;  //글 내용
+	private int		notice_view;//글의 조회수
+	private String  notice_reg_date;	
+	private int cnt;
+	public int getNotice_number() {
+		return notice_number;
 	}
-	public void setNotice_num(int notice_num) {
-		this.notice_num = notice_num;
+	public void setNotice_number(int notice_number) {
+		this.notice_number = notice_number;
 	}
 	public String getNotice_name() {
 		return notice_name;
@@ -37,11 +46,11 @@ public class NoticeBean {
 	public void setNotice_view(int notice_view) {
 		this.notice_view = notice_view;
 	}
-	public String getNotice_date() {
-		return notice_date;
+	public String getNotice_reg_date() {
+		return notice_reg_date;
 	}
-	public void setNotice_date(String notice_date) {
-		this.notice_date = notice_date;
+	public void setNotice_reg_date(String notice_reg_date) {
+		this.notice_reg_date = notice_reg_date;
 	}
 	public int getCnt() {
 		return cnt;
@@ -49,14 +58,11 @@ public class NoticeBean {
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
 	}
-	private int		notice_num;	     //글번호
-	private String	notice_name;     //글 작성자
-	private String	notice_pass;     //글 비밀번호
-	private String	notice_subject;  //글 제목
-	private String	notice_content;  //글 내용
-	private int		notice_view;//글의 조회수
-	private String  notice_date;	
-	private int cnt;
+	
+	
+	
+	
+	
 		
 	
 	

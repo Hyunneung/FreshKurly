@@ -1,12 +1,15 @@
 package my.mypage.db;
 
-public class Qna {
-	private int qna_number;
-	private String qna_name;
-	private String qna_pass;
-	private String qna_subject;
-	private String qna_content;
-	private String qna_reg_date;
+public class QnaBean {
+	private int		qna_number;	  //글번호
+	private String	qna_name;	  //글 작성자
+	private String	qna_pass;	  //글 비밀번호
+	private String	qna_subject;//글 제목
+	private String	qna_content;//글 내용
+	private int		qna_view;//글의 조회수
+	private String  qna_reg_date;
+	private int cnt; // 댓글
+	
 	
 	// getter, setter
 	public int getQna_number() {
@@ -39,11 +42,22 @@ public class Qna {
 	public void setQna_content(String qna_content) {
 		this.qna_content = qna_content;
 	}
+	public int getQna_view() {
+		return qna_view;
+	}
+	public void setQna_view(int qna_view) {
+		this.qna_view = qna_view;
+	}
 	public String getQna_reg_date() {
 		return qna_reg_date;
 	}
 	public void setQna_reg_date(String qna_reg_date) {
 		this.qna_reg_date = qna_reg_date;
 	}
-	
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
 }

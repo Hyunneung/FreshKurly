@@ -72,21 +72,15 @@ public class AdminFrontController extends javax.servlet.http.HttpServlet {
 			case "/QnaDeleteAction.ad":
 				action = new QnaDeleteAction();
 				break;
-//			case "/memberUpdate.ad":
-//				action = new MemberUpdateAction();
-//				break;
-//			case "/updateProcess.ad":
-//		         action = new MemberUpdateProcessAction();
-//		         break;
-//			case "/memberList.ad":
-//		         action = new MemberSearchAction();
-//		         break;
-//			case "/memberInfo.ad":
-//		         action = new MemberInfoAction();
-//		         break;
-//			case "/memberDelete.ad":
-//		         action = new MemberDeleteAction();
-//		         break;     
+			case "/MemberList.ad":
+		         action = new MemberSearchAction();
+		         break;
+			case "/MemberInfo.ad":
+		         action = new MemberInfoAction();
+		         break;
+			case "/MemberDelete.ad":
+		         action = new MemberDeleteAction();
+		         break;
 
 		}// switch end
 		
