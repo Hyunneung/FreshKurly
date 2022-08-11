@@ -1,4 +1,5 @@
-drop table item on cascade;
+DROP TABLE item CASCADE CONSTRAINTS PURGE;
+
 
 --상품정보테이블
 create table item (
@@ -23,7 +24,9 @@ values
 (item_seq.nextval , '친환경 잎채소 깻잎 30g', 1590, sysdate,
  'image/깻잎', '샛별배송 23시 전 주문시 내일 아침 7시 전 도착',
 '프레쉬컬리', '냉장(종이포장)', '농산물로 별도의 유통기한은 없으나 가급적 빠르게 드시기 바랍니다.',
-'1봉', '30g', '채소', '상큼하고 쌉쌀한 향기 (1봉/30g)', 10000);
+'1봉', '30g', '야채', '상큼하고 쌉쌀한 향기 (1봉/30g)', 10000);
+
+delete from item where item_category = '채소';
 
 create sequence practice.item_seq
 increment by 1
@@ -33,3 +36,4 @@ maxvalue 999999
 
 select * from item;
 select * from tab;
+
