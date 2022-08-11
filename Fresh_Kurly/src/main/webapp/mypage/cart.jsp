@@ -112,7 +112,6 @@
 </script>
 </head>
 <body>
-	<div class="row">
 		<div class="col-md-8">
 			<div class="myLeftCtn">
 				<form class="myForm text-center" method="" action="" enctype="multipart/form-data"> <!-- 결제기능 하면 결제 폼으로 넘어가게 하기~ -->
@@ -153,7 +152,7 @@
 						</table>
 						
 						<!-- 배송지 / 결제하기 -->
-						<div style="float: right; width:800px">
+						<div style="width:800px">
 							<aside>
 								<jsp:include page="cart_right.jsp" />
 							</aside>
@@ -168,6 +167,5 @@
 				</form>
 			</div>
 		</div>
-	</div>	
 </body>
 </html>

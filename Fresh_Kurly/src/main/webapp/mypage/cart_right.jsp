@@ -43,7 +43,7 @@
 </script>
 </head>
 <body>
-	<div class="col-md-4 mb-4" style="float:right">
+	<div class="col-md-4 mb-4">
 		<!-- 배송지 -->
 		<form action="" method="">
 			<ul class="list-group">
