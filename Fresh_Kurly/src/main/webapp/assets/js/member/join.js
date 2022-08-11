@@ -328,7 +328,7 @@ $(document).ready(function() {
 			return false;
 		}
 		// 약관 선택 검사
-		if ( $("#allchk").is(":checked") ) {
+		if ( !$("#allchk").is(":checked") ) {
 			alert("필수약관에 동의해주세요");
 			return false;
 		}

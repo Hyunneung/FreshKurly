@@ -7,6 +7,8 @@
 </head>
 <style>
 	img{width:30px; height:30px; opacity:0.5; cursor: pointer;}
+	input[type=button]{background:#8BC34A; color:white; border:none;
+					   width:80px; height:30px; margin-top:5px; text-align:center}
 </style>
 <script>
 	$(document).ready(function() {
@@ -212,9 +214,11 @@
 				alert("비밀번호를 확인 해주세요");
 				return false;
 			}
-			if ( $.trim($("#pass").val()).length < 6) {
-				alert("비밀번호 형식을 확인해주세요");
-				return false;
+			if ( $.trim($("#pass").val()) != "" ) {
+				if ( $.trim($("#pass").val()).length < 6) {
+					alert("비밀번호 형식을 확인해주세요");
+					return false;
+				}
 			}
 			// 2. 이메일 바꿨으면 중복확인 했는지 검사
 			if( $("#email").val() != "${member.member_email}" && email_check_ok == "n" ) {
@@ -285,7 +289,7 @@
 									<input type="button" value="이메일 인증" id="emailchkbtn">
 									<input type="hidden" name="certification_ok" id="certification_ok" 
 										   class="form-control" placeholder="인증번호 입력" maxlength="6" required>
-									<input type="hidden" id="certification_btn" value="인증번호 확인 버튼">
+									<input type="hidden" id="certification_btn" value="인증번호 확인" style="width:100px">
 									<input type="hidden" name="save_email_num" id="save_email_num">
 								</div>
 

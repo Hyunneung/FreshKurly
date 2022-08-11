@@ -43,9 +43,9 @@
 </script>
 </head>
 <body>
-	<div class="col-md-4 mb-4" style="float:right">
+	<div class="col-md-4 mb-4">
 		<!-- 배송지 -->
-		<form action="" method="">
+		<form action="" method=""> <!-- 결제기능 하면 결제 폼으로 넘어가게 하기~ -->
 			<ul class="list-group">
 				<li class="list-group-item">
 					<div>
