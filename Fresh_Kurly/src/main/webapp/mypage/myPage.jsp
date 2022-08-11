@@ -46,7 +46,6 @@
 			<div class="col-sm-8 col-xs-4">
 					<jsp:include page="${myPage}.jsp"/>
 			</div>
-			
 		</div>
 	</div>
 

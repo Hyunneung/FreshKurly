@@ -112,7 +112,7 @@
 </script>
 </head>
 <body>
-<div class="row">
+	<div class="row">
 		<div class="col-md-8">
 			<div class="myLeftCtn">
 				<form class="text-center">
@@ -151,8 +151,6 @@
 								</c:forEach>
 							</tbody>
 						</table>
-						
-						
 					</c:if>
 				
 				
@@ -164,12 +162,14 @@
 				
 			</div>
 		</div>
+		
+		
 		<!-- 배송지 / 결제하기 -->
-						<div class="col-md-4" style="width:800px">
-							<aside>
-								<jsp:include page="cart_right.jsp" />
-							</aside>
-						</div>
-						</div>
+		<div class="col-md-4" style="width:800px">
+			<aside>
+				<jsp:include page="cart_right.jsp" />
+			</aside>
+		</div>
+	</div>
 </body>
 </html>
