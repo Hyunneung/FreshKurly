@@ -27,18 +27,19 @@
 <style>
 	div {text-align: center}
 
-.form-control {width:500px; margin:auto;}
+	.form-control {width:500px; margin:auto;}
+	
+	a:link {text-decoration:none;}
+	a:visited {text-decoration:none;}
+	a:active {text-decoration:none;}
+	a {color:black;}
+	
+	img {width:50px; height:50px}
+	
+	button {background:#8BC34A; font-weight:bold; color: white; font-size: 30px;
+			padding-top:10px; padding-bottom:10px; margin-top:80px;
+			border:0; border-radius: 12px;; width:500px;}
 
-a:link {text-decoration:none;}
-a:visited {text-decoration:none;}
-a:active {text-decoration:none;}
-a {color:black;}
-
-img {width:50px; height:50px}
-
-button {background:#8BC34A; font-weight:bold; color: white; font-size: 30px;
-		padding-top:10px; padding-bottom:10px; margin:30px;
-		border:0; border-radius: 12px; width:500px }
 		
 </style>
 </head>
@@ -66,9 +67,7 @@ button {background:#8BC34A; font-weight:bold; color: white; font-size: 30px;
 		  	</div>
 		  	
 			<div class="clearfix">
-				<button type="submit" class="submitbtn">로그인</button> <!-- form의 submit 기능하는 버튼 -->
-			</div>
-			<div class="clearfix">
+				<button type="submit" class="submitbtn">로그인</button><br> <!-- form의 submit 기능하는 버튼 -->
 				<button type="button" class="join">회원가입</button>
 			</div>
 			

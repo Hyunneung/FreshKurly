@@ -1,6 +1,6 @@
 drop table orderInfo;
 
---ÁÖ¹® Å×ÀÌºí
+--ï¿½Ö¹ï¿½ ï¿½ï¿½ï¿½Ìºï¿½
 create table orderInfo(
 	order_number 	number(10) 	 primary key,
 	item_id		 	number(20) 	 references item(item_id), 
@@ -11,3 +11,5 @@ create table orderInfo(
 	order_price		number(10) not null,
 	order_total		number(10) not null
 )
+
+insert into ORDERINFO  values (0101, 1, 'Sijoon', 'YES', sysdate, 10, 10000, 100000)
