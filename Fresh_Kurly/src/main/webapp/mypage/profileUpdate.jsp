@@ -212,9 +212,11 @@
 				alert("비밀번호를 확인 해주세요");
 				return false;
 			}
-			if ( $.trim($("#pass").val()).length < 6) {
-				alert("비밀번호 형식을 확인해주세요");
-				return false;
+			if ( $.trim($("#pass").val()) != "" ) {
+				if ( $.trim($("#pass").val()).length < 6) {
+					alert("비밀번호 형식을 확인해주세요");
+					return false;
+				}
 			}
 			// 2. 이메일 바꿨으면 중복확인 했는지 검사
 			if( $("#email").val() != "${member.member_email}" && email_check_ok == "n" ) {
