@@ -10,7 +10,7 @@
 	height: 41px;
 }
 
-#btn-ins {
+#insert_item {
 position: relative;
 left: 1350px;
 	
@@ -90,7 +90,7 @@ body>div>table>tbody>tr>td:last-child>a {
 			}
 		}); // 삭제 클릭 end
 		
-		$("button").click(function() {
+		$("#insert_item").click(function() {
 			location.href="itemInsert.item";
 		})// 등록하기 버튼 클릭 시 물품 등록하기
 	}); // ready end
@@ -193,6 +193,6 @@ body>div>table>tbody>tr>td:last-child>a {
 <c:if test="${listcount == 0 && !empty search_word}">
 	<h1>검색결과가 없습니다.</h1>
 </c:if>
-<button id="btn-ins" type="button" class="btn">등록하기</button>
+<button id="insert_item" type="button" class="btn">등록하기</button>
 </body>
 </html>
