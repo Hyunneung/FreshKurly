@@ -13,7 +13,7 @@
 <body>
 	<div class="col-md-8">
 		<div class="myLeftCtn">
-			<form class="myForm text-center">
+			<form class="text-center">
 				<header>주문내역</header>
 				<hr>
 				<!-- 주문내역이 있는 경우 -->
@@ -28,7 +28,7 @@
 							<tbody>
 								<tr style="border-bottom: hidden;">
 									<td rowspan="3">
-										${o.item_image } <%-- <img src="폴더이름${o.item_image}" width="300px" height="400px"> --%>
+										<img src="itemupload/${o.item_image}" style="width:80px; height:80px">
 									</td>
 									<td>
 										${o.item_name}

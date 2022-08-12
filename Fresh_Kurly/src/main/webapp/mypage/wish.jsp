@@ -5,22 +5,19 @@
 <head>
 <title>마이페이지 - 찜한상품</title>
 <style>
-	button{border:0; border-radius: 5px; color:white; font-weight:bold}
-	
+	tbody > tr:nth-child(1) > td:nth-child(2){width:20%}
+    tbody > tr:nth-child(1) > td:nth-child(3){width:30%}
+    tbody > tr:nth-child(1) > td:nth-child(4){width:30%}
+    tbody > tr:nth-child(1) > td:nth-child(5){width:20%}
+    
 	#deletebtn {background:grey;}
 	#addbtn {background:#8BC34A;}
 	
 	input { border:none; width:25px; text-align:center}
 	input:focus {outline: none;}    
 	#item_price{width:60px}
-	
-	table {width:900px}
-    tbody > tr:nth-child(1) > td:nth-child(2){width:20%}
-    tbody > tr:nth-child(1) > td:nth-child(3){width:30%}
-    tbody > tr:nth-child(1) > td:nth-child(4){width:30%}
-    tbody > tr:nth-child(1) > td:nth-child(5){width:20%}
     
-	input[type=button] {width:80px; height:35px; color: white; border-radius: 12px; margin:5px}
+	input[type=button] {width:80px; height:35px; color: white; border-radius: 12px; margin:5px; text-align:center; border:none}
 </style>
 <script>
 	$(function(){
@@ -84,47 +81,47 @@
 </script>
 </head>
 <body>
-   	<div class="col-md-8">
-       	<div class="myLeftCtn">	
-			<form class="myForm text-center">
-				<header>찜한상품</header>
-				<hr>
-							
-				<!-- 찜한상품이 있는 경우 -->
-				<c:if test="${listcount > 0}">
-					<table class="table" frame=void>
-						<tbody>
-							<c:forEach var="w" items="${wishlist}">
-								<tr>
-									<td>
-										<input type="hidden" name="item_id" id="item_id" value="${w.item_id}">
-									</td>
-									<td> <!-- 상품이미지 -->
-										${w.item_image} <!-- <input type="image" src="${w.item_image}"> -->
-									</td>
-									<td> <!-- 상품명 -->
-										${w.item_name}
-									</td>
-									<td> <!-- 상품가격 -->
-										<input type="text" name="item_price" id="item_price" value="<fmt:formatNumber value="${w.item_price}" pattern="#,###"/>" readonly>
-									</td>
-									<td> <!-- 찜한상품 장바구니 담기/삭제 버튼 -->
-										<input type="button" name="addbtn" id="addbtn" value="담기"><br>
-										<input type="button" name="deletebtn" id="deletebtn" value="삭제">
-									</td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-				</c:if>
+<div class="col-md-8">
+		<div class="myLeftCtn">
+		<form class="text-center">
+			<header>찜한상품</header>
+			<hr>
+						
+			<!-- 찜한상품이 있는 경우 -->
+			<c:if test="${listcount > 0}">
+				<table class="table" frame=void>
+					<tbody>
+						<c:forEach var="w" items="${wishlist}">
+							<tr>
+								<td>
+									<input type="hidden" name="item_id" id="item_id" value="${w.item_id}">
+								</td>
+								<td> <!-- 상품이미지 -->
+									<img src="itemupload/${w.item_image}" style="width:80px; height:80px">
+								</td>
+								<td> <!-- 상품명 -->
+									${w.item_name}
+								</td>
+								<td> <!-- 상품가격 -->
+									<input type="text" name="item_price" id="item_price" value="<fmt:formatNumber value="${w.item_price}" pattern="#,###"/>" readonly>
+								</td>
+								<td> <!-- 찜한상품 장바구니 담기/삭제 버튼 -->
+									<input type="button" name="addbtn" id="addbtn" value="담기"><br>
+									<input type="button" name="deletebtn" id="deletebtn" value="삭제">
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</c:if>
 	
 	
-				<!-- 찜한상품이 없는 경우 -->
-				<c:if test="${listcount == 0}">
-					<font size=5>찜한 상품이 없습니다.</font>
-				</c:if>
-			</form>
-		</div>
-   	</div>
+			<!-- 찜한상품이 없는 경우 -->
+			<c:if test="${listcount == 0}">
+				<font size=5>찜한 상품이 없습니다.</font>
+			</c:if>
+		</form>
+	</div>
+</div>		
 </body>
 </html>

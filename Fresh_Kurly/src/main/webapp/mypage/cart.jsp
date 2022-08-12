@@ -112,9 +112,10 @@
 </script>
 </head>
 <body>
+	<div class="row">
 		<div class="col-md-8">
 			<div class="myLeftCtn">
-				<form class="myForm text-center">
+				<form class="text-center">
 					<header>장바구니</header>
 					<h4>구매 금액 30,000원 이상 시 무료배송되며 30,000원 미만 구매 시 선불 배송비 3,000원이 추가됩니다.</h4>
 					<hr>
@@ -130,7 +131,7 @@
 											<input type="hidden" name="item_price" id="item_price" value="${c.item_price}">
 										</td>
 										<td> <!-- 상품이미지 -->
-											${c.item_image} <!-- <input type="image" src="${c.item_image }"> -->
+											<img src="itemupload/${c.item_image}" style="width:80px; height:80px">
 										</td> 
 										<td> <!-- 상품명 -->
 											${c.item_name}
@@ -150,13 +151,6 @@
 								</c:forEach>
 							</tbody>
 						</table>
-						
-						<!-- 배송지 / 결제하기 -->
-						<div style="width:800px">
-							<aside>
-								<jsp:include page="cart_right.jsp" />
-							</aside>
-						</div>
 					</c:if>
 				
 				
@@ -165,7 +159,17 @@
 						<font size=5>장바구니에 담긴 상품이 없습니다.</font>
 					</c:if>
 				</form>
+				
 			</div>
 		</div>
+		
+		
+		<!-- 배송지 / 결제하기 -->
+		<div class="col-md-4" style="width:800px">
+			<aside>
+				<jsp:include page="cart_right.jsp" />
+			</aside>
+		</div>
+	</div>
 </body>
 </html>
