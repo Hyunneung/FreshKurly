@@ -109,5 +109,9 @@
 	</c:if>
 	</div><%-- comment-area end --%>
 </div><%-- class="container" end --%>
+<script src="assets/js/custom.js"></script>
+	<footer id="footer">  
+		<jsp:include page="../mainpage/footer.jsp"/>
+	</footer> 
 </body>
 </html>
