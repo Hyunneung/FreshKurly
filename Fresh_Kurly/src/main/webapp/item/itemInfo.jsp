@@ -80,6 +80,7 @@ $(function() {
     	if (!check.test($(".item_amount").val())) {    
     		alert("숫자만 입력 가능합니다.");
     		$(".item_amount").val("1");
+    		$("#totalprice").text(${iteminfo.item_price});
     	}
     })
     
@@ -165,7 +166,7 @@ $(function() {
                 <div class="wrapper row">
                     <div class="preview col-md-6">
                         <div class="preview-pic tab-content">
-                          <div class="tab-pane active" id="pic-1"><img src="../itemupload/${iteminfo.item_image }" /></div>
+                          <div class="tab-pane active" id="pic-1"><img src="${'itemupload/' }${iteminfo.item_image }" /></div>
                           <!-- 상품 사진 URI item_image -->
                         </div>
                     </div>
@@ -186,7 +187,7 @@ $(function() {
                             <hr class="col-md-12">
                             <div>총 상품금액</div>
                             <h1 id="tp" class="price"><span id="totalprice">${iteminfo.item_price }</span><span>원</span></h1> <!-- 수량에 따라 값이 변함 -->
-                            <a id="buybtn" href="checkout.html" class="btn">구매하기</a> <!-- 클릭 시 결제 api -->
+                            <a id="buybtn" href="itemOrder.item" class="btn">구매하기</a> <!-- 클릭 시 결제 api -->
                         </div>
                     </div>
                         <div class="col-sm-12 reviews_padding">

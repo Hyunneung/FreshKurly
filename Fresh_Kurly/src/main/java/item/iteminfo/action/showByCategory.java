@@ -1,28 +1,37 @@
 package item.iteminfo.action;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import item.iteminfo.db.Item;
 import item.iteminfo.db.ItemDAO;
 
-public class ItemInsertAction implements Action {
+public class showByCategory implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		ActionForward forward = new ActionForward();
 		ItemDAO dao = new ItemDAO();
 		
-		int num = dao.item_id_num();
+		List<Item> list = null;
 		
-		request.getParameter("item_id");
+		response.setContentType("text/html; charset=UTF-8");
 		
-		ActionForward forward = new ActionForward();
+		String category = request.getParameter("category");
+		
+		list = dao.getListByCategory(category);
+					
+					
+		request.setAttribute("totallist", list);					
+
+		forward.setPath("item/show_by_category.jsp");
 		forward.setRedirect(false);
-		forward.setPath("item/item_insert_Form.jsp");
 		return forward;
 	}
 

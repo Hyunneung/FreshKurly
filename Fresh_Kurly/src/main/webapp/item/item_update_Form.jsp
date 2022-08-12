@@ -108,12 +108,15 @@ form[name=updateform] span{display:inline-block;margin-top:-20px;font-size:10px}
 }
 
 #showImage > img {
-display: none;
 margin-top: 20px;
 }
 
 #showImage {
 display: block;
+}
+
+#documentimg {
+margin-bottom: 10px;
 }
 
 </style> 
@@ -188,9 +191,12 @@ $(function(){
 	
 	<b>상품이미지</b>
 	<label>
-		<img src="assets/image/item/document.png" style="cursor:pointer" width="50px">
+		<img id="documentimg" src="assets/image/item/document.png" style="cursor:pointer" width="50px">
 		<span id="showImage">
-		   <img width="150px" height="150px" src='${"itemupload/"}${iteminfo.item_image }'>
+			<c:if test='${!empty iteminfo.item_image }'>
+				<c:set var='src' value='${"itemupload/"}${iteminfo.item_image }'/>
+			</c:if>
+		   <img width="150px" height="150px" src="${src }">
 		</span>
 
 		<input type="file" name="item_image" accept="image/*">

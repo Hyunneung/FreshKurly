@@ -204,5 +204,6 @@ body>div>table>tbody>tr>td:last-child>a {
 </c:if>
 <button id="btn-ins" type="button" class="btn">등록하기</button>
 </div>
+<div></div>
 </body>
 </html>
