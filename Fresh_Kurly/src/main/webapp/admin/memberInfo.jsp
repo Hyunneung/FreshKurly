@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원정보 확인 페이지</title>
 <jsp:include page="../mainpage/header.jsp"/>
 <style>
   tr>td:nth-child(odd){font-weight: bold}
@@ -14,11 +14,13 @@
 
 </head>
 <body>
+
 <div class="container">
+<br>
 	<table class="table table-bordered">
 		<tr>
 			<td>아이디</td>
-			<td>${memberinfo.member_id}</td><%-- Member클래스의 getId()메서드 호출 --%>
+			<td>${memberinfo.member_id}</td><%-- Member클래스의 getMember_id()메서드 호출 --%>
 		</tr>
 		<tr>
 			<td>비밀번호</td>
@@ -54,7 +56,7 @@
 		</tr>
 		<tr>
 			<td>가입날짜</td>
-			<td>${memberinfo.meber_reg_data}</td>
+			<td>${memberinfo.member_reg_date}</td>
 		</tr>
 		<tr>
 			<td colspan=2>

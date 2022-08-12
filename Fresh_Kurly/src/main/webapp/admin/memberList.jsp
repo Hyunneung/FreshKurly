@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-<title>회원관리 시스템 관리자모드(회원 목록 보기)</title>
+<title>회원 목록 페이지</title>
 <jsp:include page="../mainpage/header.jsp"/>
 <script>
 $(function() {
@@ -12,35 +12,24 @@ $(function() {
       $("#viewcount").val(selectedValue);
       
    //검색 버튼 클릭한 경우
-   $("button").click(function() {
+   $("form[action='MemberList.ad'] button").click(function() {
       //검색 버튼 클릭한 경우
-      if ($("input").val() == '') {
+      if ($("form[action='MemberList.ad'] input").val() == '') {
          alert("검색어를 입력하세요");
-            $("input").focus();
+            $("form[action='MemberList.ad'] input").focus();
             return false;
       }
          
       var word = $(".input-group input").val();
-      if (selectedValue == 2) {
-         pattern = /^[0-9]{2}$/;
-         if (!pattern.test(word)) {
-            alert("나이는 형식에 맞게 입력하세요(두자리 숫자)");
-            return false;
-         }
-      } else if (selectedValue == 3) {
-         if (world != "남" && word != "여") {
-            alert("남 또는 여를 입력하세요");
-            return false;
-            }
-      }
+      
    });//button click end
       
    //검색어 입력창에 selectedValue 나타나도록 합니다.
    $("#viewcount").change(function() {
       selectedValue = $(this).val();
-      $("input").val('');
+      $("form[action='MemberList.ad'] input").val('');
       message = [ "아이디", "이름"]
-      $("input").attr("placeholder", message[selectedValue] + "입력하세요");
+      $("form[action='MemberList.ad'] input").attr("placeholder", message[selectedValue] + "입력하세요");
    })//$("#viewcount").change end
       
    //회원 목록의 삭제를 클릭한 경우
@@ -103,6 +92,7 @@ td:nth-child(1) {
 </head>
 <body>
 	<div class="container">
+	<br>
 		<form action="MemberList.ad" method="post">
 			<div class="input-group">
 				<select id="viewcount" name="search_field">
@@ -120,7 +110,7 @@ td:nth-child(1) {
 				<caption style="font-weight: bold">회원 목록</caption>
 				<thead>
 					<tr>
-						<th colspan="2">회원 정보 list</th>
+						<th colspan="2">MVC 게시판 - 회원 정보 list</th>
 						<th><font size=3>회원 수 : ${listcount }</font></th>
 					</tr>
 					<tr>
@@ -133,7 +123,7 @@ td:nth-child(1) {
 					<c:forEach var="m" items="${totallist}">
 						<tr>
 							<td><a href="MemberInfo.ad?id=${m.member_id}">${m.member_id}</a></td>
-							<td>${m.name}</td>
+							<td>${m.member_name}</td>
 							<td><a href="MemberDelete.ad?id=${m.member_id}">삭제</a></td>
 						</tr>	
 					</c:forEach>
@@ -180,13 +170,12 @@ td:nth-child(1) {
 							<c:param name="serarch_field" value="${search_field}" />
 							<c:param name="serarch_word"  value="${search_word}" />
 							<c:param name="page" 		  value="${page+1}" />
-						</c:url>
+						</c:url>				
 						
-						<c:if test="${page >= maxpagge }">
 						<li class="page-item">
 							<a href="${next}" class="page-link">&nbsp;다음</a>
 						</li>
-						</c:if>
+						
 					</c:if>	
 				</ul>
 			</div>

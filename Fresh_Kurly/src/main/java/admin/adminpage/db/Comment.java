@@ -1,7 +1,7 @@
-package board.boardpage.db;
+package admin.adminpage.db;
 
 public class Comment {
-	private int num;			
+	private int num;
 	private String id;
 	private String content;
 	private String reg_date;
@@ -9,7 +9,6 @@ public class Comment {
 	private int comment_re_ref;
 	private int comment_re_lev;
 	private int comment_re_seq;
-	
 	public int getNum() {
 		return num;
 	}

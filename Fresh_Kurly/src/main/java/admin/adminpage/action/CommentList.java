@@ -1,4 +1,4 @@
-package board.boardpage.action; 
+package admin.adminpage.action; 
 
 import java.io.IOException;
 import java.io.PrintWriter;

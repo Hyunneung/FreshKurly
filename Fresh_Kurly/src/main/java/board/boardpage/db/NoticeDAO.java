@@ -124,7 +124,7 @@ public class NoticeDAO {
                 + "         from (select * "
 	            + "               from notice " 
                 + " 				order by notice_number"				
-	            + "               ) j "
+	            + "                 order by notice_number desc) j "
 	            + "         where rownum<= ? "      
 	            + "         ) "
 	            + " where rnum>=? and rnum<=?";
@@ -195,7 +195,7 @@ public class NoticeDAO {
 			pstmt.executeUpdate();
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			System.out.println("setReadCountUpdate() 에러: " + ex);
+			System.out.println("setViewUpdate() 에러: " + ex);
 		} finally {
 			 if (pstmt != null)
 		            try {
@@ -210,7 +210,7 @@ public class NoticeDAO {
 		               ex.printStackTrace();
 		            }
 		      }//finally 
-	}//setReadCountUpdate()메서드 end
+	}//setViewUpdate()메서드 end
 
 	public NoticeBean getDetail(int num) {
 		NoticeBean notice = null;

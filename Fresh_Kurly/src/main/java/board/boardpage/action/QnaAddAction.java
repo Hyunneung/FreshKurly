@@ -8,6 +8,7 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 
+import board.boardpage.db.QnaBean;
 import board.boardpage.db.QnaDAO;
 
 public class QnaAddAction implements Action {

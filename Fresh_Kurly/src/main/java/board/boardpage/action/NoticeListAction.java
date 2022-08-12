@@ -43,9 +43,7 @@ public class NoticeListAction implements Action{
 		
 		String search_word="";
 		
-		//메뉴-관리자-회원정보 클릭한 경우(member_list.net)
-		//또는 메뉴-관리자-회원정보 클릭 후 페이지 클릭한 경우
-		//(member_list.net?page=2&search_field=-1&search_word=)
+		//(NoticeList.ad?page=2&search_field=-1&search_word=)
 		if (request.getParameter("search_word")==null
 				|| request.getParameter("search_word").equals("")) {
 			//총 리스트 수를 받아옵니다.
@@ -99,7 +97,7 @@ public class NoticeListAction implements Action{
 			forward.setRedirect(false);
 			
 			// 글 목록 페이지로 이동하기 위해 경로를 설정합니다.
-			forward.setPath("admin/noticeList.jsp");
+			forward.setPath("board/noticeList.jsp");
 			return forward; // AdminForntController.java로 리턴됩니다.
 			
 		}else {

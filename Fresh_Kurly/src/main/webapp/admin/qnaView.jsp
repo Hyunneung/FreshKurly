@@ -7,14 +7,14 @@
 <script src="assets/js/admin/qnaview.js"></script>
 <script src="assets/js/admin/popper.js"></script>
 <script src="assets/js/admin/bootstrap.js"></script>
-<link rel="stylesheet" href="css/view.css">
+<link rel="stylesheet" href="assets/css/view.css">
 </head>
 <body>
 <input type = "hidden" id = "loginid" value="${id}" name="loginid">
 <div class="container">
    <table class="table">
       <tr>
-         <th colspan="2">문의하기-view페이지</th>
+         <th colspan="2">문의하기</th>
       </tr>
       <tr>
          <td><div>글쓴이</div></td>

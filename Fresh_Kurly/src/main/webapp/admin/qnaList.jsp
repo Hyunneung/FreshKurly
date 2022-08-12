@@ -49,19 +49,21 @@ select.form-control {
 	color: gray;
 }
 
-body>div>table>thead>tr:nth-child(2)>th:nth-child(1) {
-	width: 8%
+
+body > div.container > table > tbody > tr > td:nth-child(1){
+	width: 5%
 }
 
-body>div>table>thead>tr:nth-child(2)>th:nth-child(2) {
-	width: 50%
+body > div.container > table > tbody > tr > td:nth-child(2)
+{
+	width: 40%
 }
 
-body>div>table>thead>tr:nth-child(2)>th:nth-child(3) {
-	width: 14%
+body > div.container > table > tbody > tr > td:nth-child(3) {
+	width: 10%
 }
 
-body>div>table>thead>tr:nth-child(2)>th:nth-child(4) {
+body > div.container > table > tbody > tr > td:nth-child(4) {
 	width: 17%
 }
 
@@ -114,7 +116,8 @@ td:nth-child(1) {
 	margin-bottom: 3em
 }
 </style>
-<script src="assets/js/board/qnalist.js"></script>
+
+<script src="assets/js/admin/qnalist.js"></script>
 <title>문의하기 게시판</title>
 </head>
 <jsp:include page="../mainpage/header.jsp" />
@@ -139,7 +142,7 @@ td:nth-child(1) {
 					<caption style="font-weight: bold">문의하기 게시판</caption>
 					<thead>
 						<tr>
-							<th colspan="3">목록</th>
+							<th colspan="3">문의하기 목록</th>
 							<th colspan="2"><font size=3>글 개수 : ${listcount}</font></th>
 						</tr>
 						<tr>
@@ -173,11 +176,11 @@ td:nth-child(1) {
 											</c:if>
 										</a>
 										<c:if test="${b.cnt==0 }">
-										  <c:out value="[답변대기중]"/>
-										</c:if>
+											<c:out value="답변대기중"/>
+										</c:if> 
 										<c:if test="${b.cnt>=1 }">
-										  <c:out value="[답변완료]"/>
-										</c:if>
+											<c:out value="답변완료"/>
+										</c:if> 
 									</div>
 								</td>
 								<td><div>${b.qna_name}</div></td>
@@ -196,7 +199,7 @@ td:nth-child(1) {
 						</c:if>
 						<c:if test="${page > 1 }">
 							<li class="page-item "><a
-								href="QnaList.ad?page=${page-1}" class="page-link">이전&nbsp;</a>
+								href="QnaList.bo?page=${page-1}" class="page-link">이전&nbsp;</a>
 							</li>
 						</c:if>
 

@@ -4,7 +4,7 @@ function getList(state){
    $.ajax({
       type:"post",
       url:"CommentList.ad",
-      data : {"comment_qna_num" : $("#comment_qna_num").val() ,
+      data : {"comment_qna_number" : $("#comment_qna_number").val() ,
               state:state},
       dataType:"json",
       success:function(rdata){
@@ -120,7 +120,51 @@ function updateForm(num){ //num : 수정할 댓글 글번호
 	$num.find('.comment-write-area-count').text(count+"/200");
 }//function(updateForm) end
 
+//더보기 -> 삭제 클릭한 경우 실행하는 횟수
+function del(num){ //num : 댓글 번호
+	if(!confirm('정말 삭제하시겠습니까')){
+		$('#comment-list-item-layer' + num).hide(); //'수정 삭제' 영역 숨겨요
+		return;
+	}
+	
+		$.ajax({
+			url:'CommentDelete.ad',
+			data:{num:num},
+			success:function(rdata){
+				if(rdata==1){
+					getList(option);
+				}
+			}
+		})
+}//function(del) end
 
+//답글 달기 폼
+function replyform(num,lev,seq,ref){
+	var output = '<li class="comment-list-item comment-list-item--reply lev' 
+		         +  lev    + ' comment-list-item-form"></li>' 
+    var $num = 	$('#'+num);	         
+	//선택한 글 뒤에 답글 폼을 추가합니다.
+	$num.after(output); 
+	
+	//글쓰기 영역 복사합니다.
+	output=$('.comment-list+.commnet-write').clone();
+	
+	var $num_next = $num.next();
+	//선택한 글 뒤에 답글 폼 생성합니다.
+	$num_next.html(output);
+    //답글 폼의  <textarea>의 속성 'placeholder'를 '답글을 남겨보세요'로 바꾸어 줍니다.
+	$num_next.find('textarea').attr('placeholder','답글을 남겨보세요');
+	
+	//답글 폼의  '.btn-cancel'을 보여주고 클래스 'reply_cancel'를 추가합니다.
+	$num_next.find('.btn-cancel').css('display','block').addClass('reply_cancel');
+	
+	//답글 폼의 '.btn-register'에  클래스 'reply' 추가합니다.
+	//속성 'data-ref'에 ref, 'data-lev'에 lev, 'data-seq'에 seq값을 설정합니다.
+	//등록을 답글 완료로 변경합니다.
+	$num_next.find('.btn-register').addClass('reply')
+	         .attr('data-ref',ref).attr('data-lev',lev).attr('data-seq',seq).text('답글완료');
+
+}//function(replyform) end
 
 $(function(){
    option=1;
@@ -149,11 +193,11 @@ $(function(){
       }
       
       $.ajax({
-         url : 'CommentAdd.bo',   //원문 등록
+         url : 'CommentAdd.ad',   //원문 등록
          data : {
             id : $("#loginid").val(),
             content : content,
-            comment_qna_num : $("#comment_qna_num").val(),
+            comment_qna_number : $("#comment_qna_number").val(),
             comment_re_lev : 0,     //원문인 경우 comment
                              //comment_re_ref는 댓글의 원문 글번호
             comment_re_seq : 0
@@ -184,36 +228,68 @@ $(function(){
 	})
  
 		
-   		//수정 후 수정완료를 클릭한 경우
-   		$('.comment-area').on('click','.update',function(){
-			var num = $(this).attr('data-id');
-			var content = $(this).parent().parent().find('textarea').val();
-			$.ajax({
-				url:'CommentUpdate.bo',
-				data:{num:num, content:content},
-		        success:function(rdata){
-		            if(rdata==1){
-		               getList(option);
-		            }//if
-		        }//success
-		   });//ajax
-		})//수정 후 수정완료를 클릭한 경우
+//수정 후 수정완료를 클릭한 경우
+$('.comment-area').on('click','.update',function(){
+	var num = $(this).attr('data-id');
+	var content = $(this).parent().parent().find('textarea').val();
+	$.ajax({
+		url:'CommentUpdate.bo',
+		data:{num:num, content:content},
+        success:function(rdata){
+            if(rdata==1){
+               getList(option);
+            }//if
+        }//success
+   });//ajax
+})//수정 후 수정완료를 클릭한 경우
+
+//수정 후 취소 버튼을 클릭한 경우
+$('.comment-area').on('click','.btn-cancel',function(){
+	//댓글 번호를 구합니다.
+	var num= $(this).next().attr('data-id');
+	var selector='#' + num;
+	
+	//.comment-write 영역을 삭제 합니다.
+	$(selector + ' .comment-write').remove();
+	
+	//숨겨두었던 .comment-nick-area 영역을 보여줍니다.
+	$(selector + '>.comment-nick-area').css('display','block');
+	
+	//숨겨두었던 .comment-nick-area 영역을 보여주면 '수정 삭제'영역도 보입니다.
+	//console.log($('#comment-list-item-layer' + num).css('display')) //'block'
+	//$('#comment-list-item-layer' + num).hide(); //'수정 삭제' 영역 숨겨요
+})//수정 후 취소 버튼을 클릭한 경우
 		
-		//수정 후 취소 버튼을 클릭한 경우
-		$('.comment-area').on('click','.btn-cancel',function(){
-			//댓글 번호를 구합니다.
-			var num= $(this).next().attr('data-id');
-			var selector='#' + num;
-			
-			//.comment-write 영역을 삭제 합니다.
-			$(selector + ' .comment-write').remove();
-			
-			//숨겨두었던 .comment-nick-area 영역을 보여줍니다.
-			$(selector + '>.comment-nick-area').css('display','block');
-			
-			//숨겨두었던 .comment-nick-area 영역을 보여주면 '수정 삭제'영역도 보입니다.
-			//console.log($('#comment-list-item-layer' + num).css('display')) //'block'
-			//$('#comment-list-item-layer' + num).hide(); //'수정 삭제' 영역 숨겨요
-		})//수정 후 취소 버튼을 클릭한 경우
+//답글완료 클릭한 경우
+	$('.comment-area').on('click','.reply',function(){
+		var comment_re_ref = $(this).attr('data-ref');
+		var content=$(this).parent().parent().find('.comment-write-area-text').val();
+		var lev = $(this).attr('data-lev');
+		var seq = $(this).attr('data-seq');
+		$.ajax({
+			url : 'CommentReply.ad',  
+			data : {
+				id : $("#loginid").val(),
+				content : content,
+				comment_qna_number : $("#comment_qna_number").val(),
+				comment_re_lev : lev, 
+				comment_re_ref : comment_re_ref,
+				comment_re_seq : seq
+			},
+			type : 'post',
+			success : function(rdata) {
+				if (rdata == 1) {
+					getList(option);
+				}
+			}
+		})//ajax
+		
+	})//답글완료 클릭한 경우
+
+	//답글쓰기 후 취소 버튼을 클릭한 경우
+	$('.comment-area').on('click','.reply_cancel',function(){
+		$(this).parent().parent().parent().remove();
+	})//답글쓰기  후 취소 버튼을 클릭한 경우
+		
    
 });

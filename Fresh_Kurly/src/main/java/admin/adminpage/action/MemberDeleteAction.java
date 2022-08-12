@@ -22,12 +22,12 @@ public class MemberDeleteAction implements Action {
 		if(result == 1) {
 			out.println("<script>");
 			out.println("alert('삭제 성공입니다.')");
-			out.println("location.href='memberList.net'");
+			out.println("location.href='MemberList.ad'");
 			out.println("</script>");
 		}else {
 			out.println("<script>");
 			out.println("alert('회원 삭제 입니다.')");
-			out.println("history.back()'");
+			out.println("history.back();");
 			out.println("</script>");
 		}
 		out.close();
