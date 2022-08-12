@@ -19,7 +19,7 @@ public class MemberSearchAction implements Action {
 		MemberDAO mdao = new MemberDAO();
 		
 		int page = 1;
-		int limit = 3;
+		int limit = 10;
 		if (request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
