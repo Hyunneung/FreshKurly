@@ -38,6 +38,9 @@ public class MyPageFrontController extends HttpServlet {
 		case "/myCart.my" :
 			action = new CartAction();
 			break;
+		case "/itemToCart.my" : // 장바구니에 상품 담기 - 아이템페이지
+			action = new ItemToCartAction();
+			break;	
 		case "/myCartItemMinus.my" : // 장바구니 - 아이템 수량 1 감소
 			action = new CartItemMinusAction();
 			break;	
@@ -52,7 +55,7 @@ public class MyPageFrontController extends HttpServlet {
 		case "/myWish.my" :
 			action = new WishAction();
 			break;
-		case "/myItemToCart.my" : // 장바구니에 상품 담기 - 아이템페이지, 찜한상품 페이지 공통 기능
+		case "/myItemToCart.my" : // 장바구니에 상품 담기 - 찜한상품 페이지
 			action = new WishItemToCartAction();
 			break;
 		case "/myWishItemDelete.my" : // 찜한상품 삭제 - 마이페이지 기능

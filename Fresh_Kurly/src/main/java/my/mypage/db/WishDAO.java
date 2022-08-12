@@ -205,6 +205,75 @@ public class WishDAO {
 		} // finally 끝
 		return result; // 장바구니에 잘 담기면 1, 기존에 있어서 못담으면 0, 에러나면 -1
 	} // wishItemToCart(String member_id, int item_id) end
+	public int wishItemToCart(String member_id, int item_id, int cart_amount) {
+		Connection con = null;
+		PreparedStatement pstmt_s = null; // select에 사용할 PreparedStatement
+		PreparedStatement pstmt_i = null; // insert에 사용할 PreparedStatement
+		ResultSet rs = null;
+		int result = -1;
+		try {
+			con = ds.getConnection();
+			
+			// 상품이 장바구니에 있는지 확인 - 장바구니에 이미 있는 상품이면 담을 수 없다
+			String select_sql = "select item_id "
+							  + "from cart "
+							  + "where member_id = ? "
+							  + "and item_id = ?";
+			pstmt_s = con.prepareStatement(select_sql);
+			pstmt_s.setString(1, member_id);
+			pstmt_s.setInt(2, item_id);
+			rs = pstmt_s.executeQuery();
+			
+			if (rs.next()) {
+				if( item_id == rs.getInt("item_id") ) { // 장바구니에 이미 해당상품 있으면 더이상 추가할 수 없다
+					result = 0;
+					return result;
+				} 
+			} else { // 장바구니에 해당상품 없으면 담는다
+				String insert_sql = "insert into cart "
+						  + "values ((select nvl(max(cart_id),0)+1 from cart), ?, ?, ?)";
+				pstmt_i = con.prepareStatement(insert_sql);
+				pstmt_i.setInt(1, item_id);
+				pstmt_i.setString(2, member_id);
+				pstmt_i.setInt(3, cart_amount);
+				result = pstmt_i.executeUpdate(); // 장바구니 담기 성공하면 1
+				return result;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			}
+			if (pstmt_s != null) {
+				try {
+					pstmt_s.close();
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				}
+			}
+			if (pstmt_i != null) {
+				try {
+					pstmt_i.close();
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
+			}
+		} // finally 끝
+		return result; // 장바구니에 잘 담기면 1, 기존에 있어서 못담으면 0, 에러나면 -1
+	} // wishItemToCart(String member_id, int item_id, int cart_amount) end
+	
 	
 	
 	

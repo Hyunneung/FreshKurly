@@ -89,10 +89,11 @@ $(function() {
     $("body").on('click', '#addCart', function(){
 			var divparent = $(this).parent();
 			var item_id = divparent.find( 'input:nth-child(1)' ); // 아이템 아이디 .val()
+			var cart_amount = divparent.find( 'input:nth-child(2)' ); // 장바구니에 담을 수량 .val()
 			$.ajax({
 				type : "POST",
-				url: "myItemToCart.my",
-				data: { "item_id": item_id.val() },
+				url: "itemToCart.my",
+				data: { "item_id": item_id.val(), "cart_amount": cart_amount.val()},
 				success : function(result) {
 					// result : 장바구니에 잘 담기면 1, 기존에 있어서 못담으면 0, 에러나면 -1
 					if(result == 1) { // 장바구니 담기 성공

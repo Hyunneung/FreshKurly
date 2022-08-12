@@ -152,7 +152,91 @@ public class QnaDAO {
 	} // getQnaList() end
 	
 	
+	// 문의내역 삭제 - 글 삭제 명령을 요청한 사용자가 글을 작성한 사용자인지 판단
+	public boolean isQnaWriter(int qna_number, String qna_pass) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean result = false;
+		String select_sql = "select qna_pass from qna where qna_number = ?";
+		
+		try {	
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(select_sql);
+			pstmt.setInt(1, qna_number);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				if(qna_pass.equals(rs.getString("qna_pass"))) {
+					result = true; // 비밀번호 맞으면 true, 틀리면 false
+				}
+			}	
+		} catch(Exception ex) {
+			System.out.println("isQnaWriter() 에러: " + ex);
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch(SQLException ex) {
+					ex.printStackTrace();
+				}
+			}
+			if(pstmt != null) {
+				try {
+					pstmt.close();
+				} catch(SQLException e) {
+					System.out.println(e.getMessage());
+				}
+			}
+			if(con != null) {
+				try {
+					con.close();
+				} catch(Exception e) {
+					System.out.println(e.getMessage());
+				}
+			}
+		} // finally 끝
+		return result; // 비밀번호 맞으면 true, 틀리면 false
+	} // isQnaWriter(qna_numer, pass) end
+	// 문의내역 삭제
+	public boolean qnaDelete(int qna_number) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		boolean result_check = false;
+		try {
+			con = ds.getConnection();
+			String sql = "delete from qna "
+					   + "where qna_number = ? "; // 글번호 - qna_number
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, qna_number);
+			int count = pstmt.executeUpdate(); // 문의 삭제 성공하면 1, 실패하면 0
+			
+			if(count == 1) {
+				result_check = true;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("qnaDelete() 에러: " + e);
+		} finally {
+			try {
+				if(pstmt != null) 
+				pstmt.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+				System.out.println(e.getMessage());
+			}
+			try {
+				if(con != null) 
+					con.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+				System.out.println(e.getMessage());
+			}
+		} // try-catch-finally 끝
+		return result_check; // 문의 삭제 성공하면 1, 실패하면 0
+	} // qnaDelete(qna_number) end
 	
+	// modal----------------------------------------------------
 	// 문의내역 삭제
 	public int qnaDelete(String member_id, int qna_number) {
 		Connection con = null;
@@ -188,5 +272,7 @@ public class QnaDAO {
 		} // try-catch-finally 끝
 		return result; // 문의 삭제 성공하면 1, 실패하면 0
 	} // qnaDelete(member_id, qna_number) end
+
+	
 	
 }
