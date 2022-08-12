@@ -11,8 +11,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import board.boardpage.action.QnaBean;
-
 public class QnaDAO {
 	private DataSource ds;
 	
@@ -128,7 +126,7 @@ public class QnaDAO {
                 + "                                           from qnacomm"
                 + "                                           group by comment_qna_number)"
                 + "               on qna_number=comment_qna_number"
-	            + "               ) j "
+	            + "               order by qna_number desc) j "
 	            + "         where rownum<= ? "      
 	            + "         ) "
 	            + " where rnum>=? and rnum<=?";
@@ -202,7 +200,7 @@ public class QnaDAO {
 			pstmt.executeUpdate();
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			System.out.println("setReadCountUpdate() 에러: " + ex);
+			System.out.println("setViewUpdate() 에러: " + ex);
 		} finally {
 			 if (pstmt != null)
 		            try {
@@ -217,7 +215,7 @@ public class QnaDAO {
 		               ex.printStackTrace();
 		            }
 		      }//finally 
-	}//setReadCountUpdate()메서드 end
+	}//setViewUpdate()메서드 end
 
 	public QnaBean getDetail(int num) {
 		QnaBean qna = null;

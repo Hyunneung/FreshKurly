@@ -34,9 +34,8 @@ public class NoticeDAO {
 			
 			String max_sql = "(select nvl(max(notice_number),0)+1 from notice)";
 
-			// 원문글의 NOTICE_RE_REF 필드는 자신의 글번호 입니다.
 			String sql = "insert into notice " 
-			            + "(NOTICE_NUMBER,     NOTICE_NAME,  NOTICE_PASS,    NOTICE_SUBJECT,"
+			            + "(NOTICE_NUMBER, NOTICE_NAME, NOTICE_PASS, NOTICE_SUBJECT,"
 					    + " NOTICE_CONTENT, NOTICE_VIEW)"
 					    + " values(" + max_sql + ",?,?,?," 
 			            + "        ?,?)";
@@ -123,7 +122,7 @@ public class NoticeDAO {
                 + "  from  (select rownum rnum, j.* "
                 + "         from (select * "
 	            + "               from notice " 
-                + " 				order by notice_number"				
+                + " 				order by notice_number desc"				
 	            + "               ) j "
 	            + "         where rownum<= ? "      
 	            + "         ) "
@@ -145,7 +144,7 @@ public class NoticeDAO {
 			// DB에서 가져온 데이터를 VO객체에 담습니다.
 			while (rs.next()) {
 				NoticeBean notice = new NoticeBean();
-				notice.setNotice_number(rs.getInt("Notice_NUMBER"));
+				notice.setNotice_number(rs.getInt("NOTICE_NUMBER"));
 				notice.setNotice_name(rs.getString("NOTICE_NAME"));
 				notice.setNotice_subject(rs.getString("NOTICE_SUBJECT"));
 				notice.setNotice_content(rs.getString("NOTICE_CONTENT"));
@@ -195,7 +194,7 @@ public class NoticeDAO {
 			pstmt.executeUpdate();
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			System.out.println("setReadCountUpdate() 에러: " + ex);
+			System.out.println("setViewUpdate() 에러: " + ex);
 		} finally {
 			 if (pstmt != null)
 		            try {
@@ -210,7 +209,7 @@ public class NoticeDAO {
 		               ex.printStackTrace();
 		            }
 		      }//finally 
-	}//setReadCountUpdate()메서드 end
+	}//setViewUpdate()메서드 end
 
 	public NoticeBean getDetail(int num) {
 		NoticeBean notice = null;
@@ -438,7 +437,7 @@ public class NoticeDAO {
 	                  }
 	            }//finally   
 	      return list;
-	}
+	}//List<NoticeBean> getList(int page, int limit)메서드 end
 
 	public int getListCount(String string, String search_word) {
 		Connection con = null;

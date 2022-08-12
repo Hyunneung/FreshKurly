@@ -12,7 +12,6 @@ public class Member {
 	private String member_jumin;
 	private String member_reg_date;
 	
-	// getter, setter
 	public String getMember_id() {
 		return member_id;
 	}

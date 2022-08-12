@@ -41,7 +41,6 @@ public class NoticeModifyAction implements Action{
 	         noticedata.setNotice_number(num);
 	         noticedata.setNotice_subject(request.getParameter("notice_subject")); 
 	         noticedata.setNotice_content(request.getParameter("notice_content"));
-	         noticedata.setNotice_content(request.getParameter("notice_content"));
              
              // DAO에서 수정 메서드 호출하여 수정합니다.
              result = noticedao.noticeModify(noticedata);

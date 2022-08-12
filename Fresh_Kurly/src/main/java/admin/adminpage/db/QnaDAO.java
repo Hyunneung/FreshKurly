@@ -32,11 +32,10 @@ public class QnaDAO {
 		try {
 			con = ds.getConnection();
 			
-			String max_sql = "(select nvl(max(qna_num),0)+1 from qna)";
+			String max_sql = "(select nvl(max(qna_number),0)+1 from qna)";
 
-			// 원문글의 QNA_RE_REF 필드는 자신의 글번호 입니다.
 			String sql = "insert into qna " 
-			            + "(QNA_NUM,     QNA_NAME,  QNA_PASS,    QNA_SUBJECT,"
+			            + "(QNA_NUMBER,     QNA_NAME,  QNA_PASS,    QNA_SUBJECT,"
 					    + " QNA_CONTENT, QNA_VIEW)"
 					    + " values(" + max_sql + ",?,?,?," 
 			            + "        ?,?)";
@@ -122,11 +121,11 @@ public class QnaDAO {
 		String qna_list_sql = "select * " 
                 + "  from  (select rownum rnum, j.* "
                 + "         from (select qna.*,  nvl(cnt,0) cnt "
-	            + "               from qna left outer join (select comment_qna_num,count(*) cnt"
+	            + "               from qna left outer join (select comment_qna_number,count(*) cnt"
                 + "                                           from qnacomm"
-                + "                                           group by comment_qna_num)"
-                + "               on qna_num=comment_qna_num"
-	            + "               ) j "
+                + "                                           group by comment_qna_number)"
+                + "               on qna_number=comment_qna_number"
+	            + "          order by notice_number desc) j "
 	            + "         where rownum<= ? "      
 	            + "         ) "
 	            + " where rnum>=? and rnum<=?";
@@ -149,7 +148,7 @@ public class QnaDAO {
 			// DB에서 가져온 데이터를 VO객체에 담습니다.
 			while (rs.next()) {
 				QnaBean qna = new QnaBean();
-				qna.setQna_num(rs.getInt("QNA_NUM"));
+				qna.setQna_number(rs.getInt("QNA_NUMBUER"));
 				qna.setQna_name(rs.getString("QNA_NAME"));
 				qna.setQna_subject(rs.getString("QNA_SUBJECT"));
 				qna.setQna_content(rs.getString("QNA_CONTENT"));
@@ -191,7 +190,7 @@ public class QnaDAO {
 		PreparedStatement pstmt = null;		
 		String sql = "update qna "
 				   + "set QNA_VIEW=QNA_VIEW+1 "
-				   + "where QNA_NUM = ?";
+				   + "where QNA_NUMBER = ?";
 		
 		try {
 			con = ds.getConnection();
@@ -200,7 +199,7 @@ public class QnaDAO {
 			pstmt.executeUpdate();
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			System.out.println("setReadCountUpdate() 에러: " + ex);
+			System.out.println("setViewUpdate() 에러: " + ex);
 		} finally {
 			 if (pstmt != null)
 		            try {
@@ -215,7 +214,7 @@ public class QnaDAO {
 		               ex.printStackTrace();
 		            }
 		      }//finally 
-	}//setReadCountUpdate()메서드 end
+	}//setViewUpdate()메서드 end
 
 	public QnaBean getDetail(int num) {
 		QnaBean qna = null;
@@ -229,7 +228,7 @@ public class QnaDAO {
 			rs= pstmt.executeQuery();         
 			if (rs.next()) {
 				qna = new QnaBean();
-				qna.setQna_num(rs.getInt("QNA_NUMBER"));
+				qna.setQna_number(rs.getInt("QNA_NUMBER"));
 				qna.setQna_name(rs.getString("QNA_NAME"));
 				qna.setQna_subject(rs.getString("QNA_SUBJECT"));
 				qna.setQna_content(rs.getString("QNA_CONTENT"));
@@ -262,13 +261,13 @@ public class QnaDAO {
 		return qna;
 	}// getDetail()메서드 end
 
-	// 글쓴이인지 확인 - 비밀번호로 확인합니다.
+	// 글쓴이인지 확인 - 게시물 비밀번호로 확인합니다.
 	public boolean isqnaWriter(int num, String pass) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		boolean result = false;
-		String QNA_sql = "select QNA_PASS from qna where QNA_NUM=?";
+		String QNA_sql = "select QNA_PASS from qna where QNA_NUMBER=?";
 		try {
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(QNA_sql);
@@ -317,7 +316,7 @@ public class QnaDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, modifyqna.getQna_subject());
 			pstmt.setString(2, modifyqna.getQna_content());
-			pstmt.setInt(3, modifyqna.getQna_num());
+			pstmt.setInt(3, modifyqna.getQna_number());
 			int result = pstmt.executeUpdate();
 	         if(result == 1) {
 	            System.out.println("성공 업데이트");
@@ -349,7 +348,7 @@ public class QnaDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String qna_delete_sql = "delete from qna "
-				+ "			 where  QNA_NUM = ?";
+				+ "			 where  QNA_NUMBER = ?";
       boolean result_check = false;
       try {
 		  con = ds.getConnection();	
@@ -411,7 +410,7 @@ public class QnaDAO {
 	         
 	         while(rs.next()) {
 	        	 QnaBean qna = new QnaBean();
-					qna.setQna_num(rs.getInt("Qna_NUM"));
+					qna.setQna_number(rs.getInt("QNA_NUMBER"));
 					qna.setQna_name(rs.getString("QNA_NAME"));
 					qna.setQna_subject(rs.getString("QNA_SUBJECT"));
 					qna.setQna_content(rs.getString("QNA_CONTENT"));
@@ -514,7 +513,7 @@ public class QnaDAO {
 	         
 	         while(rs.next()) {
 	            QnaBean qna = new QnaBean();
-	            qna.setQna_num(rs.getInt("Qna_NUM"));
+	            qna.setQna_number(rs.getInt("QNA_NUMBER"));
 				qna.setQna_name(rs.getString("QNA_NAME"));
 				qna.setQna_subject(rs.getString("QNA_SUBJECT"));
 				qna.setQna_content(rs.getString("QNA_CONTENT"));

@@ -2,14 +2,14 @@ package admin.adminpage.db;
 
 public class NoticeBean {
 	
-	private int		notice_number;	     //글번호
+	private int		notice_number;	 //글번호
 	private String	notice_name;     //글 작성자
 	private String	notice_pass;     //글 비밀번호
 	private String	notice_subject;  //글 제목
 	private String	notice_content;  //글 내용
-	private int		notice_view;//글의 조회수
-	private String  notice_reg_date;	
-	private int cnt;
+	private int		notice_view;     //글의 조회수
+	private String  notice_reg_date; //글의 등록날짜	
+	
 	public int getNotice_number() {
 		return notice_number;
 	}
@@ -52,12 +52,7 @@ public class NoticeBean {
 	public void setNotice_reg_date(String notice_reg_date) {
 		this.notice_reg_date = notice_reg_date;
 	}
-	public int getCnt() {
-		return cnt;
-	}
-	public void setCnt(int cnt) {
-		this.cnt = cnt;
-	}
+
 	
 	
 	

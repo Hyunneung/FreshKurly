@@ -1,4 +1,4 @@
-package board.boardpage.db;
+package admin.adminpage.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -221,7 +221,7 @@ public class CommentDAO {
 				System.out.println("데이터 삭제 되었되었습니다.");
 		}catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("commentsUpdate() 에러: " + e);
+			System.out.println("commentsDelete() 에러: " + e);
 		}finally {
             if (pstmt != null)
                try {

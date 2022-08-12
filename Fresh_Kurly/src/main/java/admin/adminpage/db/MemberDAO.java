@@ -24,7 +24,7 @@ public class MemberDAO {
 		}
 	}
 
-	public Member member_info(String member_id) {
+	public Member member_info(String id) {
 		Member m = null;
 		Connection con = null;
 	    PreparedStatement pstmt = null;
@@ -34,7 +34,7 @@ public class MemberDAO {
 	    	
 	    	String sql = "select * from member where member_id = ? ";
 	    	pstmt = con.prepareStatement(sql);
-	    	pstmt.setString(1, member_id);
+	    	pstmt.setString(1, id);
 	    	rs = pstmt.executeQuery();
 	    	if(rs.next()){
 	    		m = new Member();
@@ -47,6 +47,7 @@ public class MemberDAO {
 	            m.setMember_address(rs.getString(7));
 	            m.setMember_gender(rs.getString(8));
 	            m.setMember_jumin(rs.getString(9));
+	            m.setMember_reg_date(rs.getString(10));
 	    	}
 	    } catch(Exception e) {
 	         e.printStackTrace();
@@ -72,7 +73,7 @@ public class MemberDAO {
 	      }//finally   
 	      return m;
 	    
-	}//Member member_info()메서드 end
+	}//Member memberinfo()메서드 end
 
 	
 
@@ -127,7 +128,7 @@ public class MemberDAO {
 			
 			con = ds.getConnection();
 			String sql = "select count(*) from member "
-					   + "where member_member_id !='admin' "
+					   + "where member_id !='admin' "
 					   + "and " + field + " like ?"; // and name like '%홍길동%'
 			System.out.println(sql);
 			pstmt = con.prepareStatement(sql);
@@ -165,6 +166,8 @@ public class MemberDAO {
 		return x;
 	}//getListCount(String field, String vlaue) 메서드 end
 
+	
+	
 	public List<Member> getList(int page, int limit) {
 		List<Member> list = new ArrayList<Member>();
 		Connection con=null;
@@ -176,19 +179,20 @@ public class MemberDAO {
 			String sql = "select * "
 					+ "   from (select	b.*, rownum rnum"
 					+ " 		from(select * from member "
-					+ " 			 where member_member_id != 'admin'"
-					+ "				 order by member_member_id) b"
+					+ " 			 where member_id != 'admin'"
+					+ "				 order by member_id) b"
 					+ 			")"
 					+ "   where rnum>=? and rnum<=?";
+			
+			
 			pstmt = con.prepareStatement(sql);
 			// 한 페이지당 10개씩 목록인 경우 1페이지, 2페이지, 3페이지, 4페이지 ...
 			int startrow = (page - 1) * limit + 1;
 						  // 읽기 시작할 row 번호(1 11 21 31 ...
 			int endrow = startrow + limit - 1;
 						 // 읽을 마지막 row 번호(10 20 30 40 ...
-			pstmt.setInt(1, endrow);
-			pstmt.setInt(2, startrow);
-			pstmt.setInt(1, endrow);
+			pstmt.setInt(1, startrow);
+			pstmt.setInt(2, endrow);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -241,7 +245,7 @@ public class MemberDAO {
 					+ " 		from(select * from member "
 					+ " 			 where member_id != 'admin'"
 					+ " 			 and " + field + " like ?"			
-					+ "				 order by memember_id) b"
+					+ "				 order by member_id) b"
 					+ 			")"
 					+ "   where rnum between ? and ?" ;
 			System.out.println(sql);
@@ -250,10 +254,11 @@ public class MemberDAO {
 			
 			// 한 페이지당 10개씩 목록인 경우 1페이지, 2페이지, 3페이지, 4페이지 ...
 			// 읽기 시작할 row 번호(1 11 21 31 ...
+			pstmt.setString(1, "%"+value+"%");
 			int startrow = (page - 1) * limit + 1;
 			// 읽을 마지막 row 번호(10 20 30 40 ...
 			int endrow = startrow + limit - 1;
-			pstmt.setString(1, "%"+value+"%");
+			
 			pstmt.setInt(2, startrow);
 			pstmt.setInt(3, endrow);
 			rs = pstmt.executeQuery();
@@ -267,7 +272,7 @@ public class MemberDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-	         if (rs != null)
+ 
 		            try {
 		               rs.close();
 		            } catch (SQLException ex) {

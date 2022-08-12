@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import admin.adminpage.db.Member;
 import admin.adminpage.db.MemberDAO;
 
-
-
 public class MemberSearchAction implements Action {
 	
 	@Override
@@ -33,17 +31,16 @@ public class MemberSearchAction implements Action {
 		
 		String search_word="";
 		
-		//메뉴-관리자-회원정보 클릭한 경우(member list.net)
-		//또는 메뉴-관리자-회원정보 클릭 후 페이지 클릭한 경우
-		//(member_list.net?page=2&search_field=-1&search_word=)
 		if (request.getParameter("search_word") == null 
 				|| request.getParameter("search_word").equals("")){
 			// 총 리스트 수를 받아옵니다.
 			  listcount = mdao.getListCount();
 			  list = mdao.getList(page,limit);
+			  System.out.println(list.size());
+			  
 		} else { // 검색을 클릭한 경우
 			index= Integer.parseInt(request.getParameter("search_field"));
-			String[] search_field = new String[] { "id", "name", "gender" };
+			String[] search_field = new String[] { "member_id", "member_name" };
 			search_word = request.getParameter("search_word");
 			listcount = mdao.getListCount(search_field[index], search_word);
 			list = mdao.getList(search_field[index], search_word, page, limit);
@@ -66,9 +63,12 @@ public class MemberSearchAction implements Action {
 		request.setAttribute("startpage", startpage);
 		
 		// 현재 페이지에 표시할 끝 페이지 수
-		request.setAttribute("endpage", startpage);
+		request.setAttribute("endpage", endpage);
 		
 		request.setAttribute("listcount", listcount); // 총 글의 수
+		
+		System.out.println(list.size());
+		
 		request.setAttribute("totallist", list);
 	    request.setAttribute("search_field", index);
 	    request.setAttribute("search_word", search_word);

@@ -7,6 +7,7 @@
 <script src="assets/js/admin/noticeview.js"></script>
 <script src="assets/js/admin/popper.js"></script>
 <script src="assets/js/admin/bootstrap.js"></script>
+<link rel="stylesheet" href="assets/css/view.css">
 
 </head>
 <body>
@@ -14,7 +15,7 @@
 <div class="container">
    <table class="table">
       <tr>
-         <th colspan="2">공지사항-view페이지</th>
+         <th colspan="2">공지사항</th>
       </tr>
       <tr>
          <td><div>글쓴이</div></td>

@@ -49,19 +49,20 @@ select.form-control {
 	color: gray;
 }
 
-body>div>table>thead>tr:nth-child(2)>th:nth-child(1) {
-	width: 8%
+body > div.container > table > tbody > tr > td:nth-child(1){
+	width: 5%
 }
 
-body>div>table>thead>tr:nth-child(2)>th:nth-child(2) {
-	width: 50%
+body > div.container > table > tbody > tr > td:nth-child(2)
+{
+	width: 40%
 }
 
-body>div>table>thead>tr:nth-child(2)>th:nth-child(3) {
-	width: 14%
+body > div.container > table > tbody > tr > td:nth-child(3) {
+	width: 10%
 }
 
-body>div>table>thead>tr:nth-child(2)>th:nth-child(4) {
+body > div.container > table > tbody > tr > td:nth-child(4) {
 	width: 17%
 }
 
@@ -139,7 +140,7 @@ td:nth-child(1) {
 					<caption style="font-weight: bold">공지사항 게시판</caption>
 					<thead>
 						<tr>
-							<th colspan="3">공지사항 게시판 - list</th>
+							<th colspan="3">공지사항 목록</th>
 							<th colspan="2"><font size=3>글 개수 : ${listcount}</font></th>
 						</tr>
 						<tr>
@@ -170,7 +171,7 @@ td:nth-child(1) {
 											</c:if> <c:if test="${b.notice_subject.length()<20}">
 												<c:out value="${b.notice_subject}" />
 											</c:if>
-										</a>[${b.cnt}]
+										</a>
 									</div>
 								</td>
 								<td><div>${b.notice_name}</div></td>

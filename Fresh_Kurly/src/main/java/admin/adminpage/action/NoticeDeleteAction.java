@@ -18,8 +18,9 @@ public class NoticeDeleteAction implements Action {
 		int num=Integer.parseInt(request.getParameter("num"));
 		
 		NoticeDAO noticedao=new NoticeDAO();
+		
 		//글 삭제 명령을 요청한 사용자가 글을 작성한 사용자인지 판단하기 위해
-		//입력한 비밀번호와 저장된 비밀번호를 비교하여 일치하면 삭제합니다.
+		//입력한 비밀번호와 저장된 게시물에 대한비밀번호를 비교하여 일치하면 삭제합니다.
 		usercheck=noticedao.isnoticeWriter(num, request.getParameter("notice_pass"));
 		
 		//비밀번호 일치하지 않는 경우

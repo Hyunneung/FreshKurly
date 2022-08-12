@@ -174,7 +174,13 @@ td:nth-child(1) {
 											</c:if> <c:if test="${b.qna_subject.length()<20}">
 												<c:out value="${b.qna_subject}" />
 											</c:if>
-										</a>[${b.cnt}]
+										</a>
+										<c:if test="${b.cnt==0 }">
+											<c:out value="답변대기중"/>
+										</c:if> 
+										<c:if test="${b.cnt>=1 }">
+											<c:out value="답변완료"/>
+										</c:if> 
 									</div>
 								</td>
 								<td><div>${b.qna_name}</div></td>

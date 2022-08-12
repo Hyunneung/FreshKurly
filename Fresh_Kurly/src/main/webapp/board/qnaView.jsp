@@ -14,7 +14,7 @@
 <div class="container">
    <table class="table">
       <tr>
-         <th colspan="2">문의하기-view페이지</th>
+         <th colspan="2">문의하기</th>
       </tr>
       <tr>
          <td><div>글쓴이</div></td>
@@ -91,11 +91,13 @@
 		</div><!-- comment-head end -->
 		<ul class="comment-list">
 		</ul>
+		
+		<c:if test="${id=='admin'}">
 		<div class="commnet-write">
 			<div class="comment-write-area">
 				<b class="comment-write-area-name">${id }</b><span
 					class="comment-write-area-count">0/200</span>
-				<textarea placeholder="댓글을 남겨보세요" rows="1"
+				<textarea placeholder="문의하기 답변을 작성하세요" rows="1"
 					class="comment-write-area-text" maxLength="200"></textarea>
 					
 			</div>
@@ -104,6 +106,7 @@
 				<div class="button btn-register" >등록</div>
 			</div>
 		</div><%-- commnet-write end --%>
+	</c:if>
 	</div><%-- comment-area end --%>
 </div><%-- class="container" end --%>
 </body>
