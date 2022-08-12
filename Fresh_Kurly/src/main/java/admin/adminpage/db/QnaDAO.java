@@ -34,6 +34,7 @@ public class QnaDAO {
 			
 			String max_sql = "(select nvl(max(qna_number),0)+1 from qna)";
 
+			// 원문글의 QNA_RE_REF 필드는 자신의 글번호 입니다.
 			String sql = "insert into qna " 
 			            + "(QNA_NUMBER,     QNA_NAME,  QNA_PASS,    QNA_SUBJECT,"
 					    + " QNA_CONTENT, QNA_VIEW)"
@@ -125,7 +126,7 @@ public class QnaDAO {
                 + "                                           from qnacomm"
                 + "                                           group by comment_qna_number)"
                 + "               on qna_number=comment_qna_number"
-	            + "          order by notice_number desc) j "
+	            + "               order by qna_number desc) j "
 	            + "         where rownum<= ? "      
 	            + "         ) "
 	            + " where rnum>=? and rnum<=?";
@@ -148,7 +149,7 @@ public class QnaDAO {
 			// DB에서 가져온 데이터를 VO객체에 담습니다.
 			while (rs.next()) {
 				QnaBean qna = new QnaBean();
-				qna.setQna_number(rs.getInt("QNA_NUMBUER"));
+				qna.setQna_number(rs.getInt("QNA_NUMBER"));
 				qna.setQna_name(rs.getString("QNA_NAME"));
 				qna.setQna_subject(rs.getString("QNA_SUBJECT"));
 				qna.setQna_content(rs.getString("QNA_CONTENT"));
@@ -261,7 +262,7 @@ public class QnaDAO {
 		return qna;
 	}// getDetail()메서드 end
 
-	// 글쓴이인지 확인 - 게시물 비밀번호로 확인합니다.
+	// 글쓴이인지 확인 - 비밀번호로 확인합니다.
 	public boolean isqnaWriter(int num, String pass) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -310,7 +311,7 @@ public class QnaDAO {
 		PreparedStatement pstmt = null;
 		String sql = "update qna "
 				   + "set QNA_SUBJECT=?, QNA_CONTENT=? "
-				   + "where QNA_NUM=? ";
+				   + "where QNA_NUMBER=? ";
 		try {
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(sql);
@@ -410,7 +411,7 @@ public class QnaDAO {
 	         
 	         while(rs.next()) {
 	        	 QnaBean qna = new QnaBean();
-					qna.setQna_number(rs.getInt("QNA_NUMBER"));
+					qna.setQna_number(rs.getInt("Qna_NUMBER"));
 					qna.setQna_name(rs.getString("QNA_NAME"));
 					qna.setQna_subject(rs.getString("QNA_SUBJECT"));
 					qna.setQna_content(rs.getString("QNA_CONTENT"));
@@ -513,7 +514,7 @@ public class QnaDAO {
 	         
 	         while(rs.next()) {
 	            QnaBean qna = new QnaBean();
-	            qna.setQna_number(rs.getInt("QNA_NUMBER"));
+	            qna.setQna_number(rs.getInt("Qna_NUMBER"));
 				qna.setQna_name(rs.getString("QNA_NAME"));
 				qna.setQna_subject(rs.getString("QNA_SUBJECT"));
 				qna.setQna_content(rs.getString("QNA_CONTENT"));
