@@ -1,10 +1,5 @@
 $(document).ready(function(){
    
-   $("#upfile").change(function(){
-      console.log($(this).val()) //c:\fakepath\upload.png
-      var inputfile = $(this).val().split('\\');
-      $('#filevalue').text(inputfile[inputfile.length - 1]);
-   });
    
    // submit 버튼 클릭할 때 이벤트 부분
    $("form[name=noticeform]").submit(function() {

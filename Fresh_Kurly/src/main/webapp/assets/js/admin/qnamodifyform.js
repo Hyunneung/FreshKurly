@@ -22,6 +22,5 @@ $(document).ready(function(){
 		}
 		
     })
-		var privateset = $("input:radio[name='qna_private']").is("checked").val()
    
 });//ready() end

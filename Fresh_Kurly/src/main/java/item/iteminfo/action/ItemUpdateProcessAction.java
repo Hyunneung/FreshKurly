@@ -3,6 +3,7 @@ package item.iteminfo.action;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,10 +30,9 @@ public class ItemUpdateProcessAction implements Action {
 		int fileSize = 5 * 1024 * 1024; // 업로드할 파일의 최대 사이즈 5MB
 		
 		// 실제 경로를 저장합니다.
-		//ServletContext sc = request.getServletContext();
-		//realFolder = sc.getRealPath(saveFolder);
-		realFolder = "C:\\Users\\jhta\\git\\Fresh_Kurly\\Fresh_Kurly\\src\\main\\webapp\\"
-							+ saveFolder;
+		ServletContext sc = request.getServletContext();
+		realFolder = sc.getRealPath(saveFolder);
+		
 		System.out.println("realFolder=[ " + realFolder);
 		try {
 			MultipartRequest multi = new MultipartRequest(
