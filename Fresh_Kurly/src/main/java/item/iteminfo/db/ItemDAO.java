@@ -485,7 +485,7 @@ public class ItemDAO {
 			con = ds.getConnection();
 			
 			String sql =  "select * from item where item_category = '" +  category + "'";
-			
+			//왜 한글이 들어가면 글이 깨지는지..
 			System.out.println(sql);
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -495,7 +495,6 @@ public class ItemDAO {
 				m.setItem_name(rs.getString("item_name"));
 				m.setItem_price(rs.getInt("item_price"));
 				m.setItem_image(rs.getString("item_image"));
-				m.setItem_category(rs.getString("item_category"));
 				list.add(m);
 			}
 		} catch (Exception e) {
