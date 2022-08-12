@@ -67,6 +67,10 @@ public class MyPageFrontController extends HttpServlet {
 		case "/myQna.my" :
 			action = new QnaAction();
 			break;
+		case "/myQnaDelete.my" :
+			action = new QnaDeleteAction();
+			break;	
+			
 		// 개인정보 수정
 		case "/myProfile.my" :
 			action = new ProfileAction();

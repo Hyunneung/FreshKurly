@@ -109,9 +109,17 @@ form[name=joinform] span{display:inline-block;margin-top:-20px;font-size:10px}
 
 #showImage > img {
 display: none;
-margin-top: 10px;
+margin-top: 20px;
+
 }
 
+#showImage {
+display: block;
+}
+
+#documentimg {
+margin-bottom: 10px;
+}
 </style> 
 
 <script>
@@ -129,13 +137,20 @@ $(function(){
 		 	 return false;
 		 }
 			 
+		 var image = $("#showImage > img").attr("src");
+		 console.log(image);
+		 if (image == undefined) {
+			 alert("사진을 넣어주세요.");
+			 return false;
+		 }
 	 }); // submit
 		
 })
 </script>
 </head>
 <body>
-	<form name = "joinform" action="insertProcess.item" method="post"> 
+	<form name = "joinform" action="itemInsertProcess.item" method="post"
+		enctype="multipart/form-data"> 
 	<h1>상품등록</h1>
 	<hr>
 	<b>상품번호</b>
@@ -176,10 +191,10 @@ $(function(){
 	
 	<b>상품이미지</b>
 	<label>
-		<img src="assets/image/item/document.png" style="cursor:pointer" width="50px">
-		<div id="showImage">
+		<img id="documentimg"src="assets/image/item/document.png" style="cursor:pointer" width="50px">
+		<span id="showImage">
 		   <img width="150px" height="150px">
-		</div>
+		</span>
 
 		<input type="file" name="item_image" accept="image/*">
 	</label>

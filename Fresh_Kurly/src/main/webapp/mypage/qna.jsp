@@ -4,6 +4,44 @@
 <html>
 <head>
 <title>마이페이지 - 상품문의</title>
+<script>
+	$(function(){
+		// url 쿼리스트링 제거
+		history.replaceState({}, null, location.pathname);
+		
+		
+		// 답변여부에 따라 문의 삭제 - 관리자 답변이 완료된 게시글은 삭제하지 못한다.
+		$("body").on('click', '#deletebtn', function(){
+			var tr = $(this).parent().parent();
+			var td2 = tr.find('td:nth-child(2)');
+			var td4 = tr.find('td:nth-child(4)');
+			var qna_number = td2.find( 'input:nth-child(1)' ); // 글번호 .val()
+			var commOK =  td4.find( 'input:nth-child(1)' ); // 답변여부 .val()
+			
+			if( commOK.val() == "답변대기" ) {
+				if(confirm("정말 삭제하시겠습니까?")) {
+					$.ajax({
+						type : "POST",
+						url: "myQnaDelete.my",
+						data: { "qna_number": qna_number.val() },
+						success : function(result) {
+							if(result == 1) { // 문의 삭제 성공하면 1, 실패하면 0
+								alert('문의내역이 삭제되었습니다.');
+								location.href="myQna.my";
+							} 
+						}, // success end
+						error : function(error){
+							alert("문의 삭제 에러 : " + error);
+						}
+					}) // ajax end
+				} // if(confirm) end
+			} else {
+				alert("답변이 완료된 게시글은 삭제할 수 없습니다.");
+			}	
+		}) // 답변 삭제 end
+		
+	})
+</script>
 </head>
 <body>
 	<div class="col-md-8"> 
@@ -21,6 +59,8 @@
 								<th>번호</th>
 								<th>제목</th>
 								<th>작성일</th>
+								<th>답변여부</th>
+								<th>삭제</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -32,10 +72,23 @@
 										<c:set var="num" value="${num-1}"/>  <!-- num=num-1; 의미 -->
 									</td>
 									<td> <!-- 글제목 -->
+										<input type="hidden" value="${q.qna_number}"> <!-- 문의 삭제 ajax로 넘겨줄 hidden -->
 										<a href="QnaDetailAction.bo?num=${q.qna_number}">${q.qna_subject}</a>
 									</td>
 								 	<td> <!-- 작성일 -->
 										${q.qna_reg_date}
+									</td>
+									<td> <!-- 관리자 답변 여부 -->
+										<c:if test="${q.cnt == 0}">
+											<c:set var="commOK" value="답변대기" />
+										</c:if>
+										<c:if test="${q.cnt != 0}">
+											<c:set var="commOK" value="답변완료" />
+										</c:if>
+										<input type="text" id="commOK" value="${commOK}" readonly>
+									</td>
+									<td> <!-- 문의 삭제 -->
+										<button type="button" id="deletebtn">삭제</button>
 									</td>
 								</tr>
 							</c:forEach>

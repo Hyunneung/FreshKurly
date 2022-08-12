@@ -218,7 +218,7 @@ public class ItemDAO {
 		return list;
 	}
 	
-	public int delete(String item_id) {
+	public int delete(int item_id) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -231,7 +231,7 @@ public class ItemDAO {
 			
 			System.out.println(sql);
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, item_id);
+			pstmt.setInt(1, item_id);
 			
 			result = pstmt.executeUpdate();
 			
@@ -291,7 +291,7 @@ public class ItemDAO {
 			pstmt.setString(10, m.getItem_category());
 			pstmt.setString(11, m.getItem_intro());
 			pstmt.setInt(12, m.getItem_stock());
-			
+			pstmt.setInt(13, m.getItem_id());
 			result = pstmt.executeUpdate();
 			
 		} catch (Exception e) {
@@ -356,7 +356,7 @@ public class ItemDAO {
 	}
 
 	public int insert(Item i) {
-		Connection con = null;
+		  Connection con = null;
 	      PreparedStatement pstmt = null;
 	      ResultSet rs = null;
 	      int result = 0; 
@@ -424,7 +424,7 @@ public class ItemDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = " select * from item where id = ? ";
+		String sql = " select * from item where item_id = ? ";
 		
 		try {
 			con = ds.getConnection();
@@ -434,14 +434,20 @@ public class ItemDAO {
 			
 			while(rs.next()) {
 				m = new Item();
-				m.setId(rs.getString(1));
-				m.setPassword(rs.getString(2));
-				m.setName(rs.getString(3));
-				m.setAge(rs.getInt(4));
-				m.setGender(rs.getString(5));
-				m.setEmail(rs.getString(6));
-				m.setMemberfile(rs.getString(7));//추가
-				
+				m.setItem_id(rs.getInt(1));
+				m.setItem_name(rs.getString(2));
+				m.setItem_price(rs.getInt(3));
+				m.setItem_reg_date(rs.getString(4));
+				m.setItem_image(rs.getString(5));
+				m.setItem_deliver(rs.getString(6));
+				m.setItem_seller(rs.getString(7));
+				m.setItem_package(rs.getString(8));
+				m.setItem_expiredate(rs.getString(9));
+				m.setItem_unit(rs.getString(10));
+				m.setItem_weight(rs.getString(11));
+				m.setItem_category(rs.getString(12));
+				m.setItem_intro(rs.getString(13));
+				m.setItem_stock(rs.getInt(14));
 			}
 			
 		} catch (Exception e) {

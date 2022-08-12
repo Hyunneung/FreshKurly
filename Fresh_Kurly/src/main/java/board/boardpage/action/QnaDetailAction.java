@@ -5,7 +5,6 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.boardpage.db.QnaBean;
 import board.boardpage.db.QnaDAO;
 
 public class QnaDetailAction  implements Action {
@@ -18,7 +17,7 @@ public class QnaDetailAction  implements Action {
 		int num=Integer.parseInt(request.getParameter("num"));
 		
 		//내용을 확인할 글의 조회수를 증가시킵니다.
-		qnadao.setReadCountUpdate(num);
+		qnadao.setViewUpdate(num);
 		
 		//글의 내용을 DAO에서 읽은 후 얻은 결과를 qnadata 객체에 저장합니다.
 		qnadata=qnadao.getDetail(num);

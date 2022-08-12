@@ -71,32 +71,36 @@ public class QnaDAO {
 		return listcount; 
 	} // getQnaListCount(String id) end
 	// qna에 담긴 문의내역 리스트
-	public List<Qna> getQnaList(String id, int page, int limit) {
-		List<Qna> list = new ArrayList<Qna>();
+	public List<QnaBean> getQnaList(String id, int page, int limit) {
+		List<QnaBean> list = new ArrayList<QnaBean>();
 		Connection con = null;
-		PreparedStatement pstmt = null;
+		PreparedStatement pstmt_s1 = null;
 		ResultSet rs = null;
+
 		String sql = "select * "
-				   + "from ( select rownum rnum, j.* "
-				   + "		from ( select * "
-				   + "				from qna "
-				   + "				where qna_name = ? "
-				   + "				order by qna_reg_date desc) j "
-				   + "		where rownum <= ? ) "
+				   + "from ( select rownum rnum, j.*  "
+				   + "		from ( select qna.qna_number, qna.qna_name, qna.qna_pass, qna.qna_subject, qna.qna_content, qna.qna_reg_date, NVL(qnacomm.num, 0) as commOK "
+				   + "				from qna left outer join qnacomm "
+				   + "				on qna.qna_number = qnacomm.comment_qna_number "
+				   + "				where qna.qna_name = ?  "
+				   + "				order by qna.qna_number desc) j  "
+				   + "		where rownum <= ?)  "
 				   + "where rnum >= ? and rnum <= ?";
+		
+				   
 		// 한 페이지 당 10개씩 목록인 경우 1페이지, 2페이지, 4페이지 ...
 		int startrow = (page - 1) * limit + 1; // 읽기 시작할 row 번호(1 11 21 31 ...
 		int endrow = startrow + limit - 1;     // 읽을 마지막 row 번호(10 20 30 40 ...
-				
+		
 		try {
 			con = ds.getConnection();
 			
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			pstmt.setInt(2, endrow);
-			pstmt.setInt(3, startrow);
-			pstmt.setInt(4, endrow);
-			rs = pstmt.executeQuery();
+			pstmt_s1 = con.prepareStatement(sql);
+			pstmt_s1.setString(1, id);
+			pstmt_s1.setInt(2, endrow);
+			pstmt_s1.setInt(3, startrow);
+			pstmt_s1.setInt(4, endrow);
+			rs = pstmt_s1.executeQuery();
 			
 			while(rs.next()) {
 				int qna_number = rs.getInt("qna_number");
@@ -105,16 +109,19 @@ public class QnaDAO {
 				String qna_subject = rs.getString("qna_subject");
 				String qna_content = rs.getString("qna_content");
 				String qna_reg_date = rs.getString("qna_reg_date");
-
-				Qna qna = new Qna();
+				int cnt = rs.getInt("commOK");
+					
+				QnaBean qna = new QnaBean();
 				qna.setQna_number(qna_number);
 				qna.setQna_name(qna_name);
 				qna.setQna_pass(qna_pass);
 				qna.setQna_subject(qna_subject);
 				qna.setQna_content(qna_content);
 				qna.setQna_reg_date(qna_reg_date);
+				qna.setCnt(cnt);
 				list.add(qna);
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("getQnaList() 에러: " + e);
@@ -126,9 +133,9 @@ public class QnaDAO {
 					ex.printStackTrace();
 				}
 			}
-			if (pstmt != null) {
+			if (pstmt_s1 != null) {
 				try {
-					pstmt.close();
+					pstmt_s1.close();
 				} catch (SQLException e) {
 					System.out.println(e.getMessage());
 				}
@@ -143,5 +150,43 @@ public class QnaDAO {
 		} // finally 끝
 		return list;
 	} // getQnaList() end
+	
+	
+	
+	// 문의내역 삭제
+	public int qnaDelete(String member_id, int qna_number) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			con = ds.getConnection();
+			String sql = "delete from qna "
+					+ "where qna_name = ? " // 회원id - member_id
+					+ "and qna_number = ?"; // 글번호 - qna_number
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, member_id);
+			pstmt.setInt(2, qna_number);
+			result = pstmt.executeUpdate(); // 문의 삭제 성공하면 1, 실패하면 0
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("qnaDelete() 에러: " + e);
+		} finally {
+			try {
+				if(pstmt != null) 
+				pstmt.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+				System.out.println(e.getMessage());
+			}
+			try {
+				if(con != null) 
+					con.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+				System.out.println(e.getMessage());
+			}
+		} // try-catch-finally 끝
+		return result; // 문의 삭제 성공하면 1, 실패하면 0
+	} // qnaDelete(member_id, qna_number) end
 	
 }

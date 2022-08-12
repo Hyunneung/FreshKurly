@@ -60,23 +60,18 @@ function ajax(sdata) {
 						for (var i = 0; i < blank_count; i++) {
 							blank += '&nbsp;&nbsp;';
 						}
-						img="";
-						if (item.qna_re_lev > 0) {
-							img="<img src='img/line.gif'>";
-						}
 						
 						var subject=item.qna_subject;
 						if(subject.length>=20){
 							subject=subject.substr(0,20) + "...";//0부터 20개 부분 문자열 추출
 						}
 						
-						output += "<td><div>" + blank + img
 						output += '<a href="QnaDetailAction.ad?num=' + item.qna_num + '">'
 						output += subject.replace(/</g, '&lt;').replace(/>/g, '&gt;')
 								  + '</a>[' + item.cnt + ']</div></td>'
 						output +=  '<td><div>' + item.qna_name+'</div></td>'
 						output +=  '<td><div>' + item.qna_date+'</div></td>'
-						output +=  '<td><div>' + item.qna_readcount
+						output +=  '<td><div>' + item.qna_view
 								+ '</div></td></tr>'
 					})
 			output += "</tbody>"

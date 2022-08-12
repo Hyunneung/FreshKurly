@@ -48,17 +48,20 @@ public class ItemFrontController extends HttpServlet {
 		case "/itemInsert.item": // 물품 등록 클릭 시
 			action = new ItemInsertAction();
 			break;
-		case "/insertProcess.item": // 값 데이터 베이스로
+		case "/itemInsertProcess.item": // 값 데이터 베이스로
 			action = new ItemInsertProcessAction();
-			/*
-		case "/ItemUpdate.item": // 물품 수정
+			break;
+		case "/itemUpdateProcess.item": // image 파일
+			action = new ItemUpdateProcessAction();
+			break;
+		case "/itemUpdate.item": // 물품 수정
 			action = new ItemUpdateAction();
 			break;	
+			
 		case "/itemDelete.item": // 물품 삭제
 			action = new ItemDeleteAction();
 			break; 
-		*/
-		case "/itemInfo.net":
+		case "/itemInfo.item":
 			action = new ItemInfoAction();
 			break;
 		case "/show_by_category.item":

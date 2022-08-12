@@ -13,7 +13,7 @@
 <body>
 	<div class="col-md-8">
     	<div class="myLeftCtn">
-        	<form class="myForm text-center" action="myProfileCheck.my" method="post" novalidate>
+        	<form class="text-center" action="myProfileCheck.my" method="post" novalidate>
             	<header>개인정보 수정</header>
                             
                 <!-- 소셜로그인 사용자가 아닌 경우 -->

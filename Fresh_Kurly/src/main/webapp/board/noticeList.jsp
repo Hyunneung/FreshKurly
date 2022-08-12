@@ -3,6 +3,37 @@
 <html>
 <head>
  <jsp:include page="../mainpage/header.jsp" />
+ <script>
+$(function() {
+   //검색 클릭 후 응답화면에는 검색시 선택한 필드가 선택되도록 합니다.
+   var selectedValue = '${search_field}'
+   if (selectedValue != '-1')
+      $("#viewcount").val(selectedValue);
+      
+   //검색 버튼 클릭한 경우
+   $("form[name=search] button").click(function() {
+      //검색 버튼 클릭한 경우
+      if ($("input[name=search_word]").val() == '') {
+         alert("검색어를 입력하세요");
+            $("input[name=search_word]").focus();
+            return false;
+      }
+         
+      var word = $(".input-group input").val();
+      
+      
+   });//button click end
+      
+   //검색어 입력창에 selectedValue 나타나도록 합니다.
+   $("#viewcount").change(function() {
+      selectedValue = $(this).val();
+      $("input").val('');
+      message = [ "제목", "내용" ]
+      $("input").attr("placeholder", message[selectedValue] + "입력하세요");
+   })//$("#viewcount").change end
+      
+});//ready end
+</script>
  <style>
 select.form-control {
 	width: auto;
@@ -24,11 +55,24 @@ select.form-control {
 	body > div > table > thead > tr:nth-child(2) > th:nth-child(5){width:11%}
 	
  </style>
- <script src="assets/js/admin/noticelist.js"></script>
+ 
+ <script src="assets/js/board/noticelist.js"></script>
  <title>공지사항 게시판</title>
 </head>
 <body>
+<br>
 <div class="container">
+<form name="search" action="NoticeList.ad" method="post">
+			<div class="input-group">
+			
+				<select id="viewcount" name="search_field">
+					<option value="0" selected>제목</option>
+					<option value="1">내용</option>
+				</select> <input name="search_word" type="text" class="form-control"
+					placeholder="제목을 입력하세요" value="${search_word}">
+				<button class="btn btn-primary" type="submit">검색</button>
+			</div>
+		</form>
  <%-- 게시글이 있는 경우 --%>
  <c:if test="${listcount > 0 }">
   <div class="rows">
@@ -69,7 +113,7 @@ select.form-control {
         <div>
        	 
        	  
-       	   <a href="BoardDetailAction.bo?num=${b.notice_num}">
+       	   <a href="NoticeDetailAction.bo?num=${b.notice_num}">
        	  	  <c:if test="${b.notice_subject.length()>=20}">
        	  	    <c:out value="${b.notice_subject.substring(0,20)}..." />
        	  	  </c:if>
@@ -96,7 +140,7 @@ select.form-control {
 		 </c:if>
  	  	 <c:if test="${page > 1 }">
  	  	    <li class="page-item ">
- 	  	       <a href="BoardList.bo?page=${page-1}"
+ 	  	       <a href="NoticeList.bo?page=${page-1}"
  	  	          class="page-link">이전&nbsp;</a>
  	  	    </li>      
  	  	 </c:if>
@@ -109,7 +153,7 @@ select.form-control {
  	  	 	 </c:if>
  	  	 	 <c:if test="${a != page }">
  	  	 	 	<li class="page-item">
- 	  	 	 	   <a href="BoardList.bo?page=${a}"
+ 	  	 	 	   <a href="NoticeList.bo?page=${a}"
  	  	 	 	   	  class="page-link">${a}</a>
  	  	 	 	</li>   	  
  	  	 	 </c:if>
@@ -122,7 +166,7 @@ select.form-control {
  		</c:if>
  		<c:if test="${page < maxpage }">
  			<li class="page-item">
- 				<a href="BoardList.bo?page=${page+1}"
+ 				<a href="NoticeList.bo?page=${page+1}"
  				   class="page-link">&nbsp;다음</a>
  			</li>
  		</c:if>
@@ -135,7 +179,6 @@ select.form-control {
 	<font size=5>등록된 글이 없습니다.</font>
 </c:if>
 
-	<button type="button" class="btn btn-info float-right">글 쓰 기</button>
 </div>
 </body>
 </html>

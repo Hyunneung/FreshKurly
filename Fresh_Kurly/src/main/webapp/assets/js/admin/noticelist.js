@@ -75,8 +75,8 @@ function ajax(sdata) {
 						output += subject.replace(/</g, '&lt;').replace(/>/g, '&gt;')
 								  + '</a>[' + item.cnt + ']</div></td>'
 						output +=  '<td><div>' + item.notice_name+'</div></td>'
-						output +=  '<td><div>' + item.notice_date+'</div></td>'
-						output +=  '<td><div>' + item.notice_readcount
+						output +=  '<td><div>' + item.notice_reg_date+'</div></td>'
+						output +=  '<td><div>' + item.notice_view
 								+ '</div></td></tr>'
 					})
 			output += "</tbody>"

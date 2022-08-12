@@ -10,9 +10,8 @@
 	height: 41px;
 }
 
-#insert_item {
-position: relative;
-left: 1350px;
+#btn-ins {
+float: right;
 	
 }
 
@@ -82,7 +81,7 @@ body>div>table>tbody>tr>td:last-child>a {
 		}) // $("#viewcount").change end
 		
 		// 회원 목록의 삭제를 클릭한 경우
-		$("tr > td:nth-child(4) > a").click(function(event) {
+		$("tr > td:nth-child(5) > a").click(function(event) {
 			var answer = confirm("정말 삭제하시겠습니까?");
 			console.log(answer); // 취소를 클릭한 경우 false;
 			if (!answer) { // 취소를 클릭한 경우
@@ -90,7 +89,16 @@ body>div>table>tbody>tr>td:last-child>a {
 			}
 		}); // 삭제 클릭 end
 		
-		$("#insert_item").click(function() {
+		// 수정 클릭한 경우
+		$("tr > td:nth-child(4) > a").click(function(event) {
+			var answer = confirm("정말 수정하시겠습니까?");
+			console.log(answer); // 취소를 클릭한 경우 false;
+			if (!answer) { // 취소를 클릭한 경우
+				event.preventDefault(); // 이동하지 않습니다.
+			}
+		}); // 삭제 클릭 end
+		
+		$("#btn-ins").click(function() {
 			location.href="itemInsert.item";
 		})// 등록하기 버튼 클릭 시 물품 등록하기
 	}); // ready end
@@ -122,6 +130,7 @@ body>div>table>tbody>tr>td:last-child>a {
   				<td>상품번호</td>
   				<td>상품명</td>
   				<td>카테고리</td>
+  				<td>수정</td>
   				<td>삭제</td>
   			</tr>
   		</thead>
@@ -129,9 +138,10 @@ body>div>table>tbody>tr>td:last-child>a {
   			<c:forEach var="m" items="${totallist }">
   				<tr>
   					<td>${m.item_id }</td>
-  					<td><a href="itemInfo.item?id=${m.item_id }">${m.item_name }</a></td>
+  					<td><a href="itemInfo.item?item_id=${m.item_id }">${m.item_name }</a></td>
   					<td>${m.item_category }</td>
-  					<td><a href="itemDelete.item?id=${m.item_id }">삭제</a></td>
+  					<td><a href="itemUpdate.item?item_id=${m.item_id }">수정</a></td>
+  					<td><a href="itemDelete.item?item_id=${m.item_id }">삭제</a></td>
   				</tr>
   			</c:forEach>
   		</tbody>
@@ -144,7 +154,7 @@ body>div>table>tbody>tr>td:last-child>a {
   		</c:if>
   		<c:if test="${page > 1 }">
   			<li class="page-item">
-<a href="itemlist.item?page=${page-1}&search_field=${search_field}&search_word=${search_word}"
+<a href="itemList.item?page=${page-1}&search_field=${search_field}&search_word=${search_word}"
   				class="page-link">이전&nbsp;</a>
   			</li>
   		</c:if>
@@ -156,7 +166,7 @@ body>div>table>tbody>tr>td:last-child>a {
   			</li>
   		</c:if>
   		<c:if test="${a != page }">
-  			<c:url var="go" value="itemlist.item">
+  			<c:url var="go" value="itemList.item">
   				<c:param name="search_field" value="${search_field }"/>
   				<c:param name="search_word"  value="${search_word}"/>
   				<c:param name="page" 		 value="${a}"/>
@@ -173,7 +183,7 @@ body>div>table>tbody>tr>td:last-child>a {
   	 	</li>
   	 </c:if>
   	 <c:if test="${page < maxpage }">
-  	 	<c:url var="next" value="itemlist.item">
+  	 	<c:url var="next" value="itemList.item">
   				<c:param name="search_field" value="${search_field }"/>
   				<c:param name="search_word"  value="${search_word}"/>
   				<c:param name="page" 		 value="${page+1}"/>
@@ -184,7 +194,6 @@ body>div>table>tbody>tr>td:last-child>a {
   	 </c:if>
   	</ul>
    </c:if>
-  </div>
   
   <%-- 회원이 없는 경우 --%>
   <c:if test="${listcount == 0 && empty search_word }">
@@ -193,6 +202,7 @@ body>div>table>tbody>tr>td:last-child>a {
 <c:if test="${listcount == 0 && !empty search_word}">
 	<h1>검색결과가 없습니다.</h1>
 </c:if>
-<button id="insert_item" type="button" class="btn">등록하기</button>
+<button id="btn-ins" type="button" class="btn">등록하기</button>
+</div>
 </body>
 </html>

@@ -81,7 +81,7 @@
 									<input type="text" name="email" id="email" class="form-control" placeholder="예: freshkurly@kurly.com" required>
 									<input type="button" value="이메일 인증" id="emailchkbtn">
 									<input type="hidden" name="certification_ok" id="certification_ok" class="form-control" placeholder="인증번호 입력" maxlength="6" required>
-									<input type="hidden" id="certification_btn" value="인증번호 확인 버튼">
+									<input type="hidden" id="certification_btn" value="인증번호 확인" style="width:100px">
 									<input type="hidden" name="save_email_num" id="save_email_num">
 									<input type="hidden" id="emailchkok" value='n'> <!-- 인증 성공실패 여부 -->
 								</div>

@@ -11,27 +11,17 @@ $(function() {
       $("#viewcount").val(selectedValue);
       
    //검색 버튼 클릭한 경우
-   $("button").click(function() {
+   $("form[name=search] button").click(function() {
       //검색 버튼 클릭한 경우
-      if ($("input").val() == '') {
+      if ($("input[name=search_word]").val() == '') {
          alert("검색어를 입력하세요");
-            $("input").focus();
+            $("input[name=search_word]").focus();
             return false;
       }
          
       var word = $(".input-group input").val();
-      if (selectedValue == 2) {
-         pattern = /^[0-9]{2}$/;
-         if (!pattern.test(word)) {
-            alert("나이는 형식에 맞게 입력하세요(두자리 숫자)");
-            return false;
-         }
-      } else if (selectedValue == 3) {
-         if (world != "남" && word != "여") {
-            alert("남 또는 여를 입력하세요");
-            return false;
-            }
-      }
+      
+      
    });//button click end
       
    //검색어 입력창에 selectedValue 나타나도록 합니다.
@@ -41,15 +31,6 @@ $(function() {
       message = [ "제목", "내용" ]
       $("input").attr("placeholder", message[selectedValue] + "입력하세요");
    })//$("#viewcount").change end
-      
-   //회원 목록의 삭제를 클릭한 경우
-   $("tr > td:nth-child(3) > a").click(function(event){
-      var answer = confirm("정말 삭제하시겠습니까?");
-      console.log(answer); 
-      if(!answer){//취소를 클릭한 경우-false
-         event.preventDefault(); //이동하지 않습니다.   
-      }
-   })//삭제 클릭 end
       
 });//ready end
 </script>
@@ -141,7 +122,7 @@ td:nth-child(1) {
 <br>
 
 	<div class="container">
-		<form action="NoticeList.ad" method="post">
+		<form name="search" action="NoticeList.ad" method="post">
 			<div class="input-group">
 			
 				<select id="viewcount" name="search_field">
@@ -183,7 +164,7 @@ td:nth-child(1) {
 									<div>
 						
 
-										<a href="NoticeDetailAction.ad?num=${b.notice_num}"> <c:if
+										<a href="NoticeDetailAction.ad?num=${b.notice_number}"> <c:if
 												test="${b.notice_subject.length()>=20}">
 												<c:out value="${b.notice_subject.substring(0,20)}..." />
 											</c:if> <c:if test="${b.notice_subject.length()<20}">
@@ -193,7 +174,7 @@ td:nth-child(1) {
 									</div>
 								</td>
 								<td><div>${b.notice_name}</div></td>
-								<td><div>${b.notice_date}</div></td>
+								<td><div>${b.notice_reg_date}</div></td>
 								<td><div>${b.notice_view}</div></td>
 							</tr>
 						</c:forEach>

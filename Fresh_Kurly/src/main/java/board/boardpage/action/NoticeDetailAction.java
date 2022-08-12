@@ -19,7 +19,7 @@ public class NoticeDetailAction  implements Action {
 		int num=Integer.parseInt(request.getParameter("num"));
 		
 		//내용을 확인할 글의 조회수를 증가시킵니다.
-		noticedao.setReadCountUpdate(num);
+		noticedao.setViewUpdate(num);
 		
 		//글의 내용을 DAO에서 읽은 후 얻은 결과를 noticedata 객체에 저장합니다.
 		noticedata=noticedao.getDetail(num);

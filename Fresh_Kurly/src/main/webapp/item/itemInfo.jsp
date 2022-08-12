@@ -1,60 +1,164 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<jsp:include page="../mainpage/header.jsp"/>
+<title>item-page</title>
+<style>
+.item_amount {
+text-align: center;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+button:focus {
+	border: none;
+    outline:none;
+}
+#buybtn {
+ float: right;
+ bottom: 0px;
+ width: 150px;
+}
+ #tp {
+ float: left;
+ }
+ .수량 {
+ width: 3em;
+ }
+ .수량조절기 {
+ border: 0px;
+ }
+ 
+.수량조절 input:focus {outline: none;}
+
+ .tdtitle {
+ background: #f7f7f7;
+ width: 108px;
+ }
+ .tdinfo {
+ line-height: 110%;
+ width: 400px;
+ }
+ td {
+ padding: 18px;
+ }
+</style>
+<script>
+$(function() {
+    
+    $(".plus").click(function() {
+    	
+    	x = parseInt($(".item_amount").val());
+    	$(".item_amount").val(x+1);
+    	total = parseInt($("#totalprice").text());
+    	$("#totalprice").text(total+${iteminfo.item_price}); // 1590 대신 item_price
+    	
+    });
+    
+	$(".minus").click(function() {
+    	
+    	x = parseInt($(".item_amount").val());
+    	if (x == 1) {
+    	} else {
+    		$(".item_amount").val(x-1);
+    		total = parseInt($("#totalprice").text());
+        	$("#totalprice").text(total-${iteminfo.item_price});
+    	}
+    	
+    })
+    
+    $("#keyup_price").keyup(function() {
+    	x = parseInt($(".item_amount").val());
+    	total = parseInt($("#totalprice").text());
+    	$("#totalprice").text(x*parseInt(${iteminfo.item_price}));
+    	
+    	check = /^[0-9]+$/;
+    	if (!check.test($(".item_amount").val())) {    
+    		alert("숫자만 입력 가능합니다.");
+    		$(".item_amount").val("1");
+    	}
+    })
+    
+    
+    
+    
+});
+</script>
 </head>
 <body>
-
-  	<ul class="pagination justify-content-center">
-  		<c:if test="${page <= 1 }">
-  			<li class="page-item">
-  				<a class="page-link gray">이전&nbsp;</a>
-  			</li>
-  		</c:if>
-  		<c:if test="${page > 1 }">
-  			<li class="page-item">
-<a href="itemlist.item?page=${page-1}&search_field=${search_field}&search_word=${search_word}"
-  				class="page-link">이전&nbsp;</a>
-  			</li>
-  		</c:if>
-  	
-  	 <c:forEach var="a" begin="${startpage }" end="${endpage }">
-  		<c:if test="${a == page }">
-  			<li class="page-item active">
-  				<a class="page-link">${a }</a>
-  			</li>
-  		</c:if>
-  		<c:if test="${a != page }">
-  			<c:url var="go" value="itemlist.item">
-  				<c:param name="search_field" value="${search_field }"/>
-  				<c:param name="search_word"  value="${search_word}"/>
-  				<c:param name="page" 		 value="${a}"/>
-  			</c:url>
-  			<li class="page-item">
-  				<a href= "${go }" class="page-link">${a }</a>
-  			</li>
-  		</c:if>
-  	 </c:forEach>
-  	 
-  	 <c:if test="${page >= maxpage }">
-  	 	<li class="page-item">
-  	 		<a class="page-link gray">&nbsp;다음</a>
-  	 	</li>
-  	 </c:if>
-  	 <c:if test="${page < maxpage }">
-  	 	<c:url var="next" value="itemlist.item">
-  				<c:param name="search_field" value="${search_field }"/>
-  				<c:param name="search_word"  value="${search_word}"/>
-  				<c:param name="page" 		 value="${page+1}"/>
-  			</c:url>
-  	 	<li class="page-item">
-  	 		<a href="${next}" class="page-link">&nbsp;다음</a>
-  	 	</li>
-  	 </c:if>
-  	</ul>
+<div id="banner-category" style="background:#9f7e1c8c;">
+<div class="container">
+	<div class="col-md-12 text-center text-heading ">
+		<h1>Product:</h1>
+	</div>
+</div>
+       </div> 
+<!-- START SECTION Fruit product -->
+<section id="product-page">
+		
+	<div class="container">
+        <div class="card">
+            <div class="container-fliud">
+                <div class="wrapper row">
+                    <div class="preview col-md-6">
+                        <div class="preview-pic tab-content">
+                          <div class="tab-pane active" id="pic-1"><img src="../itemupload/${iteminfo.item_image }" /></div>
+                          <!-- 상품 사진 URI item_image -->
+                        </div>
+                    </div>
+                    <div class="details col-md-6">
+                        <h3 class="product-title">${iteminfo.item_name}</h3> <!-- 제품 이름 iteminfo.item_name -->
+                            <p class="product-description">${iteminfo.item_intro }</p> <!-- 제품설명 iteminfo.item_intro -->
+                            <h3 class="price"><span>${iteminfo.item_price }</span><span>원</span></h3>
+                        <div class="action">
+                            <a href="checkout.html" class="btn">장바구니</a> <!-- 클릭 시 장바구니에 담김 -->
+                            <a href="checkout.html" class="btn"><span class="fa fa-heart"></span></a> <!-- 클릭 시 찜한 목록에 담김 -->
+                            <hr class="col-md-12">
+                            <span>구매수량</span><span class="수량조절">
+                            <button class="수량조절기 minus">-</button>
+                            	<input id="keyup_price" type="number" class="item_amount" min="1" max="99" value="1">
+                            <button class="수량조절기 plus">+</button>
+                            </span>
+                            <hr class="col-md-12">
+                            <div>총 상품금액</div>
+                            <h1 id="tp" class="price"><span id="totalprice">${iteminfo.item_price }</span><span>원</span></h1> <!-- 수량에 따라 값이 변함 -->
+                            <a id="buybtn" href="checkout.html" class="btn">구매하기</a> <!-- 클릭 시 결제 api -->
+                        </div>
+                    </div>
+                        <div class="col-sm-12 reviews_padding">
+            <div class="reviews_wrapper">
+			<hr>
+			<table class="iteminfo.item_info">
+			 <tr>
+			 	<td class="tdtitle">배송</td>
+			 	<td class="tdinfo">${iteminfo.item_deliver }</td>
+			 	<td class="tdtitle">판매단위</td>
+			 	<td class="tdinfo">${iteminfo.item_unit }</td>
+			 </tr>
+			 <tr>
+			 	<td class="tdtitle">판매자</td>
+			 	<td class="tdinfo">${iteminfo.item_seller }</td>
+			 	<td class="tdtitle">중량/용량</td>
+			 	<td class="tdinfo">${iteminfo.item_weight }</td>
+			 </tr>
+			 <tr>
+			 	<td class="tdtitle">포장타입</td>
+			 	<td class="tdinfo">${iteminfo.item_package }</td>
+			 	<td class="tdtitle">유통기한</td>
+			 	<td class="tdinfo">${iteminfo.item_expiredate }</td>
+			 </tr>
+			</table>
+            </div>
+        </div>
+                     </div>
+                    </div>
+                </div>
+            </div>
+</section>
+<%-- <jsp:include page="footer.jsp"/> --%>
 </body>
 </html>

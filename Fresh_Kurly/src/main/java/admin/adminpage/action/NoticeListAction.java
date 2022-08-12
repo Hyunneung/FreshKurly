@@ -1,7 +1,6 @@
 package admin.adminpage.action;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -21,7 +20,6 @@ public class NoticeListAction implements Action{
 			throws ServletException, IOException {
 		
 		NoticeDAO noticedao = new NoticeDAO();
-		List<NoticeBean> noticelist = new ArrayList<NoticeBean>();
 		
 		//로그인 성공시 파라미터 page가 없어요. 그래서 초기값이 필요합니다.
 		int page = 1;	//보여줄 page
@@ -40,8 +38,27 @@ public class NoticeListAction implements Action{
 		// 총 리스트 수를 받아 옵니다.
 		int listcount = noticedao.getListCount();
 		
-		// 리스트를 받아옵니다.
-		noticelist = noticedao.getNoticeList(page, limit);
+		List<NoticeBean> list = null;
+		int index=-1; //search_field에 존재하지 않는 값으로 초기화
+		
+		String search_word="";
+		
+		//메뉴-관리자-회원정보 클릭한 경우(member_list.net)
+		//또는 메뉴-관리자-회원정보 클릭 후 페이지 클릭한 경우
+		//(member_list.net?page=2&search_field=-1&search_word=)
+		if (request.getParameter("search_word")==null
+				|| request.getParameter("search_word").equals("")) {
+			//총 리스트 수를 받아옵니다.
+			listcount = noticedao.getListCount();
+			list = noticedao.getNoticeList(page,limit);
+		} else { //검색을 클릭한 경우
+			index=Integer.parseInt(request.getParameter("search_field"));
+			String[] search_field = new String[] {"notice_subject", "notice_content"};
+			search_word = request.getParameter("search_word");
+			listcount = noticedao.getListCount(search_field[index], search_word);
+			list = noticedao.getList(search_field[index], search_word, page, limit);
+		}
+		
 		
 		int maxpage = (listcount + limit - 1) / limit;
 		System.out.println("총 페이지수 =" + maxpage);
@@ -72,7 +89,10 @@ public class NoticeListAction implements Action{
 			request.setAttribute("listcount", listcount);	// 총 공지사항 글의 수
 			
 			// 헤당 페이지의 글 목록을 갖고 있는 리스트
-			request.setAttribute("noticelist", noticelist);
+			request.setAttribute("noticelist", list);
+			
+			request.setAttribute("search_field", index);
+			request.setAttribute("search_word", search_word);
 			
 			request.setAttribute("limit", limit);
 			ActionForward forward = new ActionForward();
@@ -98,7 +118,7 @@ public class NoticeListAction implements Action{
 			//메서드를 통해서 저장합니다.
 			//List형식을 JsonElement로 바꾸어 주어야 object에 저장할 수 있습니다.
 			// List => JsonElement
-			JsonElement je = new Gson().toJsonTree(noticelist);
+			JsonElement je = new Gson().toJsonTree(list);
 			System.out.println("noticelist="+je.toString());
 			object.add("noticelist", je);
 			
