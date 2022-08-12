@@ -21,12 +21,12 @@ public class MemberDeleteAction implements Action {
 		int result = mdao.delete(id);
 		if(result == 1) {
 			out.println("<script>");
-			out.println("alert('»èÁ¦ ¼º°øÀÔ´Ï´Ù.')");
+			out.println("alert(''ì‚­ì œ ì„±ê³µì…ë‹ˆë‹¤.')");
 			out.println("location.href='MemberList.ad'");
 			out.println("</script>");
 		}else {
 			out.println("<script>");
-			out.println("alert('È¸¿ø »èÁ¦ ÀÔ´Ï´Ù.')");
+			out.println("alert('íšŒì› ì‚­ì œ ì…ë‹ˆë‹¤.')");
 			out.println("history.back();");
 			out.println("</script>");
 		}
