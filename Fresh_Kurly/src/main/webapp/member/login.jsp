@@ -8,7 +8,6 @@
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <!-- 카카오 소셜로그인 스크립트 -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-
 <script>
    $(function() {
       // 회원가입 버튼 클릭 - 회원가입 페이지 이동
@@ -27,18 +26,18 @@
 <style>
    div {text-align: center}
 
-   .form-control {width:500px; margin:auto;}
-   
-   a:link {text-decoration:none;}
-   a:visited {text-decoration:none;}
-   a:active {text-decoration:none;}
-   a {color:black;}
-   
-   img {width:50px; height:50px}
-   
-   button {background:#8BC34A; font-weight:bold; color: white; font-size: 30px;
-         padding-top:10px; padding-bottom:10px; margin-top:80px;
-         border:0; border-radius: 12px;; width:500px;}
+	.form-control {width:500px; margin:auto;}
+	
+	a:link {text-decoration:none;}
+	a:visited {text-decoration:none;}
+	a:active {text-decoration:none;}
+	a {color:black;}
+	
+	img {width:50px; height:50px}
+	
+	button {background:#8BC34A; font-weight:bold; color: white; font-size: 30px;
+			padding-top:10px; padding-bottom:10px; margin-top:80px;
+			border:0; border-radius: 12px;; width:500px;}
 </style>
 </head>
 <body>
