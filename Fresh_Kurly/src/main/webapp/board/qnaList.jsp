@@ -244,5 +244,9 @@ td:nth-child(1) {
 
 			<button type="button" class="btn btn-info float-right">글쓰기</button>
 	</div>
+	<script src="assets/js/custom.js"></script>
+	<footer id="footer">  
+		<jsp:include page="../mainpage/footer.jsp"/>
+	</footer> 
 </body>
 </html>
