@@ -41,7 +41,8 @@ h1{font-size:1.5rem; text-align:center; color:#1a92b9}
 		</div>
 		<div class="form-group">
 			<button type=submit class="btn btn-primary">수정</button>
-			<button type=reset class="btn btn-danger">취소</button>
+			<button type=reset class="btn btn-danger" onClick="history.go(-1)">취소</button>
+			
 		</div>
 			
 		</form>

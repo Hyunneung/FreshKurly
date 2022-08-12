@@ -3,8 +3,8 @@ function getList(state){
    
    $.ajax({
       type:"post",
-      url:"CommentList.bo",
-      data : {"comment_qna_num" : $("#comment_qna_num").val() ,
+      url:"CommentList.ad",
+      data : {"comment_qna_number" : $("#comment_qna_number").val() ,
               state:state},
       dataType:"json",
       success:function(rdata){
@@ -20,13 +20,13 @@ function getList(state){
          var output="";
          
          if(rdata.qnalist.length>0){
-            output += '<li class="comment-order-item ' + red1 + '" >'
-                   + '   <a href="javascript:getList(1)" class="comment-order-button">등록순 </a>'
-                   + '</li>'
-                   + '<li class="comment-order-item ' + red2 + '" >'
-                   + '   <a href="javascript:getList(2)" class="comment-order-button">최신순 </a>'
-                   + '</li>'
-              $('.comment-order-list').html(output);
+            output += '<li class="comment-order-item ' +  red1 + '" >'
+                          + '   <a href="javascript:getList(1)" class="comment-order-button">등록순 </a>'
+                          + '</li>'
+                          + '<li class="comment-order-item ' +  red2 + '" >'
+                          + '   <a href="javascript:getList(2)" class="comment-order-button">최신순</a>'
+                          + '</li>';
+                     $('.comment-order-list').html(output);
               output='';
              $(rdata.qnalist).each(function(){
                var lev = this.comment_re_lev;
@@ -35,11 +35,6 @@ function getList(state){
                   comment_reply = ' comment-list-item--reply lev1';
                }else if(lev==2){
                   comment_reply = ' comment-list-item--reply lev2';
-               }
-               var profile=this.memberfile;
-               var src='image/profile.png';
-               if(profile){
-                  src='memberupload/'+profile;
                }
                
                output += '<li id="' + this.num + '" class="comment-list-item' + comment_reply + '" >'
@@ -66,20 +61,21 @@ function getList(state){
                output += '   </div>' //comment-info-box;
                
                if($("#loginid").val()==this.id){  
-					output +=  '<div class="comment-tool">'
-					+ '    <div title="더보기" class="comment-tool-button">'
-					+ '       <div>&#46;&#46;&#46;</div>' 
-					+ '    </div>'
-					+ '    <div id="comment-list-item-layer' +  this.num + '"  class="LayerMore">' //스타일에서 display:none; 설정함
-					+ '     <ul class="layer-list">'							   
-					+ '      <li class="layer-item">'
-					+ '       <a href="javascript:updateForm(' + this.num + ')"'
-					+ '          class="layer-button">수정</a>&nbsp;&nbsp;'
-					+ '       <a href="javascript:del(' + this.num + ')"'
-					+ '          class="layer-button">삭제</a></li></ul>'
-					+ '    </div>'//LayerMore
-					+ '   </div>'//comment-tool
-}
+						 output +=  '<div class="comment-tool">'
+							   + '    <div title="더보기" class="comment-tool-button">'
+							   + '       <div>&#46;&#46;&#46;</div>' 
+							   + '    </div>'
+							   + '    <div id="comment-list-item-layer' +  this.num + '"  class="LayerMore">' //스타일에서 display:none; 설정함
+							   + '     <ul class="layer-list">'							   
+							   + '      <li class="layer-item">'
+							   + '       <a href="javascript:updateForm(' + this.num + ')"'
+							   + '          class="layer-button">수정</a>&nbsp;&nbsp;'
+							   + '       <a href="javascript:del(' + this.num + ')"'
+							   + '          class="layer-button">삭제</a></li></ul>'
+							   + '    </div>'//LayerMore
+							   + '   </div>'//comment-tool
+					     }
+
                
                output += '</div>'// comment-nick-area
                      + '</li>' //li.comment-list-item
@@ -96,29 +92,29 @@ function getList(state){
    });//ajax end
 }//function(getList) end
 
-//더보기 - 수정 클릭한 경우에 수정 폼을 보여줍니다.
+//더보기-수정 클릭한 경우에 수정 폼을 보여줍니다.
 function updateForm(num){ //num : 수정할 댓글 글번호
 	
 	var $num = $('#'+num);
 	
 	//선택한 내용을 구합니다.
-	var content=$num.find('.text-comment').text();
+	var content=$num.find('.text-comment').text(); 
 	
 	var selector = '#'+num + '> .comment-nick-area'
 	$(selector).hide(); //selector 영역 숨겨요-수정에서 취소를 선택하면 보여줄 예정입니다.
 	
-	//$('.comment-list+.comment-write').clone() : 기본 글쓰기 영역 복사합니다.
+	//$('.comment-list+.commnet-write').clone() : 기본 글쓰기 영역 복사합니다.
 	//글이 있던 영역에 글을 수정할 수 있는 폼으로 바꿉니다.
 	$num.append($('.comment-list+.commnet-write').clone());
 	
 	//수정 폼의 <textarea>에 내용을 나타냅니다.
-	$num.find('textarea').val(content);
+	$num.find('textarea').val(content); 
 	
 	//'.btn-register' 영역에 수정할 글 번호를 속성 'data-id'에 나타내고 클래스 'update'를 추가합니다.
 	$num.find('.btn-register').attr('data-id',num).addClass('update').text('수정완료');
 	
 	//폼에서 취소를 사용할 수 있도록 보이게 합니다.
-	$num.find('.btn-cancel').css('display','block');
+	$num.find('.btn-cancel').css('display','block'); 
 	
 	var count=content.length;
 	$num.find('.comment-write-area-count').text(count+"/200");
@@ -151,7 +147,21 @@ function replyform(num,lev,seq,ref){
 	$num.after(output); 
 	
 	//글쓰기 영역 복사합니다.
-	output=$('.comment-list+.commnet-write').clone();
+	//output=$('.comment-list+.commnet-write').clone();
+		
+	
+	output =  '<div class="commnet-write"><div class="comment-write-area">'
+		   +	 	'<b class="comment-write-area-name">' + $("#loginid").val() + '</b><span '
+		   +		'class="comment-write-area-count">0/200</span>'
+		   +	'<textarea placeholder="문의하기 답변을 작성하세요" rows="1"'
+		   +	'class="comment-write-area-text" maxLength="200"></textarea>'
+		   +	'</div>'
+		   + '<div class="register-box">'
+			+	'<div class="button btn-cancel">취소</div>'
+				+'<div class="button btn-register" >등록</div>'
+			+'</div>'
+			+'</div>'
+	
 	
 	var $num_next = $num.next();
 	//선택한 글 뒤에 답글 폼 생성합니다.
@@ -169,7 +179,6 @@ function replyform(num,lev,seq,ref){
 	         .attr('data-ref',ref).attr('data-lev',lev).attr('data-seq',seq).text('답글완료');
 
 }//function(replyform) end
-
 
 $(function(){
    option=1;
@@ -216,12 +225,10 @@ $(function(){
          }
       })//ajax
       
-      
       $('.comment-write-area-text').val('');//textarea 초기화
       $('.comment-write-area-count').text('0/200');//입력한 글 카운트 초기화
    })// $('.btn-register').click(function(){
-   
-  
+      
    //더보기를 클릭하면 수정과 삭제 영역이 나타나고 다시 클릭하면 사라져요
 	$(".comment-list").on('click', '.comment-tool-button', function() {
 		
@@ -233,7 +240,8 @@ $(function(){
 			LayerMore.show().addClass('show');//현재 선택한 것만 보이도록 합니다.
 		}
 	})
-
+ 
+		
 //수정 후 수정완료를 클릭한 경우
 $('.comment-area').on('click','.update',function(){
 	var num = $(this).attr('data-id');
@@ -241,31 +249,31 @@ $('.comment-area').on('click','.update',function(){
 	$.ajax({
 		url:'CommentUpdate.bo',
 		data:{num:num, content:content},
-		success:function(rdata){
-			if(rdata==1){
-				getList(option);
-			}//if
-		}//success
-	});//ajax
+        success:function(rdata){
+            if(rdata==1){
+               getList(option);
+            }//if
+        }//success
+   });//ajax
 })//수정 후 수정완료를 클릭한 경우
 
 //수정 후 취소 버튼을 클릭한 경우
 $('.comment-area').on('click','.btn-cancel',function(){
 	//댓글 번호를 구합니다.
 	var num= $(this).next().attr('data-id');
-	var selector='#' +num;
+	var selector='#' + num;
 	
-	//.commnet-write 영역 삭제 합니다.
-	$(selector + '.commnet-write').remove();
+	//.comment-write 영역을 삭제 합니다.
+	$(selector + ' .comment-write').remove();
 	
-	//숨겨두었던 .comment-nick-area 영역 보여줍니다.
+	//숨겨두었던 .comment-nick-area 영역을 보여줍니다.
 	$(selector + '>.comment-nick-area').css('display','block');
 	
-	//숨겨두었던 .comment-nick-area 영역 보여주면 '수정 삭제'영역도 보입니다.
+	//숨겨두었던 .comment-nick-area 영역을 보여주면 '수정 삭제'영역도 보입니다.
 	//console.log($('#comment-list-item-layer' + num).css('display')) //'block'
 	//$('#comment-list-item-layer' + num).hide(); //'수정 삭제' 영역 숨겨요
 })//수정 후 취소 버튼을 클릭한 경우
-   
+		
 //답글완료 클릭한 경우
 	$('.comment-area').on('click','.reply',function(){
 		var comment_re_ref = $(this).attr('data-ref');
@@ -296,6 +304,6 @@ $('.comment-area').on('click','.btn-cancel',function(){
 	$('.comment-area').on('click','.reply_cancel',function(){
 		$(this).parent().parent().parent().remove();
 	})//답글쓰기  후 취소 버튼을 클릭한 경우
-
-	
+		
+   
 });

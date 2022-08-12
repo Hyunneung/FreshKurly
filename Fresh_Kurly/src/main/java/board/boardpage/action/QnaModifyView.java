@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import board.boardpage.db.QnaBean;
 import board.boardpage.db.QnaDAO;
 
 public class QnaModifyView implements Action {

@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import board.boardpage.db.QnaBean;
 import board.boardpage.db.QnaDAO;
 
 public class QnaDetailAction  implements Action {

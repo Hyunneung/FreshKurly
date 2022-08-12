@@ -26,21 +26,21 @@
     <div class="form-group">
       <label for="qna_pass">비밀번호</label>
       <input name="qna_pass" id="qna_pass"	type="password" maxlength="30" 
-      		 class="form-control" placeholder="Enter qna_pass">
+      		 class="form-control" placeholder="게시글에 대한 비밀번호를 입력하세요">
     </div>
     <div class="form-group">
       <label for="qna_subject">제목</label>
       <input name="qna_subject" id="qna_subject" 	type="text" maxlength="100" 
-      		 class="form-control" placeholder="Enter qna_subject">
+      		 class="form-control" placeholder="게시글에 대한 제목을 입력하세요">
     </div>
     <div class="form-group">
       <label for="qna_content">내용</label>
       <textarea name="qna_content" id="qna_content"		
-      			rows="10" class="form-control"></textarea>
+      			rows="10" class="form-control" placeholder="게시글에 대한 내용을 입력하세요"></textarea>
     </div>
   <div class="form-group">
      <button type=submit class="btn btn-primary">등록</button>
-     <button type=reset class="btn btn-danger">취소</button>
+     <button type=button class="btn btn-danger" onClick="history.go(-1)">취소</button>
   </div>
   </form>
  </div>

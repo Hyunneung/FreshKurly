@@ -11,8 +11,10 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-import board.boardpage.action.QnaBean;
-import board.boardpage.db.QnaDAO;
+import admin.adminpage.db.QnaBean;
+import admin.adminpage.db.QnaDAO;
+
+
 
 public class QnaListAction implements Action{
 	@Override

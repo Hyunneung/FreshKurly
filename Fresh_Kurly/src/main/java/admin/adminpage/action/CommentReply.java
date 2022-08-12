@@ -1,4 +1,4 @@
-package board.boardpage.action;
+package admin.adminpage.action;
 
 import java.io.IOException;
 
@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import board.boardpage.db.Comment;
 import board.boardpage.db.CommentDAO;
+
 
 
 public class CommentReply implements Action {

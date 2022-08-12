@@ -1,7 +1,7 @@
-package admin.adminpage.db;
+package board.boardpage.db;
 
 public class QnaBean {
-	private int		qna_number;   //글 번호
+	private int		qna_number;	  //글번호
 	private String	qna_name;	  //글 작성자
 	private String	qna_pass;	  //글 비밀번호
 	private String	qna_subject;  //글 제목
@@ -9,7 +9,6 @@ public class QnaBean {
 	private int		qna_view;     //글의 조회수
 	private String  qna_reg_date; //글의 등록날짜
 	private int cnt;
-	
 	public int getQna_number() {
 		return qna_number;
 	}
@@ -58,5 +57,7 @@ public class QnaBean {
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
 	}
-		
+	
+	
+	
 }
