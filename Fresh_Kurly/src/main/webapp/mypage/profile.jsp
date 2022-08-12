@@ -5,20 +5,27 @@
 <title> 개인정보 수정 - 비밀번호 확인 </title>
 </head>
 <style>
-    #okbtn {background:#8BC34A; font-weight:bold; font-size:14; color: white;
-		padding-top:10px; padding-bottom:10px; margin:3px;
-		border:0; border-radius: 12px; width:300px; text-align:center}
- 	 }	
+    #okbtn {background:#28a745; font-weight:bold; font-size:18; color: white;
+			padding-top:10px; padding-bottom:10px; margin:3px;
+			border:0; border-radius: 12px; width:300px; text-align:center}
+		
+	/* padding: 0.5rem 1rem;
+	  	display: inline-block;
+	  	border: none;
+	  	border-radius: 4px;
+	  	
+	  	background: #28a745; */
+		
 </style>
 <body>
 	<div class="col-md-8">
     	<div class="myLeftCtn">
         	<form class="text-center" action="myProfileCheck.my" method="post" novalidate>
-            	<header>개인정보 수정</header>
+            	<header style="font-size:18pt; margin-bottom:10px; margin-top:20px">개인정보 수정</header>
                             
                 <!-- 소셜로그인 사용자가 아닌 경우 -->
 				<c:if test="${social == null}">
-	            	<h4>비밀번호 재확인</h4>
+	            	<h5>비밀번호 재확인</h5>
 	                <h6 style="color:gray">*회원님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한 번 확인해주세요.</h6>
 	                            
 	                <hr>

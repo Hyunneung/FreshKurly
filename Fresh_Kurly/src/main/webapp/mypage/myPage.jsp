@@ -15,16 +15,24 @@
 	}
 	
 	#myPageName {font-size:15pt}
-	
-	/* header{
-		font-size: 30px;
-		font-weight: 500;
-		margin-bottom: 26px;
-		margin-top: 3rem;
-	    font-family: 'Jeju Gothic';	
-	} */
-
 </style>
+<script>
+	$(function(){
+		// 마이페이지에 따라 왼쪽 네비게이션에 해당 페이지가 선택된다
+		var myPage = "${myPage}";
+		var pageList = ["order", "cart", "wish", "qna", "profile"];
+		
+		for(var index = 0; index < pageList.length; index++) {
+			if(myPage == pageList[index]){
+				$('.nav-pills> .nav-item > .nav-link').eq(index).addClass('active'); 
+				$('.nav-pills> .nav-item > .nav-link').eq(index).addClass('bg-success'); 
+			} else {
+				$('.nav-pills> .nav-item > .nav-link').eq(index).removeClass('active');
+				$('.nav-pills> .nav-item > .nav-link').eq(index).removeClass('bg-success');
+			}
+		} // for end
+	}) // ready end	
+</script>
 </head>
 <body>
 	<header>  
@@ -33,7 +41,7 @@
 	
 	
 	<!-- 왼쪽 네비게이션 -->
-	<div class='container-fluid' style="margin-top:50px;">
+	<div class='container-fluid' style="margin-top:50px; margin-bottom:300px">
 		<div class="row">
 			<div class="col-md-2 col-xs-4">
 				<aside>
@@ -53,32 +61,21 @@
 			<div class="col-sm-8 col-xs-4">
 				<style>
 						* {text-align: left}
-						h4 {color:gray; font-weight:bold;}
+						h5 {color:gray; font-weight:bold;}
 						hr { border: 0;
 						     height: 2px;
 						     background: #ccc;}
-						
-						/*td {font-size:13pt}   */
 				</style>		
 				<jsp:include page="${myPage}.jsp"/>
 			</div>
 		</div>
 	</div>
-
-
-	<script>
-		var myPage = "${myPage}";
-		var pageList = ["order", "cart", "wish", "qna", "profile"];
-		
-		for(var index = 0; index < pageList.length; index++) {
-			if(myPage == pageList[index]){
-				$('.nav-pills> .nav-item > .nav-link').eq(index).addClass('active'); 
-				$('.nav-pills> .nav-item > .nav-link').eq(index).addClass('bg-success'); 
-			} else {
-				$('.nav-pills> .nav-item > .nav-link').eq(index).removeClass('active');
-				$('.nav-pills> .nav-item > .nav-link').eq(index).removeClass('bg-success');
-			}
-		}
-	</script>
+	
+	
+	
+	<script src="assets/js/custom.js"></script>
+	<footer id="footer">  
+		<jsp:include page="../mainpage/footer.jsp"/>
+	</footer>
 </body>
 </html>

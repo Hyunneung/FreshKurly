@@ -6,8 +6,14 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script> <!-- 주소검색 -->
 <title>cart - right</title>
 <style>
+	* {font-size:15px}
+	
 	textarea {border: none; resize: none;}
-	/* textarea:focus { outline: none; } */
+	
+	#postcodebtn, #paybtn {
+		background:#28a745; width:100px; height:40px; color: white; font-weight:bold;
+		border-radius:12px; margin:5px; border:none; text-align:center
+	}
 </style>
 
 <script>
@@ -43,20 +49,20 @@
 </script>
 </head>
 <body>
-	<div class="col-md-4 mb-4">
+	<div>
 		<!-- 배송지 -->
-		<form action="" method="" style="width:250px; position: relative; top:70px;"> <!-- 결제기능 하면 결제 폼으로 넘어가게 하기~ -->
+		<form action="" method="" style="width:250px; position: relative; top:100px;"> <!-- 결제기능 하면 결제 폼으로 넘어가게 하기~ -->
 			<ul class="list-group">
 				<li class="list-group-item">
 					<div>
-						<h5 class="my-0">배송지</h5>
+						<h5>배송지</h5>
 						<div class="md-form tb-mr-bt">
 							<strong>주소</strong><br>
-							<input type="text" name="post" id="post" value="${member_post}" style="width:40px;">
-							<textarea name="address" id="address" cols="30" rows="2">${member_address}</textarea>
+							<input type="text" name="post" id="post" value="${member_post}" style="width:50px;">
+							<textarea name="address" id="address" cols="27" rows="2">${member_address}</textarea>
 						</div>
 						<br>
-						<button type="button" id="postcodebtn" class="btn btn-secondary">배송지변경</button>
+						<button type="button" id="postcodebtn" >배송지변경</button>
 					</div>
 				</li>
 			</ul>
@@ -66,8 +72,11 @@
 			<ul class="list-group">
 				<li class="list-group-item">
 					<div>
-						<strong>상품 금액</strong> <span class="text-muted"><fmt:formatNumber value="${totalAll}" pattern="#,###"/>원</span><br>
-						<strong>배송비</strong> <span class="text-muted">${delivery}</span>
+						<strong>상품 금액</strong>
+							<input type="text" name="totalALL" value="<fmt:formatNumber value="${totalAll}" pattern="#,###"/>원" style="width:70px">
+						<br>
+						<strong>배송비</strong> 
+							<input type="text" name="delivery" value="<fmt:formatNumber value="${delivery}" pattern="#,###"/>원" style="width:70px">
 					</div>
 				</li>
 			</ul>
@@ -77,9 +86,10 @@
 			<ul class="list-group">
 				<li class="list-group-item">
 					<div>
-						<h5 class="my-0">결제금액</h5>
-						<strong><fmt:formatNumber value="${totalAll + delivery}" pattern="#,###"/>원</strong> <br>
-						<button type="submit" id="paybtn" class="btn btn-secondary">결제하기</button>
+						<h5>결제금액</h5>
+						<input type="text" name="totalALLDelivery" value="<fmt:formatNumber value="${totalAll + delivery}" pattern="#,###"/>원" style="width:70px">
+						<br>
+						<button type="submit" id="paybtn">결제하기</button>
 					</div>
 				</li>
 			</ul>

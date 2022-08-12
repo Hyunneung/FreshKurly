@@ -9,15 +9,14 @@
     tbody > tr:nth-child(1) > td:nth-child(3){width:30%}
     tbody > tr:nth-child(1) > td:nth-child(4){width:30%}
     tbody > tr:nth-child(1) > td:nth-child(5){width:20%}
-    
-	#deletebtn {background:grey;}
-	#addbtn {background:#8BC34A;}
 	
 	input { border:none; width:25px; text-align:center}
 	input:focus {outline: none;}    
 	#item_price{width:60px}
     
-	input[type=button] {width:80px; height:35px; color: white; border-radius: 12px; margin:5px; text-align:center; border:none}
+	input[type=button] {width:80px; height:35px; color: white; border-radius: 12px; margin:5px; border:none}
+	#addbtn {background:#28a745;}
+	#deletebtn {background:#ffa807;}
 </style>
 <script>
 	$(function(){
@@ -84,7 +83,7 @@
 <div class="col-md-8">
 		<div class="myLeftCtn">
 		<form class="text-center">
-			<header>찜한상품</header>
+			<header style="font-size:18pt; margin-bottom:10px; margin-top:20px">찜한상품</header>
 			<hr>
 						
 			<!-- 찜한상품이 있는 경우 -->
