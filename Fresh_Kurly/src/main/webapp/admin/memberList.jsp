@@ -190,5 +190,9 @@ td:nth-child(1) {
    <c:if test="${listcount == 0 && !empty search_word}">
       <h1>검색 결과가 없습니다.</h1>
    </c:if>
+   <script src="assets/js/custom.js"></script>
+	<footer id="footer">  
+		<jsp:include page="../mainpage/footer.jsp"/>
+	</footer> 
 </body>
 </html>
