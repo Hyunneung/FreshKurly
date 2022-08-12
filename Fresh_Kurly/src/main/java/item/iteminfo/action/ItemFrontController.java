@@ -66,6 +66,8 @@ public class ItemFrontController extends HttpServlet {
 			break;
 		case "/show_by_category.item":
 			action = new showByCategory();
+		case "/itemOrder.item":
+			action = new ItemOrderAction();
 			break;
 		} // switch end
 		forward = action.execute(request, response);
