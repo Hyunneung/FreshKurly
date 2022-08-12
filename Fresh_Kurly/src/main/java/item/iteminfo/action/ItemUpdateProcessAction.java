@@ -42,6 +42,7 @@ public class ItemUpdateProcessAction implements Action {
 							"utf-8",
 							new DefaultFileRenamePolicy());
 			
+			int item_id = Integer.parseInt(multi.getParameter("item_id"));
 			String item_name = multi.getParameter("item_name");
 			int item_price = Integer.parseInt(multi.getParameter("item_price"));
 			String item_image = multi.getFilesystemName("item_image");
@@ -58,7 +59,7 @@ public class ItemUpdateProcessAction implements Action {
 			
 			
 			Item i = new Item();
-			i.setItem_name(item_name); i.setItem_price(item_price);
+			i.setItem_id(item_id); i.setItem_name(item_name); i.setItem_price(item_price);
 			i.setItem_image(item_image); i.setItem_deliver(item_deliver);
 			i.setItem_seller(item_seller); i.setItem_package(item_package);
 			i.setItem_expiredate(item_expiredate); i.setItem_unit(item_unit);

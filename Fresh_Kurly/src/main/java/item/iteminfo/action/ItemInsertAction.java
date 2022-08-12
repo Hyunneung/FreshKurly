@@ -18,7 +18,7 @@ public class ItemInsertAction implements Action {
 		
 		int num = dao.item_id_num();
 		
-		request.setAttribute("item_id", num);
+		request.getParameter("item_id");
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
