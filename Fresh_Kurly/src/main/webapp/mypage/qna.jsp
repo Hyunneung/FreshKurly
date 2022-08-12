@@ -4,6 +4,10 @@
 <html>
 <head>
 <title>마이페이지 - 상품문의</title>
+<style>
+	input { border:none; width:80px; text-align:center}
+    input:focus {outline: none;}
+</style>
 <script>
 	$(function(){
 		// url 쿼리스트링 제거
@@ -47,7 +51,7 @@
 	<div class="col-md-8"> 
 		<div class="myLeftCtn">
 			<form class="myForm text-center">
-				<header>상품문의</header>
+				<header style="font-size:18pt; margin-bottom:10px; margin-top:20px">상품문의</header>
 				<h4>상품문의 내역을 확인하는 공간입니다.</h4>
 				<hr>
 

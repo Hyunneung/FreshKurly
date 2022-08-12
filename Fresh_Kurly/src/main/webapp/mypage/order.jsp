@@ -14,7 +14,7 @@
 	<div class="col-md-8">
 		<div class="myLeftCtn">
 			<form class="text-center">
-				<header>주문내역</header>
+				<header style="font-size:18pt; margin-bottom:10px; margin-top:20px">주문내역</header>
 				<hr>
 				<!-- 주문내역이 있는 경우 -->
 				<c:if test="${listcount > 0}">

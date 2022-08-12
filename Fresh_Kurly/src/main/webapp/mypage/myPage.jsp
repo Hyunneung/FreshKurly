@@ -58,7 +58,6 @@
 						     height: 2px;
 						     background: #ccc;}
 						
-						/*td {font-size:13pt}   */
 				</style>		
 				<jsp:include page="${myPage}.jsp"/>
 			</div>
