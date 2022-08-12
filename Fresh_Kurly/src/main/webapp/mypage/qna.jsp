@@ -52,7 +52,7 @@
 		<div class="myLeftCtn">
 			<form class="myForm text-center">
 				<header style="font-size:18pt; margin-bottom:10px; margin-top:20px">상품문의</header>
-				<h4>상품문의 내역을 확인하는 공간입니다.</h4>
+				<h5>상품문의 내역을 확인하는 공간입니다.</h5>
 				<hr>
 
 				<!-- 상품문의가 있는 경우 -->

@@ -14,7 +14,7 @@
 	input:focus {outline: none;}    
 	#item_price{width:60px}
     
-	input[type=button] {width:80px; height:35px; color: white; border-radius: 12px; margin:5px; text-align:center; border:none}
+	input[type=button] {width:80px; height:35px; color: white; border-radius: 12px; margin:5px; border:none}
 	#addbtn {background:#28a745;}
 	#deletebtn {background:#ffa807;}
 </style>

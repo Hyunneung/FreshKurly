@@ -2,13 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> <!-- 코어라이브러리 -->
 <html lang="en">
 <head>
-<title> 개인정보 수정 - 비밀번호 확인 </title>
+<title> 개인정보 수정 </title>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script> <!-- 주소검색 -->
 </head>
 <style>
-	img{width:30px; height:30px; opacity:0.5; cursor: pointer;}
-	input[type=button]{background:#8BC34A; color:white; border:none;
-					   width:80px; height:30px; margin-top:5px; text-align:center}
+	img{width:30px; height:30px; opacity:0.5; cursor:pointer;}
+	input[type=button]{width:80px; height:35px; background:#28a745; color:white; margin-top:5px;
+					   border-radius:4px; text-align:center; border:none; font-weight:bold;}
 </style>
 <script>
 	$(document).ready(function() {
@@ -247,80 +247,78 @@
 <!-- 비밀번호 제외한 모든 값은 기존 정보로 입력되어 있다 -->
 <body>
 	<section id="check-out">
-		<main class="tb-mt-pd">
-			<div class="container wow fadeIn">
-				<div class="row">
-					<div class="col-md-8 tb-left">
-						<div class="card">
-							<form action="myProfileUpdate.my" method="post" class="card-body" >
-
-								<!-- 아이디 -->
-								<div class="md-form tb-mr-bt">
-									<label for="id" style="font-size: 10pt">아이디</label>
-									<input type="text" name="id" id="id" class="form-control" value="${member.member_id}" readonly>
-								</div>
-
-								<!-- 새 비밀번호 -->
-								<div class="md-form tb-mr-bt">
-									<label for="pass" style="font-size: 10pt">새 비밀번호</label>
-									<input type="password" name="pass" id="pass" class="form-control">
-									<span><img src="assets/image/member/pass_show.png" id="img1"></span><br>
-									<span id="pass_message"></span>
-								</div>
-
-								<!-- 새 비밀번호 확인 -->
-								<div class="md-form tb-mr-bt">
-									<label for="pass2" style="font-size: 10pt">새 비밀번호 확인</label>
-									<input type="password" name="pass2" id="pass2" class="form-control">
-									<span><img src="assets/image/member/pass_show.png" id="img2"></span><br>
-									<span id="pass2_message"></span>
-								</div>
-								
-								<!-- 이름 -->
-								<div class="md-form tb-mr-bt">
-									<label for="name" style="font-size: 10pt">이름</label>
-									<input type="text" name="name" id="name" class="form-control" value="${member.member_name}" readonly>
-								</div>
-
-								<!-- 이메일 -->
-								<div class="md-form tb-mr-bt">
-									<label for="email" style="font-size: 10pt">이메일</label>
-									<input type="text" name="email" id="email" value="${member.member_email}" placeholder="예: freshkurly@kurly.com" class="form-control" required>
-									<input type="button" value="이메일 인증" id="emailchkbtn">
-									<input type="hidden" name="certification_ok" id="certification_ok" 
-										   class="form-control" placeholder="인증번호 입력" maxlength="6" required>
-									<input type="hidden" id="certification_btn" value="인증번호 확인" style="width:100px">
-									<input type="hidden" name="save_email_num" id="save_email_num">
-								</div>
-
-								<!-- 휴대폰 -->
-								<div class="md-form tb-mr-bt">
-									<label for="phone" style="font-size: 10pt">휴대폰</label>
-									<input type="text" name="phone" id="phone" class="form-control" value="${member.member_phone}" maxLength="11" required>
-									<input type="button" value="중복확인" id="phonechkbtn"><br>
-									<span id="phone_message"></span>
-								</div>
-
-								<!-- 주소 -->
-								<div class="md-form tb-mr-bt">
-									<label for="address" style="font-size: 10pt">우편번호</label>
-									<input type="button" value="우편검색" id="postcodebtn" style="color: white; font-weight: bold"><br>
-									<input type="text" class="form-control" name="postcode" id="postcode" 
-										   value="${member.member_post}" maxLength="5" readonly><br>
-									<input type="text" class="form-control" name="address" id="address"
-										    value="${member.member_address}" required>
-									<input type="hidden" size="5" name="post" id="post"><br> <!-- 서블릿으로 넘겨줄 우편번호 input (∵ #postcode 넘기면 null 반환됨) -->
-								</div>
-
-								<hr class="mb-4">
-								<button class="btn btn-primary btn-lg btn-block" type="submit" id="submitbtn">회원정보수정</button>
-
-							</form>
+		<div class="row">
+			<div class="col-md-8">
+				<header style="font-size:18pt; margin-bottom:10px; margin-top:20px">개인정보 수정</header>
+				<hr>
+				
+				<div class="card">
+					<form action="myProfileUpdate.my" method="post" class="card-body">
+						<!-- 아이디 -->
+						<div class="md-form tb-mr-bt">
+							<label for="id" style="font-size: 10pt">아이디</label>
+							<input type="text" name="id" id="id" class="form-control" value="${member.member_id}" readonly>
 						</div>
-					</div>
+
+						<!-- 새 비밀번호 -->
+						<div class="md-form tb-mr-bt">
+							<label for="pass" style="font-size: 10pt">새 비밀번호</label>
+							<input type="password" name="pass" id="pass" class="form-control">
+							<span><img src="assets/image/member/pass_show.png" id="img1"></span><br>
+							<span id="pass_message"></span>
+						</div>
+
+						<!-- 새 비밀번호 확인 -->
+						<div class="md-form tb-mr-bt">
+							<label for="pass2" style="font-size: 10pt">새 비밀번호 확인</label>
+							<input type="password" name="pass2" id="pass2" class="form-control">
+							<span><img src="assets/image/member/pass_show.png" id="img2"></span><br>
+							<span id="pass2_message"></span>
+						</div>
+						
+						<!-- 이름 -->
+						<div class="md-form tb-mr-bt">
+							<label for="name" style="font-size: 10pt">이름</label>
+							<input type="text" name="name" id="name" class="form-control" value="${member.member_name}" readonly>
+						</div>
+
+						<!-- 이메일 -->
+						<div class="md-form tb-mr-bt">
+							<label for="email" style="font-size: 10pt">이메일</label>
+							<input type="text" name="email" id="email" value="${member.member_email}" placeholder="예: freshkurly@kurly.com" class="form-control" required>
+							<input type="button" value="이메일 인증" id="emailchkbtn">
+							<input type="hidden" name="certification_ok" id="certification_ok" 
+								   class="form-control" placeholder="인증번호 입력" maxlength="6" required>
+							<input type="hidden" id="certification_btn" value="인증번호 확인" style="width:100px">
+							<input type="hidden" name="save_email_num" id="save_email_num">
+						</div>
+
+						<!-- 휴대폰 -->
+						<div class="md-form tb-mr-bt">
+							<label for="phone" style="font-size: 10pt">휴대폰</label>
+							<input type="text" name="phone" id="phone" class="form-control" value="${member.member_phone}" maxLength="11" required>
+							<input type="button" value="중복확인" id="phonechkbtn"><br>
+							<span id="phone_message"></span>
+						</div>
+
+						<!-- 주소 -->
+						<div class="md-form tb-mr-bt">
+							<label for="address" style="font-size: 10pt">우편번호</label>
+							<input type="button" value="우편검색" id="postcodebtn" style="color: white; font-weight: bold"><br>
+							<input type="text" class="form-control" name="postcode" id="postcode" 
+								   value="${member.member_post}" maxLength="5" readonly><br>
+							<input type="text" class="form-control" name="address" id="address"
+								    value="${member.member_address}" required>
+							<input type="hidden" size="5" name="post" id="post"><br> <!-- 서블릿으로 넘겨줄 우편번호 input (∵ #postcode 넘기면 null 반환됨) -->
+						</div>
+
+						<hr class="mb-4">
+						<button class="btn btn-block" style="background:#28a745; border-radius:4px;" type="submit" id="submitbtn">회원정보수정</button>
+
+					</form>
 				</div>
 			</div>
-		</main>
+		</div>
 	</section>
 </body>
 </html>

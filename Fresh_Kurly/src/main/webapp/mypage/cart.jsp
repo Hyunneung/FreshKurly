@@ -117,7 +117,7 @@
 			<div class="myLeftCtn">
 				<form class="text-center">
 					<header style="font-size:18pt; margin-bottom:10px; margin-top:20px">장바구니</header>
-					<h4>구매 금액 30,000원 이상 시 무료배송되며 30,000원 미만 구매 시 선불 배송비 3,000원이 추가됩니다.</h4>
+					<h5>구매 금액 30,000원 이상 시 무료배송되며 30,000원 미만 구매 시 배송비 3,000원이 추가됩니다.</h5>
 					<hr>
 					
 					<!-- 장바구니에 상품이 있는 경우 -->
