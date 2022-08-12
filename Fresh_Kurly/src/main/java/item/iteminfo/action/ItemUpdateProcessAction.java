@@ -13,7 +13,9 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import item.iteminfo.db.Item;
 import item.iteminfo.db.ItemDAO;
 
-public class ItemInsertProcessAction implements Action {
+
+
+public class ItemUpdateProcessAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
@@ -39,7 +41,7 @@ public class ItemInsertProcessAction implements Action {
 							fileSize,
 							"utf-8",
 							new DefaultFileRenamePolicy());
-			int item_id = Integer.parseInt(multi.getParameter("item_id"));
+			
 			String item_name = multi.getParameter("item_name");
 			int item_price = Integer.parseInt(multi.getParameter("item_price"));
 			String item_image = multi.getFilesystemName("item_image");
@@ -56,40 +58,38 @@ public class ItemInsertProcessAction implements Action {
 			
 			
 			Item i = new Item();
-			i.setItem_id(item_id); i.setItem_name(item_name); i.setItem_price(item_price);
+			i.setItem_name(item_name); i.setItem_price(item_price);
 			i.setItem_image(item_image); i.setItem_deliver(item_deliver);
 			i.setItem_seller(item_seller); i.setItem_package(item_package);
 			i.setItem_expiredate(item_expiredate); i.setItem_unit(item_unit);
 			i.setItem_weight(item_weight); i.setItem_category(item_category);
 			i.setItem_intro(item_intro); i.setItem_stock(item_stock);
 			
-			ItemDAO dao = new ItemDAO();
-			int result = dao.insert(i);
-			System.out.println("result=" + result);
+			ItemDAO mdao = new ItemDAO();
+			int result = mdao.update(i);
 			
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();
-			
-			
-			if (result == 1) { // 삽입이 된 경우
-				out.println("<script>");
-				out.println("alert('상품등록을 축하합니다.');");
+			out.println("<script>");
+			// 삽입이 된 경우
+			if (result == 1) {
+				out.println("alert('수정되었습니다,');");
 				out.println("location.href='itemList.item';");
-				out.print("</script>");
-				out.close();
-			} 
-			
+			} else {
+				out.println("alert('상품 수정에 실패했습니다.');");
+				out.println("history.back()"); // 비밀번호를 제외한 다른 데이터는 유지 되어 있습니다.
+			}
+			out.println("</script>");
+			out.close();
+			return null;
 			
 		} catch (IOException e) {
-				System.out.println("상품등록 실패입니다.");
-				ActionForward forward = new ActionForward();
-				forward.setRedirect(false);
-				request.setAttribute("message", "상품등록 실패입니다.");
-				forward.setPath("error/error.jsp");
-				return forward;
-		}
-		
-		return null;
+			ActionForward forward = new ActionForward();
+			forward.setPath("error/error.jsp");
+			request.setAttribute("message", "프로필 사진 업로드 실패입니다.");
+			forward.setRedirect(false);
+			return forward;
+		} // catch end
 	}
 
 }

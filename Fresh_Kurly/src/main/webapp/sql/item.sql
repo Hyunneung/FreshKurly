@@ -19,6 +19,8 @@ create table item (
 	item_stock 		number(10) not null
 )
 
+
+
 insert into item
 values
 (item_seq.nextval , '친환경 잎채소 깻잎 30g', 1590, sysdate,
