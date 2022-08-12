@@ -475,6 +475,47 @@ public class ItemDAO {
 		return m;
 	}
 
+	public List<Item> getListByCategory(String category) {
+		List<Item> list = new ArrayList<Item>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = ds.getConnection();
+			
+			String sql =  "select * from item where item_category = '" +  category + "'";
+			//왜 한글이 들어가면 글이 깨지는지..
+			System.out.println(sql);
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Item m = new Item();
+				m.setItem_name(rs.getString("item_name"));
+				m.setItem_price(rs.getInt("item_price"));
+				m.setItem_image(rs.getString("item_image"));
+				list.add(m);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+		}  // finally
+		return list;
+	}
+
 	
 	
 }

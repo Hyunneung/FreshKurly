@@ -159,9 +159,9 @@
 											관리자페이지
 										</button>
 											<div class="panel">
-												<p><a href="NoticeList.bo">공지사항</a></p>
-												<p><a href="">문의 응답하기</a></p>
-												<p><a href="">회원 리스트</a></p>
+												<p><a href="NoticeList.ad">공지사항</a></p>
+												<p><a href="QnaList.ad">문의 응답하기</a></p>
+												<p><a href="memberList.ad">회원 리스트</a></p>
 												<p><a href="itemList.item">상품 리스트</a></p>
 											</div>
 									</li>
@@ -219,37 +219,37 @@
 										class="nav-link">전체 카테고리</a>
 										<ul class="dropdown-menu">
 											<li class="nav-item">
-												<a href="category.html"class="nav-link">과일</a>
+												<a href="show_by_category.item?category=과일"class="nav-link">과일</a>
 											</li>
 											<li class="nav-item">
-												<a href="category.html"class="nav-link">야채</a>
+												<a href="show_by_category.item?category=야채"class="nav-link">야채</a>
 											</li>
 											<li class="nav-item">
-												<a href="category.html" class="nav-link">정육/계란</a>
+												<a href="show_by_category.item?category=정육,계란" class="nav-link">정육/계란</a>
 											</li>
 											<li class="nav-item">
-												<a href="category.html" class="nav-link">밀키트</a>
+												<a href="show_by_category.item?category=밀키트" class="nav-link">밀키트</a>
 											</li>
 											<li class="nav-item">
-												<a href="category.html" class="nav-link">냉장/냉동/간편식</a>
+												<a href="show_by_category.item?category=냉장,냉동,간편식" class="nav-link">냉장/냉동/간편식</a>
 											</li>
 											<li class="nav-item">
-												<a href="category.html" class="nav-link">통조림</a>
+												<a href="show_by_category.item?category=통조림" class="nav-link">통조림</a>
 											</li>
 											<li class="nav-item">
-												<a href="category.html" class="nav-link">수산/건어물</a>
+												<a href="show_by_category.item?category=수산,건어물" class="nav-link">수산/건어물</a>
 											</li>
 											<li class="nav-item">
-												<a href="category.html" class="nav-link">쌀/잡곡</a>
+												<a href="show_by_category.item?category=쌀,잡곡" class="nav-link">쌀/잡곡</a>
 											</li>
 											<li class="nav-item">
-												<a href="category.html" class="nav-link">우유/유제품</a>
+												<a href="show_by_category.item?category=우유,유제품" class="nav-link">우유/유제품</a>
 											</li>
 											<li class="nav-item">
-												<a href="category.html" class="nav-link">간식/떡/빙과</a>
+												<a href="show_by_category.item?category=간식,떡,빙과" class="nav-link">간식/떡/빙과</a>
 											</li>
 											<li class="nav-item">
-												<a href="category.html" class="nav-link">장/양념/소스</a>
+												<a href="show_by_category.item?category=장,양념,소스">장/양념/소스</a>
 											</li>
 										</ul>
 									</li>

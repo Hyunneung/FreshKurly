@@ -64,6 +64,8 @@ public class ItemFrontController extends HttpServlet {
 		case "/itemInfo.item":
 			action = new ItemInfoAction();
 			break;
+		case "/show_by_category.item":
+			action = new showByCategory();
 		case "/itemOrder.item":
 			action = new ItemOrderAction();
 			break;
