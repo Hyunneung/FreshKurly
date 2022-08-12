@@ -84,6 +84,64 @@ $(function() {
     })
     
     
+    // 백현능: 장바구니, 찜한상품 기능 추가 -----------------------------------------------------
+    // 장바구니
+    $("body").on('click', '#addCart', function(){
+			var divparent = $(this).parent();
+			var item_id = divparent.find( 'input:nth-child(1)' ); // 아이템 아이디 .val()
+			$.ajax({
+				type : "POST",
+				url: "myItemToCart.my",
+				data: { "item_id": item_id.val() },
+				success : function(result) {
+					// result : 장바구니에 잘 담기면 1, 기존에 있어서 못담으면 0, 에러나면 -1
+					if(result == 1) { // 장바구니 담기 성공
+						if(confirm("해당 상품이 장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?")) {
+							location.href = "myCart.my";
+						} 
+					} else if (result == 0) {
+						if(confirm("해당 상품이 장바구니에 존재합니다. 장바구니로 이동하시겠습니까?")) {
+							location.href = "myCart.my";
+						} 
+					} else {
+						alert("로그인하셔야 본 서비스를 이용하실 수 있습니다.");
+						console.log("장바구니 담기 에러");
+					}
+				}, // success end
+				error : function(error){
+					alert("상품 -> 장바구니 담기 에러 : " + error);
+				}
+			}) // ajax end
+		}) // 상품 장바구니에 담기 end
+    
+    // 찜한상품
+    $("body").on('click', '#addWish', function(){
+	    	var divparent = $(this).parent();
+			var item_id = divparent.find( 'input:nth-child(1)' ); // 아이템 아이디 .val()
+			$.ajax({
+				type : "POST",
+				url: "myWishItemAdd.my",
+				data: { "item_id": item_id.val() },
+				success : function(result) {
+					// result : 장바구니에 잘 담기면 1, 기존에 있어서 못담으면 0, 에러나면 -1
+					if(result == 1) { // 장바구니 담기 성공
+						if(confirm("해당 상품이 찜한상품에 추가되었습니다. 찜한상품으로 이동하시겠습니까?")) {
+							location.href = "myCart.my";
+						} 
+					} else if (result == 0) {
+						if(confirm("해당 상품이 찜한상품에 존재합니다. 찜한상품에 이동하시겠습니까?")) {
+							location.href = "myWish.my";
+						} 
+					} else {
+						alert("로그인하셔야 본 서비스를 이용하실 수 있습니다.");
+						console.log("찜한상품 담기 에러");
+					}
+				}, // success end
+				error : function(error){
+					alert("상품 -> 찜한상품 담기 에러 : " + error);
+				}
+			}) // ajax end
+		}) // 상품 찜한상품에 담기 end
     
     
 });
@@ -115,8 +173,9 @@ $(function() {
                             <p class="product-description">${iteminfo.item_intro }</p> <!-- 제품설명 iteminfo.item_intro -->
                             <h3 class="price"><span>${iteminfo.item_price }</span><span>원</span></h3>
                         <div class="action">
-                            <a href="checkout.html" class="btn">장바구니</a> <!-- 클릭 시 장바구니에 담김 -->
-                            <a href="checkout.html" class="btn"><span class="fa fa-heart"></span></a> <!-- 클릭 시 찜한 목록에 담김 -->
+                        	<input type="hidden" value="${iteminfo.item_id}">
+                            <a href="#" id="addCart" class="btn">장바구니</a> <!-- 클릭 시 장바구니에 담김 -->
+                            <a href="#" id="addWish" class="btn"><span class="fa fa-heart"></span></a> <!-- 클릭 시 찜한 목록에 담김 -->
                             <hr class="col-md-12">
                             <span>구매수량</span><span class="수량조절">
                             <button class="수량조절기 minus">-</button>
