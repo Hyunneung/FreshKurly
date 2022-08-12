@@ -50,6 +50,6 @@ h1{font-size:1.5rem; text-align:center; color:#1a92b9}
 	<script src="assets/js/custom.js"></script>
 	<footer id="footer">  
 		<jsp:include page="../mainpage/footer.jsp"/>
-	</footer>
+	</footer> 
 </body>
 </html>

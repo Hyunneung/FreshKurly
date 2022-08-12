@@ -67,6 +67,6 @@
 <script src="assets/js/custom.js"></script>
 	<footer id="footer">  
 		<jsp:include page="../mainpage/footer.jsp"/>
-	</footer>
+	</footer> 
 </body>
 </html>
