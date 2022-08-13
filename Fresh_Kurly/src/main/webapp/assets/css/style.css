@@ -2391,7 +2391,7 @@ border: 1px solid #a4a9ae70;
 {
   cursor: pointer;
   z-index: 1000;
-  background-color: #777;
+  background-color: #F49D1A;   /* 동그라미 배경색 #777(회색) -> #F49D1A(주황색) 변경 */
   width: 43px;
   bottom: 35px;
   right: 34px;
