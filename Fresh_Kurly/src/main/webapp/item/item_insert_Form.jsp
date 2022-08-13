@@ -229,5 +229,10 @@ $(function(){
 			<button type="reset" class="cancelbtn">다시작성</button>
 		</div>
         </form>
+        
+        <script src="assets/js/custom.js"></script>
+   <footer id="footer">  
+      <jsp:include page="../mainpage/footer.jsp"/>
+   </footer>
 </body>
 </html>

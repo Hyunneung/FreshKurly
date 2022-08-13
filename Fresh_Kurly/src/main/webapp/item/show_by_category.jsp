@@ -5,32 +5,87 @@
 <html>
 <head>
 <title>카테고리</title>
+<%@ include file="../mainpage/header.jsp" %>
+
+<style>
+.product img {
+width: 200px!important;
+height : 200px!important;
+}
+</style>
 </head>
 <body>
 
 <!-- header -->
-<header>
-<jsp:include page="../mainpage/header.jsp"/>
-</header>
-<!-- header end -->
-
-<table>
-<c:forEach var="i" items="${totallist }">
-  				<tr>
-  					<td>${i.item_id }</td>
-  					<td><a href="itemInfo.item?id=${i.item_id }">${i.item_name }</a></td>
-  					<td>${i.item_category }</td>
-  				</tr>
-</c:forEach>
-</table>
 
 
 
 
+<section class="product">
+		<div class="container">
+			<div class="col-md-12 wow slideInLeft">
+				<h1>야채</h1>
+				<hr class="col-md-12">
+			</div>
+		</div>
+		<div class="container">
+			<div class="row owlCarousel pro">
+				
+			<c:forEach var="i" items="${itemList}">
+			<!-- 상품 부분 -->
+				<div class="item">
+					<div class="product-grid">
+						
+						<div class="product-image">
+							<!-- 상품 이미지 a태그 -->
+							<a href="itemInfo.net?item_id=${i.item_id }" class="image">
+							<img class="pic-1" src="itemupload/${i.item_image }">
+							</a>
+							
+							<!-- 할인 메세지 -->
+							<!--
+							<span class="product-discount-label"></span>
+							-->
+							
+							
+							<!-- 찜하기 버튼 -->
+							<ul class="product-links">
+								<li><a href="myWishItemAdd.my"><i class="fa fa-heart"></i></a></li>
+							</ul>
+						</div>
+						
+						<div class="product-content">
+							
+							<!-- 상품이름 -->
+							<h3 class="title">
+								<a href="#">${i.item_name }</a>
+							</h3>
+							
+							<!-- 상품 가격 -->
+							<div class="price">
+							<div>${i.item_price}</div>원
+						</div>
+					</div>
+				</div>
+			</div>
+			</c:forEach>	
+				
+			
+			
+			
+			
+		</div>
+	</div>
+</section>
 
 
+
+<script src="../assets/js/custom.js"></script>
 <!-- footer -->
-<jsp:include page="../mainpage/footer.jsp"/>
+<script src="assets/js/custom.js"></script>
+   <footer id="footer">  
+      <jsp:include page="../mainpage/footer.jsp"/>
+   </footer>
 <!-- footer end -->
 </body>
 </html>

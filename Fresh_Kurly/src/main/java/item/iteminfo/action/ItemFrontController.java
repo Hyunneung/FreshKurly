@@ -57,15 +57,15 @@ public class ItemFrontController extends HttpServlet {
 		case "/itemUpdate.item": // 물품 수정
 			action = new ItemUpdateAction();
 			break;	
-			
 		case "/itemDelete.item": // 물품 삭제
 			action = new ItemDeleteAction();
 			break; 
 		case "/itemInfo.item":
 			action = new ItemInfoAction();
+			break;
 		case "/show_by_category.item":
 			action = new showByCategory();
-      break;
+			break;
 		case "/itemOrder.item":
 			action = new ItemOrderAction();
 			break;

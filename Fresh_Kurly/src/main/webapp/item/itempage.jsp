@@ -147,6 +147,9 @@ $(function() {
                 </div>
             </div>
 </section>
-<%-- <jsp:include page="footer.jsp"/> --%>
+<script src="assets/js/custom.js"></script>
+   <footer id="footer">  
+      <jsp:include page="../mainpage/footer.jsp"/>
+   </footer>
 </body>
 </html>

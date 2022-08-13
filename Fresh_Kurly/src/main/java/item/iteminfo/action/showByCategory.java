@@ -22,13 +22,14 @@ public class showByCategory implements Action {
 		List<Item> list = null;
 		
 		response.setContentType("text/html; charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		
 		String category = request.getParameter("category");
 		
 		list = dao.getListByCategory(category);
 					
 					
-		request.setAttribute("totallist", list);					
+		request.setAttribute("itemList", list);					
 
 		forward.setPath("item/show_by_category.jsp");
 		forward.setRedirect(false);

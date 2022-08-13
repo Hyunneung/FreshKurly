@@ -5,13 +5,9 @@
 <head>
 <title>Fresh Kurly</title>
 <meta charset="utf-8">
-
+<%@ include file="mainpage/header.jsp" %>
 </head>
 <body>
-	<header class="header-area">
-		<%@ include file="mainpage/header.jsp" %>
-	</header>
-	<!-- Header End -->
 	
 	
 	<!-----------slider start------------>
