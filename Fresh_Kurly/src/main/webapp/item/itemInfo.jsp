@@ -6,6 +6,7 @@
 <jsp:include page="../mainpage/header.jsp"/>
 <title>item-page</title>
 <style>
+
 .item_amount {
 text-align: center;
 }
@@ -160,13 +161,13 @@ $(function() {
 <!-- START SECTION Fruit product -->
 <section id="product-page">
 		
-	<div class="container">
+	<div id="abc100" class="container">
         <div class="card">
             <div class="container-fliud">
                 <div class="wrapper row">
                     <div class="preview col-md-6">
                         <div class="preview-pic tab-content">
-                          <div class="tab-pane active" id="pic-1"><img src="${'itemupload/' }${iteminfo.item_image }" /></div>
+                         <img src="${'itemupload/' }${iteminfo.item_image }" width="380px" height="345px">
                           <!-- 상품 사진 URI item_image -->
                         </div>
                     </div>
@@ -221,5 +222,9 @@ $(function() {
             </div>
 </section>
 <%-- <jsp:include page="footer.jsp"/> --%>
+<script src="assets/js/custom.js"></script>
+   <footer id="footer">  
+      <jsp:include page="../mainpage/footer.jsp"/>
+   </footer>
 </body>
 </html>

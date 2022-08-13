@@ -44,7 +44,8 @@ body>div>table>tbody>tr>td:last-child>a {
 }
 
 #mycontainer {
-	padding-top: 150px;
+	padding-top: 100px;
+	padding-bottom: 100px;
 	width: 60%
 }
 
@@ -204,6 +205,9 @@ body>div>table>tbody>tr>td:last-child>a {
 </c:if>
 <button id="btn-ins" type="button" class="btn">등록하기</button>
 </div>
-<div></div>
+<script src="assets/js/custom.js"></script>
+   <footer id="footer">  
+      <jsp:include page="../mainpage/footer.jsp"/>
+   </footer>
 </body>
 </html>

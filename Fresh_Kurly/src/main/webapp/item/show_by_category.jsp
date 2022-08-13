@@ -82,7 +82,10 @@ height : 200px!important;
 
 <script src="../assets/js/custom.js"></script>
 <!-- footer -->
-<jsp:include page="../mainpage/footer.jsp"/>
+<script src="assets/js/custom.js"></script>
+   <footer id="footer">  
+      <jsp:include page="../mainpage/footer.jsp"/>
+   </footer>
 <!-- footer end -->
 </body>
 </html>
