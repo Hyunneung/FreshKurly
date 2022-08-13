@@ -38,8 +38,8 @@ height : 200px!important;
 						
 						<div class="product-image">
 							<!-- 상품 이미지 a태그 -->
-							<a href="itemInfo.net?item_id=${i.item_id}" class="image">
-							<img class="pic-1" src="itemupload/${i.item_image}">
+							<a href="itemInfo.net?item_id=${i.item_id }" class="image">
+							<img class="pic-1" src="itemupload/${i.item_image }">
 							</a>
 							
 							<!-- 할인 메세지 -->
@@ -63,7 +63,7 @@ height : 200px!important;
 							
 							<!-- 상품 가격 -->
 							<div class="price">
-							<div>${i.item_price }</div>원
+							<div>${i.item_price}</div>원
 						</div>
 					</div>
 				</div>
