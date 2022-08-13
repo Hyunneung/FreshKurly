@@ -29,7 +29,7 @@ public class showByCategory implements Action {
 		list = dao.getListByCategory(category);
 					
 					
-		request.setAttribute("totallist", list);					
+		request.setAttribute("itemList", list);					
 
 		forward.setPath("item/show_by_category.jsp");
 		forward.setRedirect(false);
