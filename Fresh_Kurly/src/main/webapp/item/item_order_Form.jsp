@@ -875,4 +875,8 @@
 		<!-- 결제완료시, orderEnd에 POST방식으로 보내기 위한 폼 끝 -->
 		<!-- <button type="button" onclick="test()" >결제완료되었을때 결과버튼</button> -->
 	<br><br>
-<%-- <jsp:include page="../footer.jsp" />  --%>
+	
+<script src="assets/js/custom.js"></script>
+   <footer id="footer">  
+      <jsp:include page="../mainpage/footer.jsp"/>
+   </footer>

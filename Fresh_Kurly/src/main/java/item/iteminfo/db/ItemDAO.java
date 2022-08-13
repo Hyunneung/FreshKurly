@@ -495,6 +495,7 @@ public class ItemDAO {
 				m.setItem_name(rs.getString("item_name"));
 				m.setItem_price(rs.getInt("item_price"));
 				m.setItem_image(rs.getString("item_image"));
+				m.setItem_id(rs.getInt("item_id"));
 				list.add(m);
 			}
 		} catch (Exception e) {
