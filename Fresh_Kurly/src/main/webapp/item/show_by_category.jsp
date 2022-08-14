@@ -76,7 +76,7 @@ $(function () {
 						
 						<div class="product-image">
 							<!-- 상품 이미지 a태그 -->
-							<a href="itemInfo.net?item_id=${i.item_id }" class="image">
+							<a href="itemInfo.item?item_id=${i.item_id }" class="image">
 							<img class="pic-1" src="itemupload/${i.item_image }">
 							</a>
 							
