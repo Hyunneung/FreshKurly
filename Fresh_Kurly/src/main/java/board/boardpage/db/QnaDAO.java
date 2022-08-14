@@ -13,7 +13,7 @@ import javax.sql.DataSource;
 
 public class QnaDAO {
 	private DataSource ds;
-	
+	//
 	// 생성자에서 JNDI 리소스를 참조하여 Connection 객체를 얻어옵니다.
 	public QnaDAO() {
 		try {
@@ -126,6 +126,7 @@ public class QnaDAO {
                 + "                                           from qnacomm"
                 + "                                           group by comment_qna_number)"
                 + "               on qna_number=comment_qna_number"
+                
 	            + "               order by qna_number desc) j "
 	            + "         where rownum<= ? "      
 	            + "         ) "
@@ -492,13 +493,19 @@ public class QnaDAO {
 	      ResultSet rs=null;
 	      try {
 	    	  con = ds.getConnection();
-	    	  String sql = "select * "
-		               + "   from (select  b.*, rownum rnum"
-		               + "       from(select * from qna"
-		               + "            where " + string  + " like ?"
-		               + "            ) b"
-		               +          ")"
-		               + "   where rnum>=? and rnum<=?";
+	    	  String sql = "select * " 
+              + "  from  (select rownum rnum, j.* "
+              + "         from (select qna.*,  nvl(cnt,0) cnt "
+	            + "               from qna left outer join (select comment_qna_number,count(*) cnt"
+              + "                                           from qnacomm"
+              + "                                           group by comment_qna_number)"
+              + "                 on qna_number=comment_qna_number"
+              + "                 where " + string  + " like ?"
+	            + "               order by qna_number desc) j "
+	            + "         where rownum<= ? "      
+	            + "         ) "
+	            + " where rnum>=? and rnum<=?";
+	    	  
 	    	     System.out.println(sql);
 		         pstmt = con.prepareStatement(sql);
 		         // 한 페이지당 10개씩 목록인 경우 1페이지, 2페이지, 3페이지, 4페이지 ...
@@ -507,8 +514,9 @@ public class QnaDAO {
 		         int endrow = startrow + limit - 1;
 		                   // 읽을 마지막 row 번호(10 20 30 40 ...
 		         pstmt.setString(1, "%"+search_word+"%");
-		         pstmt.setInt(2, startrow);
-		         pstmt.setInt(3, endrow);
+		         pstmt.setInt(2, endrow);
+		         pstmt.setInt(3, startrow);
+		         pstmt.setInt(4, endrow);
 		         rs = pstmt.executeQuery();
 	         
 	         
@@ -520,6 +528,7 @@ public class QnaDAO {
 				qna.setQna_content(rs.getString("QNA_CONTENT"));
 				qna.setQna_view(rs.getInt("QNA_VIEW"));
 				qna.setQna_reg_date(rs.getString("QNA_REG_DATE"));
+				qna.setCnt(rs.getInt("cnt"));
 	            list.add(qna);
 	         }
 	      } catch (Exception e) {

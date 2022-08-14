@@ -11,11 +11,11 @@ $(function() {
       $("#viewcount").val(selectedValue);
       
    //검색 버튼 클릭한 경우
-   $("form[name=search] button").click(function() {
+   $("form[action='QnaList.bo'] button").click(function() {
       //검색 버튼 클릭한 경우
-      if ($("input[name=search_word]").val() == '') {
+      if ($("form[action='QnaList.bo] input").val() == '') {
          alert("검색어를 입력하세요");
-            $("input[name=search_word]").focus();
+            $("form[action='QnaList.bo] input").focus();
             return false;
       }
          
@@ -27,9 +27,9 @@ $(function() {
    //검색어 입력창에 selectedValue 나타나도록 합니다.
    $("#viewcount").change(function() {
       selectedValue = $(this).val();
-      $("input").val('');
+      $("form[action='QnaList.bo] input").val('');
       message = [ "제목", "내용" ]
-      $("input").attr("placeholder", message[selectedValue] + "입력하세요");
+      $("form[action='QnaList.bo] input").attr("placeholder", message[selectedValue] + "입력하세요");
    })//$("#viewcount").change end
       
 });//ready end
@@ -121,6 +121,7 @@ td:nth-child(1) {
 <title>문의하기 게시판</title>
 </head>
 <jsp:include page="../mainpage/header.jsp" />
+
 <body>
 <br>
 
@@ -178,7 +179,7 @@ td:nth-child(1) {
 										<c:if test="${b.cnt==0 }">
 											<c:out value="답변대기중"/>
 										</c:if> 
-										<c:if test="${b.cnt>=1 }">
+										<c:if test="${b.cnt!=0 }">
 											<c:out value="답변완료"/>
 										</c:if> 
 									</div>
@@ -244,6 +245,8 @@ td:nth-child(1) {
 
 			<button type="button" class="btn btn-info float-right">글쓰기</button>
 	</div>
+	<br>
+	<br>
 	<script src="assets/js/custom.js"></script>
 	<footer id="footer">  
 		<jsp:include page="../mainpage/footer.jsp"/>

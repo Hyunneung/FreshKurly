@@ -5,17 +5,25 @@
 <head>
 <script>
 $(function() {
+	$("button").click(function(){
+		location.href="NoticeWrite.ad";
+	})
+	
+	$("#viewcount").change(function() {
+		go(1);//보여줄 페이지를 1페이지로 설정합니다.
+	});// change end
+	
    //검색 클릭 후 응답화면에는 검색시 선택한 필드가 선택되도록 합니다.
    var selectedValue = '${search_field}'
    if (selectedValue != '-1')
       $("#viewcount").val(selectedValue);
       
    //검색 버튼 클릭한 경우
-   $("form[name=search] button").click(function() {
+   $("form[action='NoticeList.ad'] button").click(function() {
       //검색 버튼 클릭한 경우
-      if ($("input[name=search_word]").val() == '') {
+      if ($("form[action='NoticeList.ad'] input[name=search_word]").val() == '') {
          alert("검색어를 입력하세요");
-            $("input[name=search_word]").focus();
+            $("form[action='NoticeList.ad'] input").focus();
             return false;
       }
          
@@ -27,9 +35,9 @@ $(function() {
    //검색어 입력창에 selectedValue 나타나도록 합니다.
    $("#viewcount").change(function() {
       selectedValue = $(this).val();
-      $("input").val('');
+      $("form[action='NoticeList.ad'] input").val('');
       message = [ "제목", "내용" ]
-      $("input").attr("placeholder", message[selectedValue] + "입력하세요");
+      $("form[action='NoticeList.ad'] input").attr("placeholder", message[selectedValue] + "입력하세요");
    })//$("#viewcount").change end
       
 });//ready end
@@ -115,7 +123,6 @@ td:nth-child(1) {
 	margin-bottom: 3em
 }
 </style>
-<script src="assets/js/admin/noticelist.js"></script>
 <title>공지사항 게시판</title>
 </head>
 <jsp:include page="../mainpage/header.jsp" />
@@ -235,6 +242,8 @@ td:nth-child(1) {
 
 			<button type="button" class="btn btn-info float-right">글쓰기</button>
 	</div>
+	<br>
+	<br>
 	<script src="assets/js/custom.js"></script>
 	<footer id="footer">  
 		<jsp:include page="../mainpage/footer.jsp"/>
