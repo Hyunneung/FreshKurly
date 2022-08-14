@@ -3,7 +3,7 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <html>
 <head>
-<script>
+<script> 
 $(function() {
 	$("button").click(function(){
 		location.href="NoticeWrite.ad";

@@ -3,7 +3,7 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <html>
 <head>
-<script>
+<script> 
 $(function() {
    //검색 클릭 후 응답화면에는 검색시 선택한 필드가 선택되도록 합니다.
    var selectedValue = '${search_field}'

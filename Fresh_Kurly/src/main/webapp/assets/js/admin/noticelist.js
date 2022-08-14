@@ -41,15 +41,7 @@ function ajax(sdata) {
 				$(data.noticelist).each(
 					function(index, item) {
 						output += '<tr><td>' + (num--) + "</td>"
-						blank_count = item.notice_re_lev * 2 + 1;
-						blank = '&nbsp;';
-						for (var i = 0; i < blank_count; i++) {
-							blank += '&nbsp;&nbsp;';
-						}
-						img="";
-						if (item.notice_re_lev > 0) {
-							img="<img src='img/line.gif'>";
-						}
+						
 						
 						var subject=item.notice_subject;
 						if(subject.length>=20){
@@ -63,7 +55,7 @@ function ajax(sdata) {
 						
 						output += '<a href="NoticeDetailAction.ad?num=' + item.notice_num + '">'
 						output += subject.replace(/</g, '&lt;').replace(/>/g, '&gt;')
-								  + '</a>[' + item.cnt + ']</div></td>'
+								  + '</a></div></td>'
 						output +=  '<td><div>' + item.notice_name+'</div></td>'
 						output +=  '<td><div>' + item.notice_reg_date+'</div></td>'
 						output +=  '<td><div>' + item.notice_view
