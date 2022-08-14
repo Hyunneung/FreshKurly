@@ -11,6 +11,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import my.mypage.db.Cart;
+
 
 
 
@@ -496,7 +498,6 @@ public class ItemDAO {
 				m.setItem_price(rs.getInt("item_price"));
 				m.setItem_image(rs.getString("item_image"));
 				m.setItem_id(rs.getInt("item_id"));
-				m.setItem_category(rs.getString("item_category"));
 				list.add(m);
 			}
 		} catch (Exception e) {
@@ -518,47 +519,101 @@ public class ItemDAO {
 		return list;
 	}
 
-	public List<Item> getListByItemName(String item_name) {
-		List<Item> list = new ArrayList<Item>();
+	public List<Cart> getCartList(String id) {
+		List<Cart> list = new ArrayList<Cart>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
-		try {
+			try {
 			con = ds.getConnection();
 			
-			String sql =  "select * from item where item_name = '" +  item_name + "'";
-			//왜 한글이 들어가면 글이 깨지는지..
-			System.out.println(sql);
+			String sql = "select * "
+					   + "from cart join item "
+					   + "on cart.item_id = item.item_id "
+					   + "where member_id = ?";
+			
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				Item m = new Item();
-				m.setItem_name(rs.getString("item_name"));
-				m.setItem_price(rs.getInt("item_price"));
-				m.setItem_image(rs.getString("item_image"));
-				m.setItem_id(rs.getInt("item_id"));
-				list.add(m);
+				int cart_id = rs.getInt("cart_id");
+				int item_id = rs.getInt("item_id");
+				String member_id = rs.getString("member_id");
+				int cart_amount = rs.getInt("cart_amount");
+				String item_image = rs.getString("item_image");
+				String item_name = rs.getString("item_name");
+				int item_price = rs.getInt("item_price");
+					
+				Cart cart = new Cart();
+				cart.setCart_id(cart_id);
+				cart.setItem_id(item_id);
+				cart.setMember_id(member_id);
+				cart.setCart_amount(cart_amount);
+				cart.setItem_image(item_image);
+				cart.setItem_name(item_name);
+				cart.setItem_price(item_price);
+				list.add(cart);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			if (pstmt != null)
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			}
+			if (pstmt != null) {
 				try {
 					pstmt.close();
-				} catch (SQLException ex) {
-					ex.printStackTrace();
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
 				}
-			if (con != null)
+			}
+			if (con != null) {
 				try {
 					con.close();
-				} catch (SQLException ex) {
-					ex.printStackTrace();
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
 				}
-		}  // finally
+			}
+		} // finally 끝
 		return list;
-	}
+	} // getCartList() end
+
+	public int cartItemDelete(String member_id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			con = ds.getConnection();
+			String sql = "delete from cart "
+					   + "where member_id = ? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, member_id);
+			result = pstmt.executeUpdate(); // 상품 삭제 성공하면 1, 실패하면 0
+		} catch(Exception se) {
+			se.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) 
+				pstmt.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+				System.out.println(e.getMessage());
+			}
+			try {
+				if(con != null) 
+					con.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+				System.out.println(e.getMessage());
+			}
+		} // try-catch-finally 끝
+		return result; // 상품 삭제 성공하면 1, 실패하면 0
+	} // cartItemDelete(member_id, item_id) end
 
 	
 	

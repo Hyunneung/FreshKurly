@@ -9,6 +9,11 @@
 
 
 <style>
+	#address {
+		width: 100%;
+	}
+	#td100 td { border:none; width:25px; text-align:center}
+    #total {width:60px}
 	#zipcodeSearch {
 		width: 15px; height: 15px;
 	}
@@ -45,6 +50,10 @@
 	
 	.tb-btn i{
     margin: 0px;
+  }
+  
+  #float-r {
+  	float:right;
   }
 	
 	
@@ -281,68 +290,8 @@
 			
 		});
 		
-		
-		//////////////////////////////////////////////////////////////	
-		// 결제
-		/*
-		$("input#usePoint").blur(function(){ // 적립금 입력시 제대로 입력했는지 확인후, 할인금액에 넣어줌.
-			
-			var usePoint = $(this).val();
-		//	console.log("확인용 usePoint => " + usePoint);
-		//	console.log("확인용 typeof(usePoint) => " + typeof(usePoint));
-			// input타입이라서 다 string이 나온다.
-			
-			if(isNaN(usePoint)){ // is Not a Number -> 모양이 숫자가 아니니?
-			//	console.log("숫자타입이 아니다.");
-				alert("입력하신 적립금이 숫자가 아닙니다!");
-				$("input#usePoint").val("0");
-			}
-			else{ // 적립금사용의 입력값은 숫자만 입력이 가능하도록 해줘야함.
-			//	console.log("숫자타입이다.");
-				
-				if(parseInt(usePoint) > "4500"){ // parseInt를 안쓰면 앞자리 4와 usePoint의 앞자리를 아스키코드로 비교한다.
-					// 사용가능 적립금보다 많이 작성하면, 다시 작성해야함.
-				//	console.log("4500보다 크다.");
-					alert("사용가능 적립금보다 많습니다. 적립금 사용금액을 다시 입력해 주세요.");
-					$("input#usePoint").val("0");
-				}
-				else{// 제대로 입력한 경우
-				//	console.log("4500보다 작다.");
-				//	console.log("확인용 typeof(parseInt(usePoint)) => " + typeof(parseInt(usePoint))); // number타입
-				
-				//////////////////////////////////////////////
-					// 총가격 계산하기
-					var totalPrice = $("input#totalPrice").val();
-					var deliveryFee = $("input#deliveryFee").val();
-					
-				//	console.log("확인용 totalPrice => " + totalPrice);
-				//	console.log("확인용 deliveryFee => " + deliveryFee);
-					var realTotalPrice = parseInt(totalPrice)+parseInt(deliveryFee)-parseInt(usePoint);
-				//	console.log("확인용 realTotalPrice => " + realTotalPrice);
-					realTotalPrice = parseInt(realTotalPrice).toLocaleString('en');
-				//	console.log("확인용 realTotalPrice => " + realTotalPrice);
-				///////////////////////////////////////////////
-				
-				//	$("strong#pointDiscount").html("<c:set var='pointDiscount' value='"+usePoint+"'/>${pointDiscount}"); // 잘못된방식 : 이렇게 쓰게되면 body태그에서 값을 "+usePoint+" 라고 인식한다.
-					
-				//	console.log("확인용 usePoint => " + usePoint);
-					usePoint = parseInt(usePoint).toLocaleString('en'); // 자바스크립트에서 숫자 3자리마다 콤마 찍어주기 (자바스크립트에서 fmt이 제대로 작동안함.)
-				//	console.log("확인용 usePoint => " + usePoint);
-					
-					$("strong#pointDiscount").html(usePoint);
-					$("span#pointDiscount1").text(usePoint);
-					$("span#realTotalPrice").text(realTotalPrice);
-				}
-			}
-			
-		});// end of $("input#usePoint").blur(function(){})------------------------
-		*/
-		
-		
 	});// end of $(document).ready(function(){})----------------------------
 	
-	
-	// Function Declaration
 	
 	// 결제하기 버튼 클릭시, 배송 정보를 넘겨줘야함.
 	function goPurchase(){
@@ -604,7 +553,12 @@
 		
 	}// end of function showDiscountMoney(dc_money,fk_odrcode)---------------------------------------------------
 	
-	
+	$(function() {
+		   $("button").click(function(){
+		      location.href="itemOrderProcess.item";
+		   })
+		      
+		})
 	
 </script>
 
@@ -613,11 +567,6 @@
 		<div style="margin-top: 40px; margin-bottom: 10px; font-weight: bold; font-size: 16px;">국내배송상품 주문내역</div>
 
 		<!-- orderList가 존재하는지 존재안하는지에 따라 달라짐. 시작-->
-		<c:if test="${empty requestScope.orderProgList}"> <!-- 없든지 텅빈거다. -->
-			<h4 style="border-top: solid 1px #d9d9d9; border-bottom: solid 1px #d9d9d9; padding-top: 50px; padding-bottom: 50px;" align="center">주문하고자하는 내역에 일치하는 상품 또는 색상이 존재하지 않습니다.</h4>
-		</c:if>
-
-		<c:if test="${not empty requestScope.orderProgList}">
 
 			<!-- 국내배송상품 주문내역 테이블 시작 -->
 			<div class="table-responsive">
@@ -625,80 +574,48 @@
 					<thead>
 						<tr style="text-align: center;"> <!-- 글자 가운데정렬 -->
 							<th>이미지</th>
-							<th>상품정보</th>
-							<th>판매가</th>
+							<th>상품이름</th>
+							<th>상품가격</th>
 							<th>수량</th>
-							<th>적립금</th>
-							<th>배송구분</th>
-							<th>배송비</th>
 							<th>합계</th>
 						</tr>
 					</thead>
-					<tbody>
+					<c:if test="${listcount > 0}">
+						<tbody>
 
-						<c:set var="totalPrice" value="0" />
-
-						<c:forEach var="opvo" items="${requestScope.orderProgList}" >
-
-							<tr>
-								<td class="verticalM" align="center"><img alt="${opvo.povo.cimage}" src="../images/${opvo.povo.cimage}" width="90" height="100"></td>
-								<td class="verticalM">
-									<strong>${opvo.povo.pvo.pname} (2color)</strong>
-									<input type="hidden" name="product_pseq" value="${opvo.povo.pvo.pseq}" /> <!-- 주문완료페이지에 보낼 제품번호 -->
-									<ul style="margin-top: 15px;">
-										<li>[옵션: ${opvo.povo.pcvo.cname}]</li>
-									</ul>
-									<input type="hidden" name="product_opseq" value="${opvo.povo.opseq}" /> <!-- 주문완료페이지에 보낼 옵션번호 -->
+						<c:forEach var="c" items="${cartlist }" >
+							<tr id="td100">
+							 	<%-- <td>
+		 						 	<input type="hidden" name="item_id" id="item_id" value="${c.item_id}">
+		 						 	<input type="hidden" name="item_price" id="item_price" value="${c.item_price}">
+								</td> --%>
+								<td> <!-- 상품이미지 -->
+									<img src="itemupload/${c.item_image}" style="width:80px; height:80px">
 								</td>
-								<td class="verticalM" align="center"><strong><fmt:formatNumber value="${opvo.povo.pvo.price}" pattern="#,###"/>원</strong></td>
-								<td class="verticalM" align="center">
-									<span>${opvo.wishoqty}</span>
-									<input type="hidden" name="product_wishoqty" value="${opvo.wishoqty}" /> <!-- 주문완료페이지에 보낼 주문수량 -->
+								<td> <!-- 상품명 -->
+									${c.item_name}
 								</td>
-								<td class="verticalM" align="center">
-									<img alt="301coins.png" src="../images/301coins.png" width="15" height="15">
-									<span><fmt:formatNumber value="${opvo.povo.pvo.point * opvo.wishoqty}" pattern="#,###"/>원</span>
+								<td> <!-- 상품가격 -->
+									${c.item_price}
 								</td>
-								<td class="verticalM" align="center"><span>기본배송</span></td>
-								<td class="verticalM" align="center">
-									<div>[고정]</div>
+								<td> <!-- 상품수량 -->
+									${c.cart_amount}
 								</td>
-								<td class="verticalM" align="center">
-									<strong><fmt:formatNumber value="${opvo.povo.pvo.price * opvo.wishoqty}" pattern="#,###"/>원</strong>
-									<input type="hidden" name="product_odrprice" value="${opvo.povo.pvo.price * opvo.wishoqty}" /> <!-- 주문완료페이지에 보낼 주문가격(한개당가격*수량) -->
+								<td> <!-- 개별 상품 총가격 -->
+									${c.item_price * c.cart_amount}<span>원</span>
 								</td>
 							</tr>
-
-							<c:set var="totalPrice" value="${totalPrice+(opvo.povo.pvo.price*opvo.wishoqty)}" />
-
 						</c:forEach>
-
-						<tr style="border-bottom: 1px solid #d9d9d9;">
-							<td></td>
-							<td colspan="8">
-								<div style="float: left;">[기본배송]</div>
-								<div style="float: right;">
-									<c:choose>
-										<c:when test="${totalPrice >= 100000}">
-											<c:set var="deliveryFee" value="0" />
-										</c:when>
-										<c:otherwise>
-											<c:set var="deliveryFee" value="2500" />
-										</c:otherwise>
-									</c:choose>
-									상품구매금액 <fmt:formatNumber value="${totalPrice}" pattern="#,###"/> + 배송비 <fmt:formatNumber value="${deliveryFee}" pattern="#,###"/> = 합계 : <fmt:formatNumber value="${totalPrice+deliveryFee}" pattern="#,###"/>원
-								</div>
-							</td>
-						</tr>
-
+						
 					</tbody>
+						
+				 </c:if>
 				</table>
 			</div>
+			<div id="float-r">총 가격:<h1>&nbsp;${totalAll }원</h1></div>
 			<!-- 국내배송상품 주문내역 테이블 끝 -->
-
-		</c:if>
-		<!-- orderList가 존재하는지 존재안하는지에 따라 달라짐. 끝-->
-
+			
+		
 
 
 		<div style="margin-bottom: 10px; font-size: 15px;">상품의 옵션 및 수량 변경은 장바구니에서 가능합니다.</div>
@@ -722,26 +639,24 @@
 						<th>배송지 선택</th>
 						<td>
 							<input type="radio" id="destinationSame" name="destination" checked/><label for="destinationSame" style="margin-left: 1%; font-weight: 400;">회원 정보와 동일</label>
-							<input type="radio" id="destinationNew" name="destination" style="margin-left: 2%;" /><label for="destinationNew" style="margin-left: 1%; font-weight: 400;">새로운 배송지</label>
+							<!-- 값 가져오면 새 배송지 가능<input type="radio" id="destinationNew" name="destination" style="margin-left: 2%;" /><label for="destinationNew" style="margin-left: 1%; font-weight: 400;">새로운 배송지</label> -->
 						</td> 
 	      			</tr>
 	      			<tr>
 	      				<th>받으시는 분&nbsp;<span class="star">*</span></th>
 	      				<td>
-	      					<input type="text" name="receiverName" id="receiverName" value="${member.name}" class="requiredInfo" required/> 
+	      					<input type="text" name="receiverName" id="receiverName" value="${m.member_name}" class="requiredInfo" required/> 
 	      					<span class="error">받으시는 분을 입력하세요</span>
 						</td> 
 					</tr>
 					<tr>
 						<th>주소&nbsp;<span class="star">*</span></th>
 						<td>
-							<input type="text" id="postcode" name="postcode" value="${member.postcode}" size="6" maxlength="5" readonly class="requiredInfo" required/>&nbsp;&nbsp;
+							<input type="text" id="postcode" name="postcode" value="${m.member_post}" size="6" maxlength="5" readonly class="requiredInfo" required/>&nbsp;&nbsp;
 							<%-- 우편번호 찾기 --%>
 							<img id="zipcodeSearch" src="assets/image/search.png" /><br/>
 
-							<input type="text" id="address" name="address" value="${member.address}" size="40" readonly class="requiredInfo" placeholder="주소" required style="margin-top: 4px;"/><br/>
-	            			<input type="text" id="detailAddress" name="detailAddress" value="${member.detailaddress}" size="40" class="requiredInfo" placeholder="상세주소" required style="margin-top: 4px;"/><br/>
-							<input type="text" id="extraAddress" name="extraAddress" value="${member.extraaddress}" size="40" readonly class="requiredInfo" placeholder="참고항목" required style="margin-top: 4px;"/> 
+							<input type="text" id="address" name="address" value="${m.member_address}" size="40" class="requiredInfo" placeholder="주소" required style="margin-top: 4px;"/><br/>
 
 							<span class="error">주소를 입력하세요</span>
 						</td> 
@@ -750,15 +665,15 @@
 						<th>연락처&nbsp;<span class="star">*</span></th>
 						<td>
 				             <input type="text" id="hp1" name="hp1" size="6" maxlength="3" value="010" readonly class="requiredInfo"/>&nbsp;-&nbsp;
-				             <input type="text" id="hp2" name="hp2" size="6" maxlength="4" value="${ fn:substring(member.mobile, 3, 7) }" class="requiredInfo" required/>&nbsp;-&nbsp;
-				             <input type="text" id="hp3" name="hp3" size="6" maxlength="4" value="${ fn:substring(member.mobile, 7, 11) }" class="requiredInfo" required/>
+				             <input type="text" id="hp2" name="hp2" size="6" maxlength="4" value="${member_phone1 }" class="requiredInfo" required/>&nbsp;-&nbsp;
+				             <input type="text" id="hp3" name="hp3" size="6" maxlength="4" value="${member_phone2 }" class="requiredInfo" required/>
 				             <span class="error">휴대폰 형식이 아닙니다.</span>
 						</td>
 					</tr>
 					<tr>
 						<th>이메일&nbsp;<span class="star">*</span></th>
 						<td>
-							<input type="text" name="email" id="email" value="${member.email}" class="requiredInfo" required placeholder="abc@def.com"/> 
+							<input type="text" name="email" id="email" value="${m.member_email }" class="requiredInfo" required placeholder="abc@def.com"/> 
 							<span class="error">이메일 형식에 맞지 않습니다.</span>
 							<br>이메일을 통해 주문처리과정을 보내드립니다.
 							<br>이메일 주소란에는 반드시 수신가능한 이메일주소를 입력해 주세요.
@@ -791,22 +706,23 @@
 			</thead>
 			<tbody>	
 				<tr style="font-weight: bolder; font-size: 13pt;">
-					<td><fmt:formatNumber value="${totalPrice+deliveryFee}" pattern="#,###"/>원</td>
-					<td><span id="pointDiscount1"><fmt:formatNumber value="0" pattern="#,###"/></span>원</td>
+					<td><fmt:formatNumber value="${totalAll}" pattern="#,###"/>원</td>
+					<td><span id="pointDiscount1"><fmt:formatNumber value="${delivery }" pattern="#,###"/></span>원</td>
 					<td>
-						<input type="hidden" id="totalPrice" value="${totalPrice}"/>
-						<input type="hidden" id="deliveryFee" value="${deliveryFee}"/>
-					<span id="realTotalPrice"><fmt:formatNumber value="${totalPrice+deliveryFee-0}" pattern="#,###"/></span>원
+						<input type="hidden" id="totalPrice" value="${totalAll}"/>
+						<input type="hidden" id="deliveryFee" value="${delivery}"/>
+					<span id="realTotalPrice"><fmt:formatNumber value="${totalAll+delivery}" pattern="#,###"/></span>원
 					</td>
 				</tr>
 			</tbody>
 		</table>
 		<!-- 결제 예정 금액 테이블 끝 -->
 		<br>
+		
 		<br>
 		<!-- 결제하기 버튼 시작 -->
 		<div class="text-center">
-			<button type="button" id="btnPurchase" class="btn" onClick="goPurchase();" style="width: 200px; height: 6%">결제하기</button>
+			<button type="button" id="btnPurchase" class="btn" style="width: 200px; height: 6%">결제하기</button>
 		</div>
 		<!-- 결제하기 버튼 끝 -->
 
@@ -814,11 +730,11 @@
 		<!-- 결제완료시, orderEnd에 POST방식으로 보내기 위한 폼 시작 -->
 		<form name="OrderFormInfo">
 			<!-- 회원아이디, 주문총액 / 제품번호, 주문량, 주문가격 / 옵션번호 -->
-			<input type="hidden" name="userid" value="" />
-			<input type="hidden" name="odrtotalprice" value="" />
-			<input type="hidden" name="fk_pseqjoin" value="" />
-			<input type="hidden" name="oqtyjoin" value="" />
-			<input type="hidden" name="odrpricejoin" value="" />
+			<input type="hidden" name="userid" value="${m.member_id }" />
+			<input type="hidden" name="odrtotalprice" value="${totalAll+delivery}" />
+			<input type="hidden" name="fk_pseqjoin" value="${c.item_id }" />
+			<input type="hidden" name="oqtyjoin" value="${c.cart_amount }" />
+			<input type="hidden" name="odrpricejoin" value="${totalAll}" />
 			<input type="hidden" name="fk_opseqjoin" value="" />
 			<input type="hidden"   name="fk_odrcodejoin" id="str_Fk_odrcode"/> <!-- 적립금조회(자식팝업창)에서 opener를 통해 여기에 값을 넣어준다. -->
 			<!-- ------------------------------------------------------- -->
