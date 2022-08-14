@@ -159,9 +159,9 @@
 											관리자페이지
 										</button>
 											<div class="panel">
-												<p><a href="NoticeList.ad">공지사항</a></p>
+												<p><a href="NoticeList.ad">공지사항 관리</a></p>
 												<p><a href="QnaList.ad">문의 응답하기</a></p>
-												<p><a href="memberList.ad">회원 리스트</a></p>
+												<p><a href="MemberList.ad">회원 리스트</a></p>
 												<p><a href="itemList.item">상품 리스트</a></p>
 											</div>
 									</li>
@@ -259,7 +259,7 @@
 									</li>
 									
 									<li class="nav-item">
-										<a href="contact.html" class="nav-link">상품 문의</a>
+										<a href="QnaList.bo" class="nav-link">상품 문의</a>
 									</li>
 								</ul>
 							</div>
