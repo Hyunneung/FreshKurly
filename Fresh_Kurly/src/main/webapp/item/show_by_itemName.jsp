@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>카테고리</title>
+<title>"<%=request.getParameter("item_name")%>"의 검색결과</title>
 <%@ include file="../mainpage/header.jsp" %>
 
 <style>
@@ -24,7 +24,7 @@ height : 200px!important;
 <section class="product">
 		<div class="container">
 			<div class="col-md-12 wow slideInLeft">
-				<h1><%= request.getParameter("category") %></h1>
+				<h1>"<%= request.getParameter("item_name") %>" 의 검색결과</h1>
 				<hr class="col-md-12">
 			</div>
 		</div>

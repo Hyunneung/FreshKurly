@@ -159,9 +159,9 @@
 											관리자페이지
 										</button>
 											<div class="panel">
-												<p><a href="NoticeList.ad">공지사항</a></p>
+												<p><a href="NoticeList.ad">공지사항 관리</a></p>
 												<p><a href="QnaList.ad">문의 응답하기</a></p>
-												<p><a href="memberList.ad">회원 리스트</a></p>
+												<p><a href="MemberList.ad">회원 리스트</a></p>
 												<p><a href="itemList.item">상품 리스트</a></p>
 											</div>
 									</li>
@@ -259,16 +259,16 @@
 									</li>
 									
 									<li class="nav-item">
-										<a href="contact.html" class="nav-link">상품 문의</a>
+										<a href="QnaList.bo" class="nav-link">상품 문의</a>
 									</li>
 								</ul>
 							</div>
 						</div>
 						<div class="col-sm-3">
 							<div class="collapse navbar-collapse">
-								<form class="form-inline my-2 my-lg-0 mx-auto">
+								<form class="form-inline my-2 my-lg-0 mx-auto" action="show_by_itemName.item" method="post">
 									<input class="form-control" type="search"
-										placeholder="검색어를 입력해주세요" aria-label="Search" name="seach">
+										placeholder="검색어를 입력해주세요" aria-label="Search" name="item_name">
 									<button class="tb-btn btn-success my-2 my-sm-0" type="submit">
 										<i class="fa fa-search"></i>
 									</button>
@@ -297,4 +297,12 @@
             }
         });
     }
+    
+    $("form").on("submit", function () {
+    	if($(".form-control").val() =="") {
+    		alert("검색어를 입력해주세요");
+    		$(".form-control").focus();
+    		return false;
+    	}
+    })
 </script>

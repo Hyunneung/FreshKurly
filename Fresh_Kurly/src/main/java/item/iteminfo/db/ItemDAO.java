@@ -496,6 +496,49 @@ public class ItemDAO {
 				m.setItem_price(rs.getInt("item_price"));
 				m.setItem_image(rs.getString("item_image"));
 				m.setItem_id(rs.getInt("item_id"));
+				m.setItem_category(rs.getString("item_category"));
+				list.add(m);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+		}  // finally
+		return list;
+	}
+
+	public List<Item> getListByItemName(String item_name) {
+		List<Item> list = new ArrayList<Item>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = ds.getConnection();
+			
+			String sql =  "select * from item where item_name = '" +  item_name + "'";
+			//왜 한글이 들어가면 글이 깨지는지..
+			System.out.println(sql);
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Item m = new Item();
+				m.setItem_name(rs.getString("item_name"));
+				m.setItem_price(rs.getInt("item_price"));
+				m.setItem_image(rs.getString("item_image"));
+				m.setItem_id(rs.getInt("item_id"));
 				list.add(m);
 			}
 		} catch (Exception e) {
