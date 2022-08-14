@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>카테고리</title>
+<title>"<%=request.getParameter("item_name")%>"의 검색결과</title>
 <%@ include file="../mainpage/header.jsp" %>
 
 <style>
