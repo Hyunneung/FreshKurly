@@ -266,7 +266,7 @@
 						</div>
 						<div class="col-sm-3">
 							<div class="collapse navbar-collapse">
-								<form class="form-inline my-2 my-lg-0 mx-auto" action="show_by_itemName.item" method="post" id="search_submit">
+								<form class="form-inline my-2 my-lg-0 mx-auto" action="show_by_itemName.item" method="post">
 									<input class="form-control" type="search"
 										placeholder="검색어를 입력해주세요" aria-label="Search" name="item_name">
 									<button class="tb-btn btn-success my-2 my-sm-0" type="submit">
@@ -298,5 +298,5 @@
         });
     }
     
-    })
+
 </script>
