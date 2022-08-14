@@ -21,9 +21,6 @@ public class showByItemName implements Action {
 		
 		List<Item> list = null;
 		
-		response.setContentType("text/html; charset=UTF-8");
-		request.setCharacterEncoding("UTF-8");
-		
 		String item_name = request.getParameter("item_name");
 		
 		list = dao.getListByItemName(item_name);
