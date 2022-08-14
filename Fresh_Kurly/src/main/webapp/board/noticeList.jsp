@@ -3,8 +3,12 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <html>
 <head>
-<script>
+<script> 
 $(function() {
+	$("button").click(function(){
+		location.href="NoticeWrite.bo";
+	})
+	
 	$("#viewcount").change(function() {
 		go(1);//보여줄 페이지를 1페이지로 설정합니다.
 	});// change end
@@ -15,11 +19,11 @@ $(function() {
       $("#viewcount").val(selectedValue);
       
    //검색 버튼 클릭한 경우
-   $("form[name=search] button").click(function() {
+   $("form[action='NoticeList.bo'] button").click(function() {
       //검색 버튼 클릭한 경우
-      if ($("input[name=search_word]").val() == '') {
+      if ($("form[action='NoticeList.bo'] input[name=search_word]").val() == '') {
          alert("검색어를 입력하세요");
-            $("input[name=search_word]").focus();
+            $("form[action='NoticeList.bo'] input").focus();
             return false;
       }
          
@@ -31,9 +35,9 @@ $(function() {
    //검색어 입력창에 selectedValue 나타나도록 합니다.
    $("#viewcount").change(function() {
       selectedValue = $(this).val();
-      $("input").val('');
+      $("form[action='NoticeList.bo'] input").val('');
       message = [ "제목", "내용" ]
-      $("input").attr("placeholder", message[selectedValue] + "입력하세요");
+      $("form[action='NoticeList.bo'] input").attr("placeholder", message[selectedValue] + "입력하세요");
    })//$("#viewcount").change end
       
 });//ready end
@@ -119,7 +123,6 @@ td:nth-child(1) {
 	margin-bottom: 3em
 }
 </style>
-<script src="assets/js/board/noticelist.js"></script>
 <title>공지사항 게시판</title>
 </head>
 <jsp:include page="../mainpage/header.jsp" />
@@ -144,7 +147,7 @@ td:nth-child(1) {
 					<caption style="font-weight: bold">공지사항 게시판</caption>
 					<thead>
 						<tr>
-							<th colspan="3">공지사항 게시판 - list</th>
+							<th colspan="3">공지사항 목록</th>
 							<th colspan="2"><font size=3>글 개수 : ${listcount}</font></th>
 						</tr>
 						<tr>
@@ -194,7 +197,7 @@ td:nth-child(1) {
 						</c:if>
 						<c:if test="${page > 1 }">
 							<li class="page-item "><a
-								href="NoticeList.ad?page=${page-1}" class="page-link">이전&nbsp;</a>
+								href="NoticeList.bo?page=${page-1}" class="page-link">이전&nbsp;</a>
 							</li>
 						</c:if>
 
@@ -220,7 +223,7 @@ td:nth-child(1) {
 							</li>
 						</c:if>
 						<c:if test="${page < maxpage }">
-							<li class="page-item"><a href="NoticeList.ad?page=${page+1}"
+							<li class="page-item"><a href="NoticeList.bo?page=${page+1}"
 								class="page-link">&nbsp;다음</a></li>
 						</c:if>
 					</ul>
@@ -237,8 +240,9 @@ td:nth-child(1) {
 		      <h1>검색 결과가 없습니다.</h1>
 		   </c:if>
 
-			
 	</div>
+	<br>
+	<br>
 	<script src="assets/js/custom.js"></script>
 	<footer id="footer">  
 		<jsp:include page="../mainpage/footer.jsp"/>

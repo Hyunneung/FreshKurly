@@ -43,7 +43,9 @@ public class NoticeListAction implements Action{
 		
 		String search_word="";
 		
-		//(NoticeList.ad?page=2&search_field=-1&search_word=)
+		//메뉴-관리자-회원정보 클릭한 경우(member_list.net)
+		//또는 메뉴-관리자-회원정보 클릭 후 페이지 클릭한 경우
+		//(member_list.net?page=2&search_field=-1&search_word=)
 		if (request.getParameter("search_word")==null
 				|| request.getParameter("search_word").equals("")) {
 			//총 리스트 수를 받아옵니다.

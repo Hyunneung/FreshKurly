@@ -34,9 +34,8 @@ public class NoticeDAO {
 			
 			String max_sql = "(select nvl(max(notice_number),0)+1 from notice)";
 
-			// 원문글의 NOTICE_RE_REF 필드는 자신의 글번호 입니다.
 			String sql = "insert into notice " 
-			            + "(NOTICE_NUMBER,     NOTICE_NAME,  NOTICE_PASS,    NOTICE_SUBJECT,"
+			            + "(NOTICE_NUMBER, NOTICE_NAME, NOTICE_PASS, NOTICE_SUBJECT,"
 					    + " NOTICE_CONTENT, NOTICE_VIEW)"
 					    + " values(" + max_sql + ",?,?,?," 
 			            + "        ?,?)";
@@ -123,8 +122,8 @@ public class NoticeDAO {
                 + "  from  (select rownum rnum, j.* "
                 + "         from (select * "
 	            + "               from notice " 
-                + " 				order by notice_number"				
-	            + "                 order by notice_number desc) j "
+                + " 				order by notice_number desc"				
+	            + "               ) j "
 	            + "         where rownum<= ? "      
 	            + "         ) "
 	            + " where rnum>=? and rnum<=?";
@@ -438,7 +437,7 @@ public class NoticeDAO {
 	                  }
 	            }//finally   
 	      return list;
-	}
+	}//List<NoticeBean> getList(int page, int limit)메서드 end
 
 	public int getListCount(String string, String search_word) {
 		Connection con = null;
