@@ -24,7 +24,7 @@ height : 200px!important;
 <section class="product">
 		<div class="container">
 			<div class="col-md-12 wow slideInLeft">
-				<h1><%= request.getParameter("category") %></h1>
+				<h1>야채</h1>
 				<hr class="col-md-12">
 			</div>
 		</div>
@@ -38,7 +38,7 @@ height : 200px!important;
 						
 						<div class="product-image">
 							<!-- 상품 이미지 a태그 -->
-							<a href="itemInfo.item?item_id=${i.item_id}" class="image">
+							<a href="itemInfo.net?item_id=${i.item_id }" class="image">
 							<img class="pic-1" src="itemupload/${i.item_image }">
 							</a>
 							

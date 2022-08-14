@@ -188,7 +188,7 @@ $(function() {
                             <hr class="col-md-12">
                             <div>총 상품금액</div>
                             <h1 id="tp" class="price"><span id="totalprice">${iteminfo.item_price }</span><span>원</span></h1> <!-- 수량에 따라 값이 변함 -->
-                            <a id="buybtn" href="itemOrder.item" class="btn">구매하기</a> <!-- 클릭 시 결제 api -->
+                            <!-- 뺴겠습니다 <a id="buybtn" href="itemOrder.item" class="btn">구매하기</a> 클릭 시 결제 api -->
                         </div>
                     </div>
                         <div class="col-sm-12 reviews_padding">
