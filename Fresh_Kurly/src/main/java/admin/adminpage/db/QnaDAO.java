@@ -522,13 +522,13 @@ public class QnaDAO {
 	         
 	         while(rs.next()) {
 	            QnaBean qna = new QnaBean();
-	            qna.setQna_number(rs.getInt("Qna_NUMBER"));
+	            qna.setQna_number(rs.getInt("QNA_NUMBER"));
 				qna.setQna_name(rs.getString("QNA_NAME"));
 				qna.setQna_subject(rs.getString("QNA_SUBJECT"));
 				qna.setQna_content(rs.getString("QNA_CONTENT"));
 				qna.setQna_view(rs.getInt("QNA_VIEW"));
 				qna.setQna_reg_date(rs.getString("QNA_REG_DATE"));
-				qna.setCnt(rs.getInt("cnt"));
+				qna.setCnt(rs.getInt("CNT"));
 	            list.add(qna);
 	         }
 	      } catch (Exception e) {

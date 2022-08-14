@@ -252,4 +252,4 @@ td:nth-child(1) {
 		<jsp:include page="../mainpage/footer.jsp"/>
 	</footer> 
 </body>
-</html>
+</html> 
