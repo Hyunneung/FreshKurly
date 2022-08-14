@@ -15,6 +15,10 @@
 	}
 	
 	#myPageName {font-size:15pt}
+	
+	/* footer 이미지 위치 조절 */
+	.fa-facebook, .fa-twitter, .fa-linkedin, .fa-google-plus {position:absolute; bottom:10px; left:13px}   
+	.fa-angle-up {position:relative; left:11px;}
 </style>
 <script>
 	$(function(){

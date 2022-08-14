@@ -4,13 +4,13 @@
 <html>
 <head>
 <title>회원가입 완료 페이지</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src = "http://code.jquery.com/jquery-latest.js"></script>
 <style>
-	button {background:#8BC34A; font-weight:bold; color: white;
-	padding-top:10px; padding-bottom:10px;
-	border:0; border-radius: 12px; width:400px}
+	.submitbtn {font-weight:bold; color: white;
+			padding-top:10px; padding-bottom:10px;
+			border:0; width:400px;
+			background:#28a745; border-radius:4px;}
 	
 	.clearfix {
 		position: absolute;
@@ -26,6 +26,8 @@
 <header>
 	<jsp:include page="../mainpage/header.jsp"/>
 </header>
+
+<div class="row" style="margin-bottom:100px">
 	<div class="container">
 		<form action="myOrder.my" method="post">
 			<h1>회원가입이 완료되었습니다</h1>
@@ -50,5 +52,12 @@
 			</div>
 		</form>
 	</div>
+</div>	
+	
+<!-- footer -->
+<script src="assets/js/custom.js"></script>
+<footer id="footer">  
+     <jsp:include page="../mainpage/footer.jsp"/>
+</footer>	
 </body>
 </html>

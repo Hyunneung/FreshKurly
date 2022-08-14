@@ -2,16 +2,15 @@
 <html lang="en">
 <head>
 <title> 회원가입 페이지 </title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="http://code.jquery.com/jquery-latest.js"></script> <!-- 제이쿼리 -->
-	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script> <!-- 주소검색 -->
-	<script src="assets/js/member/join.js"></script>
+<script src="http://code.jquery.com/jquery-latest.js"></script> <!-- 제이쿼리 -->
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script> <!-- 주소검색 -->
+<script src="assets/js/member/join.js"></script>
 </head>
 <style>
 	img{width:30px; height:30px; opacity:0.5; cursor: pointer;}
-	input[type=button]{background:#8BC34A; color:white; border:none;
-					   width:80px; height:30px; margin-top:5px}
+	input[type=button]{width:80px; height:35px; background:#28a745; color:white; margin-top:5px;
+					   border-radius:4px; text-align:center; border:none; font-weight:bold;}
+	.fa-facebook, .fa-twitter, .fa-linkedin, .fa-google-plus {position:absolute; bottom:10px; left:13px} /* footer 이미지 위치 조절 */	   
 </style>
 <body>
 <header>
@@ -115,7 +114,7 @@
 								<!-- 가입하기 -->	
 								<hr class="mb-4">
 								<div class="clearfix">
-									<button type="submit" class="submitbtn btn btn-primary btn-lg btn-block" id="submitbtn">가입하기</button>
+									<button type="submit" class="btn btn-block" style="background:#28a745; border-radius:4px;" id="submitbtn">가입하기</button>
 								</div>	
 							</form>
 						</div>
@@ -124,12 +123,11 @@
 			</div>
 		</main>
 	</section>
-<div class="top_button">
-  <a class="back-to-top" style="cursor:pointer;" id="top-scrolltop"><i class="fa fa-angle-up"></i></a>
-</div>
-	<script src="assets/vendor/bootstrap/js/moment.min.js"></script>
-	<script src="assets/vendor/bootstrap/js/bootstrap-datetimepicker.js"></script>
-	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="assets/js/custom.js"></script>
+
+<!-- footer -->
+<script src="assets/js/custom.js"></script>
+<footer id="footer">  
+     <jsp:include page="../mainpage/footer.jsp"/>
+</footer>
 </body>
 </html>
