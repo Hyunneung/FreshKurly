@@ -5,7 +5,7 @@
 <head>
 <script> 
 $(function() {
-	$("button").click(function(){
+	$("#write").click(function(){
 		location.href="NoticeWrite.ad";
 	})
 	
@@ -240,7 +240,7 @@ td:nth-child(1) {
 		      <h1>검색 결과가 없습니다.</h1>
 		   </c:if>
 
-			<button type="button" class="btn btn-info float-right">글쓰기</button>
+			<button type="button" id="write" class="btn btn-info float-right">글쓰기</button>
 	</div>
 	<br>
 	<br>
