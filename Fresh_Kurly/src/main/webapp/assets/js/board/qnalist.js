@@ -20,7 +20,7 @@ function setPaging(href, digit){
 	return output;
 }
 
-function ajax(sdata) {
+function ajax(sdata) { 
 	console.log(sdata)
 	
 	$.ajax({
