@@ -19,7 +19,10 @@ $(function () {
 	
     // 찜한상품
     $("body").on('click', '.addWish', function(){
-		var item_id = $('input[type=hidden]');
+    	var li = $(this).parent();
+		var item_id = li.find('input:nth-child(1)'); // 아이템 아이디 .val()
+		//var item_id = td1.find( 'input:nth-child(1)' ); // 아이템 아이디 .val()
+		//var item_id = $('input[type=hidden]');
     	
     	$.ajax({
 				type : "POST",
