@@ -176,10 +176,10 @@ td:nth-child(1) {
 											</c:if>
 										</a>
 										<c:if test="${b.cnt==0 }">
-											<c:out value="답변대기중"/>
+											<c:out value="[답변대기중]"/>
 										</c:if> 
 										<c:if test="${b.cnt>=1 }">
-											<c:out value="답변완료"/>
+											<c:out value="[답변완료]"/>
 										</c:if> 
 									</div>
 								</td>
