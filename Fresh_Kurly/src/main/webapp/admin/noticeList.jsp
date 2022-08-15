@@ -5,7 +5,7 @@
 <head>
 <script> 
 $(function() {
-	$("button").click(function(){
+	$("#write").click(function(){
 		location.href="NoticeWrite.ad";
 	})
 	
@@ -137,7 +137,7 @@ td:nth-child(1) {
 					<option value="0" selected>제목</option>
 					<option value="1">내용</option>
 				</select> <input name="search_word" type="text" class="form-control"
-					placeholder="제목을 입력하세요" value="${search_word}">
+					placeholder="검색어를 입력하세요" value="${search_word}">
 				<button class="btn btn-primary" type="submit">검색</button>
 			</div>
 		</form>
@@ -240,7 +240,7 @@ td:nth-child(1) {
 		      <h1>검색 결과가 없습니다.</h1>
 		   </c:if>
 
-			<button type="button" class="btn btn-info float-right">글쓰기</button>
+			<button type="button" id="write" class="btn btn-info float-right">글쓰기</button>
 	</div>
 	<br>
 	<br>

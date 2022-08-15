@@ -100,7 +100,7 @@ td:nth-child(1) {
 					<option value="1">이름</option>
 				</select>
 					<input name="search_word" type="text" class="form-control"
-						   placeholder="아이디 입력하세요" 	  value="${search_word}">
+						   placeholder="검색어를 입력하세요" 	  value="${search_word}">
 					<button class="btn btn-primary" type="submit">검색</button>	   
 			</div>
 		</form>

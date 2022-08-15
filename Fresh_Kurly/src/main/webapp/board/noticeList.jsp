@@ -5,14 +5,6 @@
 <head>
 <script> 
 $(function() {
-	$("button").click(function(){
-		location.href="NoticeWrite.bo";
-	})
-	
-	$("#viewcount").change(function() {
-		go(1);//보여줄 페이지를 1페이지로 설정합니다.
-	});// change end
-	
    //검색 클릭 후 응답화면에는 검색시 선택한 필드가 선택되도록 합니다.
    var selectedValue = '${search_field}'
    if (selectedValue != '-1')
@@ -137,7 +129,7 @@ td:nth-child(1) {
 					<option value="0" selected>제목</option>
 					<option value="1">내용</option>
 				</select> <input name="search_word" type="text" class="form-control"
-					placeholder="제목을 입력하세요" value="${search_word}">
+					placeholder="검색어를 입력하세요" value="${search_word}">
 				<button class="btn btn-primary" type="submit">검색</button>
 			</div>
 		</form>
