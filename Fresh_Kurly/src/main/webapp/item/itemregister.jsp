@@ -81,7 +81,7 @@ body>div>table>tbody>tr>td:last-child>a {
 			$("form>div>input").attr("placeholder", message[selectedValue] + " 입력하세요");
 		}) // $("#viewcount").change end
 		
-		// 회원 목록의 삭제를 클릭한 경우
+		// 상품 목록의 삭제를 클릭한 경우
 		$("tr > td:nth-child(5) > a").click(function(event) {
 			var answer = confirm("정말 삭제하시겠습니까?");
 			console.log(answer); // 취소를 클릭한 경우 false;
@@ -120,7 +120,7 @@ body>div>table>tbody>tr>td:last-child>a {
   	</div>
   </form>
   <c:if test="${listcount > 0 }">
-  	<%-- 회원이 있는 경우 --%>
+  	<%-- 상품이 있는 경우 --%>
   	<table class="table table-striped">
   		<thead>
   			<tr>
@@ -196,9 +196,9 @@ body>div>table>tbody>tr>td:last-child>a {
   	</ul>
    </c:if>
   
-  <%-- 회원이 없는 경우 --%>
+  <%-- 상품이 없는 경우 --%>
   <c:if test="${listcount == 0 && empty search_word }">
-  	<h1>회원이 없습니다.</h1>
+  	<h1>등록된 상품이 없습니다.</h1>
   </c:if>
 <c:if test="${listcount == 0 && !empty search_word}">
 	<h1>검색결과가 없습니다.</h1>
