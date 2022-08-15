@@ -92,21 +92,7 @@
 		<ul class="comment-list">
 		</ul>
 		
-		<c:if test="${id=='admin'}">
-		<div class="commnet-write">
-			<div class="comment-write-area">
-				<b class="comment-write-area-name">${id }</b><span
-					class="comment-write-area-count">0/200</span>
-				<textarea placeholder="문의하기 답변을 작성하세요" rows="1"
-					class="comment-write-area-text" maxLength="200"></textarea>
-					
-			</div>
-			<div class="register-box">
-				<div class="button btn-cancel">취소</div><%-- 댓글의 취소는 display:none, 등록만 보이도록 합니다. --%>
-				<div class="button btn-register" >등록</div>
-			</div>
-		</div><%-- commnet-write end --%>
-	</c:if>
+		
 	</div><%-- comment-area end --%>
 </div><%-- class="container" end --%>
 <script src="assets/js/custom.js"></script>

@@ -62,7 +62,7 @@ $(function () {
 <section class="product">
 		<div class="container">
 			<div class="col-md-12 wow slideInLeft">
-				<h1>야채</h1>
+				<h1><%=request.getParameter("category") %></h1>
 				<hr class="col-md-12">
 			</div>
 		</div>

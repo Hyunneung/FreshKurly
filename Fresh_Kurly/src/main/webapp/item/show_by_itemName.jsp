@@ -13,6 +13,42 @@ width: 200px!important;
 height : 200px!important;
 }
 </style>
+
+<script>
+$(function () {
+	
+    // 찜한상품
+    $("body").on('click', '.addWish', function(){
+    	var li = $(this).parent();
+		var item_id = li.find('input:nth-child(1)'); // 아이템 아이디 .val()
+    	
+    	$.ajax({
+				type : "POST",
+				url: "myWishItemAdd.my",
+				data: { "item_id": item_id.val() },
+				success : function(result) {
+					// result : 장바구니에 잘 담기면 1, 기존에 있어서 못담으면 0, 에러나면 -1
+					if(result == 1) { // 장바구니 담기 성공
+						if(confirm("해당 상품이 찜한상품에 추가되었습니다. 찜한상품으로 이동하시겠습니까?")) {
+							location.href = "myWish.my";
+						} 
+					} else if (result == 0) {
+						if(confirm("해당 상품이 찜한상품에 존재합니다. 찜한상품에 이동하시겠습니까?")) {
+							location.href = "myWish.my";
+						} 
+					} else {
+						alert("로그인하셔야 본 서비스를 이용하실 수 있습니다.");
+						console.log("찜한상품 담기 에러");
+					}
+				}, // success end
+				error : function(error){
+					alert("상품 -> 찜한상품 담기 에러 : " + error);
+				}
+			}) // ajax end
+		}) // 상품 찜한상품에 담기 end
+		
+})
+</script>
 </head>
 <body>
 
@@ -50,7 +86,12 @@ height : 200px!important;
 							
 							<!-- 찜하기 버튼 -->
 							<ul class="product-links">
-								<li><a href="myWishItemAdd.my"><i class="fa fa-heart"></i></a></li>
+								<li>
+									<input type="hidden" value="${i.item_id}">
+									<a href="#" class="addWish">
+									<i class="fa fa-heart"></i>
+									</a>
+								</li>
 							</ul>
 						</div>
 						

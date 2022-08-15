@@ -655,7 +655,25 @@ public class ItemDAO {
 		}  // finally
 		return list;
 	}
+	/*
+	public int orderList(String member_id, int i) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String cart_leng;
+		int result=0;
+		try {
+			String odnum = " select (nvl(max(order_number),0)+1) from order ";
+			String length = " select count(*) from cart where member_id = ? ";
+			
+			while(rs.next()) {
+				cart_leng = length;
+			}
+		}
+		
+		return result;
+	}
 
-	
+	*/
 	
 }
