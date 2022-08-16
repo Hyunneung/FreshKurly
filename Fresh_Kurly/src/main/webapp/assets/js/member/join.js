@@ -180,7 +180,7 @@ $(document).ready(function() {
 	// 이메일 인증
 	var emailcheck_value = ''; // 이메일 중복 검사에 사용된 이메일을 저장할 변수
 	var checkemail = false;
-	var email_check_ok = "n";
+	var email_ok = "";
 	$("#emailchkbtn").click(function() {
 		input_email = $.trim($('#email').val());
 		if (input_email == "" || input_email.indexOf("@") == -1) {
@@ -188,7 +188,6 @@ $(document).ready(function() {
 			$("#emailchkok").val("n");
 			$('#email').focus();
 			checkemail = false;
-			email_check_ok = "y";
 			return false;
 		} else {
 			emailcheck_value = input_email;
@@ -222,13 +221,11 @@ $(document).ready(function() {
 			$("#emailchkok").val("y");
 			alert('이메일 인증에 성공하셨습니다');
 			checkemail = true;
-			email_check_ok = "y";
 	} else {
 			email_ok = "";
 			$("#emailchkok").val("n");
 			alert('인증번호가 일치하지 않습니다. 다시 입력해주세요.');
 			checkemail = false;
-			email_check_ok = "n";
 		}
 	}) // 이메일 인증번호 확인 버튼 end
 	
@@ -309,7 +306,7 @@ $(document).ready(function() {
 			alert('이메일을 인증하세요');
 			return false;
 		}
-		if($("#emailchkok").val() == "n" && email_check_ok == "n") {
+		if($("#emailchkok").val() == "n") {
 			alert('이메일을 인증하세요');
 			return false;
 		}
