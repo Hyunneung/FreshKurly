@@ -1,6 +1,7 @@
 package my.mypage.db;
 
 public class OrderInfo {
+	private int order_id; // 추가
 	private int order_number; // 주문번호
 	private int item_id;
 	private String member_id;
@@ -14,6 +15,13 @@ public class OrderInfo {
 	
 	
 	// getter, setter
+	public int getOrder_id() {
+		return order_id;
+	}
+	public void setOrder_id(int order_id) {
+		this.order_id = order_id;
+	}
+	
 	public int getOrder_number() {
 		return order_number;
 	}

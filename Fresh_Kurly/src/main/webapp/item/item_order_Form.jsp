@@ -554,7 +554,7 @@
 	}// end of function showDiscountMoney(dc_money,fk_odrcode)---------------------------------------------------
 	
 	$(function() {
-		   $("button").click(function(){
+		   $("#btnPurchase").click(function(){
 		      location.href="itemOrderProcess.item";
 		   })
 		      

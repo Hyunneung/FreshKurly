@@ -73,7 +73,7 @@ public class ItemInsertProcessAction implements Action {
 			
 			if (result == 1) { // 삽입이 된 경우
 				out.println("<script>");
-				out.println("alert('상품등록을 축하합니다.');");
+				out.println("alert('상품등록 성공입니다.');");
 				out.println("location.href='itemList.item';");
 				out.print("</script>");
 				out.close();

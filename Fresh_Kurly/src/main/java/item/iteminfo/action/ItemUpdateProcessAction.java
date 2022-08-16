@@ -59,12 +59,24 @@ public class ItemUpdateProcessAction implements Action {
 			
 			
 			Item i = new Item();
-			i.setItem_id(item_id); i.setItem_name(item_name); i.setItem_price(item_price);
-			i.setItem_image(item_image); i.setItem_deliver(item_deliver);
+			i.setItem_id(item_id); i.setItem_name(item_name);
+			i.setItem_price(item_price); i.setItem_deliver(item_deliver);
 			i.setItem_seller(item_seller); i.setItem_package(item_package);
 			i.setItem_expiredate(item_expiredate); i.setItem_unit(item_unit);
 			i.setItem_weight(item_weight); i.setItem_category(item_category);
 			i.setItem_intro(item_intro); i.setItem_stock(item_stock);
+			
+			
+			String check = multi.getParameter("check");
+			System.out.println("check="+check);
+			if (check != null) { // 파일첨부를 변경하지 않으면
+				i.setItem_image(check);
+			} else {
+				// 업로드된 파일의 시스템 상에 업로드된 실제 파일명을 얻습니다.
+				String filename = multi.getFilesystemName("item_image");
+				i.setItem_image(filename);
+			}
+			
 			
 			ItemDAO mdao = new ItemDAO();
 			int result = mdao.update(i);

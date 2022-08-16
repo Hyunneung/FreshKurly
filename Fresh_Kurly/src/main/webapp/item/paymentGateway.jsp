@@ -21,7 +21,7 @@ $(document).ready(function() {
        pay_method : 'card',	// 결제 수단
        merchant_uid : 'merchant_' + new Date().getTime(), // 가맹점에서 생성/관리하는 고유 주문번호
        name : '프레쉬컬리',	 // 코인충전 또는 order 테이블에 들어갈 주문명 혹은 주문 번호. (선택항목)원활한 결제정보 확인을 위해 입력 권장(PG사 마다 차이가 있지만) 16자 이내로 작성하기를 권장
-       amount : /* ${ordertotal} */100 ,	  // '${requestScope.coinmoney}'  결제 금액 number 타입. 필수항목. #원래는 ${requestScope.coinmoney}###############################################
+       amount : /* ${ordertotal} */100,	  // '${requestScope.coinmoney}'  결제 금액 number 타입. 필수항목. #원래는 ${requestScope.coinmoney}###############################################
        buyer_email : '${m.member_email}', // 구매자 email '${requestScope.email}'
        buyer_name : '${m.member_name}',	  // 구매자 이름  '${requestScope.name}'
        buyer_tel : '${hp}',  // 구매자 전화번호 (필수항목) '${requestScope.mobile}'

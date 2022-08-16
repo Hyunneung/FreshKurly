@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>상품등록</title>
+<title>상품수정</title>
 <jsp:include page="../mainpage/header.jsp"/>
 
  <style>
@@ -123,6 +123,7 @@ margin-bottom: 10px;
 
 <script>
 $(function(){
+	check = 0;
 	 $('form[name=updateform]').submit(function() {
 		 if (!$.isNumeric($("input[name='item_price']").val())) {
 			 alert("상품가격은 숫자로 입력하세요.");
@@ -142,8 +143,27 @@ $(function(){
 			 alert("사진을 넣어주세요.");
 			 return false;
 		 }
+		 
+		 
+		 console.log(check);
+		 
+		//파일첨부를 변경하지 않으면 $('filevalue').text()의 파일명을
+		// 파라미터 'check'라는 이름으로 form에 추가하여 전송합니다.
+		if (check == 0) {
+			value = '${iteminfo.item_image}';
+			html = "<input type='hidden' value='" + value +"' name='check'>";
+			console.log(html);
+			$(this).append(html);
+		}
 			 
 	 }); // submit
+	 
+	 $("#upfile").change(function() {
+		    check++;
+			var inputfile = $(this).val().split("\\");
+			$('#filevalue').text(inputfile[inputfile.length - 1]);
+			console.log(check);
+		});
 		
 })
 </script>
@@ -151,7 +171,7 @@ $(function(){
 <body>
 	<form name="updateform" action="itemUpdateProcess.item" method="post"
 		enctype="multipart/form-data"> 
-	<h1>상품등록</h1>
+	<h1>상품수정</h1>
 	<hr>
 	<b>상품번호</b>
 	<input type="text" name="item_id" placeholder="Enter item_id" value="${iteminfo.item_id }" readOnly>
@@ -193,13 +213,10 @@ $(function(){
 	<label>
 		<img id="documentimg" src="assets/image/item/document.png" style="cursor:pointer" width="50px">
 		<span id="showImage">
-			<c:if test='${!empty iteminfo.item_image }'>
-				<c:set var='src' value='${"itemupload/"}${iteminfo.item_image }'/>
-			</c:if>
-		   <img width="150px" height="150px" src="${src }">
+		   <img width="150px" id="filevalue" height="150px" src="itemupload/${iteminfo.item_image}">
 		</span>
 
-		<input type="file" name="item_image" accept="image/*">
+		<input type="file" id="upfile" name="item_image" accept="image/*">
 	</label>
 	
 		<div class="clearfix">
