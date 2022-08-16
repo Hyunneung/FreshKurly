@@ -2,13 +2,16 @@ package item.iteminfo.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import item.iteminfo.db.Item;
 import item.iteminfo.db.ItemDAO;
+import my.mypage.db.OrderInfo;
 
 public class OrdercartDeleteAction implements Action {
 
@@ -20,14 +23,20 @@ public class OrdercartDeleteAction implements Action {
 		String member_id = (String) session.getAttribute("id");
 
 		ItemDAO dao = new ItemDAO();
-		/*
-		 * int i =0; int orderlist = dao.orderList(member_id, i);
-		 */
+		/* List<OrderInfo> list = null; */
+		
+		int list = dao.orderinsert(member_id);
+		
+		if(list == 0) { 
+			 System.out.println("주문내역 전송 실패입니다.");
+		 }
+		
+		
 		int result = dao.cartItemDelete(member_id);
 
-		/*
-		 * if(orderlist == 0) { System.out.println("주문내역 전송 실패입니다."); }
-		 */
+		
+		 
+		 
 
 		if (result == 0) {
 			System.out.println("장바구니 삭제 실패입니다.");

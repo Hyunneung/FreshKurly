@@ -110,7 +110,7 @@ td:nth-child(1) {
 				<caption style="font-weight: bold">회원 목록</caption>
 				<thead>
 					<tr>
-						<th colspan="2">MVC 게시판 - 회원 정보 list</th>
+						<th colspan="2">회원 정보 list</th>
 						<th><font size=3>회원 수 : ${listcount }</font></th>
 					</tr>
 					<tr>

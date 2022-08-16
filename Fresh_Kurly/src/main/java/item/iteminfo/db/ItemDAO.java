@@ -493,6 +493,7 @@ public class ItemDAO {
 			
 			while(rs.next()) {
 				Item m = new Item();
+				m.setItem_category(rs.getString("item_category"));
 				m.setItem_name(rs.getString("item_name"));
 				m.setItem_price(rs.getInt("item_price"));
 				m.setItem_image(rs.getString("item_image"));
@@ -673,7 +674,104 @@ public class ItemDAO {
 		
 		return result;
 	}
-
 	*/
+	public List<Item> getAllList() {
+		List<Item> list = new ArrayList<Item>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = ds.getConnection();
+			
+			String sql =  "select * from item";
+			System.out.println(sql);
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Item m = new Item();
+				m.setItem_name(rs.getString("item_name"));
+				m.setItem_price(rs.getInt("item_price"));
+				m.setItem_image(rs.getString("item_image"));
+				m.setItem_id(rs.getInt("item_id"));
+				list.add(m);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+		}  // finally
+		return list;
+	}
+
+	public List<Item> getAllList(int page, int limit) {
+		List<Item> list = new ArrayList<Item>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = ds.getConnection();
+			
+			String sql = " select * "
+					+ 	 " from (select b.*, rownum rnum "
+					+ 	 " 		 from(select * from item "
+					+ 	 " 			  order by item_id) b "
+					+	 "         	 ) "
+					+ 	 " where rnum>=? and rnum<=? ";
+			
+			pstmt = con.prepareStatement(sql);
+			// 한 페이지당 10개씩 목록인 경우 1페이지, 2페이지, 3페이지, 4페이지 ...
+			
+			int startrow = (page - 1) * limit + 1;
+					// 읽기 시작할 row 번호(1 11 21 31 ...)
+			int endrow = startrow + limit - 1;
+					// 읽을 마지막 row 번호 (10 20 30 40..)
+			
+			pstmt.setInt(1, startrow);
+			pstmt.setInt(2, endrow);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Item m = new Item();
+				m.setItem_id(rs.getInt("item_id"));
+				m.setItem_name(rs.getString("item_name"));
+				m.setItem_category(rs.getString("item_category"));
+				m.setItem_image(rs.getString("item_image"));
+				m.setItem_price(rs.getInt("item_price"));
+				list.add(m);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+		}  // finally
+		return list;
+	}
+
+
 	
 }

@@ -39,7 +39,7 @@
 	                            
 	<div class="form-group" style="text-align : left">
 		아이디
-		<input class="form-control" type="text" name="id" id="id" value="admin" readonly>
+		<input class="form-control" type="text" name="id" id="id" value="<%=session.getAttribute("id") %>" readonly>
 	</div>
 	
 	<div class="form-group" style="text-align : left">

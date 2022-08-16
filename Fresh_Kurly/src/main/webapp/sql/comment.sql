@@ -2,7 +2,7 @@ drop table qnacomm cascade constraints purge;
 
 create table qnacomm(
 	num				number			primary key,							 -- 댓글번호
-	id				varchar2(30)	references member(member_id),			 -- 댓글아이디(회원아이디참조)			
+	id				varchar2(30)	references member(member_id) on delete cascade,			 -- 댓글아이디(회원아이디참조)			
 	content			varchar2(200),											 -- 댓글 내용
 	reg_date		date,													 -- 댓글 등록날짜
 	comment_qna_number	number	references qna(qna_number) on delete cascade,-- 문의하기 댓글(qnacomm)이 참조하는 보드 글 번호

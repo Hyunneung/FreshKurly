@@ -16,13 +16,13 @@ create table member (
     member_reg_date date default sysdate
 )
 
-
+alter table member drop constraint
 
 insert into member (member_id, member_pass, member_name, member_email) values ('admin','1234','admin','@');
 
 select * from member order by member_id;
 
-delete from member where member_pass is null;
+delete from member where member_email = 'ahslxj1993@naver.com';
 
 
 
