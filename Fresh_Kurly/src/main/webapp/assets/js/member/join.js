@@ -299,16 +299,6 @@ $(document).ready(function() {
 				alert("비밀번호 형식을 확인해주세요");
 				return false;
 			}
-		// 휴대폰번호 중복검사 확인
-		var submit_phone_value = $.trim($('#phone').val())
-		if (submit_phone_value != phonecheck_value) {
-			alert("휴대폰번호 중복검사를 해주세요");
-			return false;
-		}
-		if(checkphone == false){
-			alert("휴대폰번호 중복검사를 해주세요");
-			return false;
-		}
 		// 이메일 중복검사 확인
 		var submit_email_value = $.trim($('#email').val())
 		if (submit_email_value != emailcheck_value) {
@@ -325,6 +315,16 @@ $(document).ready(function() {
 		}
 		if(checkemail == false){
 			alert("이메일 중복검사를 해주세요");
+			return false;
+		}
+		// 휴대폰번호 중복검사 확인
+		var submit_phone_value = $.trim($('#phone').val())
+		if (submit_phone_value != phonecheck_value) {
+			alert("휴대폰번호 중복검사를 해주세요");
+			return false;
+		}
+		if(checkphone == false){
+			alert("휴대폰번호 중복검사를 해주세요");
 			return false;
 		}
 		// 주소 입력 확인

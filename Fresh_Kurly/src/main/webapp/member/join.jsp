@@ -66,14 +66,6 @@
 									<span id="jumin_message"></span>
 								</div>
 								
-								<!-- 휴대폰 -->
-								<div class="md-form tb-mr-bt">
-									<label for="phone" style="font-size: 10pt">휴대폰<font color='red'>*</font></label>
-							        <input type="text" class="form-control" name="phone" id="phone" maxLength="11" placeholder="숫자만 입력해주세요" required>
-							        <input type="button" value="중복확인" id="phonechkbtn"><br>
-							        <span id="phone_message"></span><br>
-								</div>
-								
 								<!-- 이메일 -->
 								<div class="md-form tb-mr-bt">
 									<label for="email" style="font-size: 10pt">이메일<font color='red'>*</font></label>
@@ -83,6 +75,14 @@
 									<input type="hidden" id="certification_btn" value="인증번호 확인" style="width:100px">
 									<input type="hidden" name="save_email_num" id="save_email_num">
 									<input type="hidden" id="emailchkok" value='n'> <!-- 인증 성공실패 여부 -->
+								</div>
+								
+								<!-- 휴대폰 -->
+								<div class="md-form tb-mr-bt">
+									<label for="phone" style="font-size: 10pt">휴대폰<font color='red'>*</font></label>
+							        <input type="text" class="form-control" name="phone" id="phone" maxLength="11" placeholder="숫자만 입력해주세요" required>
+							        <input type="button" value="중복확인" id="phonechkbtn"><br>
+							        <span id="phone_message"></span><br>
 								</div>
 
 								<!-- 주소 -->
