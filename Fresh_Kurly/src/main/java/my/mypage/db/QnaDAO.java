@@ -236,8 +236,8 @@ public class QnaDAO {
 		return result_check; // 문의 삭제 성공하면 1, 실패하면 0
 	} // qnaDelete(qna_number) end
 	
-	// modal----------------------------------------------------
-	// 문의내역 삭제
+	
+	// 문의내역 삭제 (modal)
 	public int qnaDelete(String member_id, int qna_number) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -245,8 +245,8 @@ public class QnaDAO {
 		try {
 			con = ds.getConnection();
 			String sql = "delete from qna "
-					+ "where qna_name = ? " // 회원id - member_id
-					+ "and qna_number = ?"; // 글번호 - qna_number
+					   + "where qna_name = ? " // 회원id - member_id
+					   + "and qna_number = ?"; // 글번호 - qna_number
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, member_id);
 			pstmt.setInt(2, qna_number);

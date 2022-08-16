@@ -6,7 +6,7 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script> <!-- 주소검색 -->
 <title>cart - right</title>
 <style>
-	* {font-size:15px}
+	ul {font-size:15px}
 	
 	textarea {border: none; resize: none;}
 	
@@ -51,7 +51,7 @@
 <body>
 	<div>
 		<!-- 배송지 -->
-		<form action="itemOrder.item" method="" style="width:250px; position: relative; top:100px;"> <!-- 결제기능 하면 결제 폼으로 넘어가게 하기~ -->
+		<form action="itemOrder.item" method="post" style="width:250px; position: relative; top:90px;"> <!-- 결제기능 하면 결제 폼으로 넘어가게 하기~ -->
 			<ul class="list-group">
 				<li class="list-group-item">
 					<div>
@@ -75,7 +75,7 @@
 						<strong>상품 금액</strong>
 							<input type="text" name="totalALL" value="<fmt:formatNumber value="${totalAll}" pattern="#,###"/>원" style="width:70px">
 						<br>
-						<strong>배송비</strong> 
+						<strong>배송비</strong>&nbsp;&nbsp;&nbsp;&nbsp;
 							<input type="text" name="delivery" value="<fmt:formatNumber value="${delivery}" pattern="#,###"/>원" style="width:70px">
 					</div>
 				</li>
@@ -86,8 +86,8 @@
 			<ul class="list-group">
 				<li class="list-group-item">
 					<div>
-						<h5>결제금액</h5>
-						<input type="text" name="totalALLDelivery" value="<fmt:formatNumber value="${totalAll + delivery}" pattern="#,###"/>원" style="width:70px">
+						<strong>결제금액</strong>&nbsp;
+						<input type="text" name="totalALLDelivery" value="<fmt:formatNumber value="${totalAll + delivery}" pattern="#,###"/>원" style="width:70px;">
 						<br>
 						<button type="submit" id="paybtn">결제하기</button>
 					</div>

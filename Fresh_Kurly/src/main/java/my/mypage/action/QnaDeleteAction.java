@@ -61,20 +61,4 @@ public class QnaDeleteAction implements Action {
 		out.close();
 		return null;
 	}
-		
-		
-		/*
-		HttpSession session = request.getSession();
-		String member_id = (String) session.getAttribute("id");
-		int qna_number = Integer.parseInt( request.getParameter("qna_number") );
-		
-		QnaDAO dao = new QnaDAO();
-		int result = dao.qnaDelete(member_id, qna_number); // 문의 삭제 성공하면 1, 실패하면 0
-		
-		response.getWriter().print(result);
-		System.out.println("result = " + result + "(DB에 문의 삭제 성공하면 1, 실패하면 0)");
-		return null;
-	}
-		*/
-
 }

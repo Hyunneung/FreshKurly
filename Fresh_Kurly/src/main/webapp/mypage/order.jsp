@@ -28,7 +28,9 @@
 							<tbody>
 								<tr style="border-bottom: hidden;">
 									<td rowspan="3">
-										<img src="itemupload/${o.item_image}" style="width:80px; height:80px">
+										<a href="itemInfo.item?item_id=${o.item_id}">
+											<img src="itemupload/${o.item_image}" style="width:80px; height:80px">
+										</a>
 									</td>
 									<td>
 										${o.item_name}
@@ -53,7 +55,7 @@
 								</tr>
 								<tr>
 									<td colspan="3">
-										총 주문금액 <fmt:formatNumber value="${o.item_price * o.order_amount}" pattern="#,###"/>원
+										<strong>총 주문금액 <fmt:formatNumber value="${o.item_price * o.order_amount}" pattern="#,###"/>원</strong>
 									</td>
 								</tr>
 							</tbody>

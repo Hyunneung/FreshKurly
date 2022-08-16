@@ -137,7 +137,7 @@ public class CartDAO {
 
 	
 	// 장바구니 특정 상품 수량 변경
-	// 1. 감소
+	// 1. 수량 -1 감소
 	public int cartItemMinus(String member_id, int item_id) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -179,7 +179,7 @@ public class CartDAO {
 		} // try-catch-finally 끝
 		return result; // // 수량 감소 성공하면 1, 실패하면 0
 	} // cartItemMinus(member_id, item_id) end
-	// 2. 수량 추가
+	// 2. 수량 +1 증가
 	public int cartItemPlus(String member_id, int item_id) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
