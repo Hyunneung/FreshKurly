@@ -131,7 +131,9 @@
 											<input type="hidden" name="item_price" id="item_price" value="${c.item_price}">
 										</td>
 										<td> <!-- 상품이미지 -->
-											<img src="itemupload/${c.item_image}" style="width:80px; height:80px">
+											<a href="itemInfo.item?item_id=${c.item_id}">
+												<img src="itemupload/${c.item_image}" style="width:80px; height:80px">
+											</a>
 										</td> 
 										<td> <!-- 상품명 -->
 											${c.item_name}
