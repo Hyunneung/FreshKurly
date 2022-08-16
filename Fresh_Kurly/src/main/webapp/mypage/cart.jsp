@@ -15,7 +15,7 @@
     #total {width:60px}
     input:focus {outline: none;}
     
-    #cartItemMinus, #cartItemPlus, #cartItemDelete {cursor:pointer; width:10px; height:10px" }	
+    #cartItemMinus, #cartItemPlus, #cartItemDelete {cursor:pointer; width:10px; height:10px}	
 </style>
 <script>
 	$(function(){
