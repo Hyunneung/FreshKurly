@@ -182,7 +182,7 @@
 			
 			<!-- 상품문의가 없는 경우 -->
 			<c:if test="${listcount == 0}">
-				<font size=5>작성한 상품 문의가 없습니다.</font>
+				<h3 style="color:gray">작성한 상품 문의가 없습니다.</h3>
 			</c:if>
 		</div>
 	</div>

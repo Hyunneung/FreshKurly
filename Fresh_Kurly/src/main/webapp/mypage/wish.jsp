@@ -117,7 +117,7 @@
 	
 			<!-- 찜한상품이 없는 경우 -->
 			<c:if test="${listcount == 0}">
-				<font size=5>찜한 상품이 없습니다.</font>
+				<h3 style="color:gray">찜한 상품이 없습니다.</h3>
 			</c:if>
 		</form>
 	</div>

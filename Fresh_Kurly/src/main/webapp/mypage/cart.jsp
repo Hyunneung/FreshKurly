@@ -156,7 +156,7 @@
 				
 					<!-- 장바구니에 상품이 없는 경우 -->
 					<c:if test="${listcount == 0}">
-						<font size=5>장바구니에 담긴 상품이 없습니다.</font>
+						<h3 style="color:gray">장바구니에 담긴 상품이 없습니다.</h3>
 					</c:if>
 				</form>
 				

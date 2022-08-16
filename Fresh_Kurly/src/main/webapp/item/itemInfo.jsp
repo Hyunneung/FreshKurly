@@ -129,7 +129,7 @@ $(function() {
 					// result : 장바구니에 잘 담기면 1, 기존에 있어서 못담으면 0, 에러나면 -1
 					if(result == 1) { // 장바구니 담기 성공
 						if(confirm("해당 상품이 찜한상품에 추가되었습니다. 찜한상품으로 이동하시겠습니까?")) {
-							location.href = "myCart.my";
+							location.href = "myWish.my";
 						} 
 					} else if (result == 0) {
 						if(confirm("해당 상품이 찜한상품에 존재합니다. 찜한상품에 이동하시겠습니까?")) {
