@@ -120,6 +120,13 @@ display: block;
 #documentimg {
 margin-bottom: 10px;
 }
+
+body > form > select {
+    width: 100%!important;
+    padding: 10px!important;
+    margin: 5px 0 5px 0!important;
+    display: inline-block!important;
+}
 </style> 
 
 <script>
@@ -166,7 +173,19 @@ $(function(){
 	<input type="text" name="item_intro" maxLength ="200" placeholder="Enter item_intro" required>
 	
 	<b>카테고리</b>
-	<input type="text" name="item_category" placeholder="Enter item_category" maxlength="20" required>
+	<select name="item_category" required>
+		<option value="과일" selected>과일</option>
+		<option value="야채">야채</option>
+		<option value="정육/계란">정육/계란</option>
+		<option value="밀키트">밀키트</option>
+		<option value="냉장/냉동/간편식">냉장/냉동/간편식</option>
+		<option value="통조림" >통조림</option>
+		<option value="수산/건어물">수산/건어물</option>
+		<option value="쌀/잡곡">쌀/잡곡</option>
+		<option value="우유/유제품">우유/유제품</option>
+		<option value="간식/떡/빙과">간식/떡/빙과</option>
+		<option value="장/양념/소스">장/양념/소스</option>
+	</select>
 	
 	<b>배송</b>
 	<input type="text" name="item_deliver" placeholder="Enter item_deliver" maxlength="200" required>

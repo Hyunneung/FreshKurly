@@ -15,42 +15,42 @@ import my.mypage.db.OrderInfo;
 
 public class OrdercartDeleteAction implements Action {
 
-	@Override
-	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+   @Override
+   public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
+         throws ServletException, IOException {
 
-		HttpSession session = request.getSession();
-		String member_id = (String) session.getAttribute("id");
+      HttpSession session = request.getSession();
+      String member_id = (String) session.getAttribute("id");
 
-		ItemDAO dao = new ItemDAO();
-		/* List<OrderInfo> list = null; */
-		
-		int list = dao.orderinsert(member_id);
-		
-		if(list == 0) { 
-			 System.out.println("주문내역 전송 실패입니다.");
-		 }
-		
-		
-		int result = dao.cartItemDelete(member_id);
+      ItemDAO dao = new ItemDAO();
+      /* List<OrderInfo> list = null; */
+      
+      int list = dao.orderinsert(member_id);
+      
+      if(list == 0) { 
+          System.out.println("주문내역 전송 실패입니다.");
+       }
+      
+      
+      int result = dao.cartItemDelete(member_id);
 
-		
-		 
-		 
+      
+       
+       
 
-		if (result == 0) {
-			System.out.println("장바구니 삭제 실패입니다.");
-		} else {
-			response.setContentType("text/html;charset=utf-8");
-			PrintWriter out = response.getWriter();
+      if (result == 0) {
+         System.out.println("장바구니 삭제 실패입니다.");
+      } else {
+         response.setContentType("text/html;charset=utf-8");
+         PrintWriter out = response.getWriter();
 
-			out.println("<script>");
-			out.println("location.href='myOrder.my';");
-			out.print("</script>");
-			out.close();
+         out.println("<script>");
+         out.println("location.href='myOrder.my';");
+         out.print("</script>");
+         out.close();
 
-		}
-		return null;
-	}
+      }
+      return null;
+   }
 
 }

@@ -493,7 +493,6 @@ public class ItemDAO {
 			
 			while(rs.next()) {
 				Item m = new Item();
-				m.setItem_category(rs.getString("item_category"));
 				m.setItem_name(rs.getString("item_name"));
 				m.setItem_price(rs.getInt("item_price"));
 				m.setItem_image(rs.getString("item_image"));
@@ -772,6 +771,87 @@ public class ItemDAO {
 		return list;
 	}
 
-
+	public int orderinsert(String member_id) {
+	      Connection con = null;
+	      PreparedStatement pstmt = null, pstmt2 = null;
+	      ResultSet rs = null;
+	      int result = 0;
+	      
+	      try {
+	         con = ds.getConnection();
+	         String order_num = " (select nvl(max(order_number),0)+1 from orderinfo) ";
+	         pstmt = con.prepareStatement(order_num);
+	         rs = pstmt.executeQuery();
+	         int num = 0;
+	          if(rs.next()) {
+	             num = rs.getInt(1);
+	          }
+	          rs.close();
+	         pstmt.close();
+	      
+	         
+	         String cart = " select * from cart"
+	               +      " where member_id = ? ";
+	         
+	         String order_id = " (select (nvl(max(order_id),0)+1) from orderinfo) ";
+	         
+	         
+	         pstmt = con.prepareStatement(cart);
+	         pstmt.setString(1, member_id);
+	         rs = pstmt.executeQuery();
+	         
+	         while(rs.next()) {
+	            rs.getInt(2); // item_id;
+	            rs.getString(3); // member_id
+	            rs.getInt(4); // cart_amount
+	            
+	            String insert_order = "   insert into orderInfo "
+	                     +      "   values "
+	                     +      "   ( "+ order_id + " , "+ num + ", ?, ?, "
+	                     +      "    'N', sysdate, ?)";
+	            
+	            pstmt2 = con.prepareStatement(insert_order);
+	            pstmt2.setInt(1, rs.getInt(2));
+	            pstmt2.setString(2, rs.getString(3));
+	            pstmt2.setInt(3, rs.getInt(4));
+	            
+	            result = pstmt2.executeUpdate();
+	            
+	         }
+	         
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      } finally {
+	         if (rs != null) {
+	            try {
+	               rs.close();
+	            } catch (SQLException ex) {
+	               ex.printStackTrace();
+	            }
+	         }
+	         if (pstmt2 != null) {
+	            try {
+	               pstmt2.close();
+	            } catch (SQLException e) {
+	               System.out.println(e.getMessage());
+	            }
+	         }
+	         if (pstmt != null) {
+	            try {
+	               pstmt.close();
+	            } catch (SQLException e) {
+	               System.out.println(e.getMessage());
+	            }
+	         }
+	         if (con != null) {
+	            try {
+	               con.close();
+	            } catch (Exception e) {
+	               System.out.println(e.getMessage());
+	            }
+	         }
+	      } // finally 끝
+	      return result;
+	   }
 	
 }
