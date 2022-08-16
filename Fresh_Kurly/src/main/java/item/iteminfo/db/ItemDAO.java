@@ -12,7 +12,6 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import my.mypage.db.Cart;
-import my.mypage.db.OrderInfo;
 
 
 
@@ -494,6 +493,7 @@ public class ItemDAO {
 			
 			while(rs.next()) {
 				Item m = new Item();
+				m.setItem_category(rs.getString("item_category"));
 				m.setItem_name(rs.getString("item_name"));
 				m.setItem_price(rs.getInt("item_price"));
 				m.setItem_image(rs.getString("item_image"));
@@ -656,108 +656,122 @@ public class ItemDAO {
 		}  // finally
 		return list;
 	}
-	
-	public int orderinsert(String member_id) {
+	/*
+	public int orderList(String member_id, int i) {
 		Connection con = null;
-		PreparedStatement pstmt = null, pstmt2 = null;
+		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		int result = 0;
+		String cart_leng;
+		int result=0;
+		try {
+			String odnum = " select (nvl(max(order_number),0)+1) from order ";
+			String length = " select count(*) from cart where member_id = ? ";
+			
+			while(rs.next()) {
+				cart_leng = length;
+			}
+		}
+		
+		return result;
+	}
+	*/
+	public List<Item> getAllList() {
+		List<Item> list = new ArrayList<Item>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		
 		try {
 			con = ds.getConnection();
-			String order_num = " (select nvl(max(order_number),0)+1 from orderinfo) ";
-			pstmt = con.prepareStatement(order_num);
-			rs = pstmt.executeQuery();
-			int num = 0;
-		    if(rs.next()) {
-		    	num = rs.getInt(1);
-		    }
-		    rs.close();
-			pstmt.close();
-		
 			
-			String cart = " select * from cart"
-					+ 	  " where member_id = ? ";
-			
-			String order_id = " (select (nvl(max(order_id),0)+1) from orderinfo) ";
-			
-			
-			pstmt = con.prepareStatement(cart);
-			pstmt.setString(1, member_id);
+			String sql =  "select * from item";
+			System.out.println(sql);
+			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				rs.getInt(2); // item_id;
-				rs.getString(3); // member_id
-				rs.getInt(4); // cart_amount
-				
-				String insert_order = "	insert into orderInfo "
-							+		"	values "
-							+		"	( "+ order_id + " , "+ num + ", ?, ?, "
-							+		"	 'N', sysdate, ?)";
-				
-				pstmt2 = con.prepareStatement(insert_order);
-				pstmt2.setInt(1, rs.getInt(2));
-				pstmt2.setString(2, rs.getString(3));
-				pstmt2.setInt(3, rs.getInt(4));
-				
-				result = pstmt2.executeUpdate();
-				
+				Item m = new Item();
+				m.setItem_name(rs.getString("item_name"));
+				m.setItem_price(rs.getInt("item_price"));
+				m.setItem_image(rs.getString("item_image"));
+				m.setItem_id(rs.getInt("item_id"));
+				list.add(m);
 			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			if (rs != null) {
+			if (pstmt != null)
 				try {
-					rs.close();
+					pstmt.close();
 				} catch (SQLException ex) {
 					ex.printStackTrace();
 				}
-			}
-			if (pstmt2 != null) {
-				try {
-					pstmt2.close();
-				} catch (SQLException e) {
-					System.out.println(e.getMessage());
-				}
-			}
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException e) {
-					System.out.println(e.getMessage());
-				}
-			}
-			if (con != null) {
+			if (con != null)
 				try {
 					con.close();
-				} catch (Exception e) {
-					System.out.println(e.getMessage());
+				} catch (SQLException ex) {
+					ex.printStackTrace();
 				}
-			}
-		} // finally 끝
-		return result;
+		}  // finally
+		return list;
 	}
-	
-	/*
-	 * public int order_number() { // oreder_number 구하기 Connection con = null;
-	 * PreparedStatement pstmt = null; ResultSet rs = null; int result = 0;
-	 * 
-	 * try { con = ds.getConnection();
-	 * 
-	 * String max_sql = "(select nvl(max(order_number),0)+1 from orderinfo)";
-	 * 
-	 * pstmt = con.prepareStatement(max_sql); rs = pstmt.executeQuery();
-	 * 
-	 * while(rs.next()) result = rs.getInt(1);
-	 * 
-	 * } catch (Exception ex) { System.out.println("getListCount() 에러: " + ex); }
-	 * finally { if (rs != null) try { rs.close(); } catch (SQLException ex) {
-	 * ex.printStackTrace(); } if (pstmt != null) try { pstmt.close(); } catch
-	 * (SQLException ex) { ex.printStackTrace(); } if (con != null) try {
-	 * con.close(); } catch (SQLException ex) { ex.printStackTrace(); } } // finally
-	 * return result; }
-	 */
+
+	public List<Item> getAllList(int page, int limit) {
+		List<Item> list = new ArrayList<Item>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = ds.getConnection();
+			
+			String sql = " select * "
+					+ 	 " from (select b.*, rownum rnum "
+					+ 	 " 		 from(select * from item "
+					+ 	 " 			  order by item_id) b "
+					+	 "         	 ) "
+					+ 	 " where rnum>=? and rnum<=? ";
+			
+			pstmt = con.prepareStatement(sql);
+			// 한 페이지당 10개씩 목록인 경우 1페이지, 2페이지, 3페이지, 4페이지 ...
+			
+			int startrow = (page - 1) * limit + 1;
+					// 읽기 시작할 row 번호(1 11 21 31 ...)
+			int endrow = startrow + limit - 1;
+					// 읽을 마지막 row 번호 (10 20 30 40..)
+			
+			pstmt.setInt(1, startrow);
+			pstmt.setInt(2, endrow);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Item m = new Item();
+				m.setItem_id(rs.getInt("item_id"));
+				m.setItem_name(rs.getString("item_name"));
+				m.setItem_category(rs.getString("item_category"));
+				m.setItem_image(rs.getString("item_image"));
+				m.setItem_price(rs.getInt("item_price"));
+				list.add(m);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+		}  // finally
+		return list;
+	}
+
+
 	
 }

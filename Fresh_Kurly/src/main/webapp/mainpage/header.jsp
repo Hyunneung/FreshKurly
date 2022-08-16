@@ -84,6 +84,11 @@
     .panel a:hover{
     	color : #8BC34A;
     }
+    
+    .product img {
+    	width: 258px!important;
+    	height : 283.8px!important;
+    }
 </style>
 
 <!-- 로고, 옆 버튼 부분 -->
@@ -215,7 +220,7 @@
 									<li class="nav-item"><a href="index.jsp"
 										class="nav-link">Home</a></li>
 
-									<li class="nav-item dropdown-colr"><a href="#about"
+									<li class="nav-item dropdown-colr"><a href="show_all_item.item"
 										class="nav-link">전체 카테고리</a>
 										<ul class="dropdown-menu">
 											<li class="nav-item">

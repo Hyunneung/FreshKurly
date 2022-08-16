@@ -8,6 +8,9 @@ create table cart(
 	cart_amount number(10) default 0
 )
 
+alter table cart add constraint member_id
+foreign cart(member_id) references member(member_id) on delete cascade
+
 select * from cart;
 drop table cart;
 

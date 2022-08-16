@@ -69,6 +69,9 @@ public class ItemFrontController extends HttpServlet {
 		case "/show_by_itemName.item":
 			action = new showByItemName();
 			break;
+		case "/show_all_item.item":
+			action = new showAllItem();
+			break;
 		case "/itemOrder.item":
 			action = new ItemOrderAction();
 			break;
@@ -77,6 +80,9 @@ public class ItemFrontController extends HttpServlet {
 			break;
 		case "/ordercartDelete.item":
 			action = new OrdercartDeleteAction();
+			break;
+		case "/mainpage.item":
+			action = new gotoMainpage();
 			break;
 		} // switch end
 		forward = action.execute(request, response);
