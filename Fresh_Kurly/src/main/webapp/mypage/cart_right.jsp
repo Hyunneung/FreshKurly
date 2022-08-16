@@ -51,7 +51,7 @@
 <body>
 	<div>
 		<!-- 배송지 -->
-		<form action="itemOrder.item" method="post" style="width:250px; position: relative; top:100px;"> <!-- 결제기능 하면 결제 폼으로 넘어가게 하기~ -->
+		<form action="itemOrder.item" method="post" style="width:250px; position: relative; top:90px;"> <!-- 결제기능 하면 결제 폼으로 넘어가게 하기~ -->
 			<ul class="list-group">
 				<li class="list-group-item">
 					<div>

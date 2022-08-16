@@ -9,8 +9,6 @@ public class Wish {
 	private String item_name; // 상품명
 	private int item_price; // 상품 단가
 	
-
-	
 	
 	// getter, setter
 	public int getWish_id() {
@@ -49,8 +47,4 @@ public class Wish {
 	public void setItem_price(int item_price) {
 		this.item_price = item_price;
 	}
-	
-	
-	
-	
 }

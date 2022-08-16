@@ -34,6 +34,7 @@ public class MyPageFrontController extends HttpServlet {
 		case "/myOrder.my" : // 마이페이지의 기본페이지는 주문내역 페이지
 			action = new OrderInfoAction();
 			break;
+			
 		// 장바구니	
 		case "/myCart.my" :
 			action = new CartAction();
@@ -77,13 +78,11 @@ public class MyPageFrontController extends HttpServlet {
 		// 개인정보 수정
 		case "/myProfile.my" :
 			action = new ProfileAction();
-			break;
-		// 개인정보 수정 - 비번 확인
-		case "/myProfileCheck.my" :
+			break; 
+		case "/myProfileCheck.my" : // 비번 확인
 			action = new ProfileCheckAction();
-			break;
-		// 개인정보 수정 - 수정 완료	
-		case "/myProfileUpdate.my" :
+			break;	
+		case "/myProfileUpdate.my" : // 수정 완료
 			action = new ProfileUpdateAction();
 			break;	
 			
