@@ -70,14 +70,13 @@ body > div.container > table > tbody > tr > td:nth-child(4) {
 body > div.container > table > tbody > tr > td:nth-child(5) {
 	width: 20%
 }
+
 body > div.container > table > tbody > tr > td:nth-child(6) {
 	width: 15%
 }
 
 
-
-
-
+ 
 
 table caption {
 	caption-side: top;
@@ -182,7 +181,7 @@ td:nth-child(1) {
 								<td>
 									<div>
 
-										<a href="QnaDetailAction.bo?num=${b.qna_number}"> <c:if
+										<a href="QnaDetailAction.ad?num=${b.qna_number}"> <c:if
 												test="${b.qna_subject.length()>=20}">
 												<c:out value="${b.qna_subject.substring(0,20)}..." />
 											</c:if> <c:if test="${b.qna_subject.length()<20}">

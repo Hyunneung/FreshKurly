@@ -7,7 +7,12 @@
 <script src="assets/js/board/noticeview.js"></script>
 <script src="assets/js/board/popper.js"></script>
 <script src="assets/js/board/bootstrap.js"></script>
-
+<link rel="stylesheet" href="assets/css/view.css">
+<style>
+body > div.container > table > tbody > tr:nth-child(5) > td > a:nth-child(1) > button {
+text-align: center;
+}
+</style>
 </head>
 <body>
 <input type = "hidden" id = "loginid" value="${id}" name="loginid">

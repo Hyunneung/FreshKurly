@@ -49,7 +49,7 @@ select.form-control {
 	color: gray;
 }
 
-
+ 
 body > div.container > table > tbody > tr > td:nth-child(1){
 	width: 10%
 }
@@ -73,7 +73,10 @@ body > div.container > table > tbody > tr > td:nth-child(5) {
 body > div.container > table > tbody > tr > td:nth-child(6) {
 	width: 15%
 }
-
+body > div.container > table > tbody > tr > td:nth-child(6) {
+	width: 15%
+}
+ 
 
 table caption {
 	caption-side: top;
@@ -258,6 +261,8 @@ td:nth-child(1) {
 
 			<button type="button" id="write" class="btn btn-info float-right">글쓰기</button>
 	</div>
+	
+	<br>
 	<br>
 	<br>
 	<script src="assets/js/custom.js"></script>
