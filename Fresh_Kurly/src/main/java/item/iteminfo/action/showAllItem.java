@@ -19,7 +19,7 @@ public class showAllItem implements Action {
 		ItemDAO dao = new ItemDAO();
 		
 		int page = 1;
-		int limit = 5;
+		int limit = 8;
 		if (request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
 		}

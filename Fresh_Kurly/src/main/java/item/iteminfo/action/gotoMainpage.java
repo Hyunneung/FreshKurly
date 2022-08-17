@@ -21,7 +21,7 @@ public class gotoMainpage implements Action {
 		
 		List<Item> list1 = null; //과일
 		List<Item> list2 = null; //야채
-		List<Item> list3 = null; //수산/건어물
+		List<Item> list3 = null; //수산 건어물
 		List<Item> list4 = null; //정육
 		
 		response.setContentType("text/html; charset=UTF-8");
