@@ -8,14 +8,6 @@
     #okbtn {background:#28a745; font-weight:bold; font-size:18; color: white;
 			padding-top:10px; padding-bottom:10px; margin:3px;
 			border:0; border-radius: 12px; width:300px; text-align:center}
-		
-	/* padding: 0.5rem 1rem;
-	  	display: inline-block;
-	  	border: none;
-	  	border-radius: 4px;
-	  	
-	  	background: #28a745; */
-		
 </style>
 <body>
 	<div class="col-md-8">
