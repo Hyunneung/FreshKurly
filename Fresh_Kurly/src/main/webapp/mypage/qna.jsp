@@ -31,10 +31,34 @@
 	$(function(){
 		// 문의 삭제 - 문의내역 비밀번호 입력하지 않았을 떼
 		$('form[name="deleteForm"]').submit(function(){
-			if($("#qna_pass").val() == ''){
+			var form = $(this).parent();
+			var qna_number = form.find('input:nth-child(1)'); // 글 번호 .val()
+			var div3 = form.find('div:nth-child(3)');
+			var qna_pass = div3.find( 'input' ); // 글 비밀번호 .val()
+			
+			if( qna_pass.val() == ''){
 				alert('비밀번호를 입력하세요');
-				$("#qna_pass").focus();
+				qna_pass.focus();
 				return false;
+			} else {
+				$.ajax({
+					type : "POST",
+					url: "myQnaDelete.my",
+					data: { "qna_pass": qna_pass.val(), "qna_number":qna_number.val() },
+					success : function(data) {
+						console.log(data);
+						if(data == 'true') { // 글 삭제 성공
+							alert('삭제되었습니다.');
+							location.href="myQna.my";
+						} else {
+							alert('비밀번호가 일치하지 않습니다.');
+							location.href="myQna.my";
+						}
+					}, // success end
+					error : function(error){
+						alert("글 삭제 에러 : " + error);
+					}
+				})
 			}
 		}) // form 제출 end
 	}) // ready end
@@ -110,7 +134,7 @@
 														</c:if>
 														
 														<c:if test="${commOK == '답변대기'}">
-															<form name="deleteForm" action="myQnaDelete.my" method="post">
+															<form name="deleteForm" action="" method="post">
 																<input type="hidden" name="qna_number" id="qna_number" value="${q.qna_number}"> <!-- 삭제할 글의 글번호를 hidden으로 가져온다 -->
 																<div class="modal-header">
 															        <h5 class="modal-title">삭제를 위해 글 비밀번호를 입력해주세요.</h5>
