@@ -6,6 +6,36 @@
 <title>비밀번호 찾기</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="assets/js/member/passwordfind.js"></script> 
+
+<style>
+#request_for_code{
+	background: #8BC34A;
+	font-weight: bold;
+	color: white;
+	border: none;
+	height: 100%;
+	width: 100%;
+}
+
+#request_for_code:hover {
+	background: #f6b553;
+}
+
+#confirm_email_btn{
+	background: #8BC34A;
+	font-weight: bold;
+	color: white;
+	border: none;
+	height: 100%;
+	width: 100%;
+}
+
+#confirm_email_btn:hover {
+	background: #f6b553;
+}
+
+
+</style>
 </head>
 <body>
 

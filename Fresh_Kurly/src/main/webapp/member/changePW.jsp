@@ -40,7 +40,7 @@ display: inline-block;
 <body>
 
 <span>${id_changePW }</span>님의 아이디 변경<hr>
-<form method="post" action="changePassProccess.net" id="changePW">
+<form method="post" action="changePassProccess.net" id="changePW" style="text-align:center">
 <label for="new_password">새로운 비밀번호</label>
 <input type="password" id="new_password" name="new_password">
 <br>

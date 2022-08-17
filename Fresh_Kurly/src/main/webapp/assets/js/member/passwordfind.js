@@ -34,6 +34,7 @@ $(document).ready(function () {
 	$(document).on('click','#confirm_email_btn',function() { // 이메일 인증번호 확인 버튼 클릭
 		if ( $('#confirm_email_ok').val() == $('#save_email_confirm_code').val() ) {
 			alert('인증 성공');
+			location.replace("http://localhost:8088/Fresh_Kurly/login.net");
 			window.open('member/changePW.jsp', '비밀번호 변경', 'width=430, height=250, location=no, status=no, scrollbars=yes');
 		} else {
 			alert('인증번호가 일치하지 않습니다. 다시 입력해주세요.');

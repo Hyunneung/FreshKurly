@@ -7,25 +7,25 @@
 						<div class="col-md-3 text-left">
 							<h3>상품 카테고리</h3>
 							<ul>
-								<li><a href="#">과일</a></li>
-								<li><a href="#">야채</a></li>
-								<li><a href="#">정육/계란</a></li>
-								<li><a href="#">밀키트</a></li>
-								<li><a href="#">냉장/냉동/간편식</a></li>
-								<li><a href="#">통조림</a></li>
-								<li><a href="#">수산/건어물</a></li>
-								<li><a href="#">쌀/잡곡</a></li>
-								<li><a href="#">우유/유제품</a></li>
-								<li><a href="#">간식/떡/빙과</a></li>
-								<li><a href="#">장/양념/소스</a></li>
+								<li><a href="show_by_category.item?category=과일"class="nav-link">과일</a></li>
+								<li><a href="show_by_category.item?category=야채"class="nav-link">야채</a></li>
+								<li><a href="show_by_category.item?category=정육/계란" class="nav-link">정육/계란</a></li>
+								<li><a href="show_by_category.item?category=밀키트" class="nav-link">밀키트</a></li>
+								<li><a href="show_by_category.item?category=냉장/냉동/간편식" class="nav-link">냉장/냉동/간편식</a></li>
+								<li><a href="show_by_category.item?category=통조림" class="nav-link">통조림</a></li>
+								<li><a href="show_by_category.item?category=수산/건어물" class="nav-link">수산/건어물</a></li>
+								<li><a href="show_by_category.item?category=쌀/잡곡" class="nav-link">쌀/잡곡</a></li>
+								<li><a href="show_by_category.item?category=우유/유제품" class="nav-link">우유/유제품</a></li>
+								<li><a href="show_by_category.item?category=간식/떡/빙과" class="nav-link">간식/떡/빙과</a></li>
+								<li><a href="show_by_category.item?category=장/양념/소스" class="nav-link">장/양념/소스</a></li>
 							</ul>
 						</div>
 						
 						<div class="col-md-3 text-left">
 							<h3>게시판</h3>
 							<ul>
-								<li><a href="#">공지사항</a></li>
-								<li><a href="#">상품문의</a></li>
+								<li><a href="NoticeList.bo" class="nav-link">공지사항</a></li>
+								<li><a href="QnaList.bo" class="nav-link">상품 문의</a></li>
 							</ul>
 						</div>
 						
@@ -33,9 +33,10 @@
 							<h3>Menu</h3>
 							<ul>
 								<li><a href="index.jsp">홈</a></li>
-								<li><a href="">공지사항</a></li>
-								<li><a href="">상품문의</a></li>
-								<li><a href="">전체 상품</a></li>
+								<li><a href="NoticeList.bo" class="nav-link">공지사항</a></li>
+								<li><a href="QnaList.bo" class="nav-link">상품 문의</a></li>
+								<li><a href="show_all_item.item"
+										class="nav-link">전체 카테고리</a></li>
 							</ul>
 						</div>
 						<div class="col-md-3 text-left">
