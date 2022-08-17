@@ -23,7 +23,7 @@
 						<table class="table" frame=void>
 							<thead>
 								<tr>
-									<th colspan="3">주문번호 ${o.order_number} </th>
+									<th colspan="3"><font size="5pt">주문번호 ${o.order_number}</font></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -69,7 +69,7 @@
 							<tfoot>
 								<tr>
 									<td colspan="3">
-										<strong>총 주문금액 <fmt:formatNumber value="${sum}" pattern="#,###"/>원</strong>
+										<font size="4pt"><strong>총 주문금액 <fmt:formatNumber value="${sum}" pattern="#,###"/>원</strong></font>
 									</td>
 								</tr>
 							</tfoot>
