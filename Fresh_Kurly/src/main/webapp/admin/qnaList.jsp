@@ -51,25 +51,33 @@ select.form-control {
 
 
 body > div.container > table > tbody > tr > td:nth-child(1){
-	width: 5%
+	width: 10%
 }
 
 body > div.container > table > tbody > tr > td:nth-child(2)
 {
-	width: 40%
+	width: 25%
 }
 
 body > div.container > table > tbody > tr > td:nth-child(3) {
-	width: 10%
+	width: 15%
 }
 
 body > div.container > table > tbody > tr > td:nth-child(4) {
-	width: 17%
+	width: 10%
 }
 
-body>div>table>thead>tr:nth-child(2)>th:nth-child(5) {
-	width: 11%
+body > div.container > table > tbody > tr > td:nth-child(5) {
+	width: 20%
 }
+body > div.container > table > tbody > tr > td:nth-child(6) {
+	width: 15%
+}
+
+
+
+
+
 
 table caption {
 	caption-side: top;
@@ -115,6 +123,12 @@ td:nth-child(1) {
 .input-group {
 	margin-bottom: 3em
 }
+.answerred {
+	color : red
+}
+.answerblue {
+	color : blue
+}
 </style>
 
 <script src="assets/js/admin/qnalist.js"></script>
@@ -142,12 +156,13 @@ td:nth-child(1) {
 					<caption style="font-weight: bold">문의하기 게시판</caption>
 					<thead>
 						<tr>
-							<th colspan="3">문의하기 목록</th>
-							<th colspan="2"><font size=3>글 개수 : ${listcount}</font></th>
+							<th colspan="4">문의하기 목록</th>
+							<th colspan="3"><font size=3>글 개수 : ${listcount}</font></th>
 						</tr>
 						<tr>
 							<th><div>번호</div></th>
 							<th><div>제목</div></th>
+							<th><div>답변유무</div></th>
 							<th><div>작성자</div></th>
 							<th><div>날짜</div></th>
 							<th><div>조회수</div></th>
@@ -161,28 +176,30 @@ td:nth-child(1) {
 						<c:forEach var="b" items="${qnalist}">
 							<tr>
 								<td>
-									<%-- 번호 --%> <c:out value="${num}" /> <%-- num 출력 --%> <c:set
-										var="num" value="${num-1}" /> <%-- num=num-1; 의미 --%>
+									 <c:out value="${num}" /> 
+									  <c:set var="num" value="${num-1}" />
 								</td>
 								<td>
-									<%-- 제목 --%>
 									<div>
 
-										<a href="QnaDetailAction.ad?num=${b.qna_number}"> <c:if
+										<a href="QnaDetailAction.bo?num=${b.qna_number}"> <c:if
 												test="${b.qna_subject.length()>=20}">
 												<c:out value="${b.qna_subject.substring(0,20)}..." />
 											</c:if> <c:if test="${b.qna_subject.length()<20}">
 												<c:out value="${b.qna_subject}" />
 											</c:if>
 										</a>
-										<c:if test="${b.cnt==0 }">
-											<c:out value="[답변대기중]"/>
-										</c:if> 
-										<c:if test="${b.cnt>=1 }">
-											<c:out value="[답변완료]"/>
-										</c:if> 
-									</div>
+										</div>
 								</td>
+								<td>
+										<c:if test="${b.cnt==0 }">
+											<div class="answerred"><c:out value="[답변대기중]"/></div>
+										</c:if> 
+										<c:if test="${b.cnt!=0 }">
+											<div class="answerblue"><c:out value="[답변완료]"/></div>
+										</c:if>
+								</td>		 
+									
 								<td><div>${b.qna_name}</div></td>
 								<td><div>${b.qna_reg_date}</div></td>
 								<td><div>${b.qna_view}</div></td>

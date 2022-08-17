@@ -21,7 +21,7 @@ public class MemberDeleteAction implements Action {
 		int result = mdao.delete(id);
 		if(result == 1) {
 			out.println("<script>");
-			out.println("alert(''삭제 성공입니다.')");
+			out.println("alert('삭제 성공입니다.')");
 			out.println("location.href='MemberList.ad'");
 			out.println("</script>");
 		}else {
