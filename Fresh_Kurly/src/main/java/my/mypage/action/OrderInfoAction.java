@@ -23,9 +23,12 @@ public class OrderInfoAction implements Action {
 		
 		OrderInfoDAO dao = new OrderInfoDAO();
 		int listcount = dao.getOrderListCount(id);
-		List<OrderInfo> list = dao.getOrderList(id);
 		request.setAttribute("listcount", listcount); // 주문내역 수
+		List<OrderInfo> list = dao.getOrderList(id);
 		request.setAttribute("orderlist", list); // 주문내역list를 orderlist라는 속성명으로 저장
+		List<OrderInfo> orderNumber = dao.getOrderNumber(id);
+		request.setAttribute("orderNumber", orderNumber); // 주문번호를 order_number라는 속성명으로 저장
+		
 		
 		forward.setRedirect(false); // 주소 변경 없이 보낸다
 		forward.setPath("mypage/myPage.jsp");

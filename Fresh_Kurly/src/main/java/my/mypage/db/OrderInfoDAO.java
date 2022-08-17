@@ -141,4 +141,59 @@ public class OrderInfoDAO {
 		} // finally 끝
 		return list;
 	} // getOrderList() end
+
+
+	// 주문번호 구하기
+	public List<OrderInfo> getOrderNumber(String id) {
+		List<OrderInfo> list = new ArrayList<OrderInfo>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = ds.getConnection();
+
+			String sql = "select distinct order_number "
+					   + "from orderInfo "
+					   + "where member_id = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				int order_number = rs.getInt("order_number");
+				OrderInfo oi = new OrderInfo();
+				oi.setOrder_number(order_number);
+				list.add(oi);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
+			}
+		} // finally 끝
+		return list;
+	} // getOrderNumber(String id) end
+	
+	
 }
