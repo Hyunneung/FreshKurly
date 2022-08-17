@@ -95,6 +95,7 @@
 		
 	</div><%-- comment-area end --%>
 </div><%-- class="container" end --%>
+<br>
 <script src="assets/js/custom.js"></script>
 	<footer id="footer">  
 		<jsp:include page="../mainpage/footer.jsp"/>
