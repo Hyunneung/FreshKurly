@@ -64,15 +64,16 @@ body > div.container > table > tbody > tr > td:nth-child(3) {
 }
 
 body > div.container > table > tbody > tr > td:nth-child(4) {
-	width: 15%
+	width: 10%
 }
 
 body > div.container > table > tbody > tr > td:nth-child(5) {
-	width: 15%
-}
-body > div.container > table > tbody > tr > td:nth-child(6) {
 	width: 20%
 }
+body > div.container > table > tbody > tr > td:nth-child(6) {
+	width: 15%
+}
+
 
 table caption {
 	caption-side: top;
