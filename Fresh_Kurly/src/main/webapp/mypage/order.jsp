@@ -33,7 +33,7 @@
 										<tr style="border-bottom: hidden;">
 											<td rowspan="3">
 												<a href="itemInfo.item?item_id=${ol.item_id}"> 
-													<img src="itemupload/${ol.item_image}" style="width:80px; height:80px">
+													<img src="itemupload/${ol.item_image}" style="width:120px; height:120px">
 												</a>
 											</td>
 											<td>

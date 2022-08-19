@@ -108,7 +108,6 @@
 									<input type="text" id="commOK" value="${commOK}" readonly>
 								</td>
 								<td> <!-- 문의 삭제 -->
-									<!-- <button type="button" id="deletebtn">삭제</button> -->
 									<c:if test="${q.qna_name == id || id == 'admin'}">
 										<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 										<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -134,7 +133,7 @@
 														</c:if>
 														
 														<c:if test="${commOK == '답변대기'}">
-															<form name="deleteForm" action="" method="post">
+															<form name="deleteForm" method="post">
 																<input type="hidden" name="qna_number" id="qna_number" value="${q.qna_number}"> <!-- 삭제할 글의 글번호를 hidden으로 가져온다 -->
 																<div class="modal-header">
 															        <h5 class="modal-title">삭제를 위해 글 비밀번호를 입력해주세요.</h5>
