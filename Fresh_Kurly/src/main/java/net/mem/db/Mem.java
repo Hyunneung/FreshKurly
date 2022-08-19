@@ -1,6 +1,6 @@
 package net.mem.db;
 
-// MEMBER Å×ÀÌºí ÀÚ¹Ùºó
+// MEMBER ï¿½ï¿½ï¿½Ìºï¿½ ï¿½Ú¹Ùºï¿½
 public class Mem {
 	private String member_id;
 	private String member_pass;

@@ -97,7 +97,7 @@
 								</td>
 								<td> <!-- 상품이미지 -->
 									<a href="itemInfo.item?item_id=${w.item_id}">
-										<img src="itemupload/${w.item_image}" style="width:80px; height:80px">
+										<img src="itemupload/${w.item_image}" style="width:100px; height:100px">
 									</a>
 								</td>
 								<td> <!-- 상품명 -->
