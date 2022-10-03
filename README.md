@@ -30,5 +30,5 @@
 
 ---
 ## Database ERD
-![image](https://user-images.githubusercontent.com/104151569/193615666-6aa9f7e4-ee59-42e1-97f4-6d152276edf9.png)
+![image](https://user-images.githubusercontent.com/104151569/193616223-247a3400-48a6-415b-b716-68ee9c2bc643.png)
 
