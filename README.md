@@ -13,3 +13,11 @@
 - Editer : Eclipse
 - Database : SQL Developer
 - Team Collaboration Tool : GitHub, Gather, Microsoft 365
+
+---
+## 사용기술
+- Back-end
+ -Language : Java11, Oracle SQL
+ -Was : Apache Tomcat
+
+- Front-end
