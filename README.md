@@ -18,8 +18,8 @@
 
 ---
 ## 사용기술
-- Back-end  
-  - Language : Java11, Oracle SQL  
- -Was : Apache Tomcat
+- Back-end
+  - Language : Java11, Oracle SQL
+  - Was : Apache Tomcat
 
 - Front-end
