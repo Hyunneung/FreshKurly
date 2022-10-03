@@ -6,6 +6,7 @@
 - 인원 : 4명
 - 개발 기간 : 2022.08.03 ~ 2022.08.17 (14일)
 
+
 ---
 ## 개발환경
 - OS : Window 10
@@ -14,10 +15,11 @@
 - Database : SQL Developer
 - Team Collaboration Tool : GitHub, Gather, Microsoft 365
 
+
 ---
 ## 사용기술
-- Back-end
- -Language : Java11, Oracle SQL
- -Was : Apache Tomcat
+- Back-end  
+ - Language : Java11, Oracle SQL  
+ - Was : Apache Tomcat
 
 - Front-end
