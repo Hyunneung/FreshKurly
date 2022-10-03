@@ -33,5 +33,5 @@ public class MemberDeleteAction implements Action {
 		out.close();
 		return null;
 		
-	}
+	}  
 }

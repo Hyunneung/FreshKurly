@@ -14,7 +14,7 @@ import admin.adminpage.db.NoticeDAO;
 public class NoticeAddAction implements Action {
 	public ActionForward execute(HttpServletRequest request, 
 			HttpServletResponse response) throws ServletException, IOException {
-	   
+	    
 		NoticeDAO noticedao 	 =new NoticeDAO();
 		NoticeBean noticedata  	 =new NoticeBean();
 		ActionForward forward    =new ActionForward();
