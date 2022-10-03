@@ -63,7 +63,7 @@
 - 이메일
 - 휴대폰
 - 우편번호
-![image](https://user-images.githubusercontent.com/104151569/193631039-0de1ece8-cf71-472b-85df-475085cce5d9.png)
+![image](https://user-images.githubusercontent.com/104151569/193632450-23ba5224-9f1c-4d4b-8d56-f0b216186f97.png)
 - 성별
 - 이용약관동의
 
