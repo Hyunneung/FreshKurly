@@ -49,6 +49,10 @@
 ## 화면
 ### 1. 회원가입, 로그인, 로그아웃
 #### 1-1. 회원가입
+![image](https://user-images.githubusercontent.com/104151569/193630718-d81d38e7-9200-40b6-8111-ffb10aeea9f4.png)
+![image](https://user-images.githubusercontent.com/104151569/193630739-2f010916-b23f-4fbe-86c4-41cce2a99730.png)
+![image](https://user-images.githubusercontent.com/104151569/193630747-0a418ff3-8d24-48ff-b37a-2821d4f2a876.png)
+
 
 #### 1-2. 로그인
 
