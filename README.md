@@ -49,11 +49,11 @@
 ## 화면
 ### 1. 로그인, 로그아웃, 회원가입
 #### 1-1. 로그인
-###### 일반 로그인
+##### 1-1-1 일반 로그인
 ![image](https://user-images.githubusercontent.com/104151569/193631510-1372d009-b335-4389-87f1-a28bc1623d07.png)
-###### 네이버 소셜 로그인
+##### 1-1-2 네이버 소셜 로그인
 ![image](https://user-images.githubusercontent.com/104151569/193986106-5639413b-b8e8-4bef-b366-88309c06719a.png)
-###### 카카오 소셜 로그인
+##### 1-1-3 카카오 소셜 로그인
 ![image](https://user-images.githubusercontent.com/104151569/193986177-3727394f-8588-4f8c-8192-707e5c322bce.png)
 
 #### 1-2. 로그아웃
