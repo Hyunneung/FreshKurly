@@ -18,9 +18,9 @@
 </header>
 	<section id="check-out">
 		<main class="tb-mt-pd">
-			<div class="container wow fadeIn">
+			<div class="container">
 				<div class="row">
-					<div class="col-md-8 tb-left">
+					<div class="col-md-8">
 						<div class="card">
 							<!--form -->
 							<form name="joinform" action="joinProcess.net" method="post" class="card-body">
