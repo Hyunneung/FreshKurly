@@ -60,21 +60,22 @@
 
 #### 1-3. 회원가입
 ![image](https://user-images.githubusercontent.com/104151569/193631006-ecaedf53-dab6-4c09-a855-80ca570773f1.png)
-##### &nbsp;● 아이디<br>
+![image](https://user-images.githubusercontent.com/104151569/193631026-b375af07-046c-43d8-8e1d-9bfb123ca040.png)
+![image](https://user-images.githubusercontent.com/104151569/193632450-23ba5224-9f1c-4d4b-8d56-f0b216186f97.png)
+
+##### &nbsp;(1) 아이디<br>
 ##### &nbsp;&nbsp;&nbsp;① javascript 정규표현식 활용한 형식검사<br>
   ![image](https://user-images.githubusercontent.com/104151569/193986819-06ed56f6-fae3-4107-8f5a-833229bc5fe0.png)<br>
 ##### &nbsp;&nbsp;&nbsp;② ajax, JDBC 활용한 ID 중복검사<br>
   ![image](https://user-images.githubusercontent.com/104151569/193987133-e0250fac-fba9-4e1c-a482-a60217637d29.png)
   ![image](https://user-images.githubusercontent.com/104151569/193987138-353e9e16-7499-445a-a088-fcae6de89f81.png)
 
-- 비밀번호, 비밀번호 확인
+##### &nbsp;(2) 비밀번호, 비밀번호 확인
 - 이름
-![image](https://user-images.githubusercontent.com/104151569/193631026-b375af07-046c-43d8-8e1d-9bfb123ca040.png)
 - 주민번호
 - 이메일
 - 휴대폰
 - 우편번호
-![image](https://user-images.githubusercontent.com/104151569/193632450-23ba5224-9f1c-4d4b-8d56-f0b216186f97.png)
 - 성별
 - 이용약관동의
 
