@@ -60,7 +60,7 @@
 
 #### 1-3. 회원가입
 ![image](https://user-images.githubusercontent.com/104151569/193631006-ecaedf53-dab6-4c09-a855-80ca570773f1.png)
-##### - 아이디<br>
+##### &nbsp;● 아이디<br>
 #####   ① javascript 정규표현식 활용한 형식검사<br>
   ![image](https://user-images.githubusercontent.com/104151569/193986819-06ed56f6-fae3-4107-8f5a-833229bc5fe0.png)<br>
   ② ajax, JDBC 활용한 ID 중복검사<br>
