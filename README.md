@@ -46,7 +46,7 @@
 ![image](https://user-images.githubusercontent.com/104151569/193616223-247a3400-48a6-415b-b716-68ee9c2bc643.png)
 
 ---
-## 화면
+## 화면 및 사용기술 설명
 ### 1. 로그인, 로그아웃, 회원가입
 #### 1-1. 로그인
 ##### 1-1-1 일반 로그인
@@ -61,6 +61,12 @@
 #### 1-3. 회원가입
 ![image](https://user-images.githubusercontent.com/104151569/193631006-ecaedf53-dab6-4c09-a855-80ca570773f1.png)
 - 아이디
+  ① javascript 정규표현식 활용한 형식검사
+  ![image](https://user-images.githubusercontent.com/104151569/193986819-06ed56f6-fae3-4107-8f5a-833229bc5fe0.png)
+  ② ajax, JDBC 활용한 ID 중복검사
+  ![image](https://user-images.githubusercontent.com/104151569/193987133-e0250fac-fba9-4e1c-a482-a60217637d29.png)
+  ![image](https://user-images.githubusercontent.com/104151569/193987138-353e9e16-7499-445a-a088-fcae6de89f81.png)
+
 - 비밀번호, 비밀번호 확인
 - 이름
 ![image](https://user-images.githubusercontent.com/104151569/193631026-b375af07-046c-43d8-8e1d-9bfb123ca040.png)
