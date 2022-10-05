@@ -104,7 +104,7 @@
 									${w.item_name}
 								</td>
 								<td> <!-- 상품가격 -->
-									<input type="text" name="item_price" id="item_price" value="<fmt:formatNumber value="${w.item_price}" pattern="#,###"/>" readonly>
+									<input type="text" name="item_price" id="item_price" value="<fmt:formatNumber value="${w.item_price}" pattern="#,###"/>" readonly>원
 								</td>
 								<td> <!-- 찜한상품 장바구니 담기/삭제 버튼 -->
 									<input type="button" name="addbtn" id="addbtn" value="담기"><br>
