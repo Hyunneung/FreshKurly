@@ -55,8 +55,10 @@
 ##### &nbsp;&nbsp;&nbsp;① Javascript(jQuery), JDBC 활용한 비밀번호 확인<br>
   ![image](https://user-images.githubusercontent.com/104151569/193631510-1372d009-b335-4389-87f1-a28bc1623d07.png)
 ##### 1-1-2 네이버 소셜 로그인
+##### &nbsp;&nbsp;&nbsp;① Naver Login API, JDBC 활용한 소셜 회원가입 및 로그인<br>
   ![image](https://user-images.githubusercontent.com/104151569/193986106-5639413b-b8e8-4bef-b366-88309c06719a.png)
 ##### 1-1-3 카카오 소셜 로그인
+##### &nbsp;&nbsp;&nbsp;① Kakao Login API, JDBC 활용한 소셜 회원가입 및 로그인<br>
   ![image](https://user-images.githubusercontent.com/104151569/193986177-3727394f-8588-4f8c-8192-707e5c322bce.png)
 
 #### 1-2. 로그아웃
@@ -126,6 +128,7 @@
 ##### &nbsp;&nbsp;&nbsp;① 게시판 페이징 처리<br>
   ![image](https://user-images.githubusercontent.com/104151569/193997066-62925298-f81c-4c50-9e83-baf4eb90bf9b.png)
 ##### &nbsp;&nbsp;&nbsp;② JSTL core 라이브러리, 모달 활용한 답변 여부 구현<br>
+  ![image](https://user-images.githubusercontent.com/104151569/193999007-75a1ea44-5cae-432d-b08d-8043c908362d.png)
 ##### &nbsp;&nbsp;&nbsp;③ Javascript(jQuery), Ajax, JDBC 활용한 답변 여부에 따른 삭제<br>  
   ![image](https://user-images.githubusercontent.com/104151569/193997477-eb3390a5-6f60-4c24-b580-f50f7b77120c.png)
   ![image](https://user-images.githubusercontent.com/104151569/193997570-6b2aa74c-1bd8-471d-bd7e-a3491dd8d12d.png)
