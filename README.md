@@ -9,18 +9,20 @@
 ---
 ## 맡은 기능
 ### 1. 로그인, 로그아웃, 회원가입
-  - 회원가입시 이메일 인증
+  - 회원가입 시 이메일 인증
   - 소셜 회원가입, 로그인 (카카오, 네이버)
-### 2. 주문내역
+### 2. 마이페이지
+#### 2-1. 주문내역
   - 조회
-### 3. 장바구니
-  - CRUD(생성, 조회, 갱신, 삭제)
-### 4. 찜한상품
-  - CRUD(생성, 조회, 갱신, 삭제)
-### 5. 게시판
+#### 2-2. 장바구니
+  - CRUD(생성, 조회, 수정, 삭제)
+#### 2-3. 찜한상품
+  - CRUD(생성, 조회, 수정, 삭제)
+#### 2-4. 게시판
   - 조회, 삭제
   - 페이지네이션
-### 6. 개인정보 수정
+#### 2-5. 개인정보 수정
+  - 필수 데이터 자동 입력
 
 ---
 ## 개발환경
@@ -106,13 +108,14 @@
 
 
 <br><br>
-### 2. 주문내역
+### 2. 주문내역<br>
+### 2-1. 주문내역
 #### &nbsp;&nbsp;&nbsp;① JSTL core 라이브러리, fmt 라이브러리 활용한 날짜별 금액 산정<br>
 #### &nbsp;&nbsp;&nbsp;② JDBC join 쿼리 활용한 데이터 조회<br>
   ![image](https://user-images.githubusercontent.com/104151569/193992649-3fee230f-6897-4561-b456-4dec7d3c0501.png)
 
 <br><br>
-### 3. 장바구니
+### 2-2. 장바구니
 #### &nbsp;&nbsp;&nbsp;① JSTL core 라이브러리, fmt 라이브러리 활용한 조건부 무료배송 및 금액 산정<br>
 #### &nbsp;&nbsp;&nbsp;② Ajax, JDBC 활용한 상품 수량 변경 및 삭제<br>  
   ![image](https://user-images.githubusercontent.com/104151569/193993451-b4bc5691-f77b-44d1-977d-21b587ea3a9a.png)
@@ -123,7 +126,7 @@
 
 
 <br><br>
-### 4. 찜한상품
+### 2-3. 찜한상품
 #### &nbsp;&nbsp;&nbsp;① Ajax, JDBC 활용한 상품 중복 검사 및 삭제<br>  
   ![image](https://user-images.githubusercontent.com/104151569/193995736-56c074d6-83e9-41a0-9727-0f3ad8d0f2c8.png)
 #### &nbsp;&nbsp;&nbsp;② Ajax, JDBC 활용한 상품 중복 검사 및 추가<br>  
@@ -132,7 +135,7 @@
 
 
 <br><br>
-### 5. 게시판
+### 2-4. 게시판
 #### &nbsp;&nbsp;&nbsp;① 게시판 페이징 처리<br>
   ![image](https://user-images.githubusercontent.com/104151569/193997066-62925298-f81c-4c50-9e83-baf4eb90bf9b.png)
 #### &nbsp;&nbsp;&nbsp;② JSTL core 라이브러리, 모달 활용한 답변 여부 구현<br>
@@ -142,7 +145,7 @@
   ![image](https://user-images.githubusercontent.com/104151569/193997570-6b2aa74c-1bd8-471d-bd7e-a3491dd8d12d.png)
 
 <br><br>
-### 6. 개인정보 수정
+### 2-5. 개인정보 수정
 #### &nbsp;&nbsp;&nbsp;① Javascript(jQuery), JDBC 활용한 비밀번호 확인<br>  
   ![image](https://user-images.githubusercontent.com/104151569/193998137-c15d6169-8965-40aa-b847-51b5af4f8d91.png)
   ![image](https://user-images.githubusercontent.com/104151569/193998743-1bb71b4c-cc25-4b94-aef0-49f9a49ed838.png)
