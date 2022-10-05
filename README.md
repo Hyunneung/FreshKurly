@@ -56,10 +56,10 @@
   ![image](https://user-images.githubusercontent.com/104151569/193631510-1372d009-b335-4389-87f1-a28bc1623d07.png)
 #### 1-1-2 네이버 소셜 로그인
 #### &nbsp;&nbsp;&nbsp;① Naver Login API, JDBC 활용한 소셜 회원가입 및 로그인<br>
-  ![image](https://user-images.githubusercontent.com/104151569/193986106-5639413b-b8e8-4bef-b366-88309c06719a.png)
+  ![image](https://user-images.githubusercontent.com/104151569/193999911-902c4b16-8a2e-49c3-acfc-d1c83bfca06e.png)
 #### 1-1-3 카카오 소셜 로그인
 #### &nbsp;&nbsp;&nbsp;① Kakao Login API, JDBC 활용한 소셜 회원가입 및 로그인<br>
-  ![image](https://user-images.githubusercontent.com/104151569/193986177-3727394f-8588-4f8c-8192-707e5c322bce.png)
+  ![image](https://user-images.githubusercontent.com/104151569/193999990-2e0e462e-84a2-44e4-a920-c4832e05bfce.png)
 
 ### 1-2. 로그아웃
 
