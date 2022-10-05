@@ -60,10 +60,10 @@
 
 #### 1-3. 회원가입
 ![image](https://user-images.githubusercontent.com/104151569/193631006-ecaedf53-dab6-4c09-a855-80ca570773f1.png)
-- 아이디
-  ① javascript 정규표현식 활용한 형식검사
-  ![image](https://user-images.githubusercontent.com/104151569/193986819-06ed56f6-fae3-4107-8f5a-833229bc5fe0.png)
-  ② ajax, JDBC 활용한 ID 중복검사
+- 아이디<br>
+  ① javascript 정규표현식 활용한 형식검사<br>
+  ![image](https://user-images.githubusercontent.com/104151569/193986819-06ed56f6-fae3-4107-8f5a-833229bc5fe0.png)<br>
+  ② ajax, JDBC 활용한 ID 중복검사<br>
   ![image](https://user-images.githubusercontent.com/104151569/193987133-e0250fac-fba9-4e1c-a482-a60217637d29.png)
   ![image](https://user-images.githubusercontent.com/104151569/193987138-353e9e16-7499-445a-a088-fcae6de89f81.png)
 
