@@ -109,7 +109,7 @@
 
 
 <br><br>
-### 2. <br>
+### 2. 마이페이지<br>
 ### 2-1. 주문내역
 #### &nbsp;&nbsp;&nbsp;① JSTL core 라이브러리, fmt 라이브러리 활용한 날짜별 금액 산정<br>
 #### &nbsp;&nbsp;&nbsp;② JDBC join 쿼리 활용한 데이터 조회<br>
