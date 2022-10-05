@@ -52,11 +52,12 @@
 ### 1. 로그인, 로그아웃, 회원가입
 #### 1-1. 로그인
 ##### 1-1-1 일반 로그인
-![image](https://user-images.githubusercontent.com/104151569/193631510-1372d009-b335-4389-87f1-a28bc1623d07.png)
+##### &nbsp;&nbsp;&nbsp;① Javascript(jQuery), JDBC 활용한 비밀번호 확인<br>
+  ![image](https://user-images.githubusercontent.com/104151569/193631510-1372d009-b335-4389-87f1-a28bc1623d07.png)
 ##### 1-1-2 네이버 소셜 로그인
-![image](https://user-images.githubusercontent.com/104151569/193986106-5639413b-b8e8-4bef-b366-88309c06719a.png)
+  ![image](https://user-images.githubusercontent.com/104151569/193986106-5639413b-b8e8-4bef-b366-88309c06719a.png)
 ##### 1-1-3 카카오 소셜 로그인
-![image](https://user-images.githubusercontent.com/104151569/193986177-3727394f-8588-4f8c-8192-707e5c322bce.png)
+  ![image](https://user-images.githubusercontent.com/104151569/193986177-3727394f-8588-4f8c-8192-707e5c322bce.png)
 
 #### 1-2. 로그아웃
 
@@ -124,14 +125,30 @@
 #### 5. 게시판
 ##### &nbsp;&nbsp;&nbsp;① 게시판 페이징 처리<br>
   ![image](https://user-images.githubusercontent.com/104151569/193997066-62925298-f81c-4c50-9e83-baf4eb90bf9b.png)
-##### &nbsp;&nbsp;&nbsp;② JSTL core 라이브러리 활용한 답변 여부 구현 및 삭제 여부 결정<br>  
+##### &nbsp;&nbsp;&nbsp;② JSTL core 라이브러리, 모달 활용한 답변 여부 구현<br>
+##### &nbsp;&nbsp;&nbsp;③ Javascript(jQuery), Ajax, JDBC 활용한 답변 여부에 따른 삭제<br>  
   ![image](https://user-images.githubusercontent.com/104151569/193997477-eb3390a5-6f60-4c24-b580-f50f7b77120c.png)
   ![image](https://user-images.githubusercontent.com/104151569/193997570-6b2aa74c-1bd8-471d-bd7e-a3491dd8d12d.png)
 
-
-
 <br><br>
 #### 6. 개인정보 수정
+##### &nbsp;&nbsp;&nbsp;① Javascript(jQuery), JDBC 활용한 비밀번호 확인<br>  
+  ![image](https://user-images.githubusercontent.com/104151569/193998137-c15d6169-8965-40aa-b847-51b5af4f8d91.png)
+  ![image](https://user-images.githubusercontent.com/104151569/193998743-1bb71b4c-cc25-4b94-aef0-49f9a49ed838.png)
+##### &nbsp;(1) 비밀번호, 비밀번호 확인<br>
+##### &nbsp;&nbsp;&nbsp;① Javascript(jQuery) 정규표현식 활용한 형식 검사<br>
+##### &nbsp;&nbsp;&nbsp;② Javascript(jQuery) 활용한 비밀번호 보기/숨기기<br>
+
+##### &nbsp;(2) 이메일<br>
+##### &nbsp;&nbsp;&nbsp;① Javascript(jQuery) 정규표현식 활용한 형식 검사<br>
+##### &nbsp;&nbsp;&nbsp;② Ajax, JDBC 활용한 ID 중복 검사<br>
+##### &nbsp;&nbsp;&nbsp;③ JavaMail API 활용한 이메일 인증<br>
+
+##### &nbsp;(3) 휴대폰<br>
+##### &nbsp;&nbsp;&nbsp;① Ajax, JDBC 활용한 ID 중복 검사<br>
+
+##### &nbsp;(4) 우편번호<br>
+##### &nbsp;&nbsp;&nbsp;① 다음 우편번호 API 활용한 우편번호, 주소 검색<br>
 
 
 
