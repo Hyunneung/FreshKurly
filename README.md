@@ -64,20 +64,39 @@
 ![image](https://user-images.githubusercontent.com/104151569/193632450-23ba5224-9f1c-4d4b-8d56-f0b216186f97.png)
 
 ##### &nbsp;(1) 아이디<br>
-##### &nbsp;&nbsp;&nbsp;① javascript 정규표현식 활용한 형식검사<br>
+##### &nbsp;&nbsp;&nbsp;① Javascript(jQuery) 정규표현식 활용한 형식 검사<br>
   ![image](https://user-images.githubusercontent.com/104151569/193986819-06ed56f6-fae3-4107-8f5a-833229bc5fe0.png)<br>
-##### &nbsp;&nbsp;&nbsp;② ajax, JDBC 활용한 ID 중복검사<br>
+##### &nbsp;&nbsp;&nbsp;② Ajax, JDBC 활용한 ID 중복 검사<br>
   ![image](https://user-images.githubusercontent.com/104151569/193987133-e0250fac-fba9-4e1c-a482-a60217637d29.png)
   ![image](https://user-images.githubusercontent.com/104151569/193987138-353e9e16-7499-445a-a088-fcae6de89f81.png)
 
-##### &nbsp;(2) 비밀번호, 비밀번호 확인
-- 이름
-- 주민번호
-- 이메일
-- 휴대폰
-- 우편번호
-- 성별
-- 이용약관동의
+##### &nbsp;(2) 비밀번호, 비밀번호 확인<br>
+##### &nbsp;&nbsp;&nbsp;① Javascript(jQuery) 정규표현식 활용한 형식 검사<br>
+  ![image](https://user-images.githubusercontent.com/104151569/193989179-8e9ae8e5-4db5-47ee-9ca7-3b9864af9b82.png)
+##### &nbsp;&nbsp;&nbsp;② Javascript(jQuery) 활용한 비밀번호 보기/숨기기<br>
+  ![image](https://user-images.githubusercontent.com/104151569/193989198-96255742-cb42-43fe-9d4d-0cacabd23408.png)
+
+##### &nbsp;(3) 주민번호<br>
+##### &nbsp;&nbsp;&nbsp;① Javascript(jQuery) 정규표현식 활용한 형식 검사 및 성별 자동 선택<br>
+  ![image](https://user-images.githubusercontent.com/104151569/193989791-e949221e-384c-4cf3-bfc1-a257d34a805f.png)
+  ![image](https://user-images.githubusercontent.com/104151569/193990595-30dfdb50-f34a-48ee-af3e-119c687f3d03.png)
+
+##### &nbsp;(3) 이메일<br>
+##### &nbsp;&nbsp;&nbsp;① Javascript(jQuery) 정규표현식 활용한 형식 검사<br>
+  ![image](https://user-images.githubusercontent.com/104151569/193990266-0e083ce3-213e-4b2c-8c29-020885930aa4.png)
+##### &nbsp;&nbsp;&nbsp;② Ajax, JDBC 활용한 ID 중복 검사<br>
+  ![image](https://user-images.githubusercontent.com/104151569/193990255-4d3e93b0-cc3b-4373-bab1-a2e13147c2a5.png)
+##### &nbsp;&nbsp;&nbsp;③ JavaMail API 활용한 이메일 인증<br>
+  ![image](https://user-images.githubusercontent.com/104151569/193990332-03c82bdf-3311-4a70-a88b-7b173e9927cb.png)
+
+##### &nbsp;(4) 휴대폰<br>
+
+##### &nbsp;(5) 우편번호<br>
+
+##### &nbsp;(6) 이용약관동의<br>
+
+##### &nbsp;(4) 휴대폰<br>
+
 
 <br><br>
 #### 2. 장바구니
