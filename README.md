@@ -99,7 +99,7 @@
   ![image](https://user-images.githubusercontent.com/104151569/193990266-0e083ce3-213e-4b2c-8c29-020885930aa4.png)
 #### &nbsp;&nbsp;&nbsp;② Ajax, JDBC 활용한 ID 중복 검사<br>
   ![image](https://user-images.githubusercontent.com/104151569/193990255-4d3e93b0-cc3b-4373-bab1-a2e13147c2a5.png)
-#### &nbsp;&nbsp;&nbsp;③ JavaMail API 활용한 이메일 인증<br>
+#### &nbsp;&nbsp;&nbsp;③ Java 난수 생성해 JavaMail API 활용한 이메일 인증<br>
   ![image](https://user-images.githubusercontent.com/104151569/193990332-03c82bdf-3311-4a70-a88b-7b173e9927cb.png)
 
 #### &nbsp;(4) 휴대폰<br>
