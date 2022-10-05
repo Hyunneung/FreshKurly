@@ -117,11 +117,19 @@
 #### &nbsp;&nbsp;&nbsp;② Ajax, JDBC 활용한 상품 수량 변경 및 삭제<br>  
   ![image](https://user-images.githubusercontent.com/104151569/193993451-b4bc5691-f77b-44d1-977d-21b587ea3a9a.png)
   ![image](https://user-images.githubusercontent.com/104151569/193996936-9825ab75-d30f-4ce5-82f6-6ba83279aad8.png)
+#### &nbsp;&nbsp;&nbsp;③ Ajax, JDBC 활용한 상품 중복 검사 및 추가<br>    
+  ![image](https://user-images.githubusercontent.com/104151569/194000595-7a182899-aae2-4ec5-a91b-1a8e21609b14.png)
+  ![image](https://user-images.githubusercontent.com/104151569/194000736-345fa585-2ef7-4ae8-a5d6-d5764ef702e0.png)
+
 
 <br><br>
 ### 4. 찜한상품
 #### &nbsp;&nbsp;&nbsp;① Ajax, JDBC 활용한 상품 중복 검사 및 삭제<br>  
   ![image](https://user-images.githubusercontent.com/104151569/193995736-56c074d6-83e9-41a0-9727-0f3ad8d0f2c8.png)
+#### &nbsp;&nbsp;&nbsp;② Ajax, JDBC 활용한 상품 중복 검사 및 추가<br>  
+  ![image](https://user-images.githubusercontent.com/104151569/194000866-878222c8-17fc-4971-9840-f3fae9f0cbc0.png)
+  ![image](https://user-images.githubusercontent.com/104151569/194000880-68a3dae5-8630-4223-ab94-d94e2d741326.png)
+
 
 <br><br>
 ### 5. 게시판
