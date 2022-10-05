@@ -113,7 +113,7 @@
 ##### &nbsp;&nbsp;&nbsp;① JSTL core 라이브러리, fmt 라이브러리 활용한 조건부 무료배송 및 금액 산정<br>
 ##### &nbsp;&nbsp;&nbsp;② Ajax, JDBC 활용한 상품 수량 변경 및 삭제<br>  
   ![image](https://user-images.githubusercontent.com/104151569/193993451-b4bc5691-f77b-44d1-977d-21b587ea3a9a.png)
-  ![image](https://user-images.githubusercontent.com/104151569/193995056-ca2a37fe-62b5-44e8-86c6-00625f9db414.png)
+  ![image](https://user-images.githubusercontent.com/104151569/193996936-9825ab75-d30f-4ce5-82f6-6ba83279aad8.png)
 
 <br><br>
 #### 4. 찜한상품
@@ -123,9 +123,11 @@
 <br><br>
 #### 5. 게시판
 ##### &nbsp;&nbsp;&nbsp;① 게시판 페이징 처리<br>
-##### &nbsp;&nbsp;&nbsp;② JSTL core 라이브러리 활용한 답변 여부 구현<br>
-  ![image](https://user-images.githubusercontent.com/104151569/193996095-d1e9bd47-9991-4b84-81ed-d1421b0f82b2.png)
-  ![image](https://user-images.githubusercontent.com/104151569/193996401-fcdee82c-13f6-4d84-be21-691f58f68840.png)
+  ![image](https://user-images.githubusercontent.com/104151569/193997066-62925298-f81c-4c50-9e83-baf4eb90bf9b.png)
+##### &nbsp;&nbsp;&nbsp;② JSTL core 라이브러리 활용한 답변 여부 구현 및 삭제 여부 결정<br>  
+  ![image](https://user-images.githubusercontent.com/104151569/193997477-eb3390a5-6f60-4c24-b580-f50f7b77120c.png)
+  ![image](https://user-images.githubusercontent.com/104151569/193997570-6b2aa74c-1bd8-471d-bd7e-a3491dd8d12d.png)
+
 
 
 <br><br>
