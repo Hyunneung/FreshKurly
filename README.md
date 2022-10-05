@@ -11,14 +11,16 @@
 ### 1. 로그인, 로그아웃, 회원가입
   - 회원가입시 이메일 인증
   - 소셜 회원가입, 로그인 (카카오, 네이버)
-### 2. 장바구니
+### 2. 주문내역
+  - 조회
+### 3. 장바구니
   - CRUD(생성, 조회, 갱신, 삭제)
-### 3. 찜한상품
+### 4. 찜한상품
   - CRUD(생성, 조회, 갱신, 삭제)
-### 4. 게시판
+### 5. 게시판
   - 조회, 삭제
   - 페이지네이션
-### 5. 개인정보 수정
+### 6. 개인정보 수정
 
 ---
 ## 개발환경
@@ -101,13 +103,33 @@
 
 
 <br><br>
-#### 2. 장바구니
+#### 2. 주문내역
+##### &nbsp;&nbsp;&nbsp;① JSTL core 라이브러리, fmt 라이브러리 활용한 날짜별 금액 산정<br>
+##### &nbsp;&nbsp;&nbsp;② JDBC join 쿼리 활용한 데이터 조회<br>
+  ![image](https://user-images.githubusercontent.com/104151569/193992649-3fee230f-6897-4561-b456-4dec7d3c0501.png)
+
 <br><br>
-#### 3. 찜한상품
+#### 3. 장바구니
+##### &nbsp;&nbsp;&nbsp;① JSTL core 라이브러리, fmt 라이브러리 활용한 조건부 무료배송 및 금액 산정<br>
+##### &nbsp;&nbsp;&nbsp;② Ajax, JDBC 활용한 상품 수량 변경 및 삭제<br>  
+  ![image](https://user-images.githubusercontent.com/104151569/193993451-b4bc5691-f77b-44d1-977d-21b587ea3a9a.png)
+  ![image](https://user-images.githubusercontent.com/104151569/193995056-ca2a37fe-62b5-44e8-86c6-00625f9db414.png)
+
 <br><br>
-#### 4. 게시판
+#### 4. 찜한상품
+##### &nbsp;&nbsp;&nbsp;① Ajax, JDBC 활용한 상품 중복 검사 및 삭제<br>  
+  ![image](https://user-images.githubusercontent.com/104151569/193995736-56c074d6-83e9-41a0-9727-0f3ad8d0f2c8.png)
+
 <br><br>
-#### 5. 개인정보 수정
+#### 5. 게시판
+##### &nbsp;&nbsp;&nbsp;① 게시판 페이징 처리<br>
+##### &nbsp;&nbsp;&nbsp;② JSTL core 라이브러리 활용한 답변 여부 구현<br>
+  ![image](https://user-images.githubusercontent.com/104151569/193996095-d1e9bd47-9991-4b84-81ed-d1421b0f82b2.png)
+  ![image](https://user-images.githubusercontent.com/104151569/193996401-fcdee82c-13f6-4d84-be21-691f58f68840.png)
+
+
+<br><br>
+#### 6. 개인정보 수정
 
 
 
