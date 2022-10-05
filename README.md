@@ -79,6 +79,7 @@
 ##### &nbsp;(3) 주민번호<br>
 ##### &nbsp;&nbsp;&nbsp;① Javascript(jQuery) 정규표현식 활용한 형식 검사 및 성별 자동 선택<br>
   ![image](https://user-images.githubusercontent.com/104151569/193989791-e949221e-384c-4cf3-bfc1-a257d34a805f.png)
+  ![image](https://user-images.githubusercontent.com/104151569/193990723-5ff55986-baee-4c8e-af77-4ecd344da56e.png)
   ![image](https://user-images.githubusercontent.com/104151569/193990595-30dfdb50-f34a-48ee-af3e-119c687f3d03.png)
 
 ##### &nbsp;(3) 이메일<br>
