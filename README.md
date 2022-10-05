@@ -49,7 +49,12 @@
 ## 화면
 ### 1. 로그인, 로그아웃, 회원가입
 #### 1-1. 로그인
+###### 일반 로그인
 ![image](https://user-images.githubusercontent.com/104151569/193631510-1372d009-b335-4389-87f1-a28bc1623d07.png)
+###### 네이버 소셜 로그인
+![image](https://user-images.githubusercontent.com/104151569/193986106-5639413b-b8e8-4bef-b366-88309c06719a.png)
+###### 카카오 소셜 로그인
+![image](https://user-images.githubusercontent.com/104151569/193986177-3727394f-8588-4f8c-8192-707e5c322bce.png)
 
 #### 1-2. 로그아웃
 
@@ -57,8 +62,8 @@
 ![image](https://user-images.githubusercontent.com/104151569/193631006-ecaedf53-dab6-4c09-a855-80ca570773f1.png)
 - 아이디
 - 비밀번호, 비밀번호 확인
-![image](https://user-images.githubusercontent.com/104151569/193631026-b375af07-046c-43d8-8e1d-9bfb123ca040.png)
 - 이름
+![image](https://user-images.githubusercontent.com/104151569/193631026-b375af07-046c-43d8-8e1d-9bfb123ca040.png)
 - 주민번호
 - 이메일
 - 휴대폰
