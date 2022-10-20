@@ -143,7 +143,7 @@
 ### 2-4. 게시판
 #### &nbsp;&nbsp;&nbsp;① 게시판 페이징 처리<br>
   ![image](https://user-images.githubusercontent.com/104151569/193997066-62925298-f81c-4c50-9e83-baf4eb90bf9b.png)
-#### &nbsp;&nbsp;&nbsp;② JSTL core 라이브러리, 모달 활용한 답변 여부 구현<br>
+#### &nbsp;&nbsp;&nbsp;② JSTL core 라이브러리, 모달 활용한 관리자 답변 완료 여부 확인<br>
   ![image](https://user-images.githubusercontent.com/104151569/193999007-75a1ea44-5cae-432d-b08d-8043c908362d.png)
 #### &nbsp;&nbsp;&nbsp;③ Javascript(jQuery), Ajax, JDBC 활용한 답변 여부에 따른 삭제<br>  
   ![image](https://user-images.githubusercontent.com/104151569/193997477-eb3390a5-6f60-4c24-b580-f50f7b77120c.png)
