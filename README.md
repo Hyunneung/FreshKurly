@@ -32,6 +32,7 @@
 ---
 ## 개발환경
 * OS : Window 10
+* Language : Java, JSP, JavaScript, Oracle SQL
 * DBMS : Oracle 11g
 * Editer : Eclipse
 * Database : SQL Developer
