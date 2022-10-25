@@ -71,7 +71,7 @@
 ### 1-2. 로그아웃
 
 ### 1-3. 회원가입
-![image](https://user-images.githubusercontent.com/104151569/197784195-14307ab9-cbdd-4feb-8139-09a190e4f9f9.png)
+![image](https://user-images.githubusercontent.com/104151569/197784399-a611a67a-7041-47d9-a03c-b3a6127ca0c7.png)
 
 #### &nbsp;(1) 아이디<br>
 #### &nbsp;&nbsp;&nbsp;① Javascript(jQuery) 정규표현식 활용한 형식 검사<br>
